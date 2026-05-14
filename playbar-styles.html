@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Answerra · Playbar Styles Showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:#0a0a0a;color:#fff;-webkit-font-smoothing:antialiased;min-height:100vh}
+.page{max-width:1280px;margin:0 auto;padding:48px 24px 96px}
+.h1{font-family:'Oswald',Impact,sans-serif;font-size:48px;font-weight:700;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:8px}
+.h1 .red{color:#D90429}
+.sub{color:rgba(255,255,255,.6);font-size:16px;max-width:680px;line-height:1.5;margin-bottom:8px}
+.note{color:rgba(255,255,255,.45);font-size:13px;max-width:680px;line-height:1.55;margin-bottom:32px}
+.note code{background:rgba(255,255,255,.08);padding:1px 6px;border-radius:3px;font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:22px}
+.card{background:#141414;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.06);transition:transform .25s ease, border-color .25s ease}
+.card:hover{transform:translateY(-3px);border-color:rgba(217,4,41,.45)}
+.card-num{position:absolute;top:14px;left:14px;background:rgba(0,0,0,.55);color:#fff;font-weight:700;font-size:11px;letter-spacing:.08em;padding:5px 10px;border-radius:99px;z-index:20;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.frame{position:relative;width:100%;aspect-ratio:4/5;background:linear-gradient(160deg,#1a1f3a 0%,#3a1020 60%,#0a0a0a 100%);overflow:hidden}
+/* simulated "video" content — gradient + abstract shapes so each card looks like a real player */
+.frame::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(ellipse at 30% 35%, rgba(217,4,41,.18) 0%, transparent 55%),
+  radial-gradient(ellipse at 70% 65%, rgba(0,102,204,.18) 0%, transparent 60%),
+  radial-gradient(ellipse at 50% 90%, rgba(255,225,0,.10) 0%, transparent 50%)}
+.frame .ai-ui{position:absolute;left:14%;right:14%;top:46%;background:rgba(255,255,255,.92);color:#000;border-radius:10px;padding:12px 14px;font-size:11px;line-height:1.4;box-shadow:0 12px 40px rgba(0,0,0,.4)}
+.frame .ai-ui b{display:block;font-size:13px;font-weight:700;margin-bottom:2px}
+.frame .ai-ui small{display:block;color:#888;font-size:9px;margin-top:4px;letter-spacing:.04em;text-transform:uppercase}
+.frame .person{position:absolute;left:50%;top:24%;transform:translateX(-50%);width:42%;aspect-ratio:1;background:radial-gradient(circle at 50% 40%, #c89e7b 0%, #7d5a45 70%);border-radius:50% 50% 45% 45%}
+.label{padding:20px 22px 22px;display:flex;flex-direction:column;gap:6px}
+.label h3{font-size:17px;font-weight:700;letter-spacing:-.01em}
+.label p{font-size:13px;color:rgba(255,255,255,.55);line-height:1.45}
+.label .pick{margin-top:12px;display:inline-flex;align-items:center;gap:6px;align-self:flex-start;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#fff;font-size:11px;font-weight:600;letter-spacing:.04em;padding:8px 12px;border-radius:99px;cursor:pointer;transition:all .15s ease}
+.label .pick:hover{background:#D90429;border-color:#D90429}
+.label .pick::after{content:"→";transition:transform .2s ease}
+.label .pick:hover::after{transform:translateX(3px)}
+.kicker{font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+
+/* ======= STYLE 1 — WISTIA CLASSIC ======= */
+.s1 .bar{position:absolute;left:0;right:0;bottom:0;height:44px;display:flex;align-items:center;gap:10px;padding:0 14px;background:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.65) 70%,transparent 100%);color:#fff;font-family:Inter,sans-serif}
+.s1 .btn{width:26px;height:26px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.s1 .btn svg{width:14px;height:14px}
+.s1 .t{font-size:11px;font-weight:600;font-variant-numeric:tabular-nums}
+.s1 .scrub{flex:1;height:3px;background:rgba(255,255,255,.22);border-radius:99px;position:relative;cursor:pointer;transition:height .15s ease}
+.s1 .scrub:hover{height:5px}
+.s1 .prog{position:absolute;left:0;top:0;bottom:0;width:38%;background:#D90429;border-radius:99px;box-shadow:0 0 8px rgba(217,4,41,.6)}
+.s1 .thumb{position:absolute;left:38%;top:50%;width:11px;height:11px;background:#fff;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 2px #D90429,0 2px 6px rgba(0,0,0,.6);opacity:0;transition:opacity .15s ease}
+.s1 .scrub:hover .thumb{opacity:1}
+.s1 .speed{font-size:11px;font-weight:700;padding:5px 8px;background:transparent;border-radius:4px;cursor:pointer}
+.s1 .speed:hover{background:rgba(255,255,255,.1)}
+
+/* ======= STYLE 2 — YOUTUBE MODERN ======= */
+.s2 .bar{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(to top,rgba(0,0,0,.95) 0%,rgba(0,0,0,.6) 70%,transparent 100%);padding:8px 0 10px;color:#fff}
+.s2 .scrub-wrap{padding:0 14px 8px}
+.s2 .scrub{height:4px;background:rgba(255,255,255,.28);position:relative;cursor:pointer;border-radius:0}
+.s2 .scrub:hover{height:6px;transition:height .15s ease}
+.s2 .prog{position:absolute;left:0;top:0;bottom:0;width:42%;background:#FF0000}
+.s2 .thumb{position:absolute;left:42%;top:50%;width:13px;height:13px;background:#FF0000;border-radius:50%;transform:translate(-50%,-50%);opacity:0;transition:opacity .15s}
+.s2 .scrub:hover .thumb{opacity:1}
+.s2 .row{display:flex;align-items:center;gap:14px;padding:0 14px}
+.s2 .btn{cursor:pointer;display:flex;align-items:center;justify-content:center}
+.s2 .btn svg{width:16px;height:16px}
+.s2 .t{font-size:12px;font-variant-numeric:tabular-nums}
+.s2 .spacer{flex:1}
+.s2 .speed{font-size:13px;font-weight:600;cursor:pointer;padding:4px 6px}
+
+/* ======= STYLE 3 — VIMEO PREMIUM ======= */
+.s3 .bar{position:absolute;left:14px;right:14px;bottom:14px;height:46px;display:flex;align-items:center;gap:12px;padding:0 16px;background:rgba(20,20,20,.55);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(255,255,255,.08);border-radius:99px;color:#fff;box-shadow:0 12px 40px rgba(0,0,0,.5)}
+.s3 .btn{width:28px;height:28px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:.9;transition:opacity .2s ease}
+.s3 .btn:hover{opacity:1}
+.s3 .btn svg{width:14px;height:14px}
+.s3 .t{font-size:11px;font-weight:500;font-variant-numeric:tabular-nums;letter-spacing:.04em;opacity:.85}
+.s3 .scrub{flex:1;height:2px;background:rgba(255,255,255,.2);position:relative;cursor:pointer;border-radius:99px;transition:height .2s ease}
+.s3 .scrub:hover{height:4px}
+.s3 .prog{position:absolute;left:0;top:0;bottom:0;width:55%;background:linear-gradient(to right,#00E0FF,#0080FF);border-radius:99px}
+
+/* ======= STYLE 4 — NETFLIX CINEMATIC ======= */
+.s4 .bar{position:absolute;left:0;right:0;bottom:0;padding:14px 18px 16px;background:linear-gradient(to top,rgba(0,0,0,1) 0%,rgba(0,0,0,.7) 70%,transparent 100%);color:#fff}
+.s4 .scrub{height:5px;background:rgba(255,255,255,.18);border-radius:99px;position:relative;margin-bottom:14px;cursor:pointer}
+.s4 .scrub:hover{height:7px;transition:height .15s ease}
+.s4 .prog{position:absolute;left:0;top:0;bottom:0;width:35%;background:#E50914;border-radius:99px}
+.s4 .thumb{position:absolute;left:35%;top:50%;width:16px;height:16px;background:#E50914;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 4px rgba(229,9,20,.3),0 4px 12px rgba(0,0,0,.6)}
+.s4 .row{display:flex;align-items:center;gap:18px}
+.s4 .btn{cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:.9}
+.s4 .btn:hover{opacity:1;transform:scale(1.1);transition:transform .15s ease}
+.s4 .btn svg{width:18px;height:18px}
+.s4 .play-big svg{width:22px;height:22px}
+.s4 .t{font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}
+.s4 .spacer{flex:1}
+
+/* ======= STYLE 5 — APPLE TV+ PREMIUM ======= */
+.s5 .bar{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);display:flex;align-items:center;gap:10px;padding:8px 8px;background:rgba(0,0,0,.55);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(255,255,255,.1);border-radius:99px;color:#fff;box-shadow:0 16px 50px rgba(0,0,0,.6)}
+.s5 .btn{width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:50%;transition:background .15s ease}
+.s5 .btn:hover{background:rgba(255,255,255,.12)}
+.s5 .btn svg{width:14px;height:14px}
+.s5 .play{width:42px;height:42px}
+.s5 .play svg{width:16px;height:16px}
+.s5 .scrub-tray{position:absolute;left:14px;right:14px;bottom:80px;height:24px;display:flex;align-items:center;opacity:0;transition:opacity .25s ease}
+.s5.always .scrub-tray{opacity:1}
+.s5 .scrub{flex:1;height:3px;background:rgba(255,255,255,.25);position:relative;cursor:pointer;border-radius:99px}
+.s5 .prog{position:absolute;left:0;top:0;bottom:0;width:30%;background:#fff;border-radius:99px}
+.s5 .t{font-size:10px;color:rgba(255,255,255,.7);font-variant-numeric:tabular-nums;padding:0 8px}
+
+/* ======= STYLE 6 — LOOM FRIENDLY ======= */
+.s6 .bar{position:absolute;left:12px;right:12px;bottom:12px;display:flex;align-items:center;gap:8px;padding:8px 12px;background:#fff;color:#1a1a1a;border-radius:12px;box-shadow:0 8px 28px rgba(0,0,0,.35);font-family:Inter,sans-serif}
+.s6 .btn{width:28px;height:28px;display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:8px;background:transparent;transition:background .15s ease}
+.s6 .btn:hover{background:rgba(0,0,0,.05)}
+.s6 .btn svg{width:14px;height:14px}
+.s6 .play{background:#625DF5;color:#fff}
+.s6 .play:hover{background:#4a44d0}
+.s6 .play svg path{fill:#fff}
+.s6 .scrub{flex:1;height:6px;background:#EAEAEC;border-radius:99px;position:relative;cursor:pointer}
+.s6 .prog{position:absolute;left:0;top:0;bottom:0;width:48%;background:#625DF5;border-radius:99px}
+.s6 .thumb{position:absolute;left:48%;top:50%;width:14px;height:14px;background:#fff;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 2px #625DF5,0 2px 4px rgba(0,0,0,.15)}
+.s6 .t{font-size:11px;font-weight:600;font-variant-numeric:tabular-nums;color:#5a5a66}
+.s6 .speed{font-size:11px;font-weight:700;padding:5px 9px;background:#F1F1F4;border-radius:6px;cursor:pointer;color:#1a1a1a}
+
+/* ======= STYLE 7 — TIKTOK NEON ======= */
+.s7 .bar{position:absolute;left:0;right:0;bottom:0;padding:10px 12px 12px;background:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.6) 70%,transparent 100%);color:#fff}
+.s7 .scrub{height:3px;background:rgba(255,255,255,.22);border-radius:99px;position:relative;margin-bottom:10px;cursor:pointer;overflow:visible}
+.s7 .prog{position:absolute;left:0;top:0;bottom:0;width:50%;background:linear-gradient(to right,#FE2C55,#25F4EE);border-radius:99px;box-shadow:0 0 12px rgba(254,44,85,.6)}
+.s7 .thumb{position:absolute;left:50%;top:50%;width:12px;height:12px;background:#25F4EE;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 14px rgba(37,244,238,.9),0 0 0 2px rgba(255,255,255,.9)}
+.s7 .row{display:flex;align-items:center;gap:12px}
+.s7 .btn{cursor:pointer;display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;transition:transform .15s ease,background .15s ease}
+.s7 .btn:hover{transform:scale(1.15);background:rgba(254,44,85,.18)}
+.s7 .btn svg{width:14px;height:14px}
+.s7 .t{font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;text-shadow:0 0 6px rgba(254,44,85,.6)}
+.s7 .spacer{flex:1}
+
+/* ======= STYLE 8 — TWITCH STUDIO ======= */
+.s8 .bar{position:absolute;left:0;right:0;bottom:0;background:#0e0e10;color:#efeff1;font-family:Inter,sans-serif;border-top:1px solid rgba(255,255,255,.04)}
+.s8 .scrub{height:4px;background:rgba(255,255,255,.12);position:relative;cursor:pointer}
+.s8 .scrub:hover{background:rgba(255,255,255,.2)}
+.s8 .prog{position:absolute;left:0;top:0;bottom:0;width:62%;background:#9147FF}
+.s8 .row{display:flex;align-items:center;gap:8px;padding:8px 12px}
+.s8 .btn{width:28px;height:28px;display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:4px;background:transparent;transition:background .15s ease}
+.s8 .btn:hover{background:#9147FF}
+.s8 .btn svg{width:14px;height:14px}
+.s8 .t{font-size:12px;font-weight:600;font-variant-numeric:tabular-nums}
+.s8 .live{display:inline-flex;align-items:center;gap:4px;background:#EB0400;color:#fff;font-size:10px;font-weight:700;padding:3px 7px;border-radius:3px;letter-spacing:.05em}
+.s8 .spacer{flex:1}
+.s8 .speed{font-size:12px;font-weight:700;padding:4px 7px;background:rgba(255,255,255,.08);border-radius:3px;cursor:pointer}
+
+/* ======= STYLE 9 — SPOTIFY BEAT ======= */
+.s9 .bar{position:absolute;left:0;right:0;bottom:0;padding:14px 18px 16px;background:linear-gradient(to top,rgba(0,0,0,.95) 0%,rgba(8,15,8,.7) 60%,transparent 100%);color:#fff}
+.s9 .row{display:flex;align-items:center;gap:14px;margin-bottom:10px}
+.s9 .btn{cursor:pointer;display:flex;align-items:center;justify-content:center;width:30px;height:30px;transition:transform .15s ease}
+.s9 .btn:hover{transform:scale(1.12)}
+.s9 .btn svg{width:14px;height:14px}
+.s9 .play{width:36px;height:36px;background:#1DB954;border-radius:50%}
+.s9 .play:hover{background:#1ed760}
+.s9 .play svg path{fill:#000}
+.s9 .t{font-size:11px;font-weight:600;font-variant-numeric:tabular-nums;color:rgba(255,255,255,.75)}
+.s9 .spacer{flex:1}
+.s9 .scrub{height:4px;background:rgba(255,255,255,.2);border-radius:99px;position:relative;cursor:pointer;overflow:hidden}
+.s9 .scrub:hover .prog{background:#1DB954}
+.s9 .prog{position:absolute;left:0;top:0;bottom:0;width:55%;background:linear-gradient(to right,#1DB954 0%,#1ed760 50%,#65f0a4 100%);border-radius:99px;transition:background .2s ease;animation:s9pulse 1.6s ease-in-out infinite}
+@keyframes s9pulse{0%,100%{box-shadow:0 0 10px rgba(29,185,84,.6)}50%{box-shadow:0 0 22px rgba(29,185,84,.9)}}
+.s9 .thumb{position:absolute;left:55%;top:50%;width:13px;height:13px;background:#1DB954;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 4px rgba(29,185,84,.25);opacity:0;transition:opacity .15s ease}
+.s9 .scrub:hover .thumb{opacity:1}
+
+/* ======= STYLE 10 — DISNEY+ ROYAL ======= */
+.s10 .bar{position:absolute;left:0;right:0;bottom:0;padding:18px 22px 18px;background:linear-gradient(to top,rgba(0,0,0,.95) 0%,rgba(8,16,40,.7) 60%,transparent 100%);color:#fff}
+.s10 .scrub{height:6px;background:rgba(255,255,255,.18);border-radius:99px;position:relative;margin-bottom:14px;cursor:pointer}
+.s10 .scrub:hover{height:8px;transition:height .15s ease}
+.s10 .prog{position:absolute;left:0;top:0;bottom:0;width:32%;background:linear-gradient(to right,#0476FF,#7DD3FF);border-radius:99px;box-shadow:0 0 14px rgba(4,118,255,.5)}
+.s10 .thumb{position:absolute;left:32%;top:50%;width:18px;height:18px;background:#fff;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 4px rgba(4,118,255,.4),0 4px 12px rgba(0,0,0,.5)}
+.s10 .markers{position:absolute;left:0;right:0;top:0;bottom:0;pointer-events:none}
+.s10 .markers .m{position:absolute;top:50%;width:2px;height:14px;background:rgba(255,255,255,.6);transform:translate(-50%,-50%);border-radius:1px}
+.s10 .row{display:flex;align-items:center;gap:20px}
+.s10 .btn{cursor:pointer;display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:transparent;transition:background .15s ease}
+.s10 .btn:hover{background:rgba(4,118,255,.25)}
+.s10 .btn svg{width:16px;height:16px}
+.s10 .play{width:44px;height:44px;background:#0476FF;box-shadow:0 6px 20px rgba(4,118,255,.45)}
+.s10 .play:hover{background:#3093ff}
+.s10 .play svg{width:18px;height:18px}
+.s10 .t{font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+.s10 .spacer{flex:1}
+
+/* Footer */
+.foot{margin-top:64px;padding-top:32px;border-top:1px solid rgba(255,255,255,.06);text-align:center;color:rgba(255,255,255,.4);font-size:13px;line-height:1.6}
+.foot a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.2)}
+.foot a:hover{border-bottom-color:#D90429}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="kicker">Answerra · Internal</div>
+  <h1 class="h1">Pick A <span class="red">Playbar</span> Style</h1>
+  <p class="sub">Ten distinct control-bar designs for the Answerra VSL player. Each is inspired by a category leader (Wistia, YouTube, Vimeo, Netflix, Apple TV+, Loom, TikTok, Twitch, Spotify, Disney+).</p>
+  <p class="note">Just look at the bottom of each frame. Hover scrubbers to see active states. Pick one and reply <code>"use style #N"</code> — I'll apply it across all 8 funnels.</p>
+
+  <div class="grid">
+
+    <!-- 1 — WISTIA CLASSIC -->
+    <div class="card">
+      <div class="card-num">01 · WISTIA CLASSIC</div>
+      <div class="frame s1">
+        <div class="person"></div>
+        <div class="ai-ui"><b>Want to see it work for your business?</b><small>This is an AI receptionist handling the call.</small></div>
+        <div class="bar">
+          <div class="btn"><svg viewBox="0 0 16 16"><rect x="3" y="2" width="3" height="12" fill="white"/><rect x="10" y="2" width="3" height="12" fill="white"/></svg></div>
+          <div class="t">0:34</div>
+          <div class="scrub"><div class="prog"></div><div class="thumb"></div></div>
+          <div class="t">1:30</div>
+          <div class="speed">1x</div>
+          <div class="btn"><svg viewBox="0 0 16 16"><path d="M2 6L2 2L6 2 M10 2L14 2L14 6 M14 10L14 14L10 14 M6 14L2 14L2 10" stroke="white" stroke-width="1.5" fill="none"/></svg></div>
+        </div>
+      </div>
+      <div class="label">
+        <h3>Wistia Classic</h3>
+        <p>Thin pill scrubber, hover-grow track, red accent. Minimal and quiet — lets the video do the work.</p>
+        <button class="pick" onclick="alert('Use this style: reply &quot;use style 01 (Wistia Classic)&quot;')">Use this style</button>
+      </div>
+    </div>
+
+    <!-- 2 — YOUTUBE MODERN -->
+    <div class="card">
+      <div class="card-num">02 · YOUTUBE MODERN</div>
+      <div class="frame s2">
+        <div class="person"></div>
+        <div class="ai-ui"><b>Want to see it work for your business?</b><small>This is an AI receptionist handling the call.</small></div>
+        <div class="bar">
+          <div class="scrub-wrap"><div class="scrub"><div class="prog"></div><div class="thumb"></div></div></div>
+          <div class="row">
+            <div class="btn"><svg viewBox="0 0 16 16"><rect x="3" y="2" width="3" height="12" fill="white"/><rect x="10" y="2" width="3" height="12" fill="white"/></svg></div>
+            <div class="t">0:38 / 1:30</div>
+            <div class="spacer"></div>
+            <div class="speed">1x</div>
+            <div class="btn"><svg viewBox="0 0 16 16"><path d="M2 5l5 0 0-3 3 4-3 4 0-3-5 0z M14 11l-5 0 0 3-3-4 3-4 0 3 5 0z" fill="white"/></svg></div>
+            <div class="btn"><svg viewBox="0 0 16 16"><path d="M2 6L2 2L6 2 M10 2L14 2L14 6 M14 10L14 14L10 14 M6 14L2 14L2 10" stroke="white" stroke-width="1.5" fill="none"/></svg></div>
+          </div>
+        </div>
+      </div>
+      <div class="label">
+        <h3>YouTube Modern</h3>
+        <p>Chunky red scrubber pinned to the absolute bottom edge — recognizable, mainstream, high-trust pattern for cold traffic.</p>
+        <button class="pick" onclick="alert('Reply &quot;use style 02 (YouTube Modern)&quot;')">Use this style</button>
+      </div>
+    </div>
+
+    <!-- 3 — VIMEO PREMIUM -->
+    <div class="card">
+      <div class="card-num">03 · VIMEO PREMIUM</div>
+      <div class="frame s3">
+        <div class="person"></div>
+        <div class="ai-ui"><b>Want to see it work for your business?</b><small>This is an AI receptionist handling the call.</small></div>
+        <div class="bar">
+          <div class="btn"><svg viewBox="0 0 16 16"><rect x="3" y="2" width="3" height="12" fill="white"/><rect x="10" y="2" width="3" height="12" fill="white"/></svg></div>
+          <div class="t">0:42</div>
+          <div class="scrub"><div class="prog"></div></div>
+          <div class="t">1:30</div>
+          <div class="btn"><svg viewBox="0 0 16 16"><path d="M2 6L2 2L6 2 M10 2L14 2L14 6 M14 10L14 14L10 14 M6 14L2 14L2 10" stroke="white" stroke-width="1.5" fill="none"/></svg></div>
+        </div>
+      </div>
+      <div class="label">
+        <h3>Vimeo Premium</h3>
+        <p>Floating glassmorphism pill, blue gradient scrubber, ultra-thin. Most "luxe" feel — works for high-ticket positioning.</p>
+        <button class="pick" onclick="alert('Reply &quot;use style 03 (Vimeo Premium)&quot;')">Use this style</button>
+      </div>
+    </div>
+
+    <!-- 4 — NETFLIX CINEMATIC -->
+    <div class="card">
+      <div class="card-num">04 · NETFLIX CINEMATIC</div>
+      <div class="frame s4">
+        <div class="person"></div>
+        <div class="ai-ui"><b>Want to see it work for your business?</b><small>This is an AI receptionist handling the call.</small></div>
+        <div class="bar">
+          <div class="scrub"><div class="prog"></div><div class="thumb"></div></div>
+          <div class="row">
+            <div class="btn play-big"><svg viewBox="0 0 22 22"><rect x="5" y="3" width="4" height="16" fill="white"/><rect x="13" y="3" width="4" height="16" fill="white"/></svg></div>
+            <div class="btn"><svg viewBox="0 0 16 16"><path d="M4 8 L11 3 L11 13 Z M11 8 L14 5 L14 11 Z" fill="white"/></svg></div>
+            <div class="t">0:32 / 1:30</div>
+            <div class="spacer"></div>
+            <div class="btn"><svg viewBox="0 0 16 16"><path d="M2 6L2 2L6 2 M10 2L14 2L14 6 M14 10L14 14L10 14 M6 14L2 14L2 10" stroke="white" stroke-width="1.5" fill="none"/></svg></div>
+          </div>
+        </div>
+      </div>
+      <div class="label">
+        <h3>Netflix Cinematic</h3>
+        <p>Big icons, prominent red scrubber, thumb with halo glow. High-drama, premium streaming vibe.</p>
+        <button class="pick" onclick="alert('Reply &quot;use style 04 (Netflix Cinematic)&quot;')">Use this style</button>
+      </div>
+    </div>
+
+    <!-- 5 — APPLE TV+ PREMIUM -->
+    <div class="card">
+      <div class="card-num">05 · APPLE TV+ PREMIUM</div>
+      <div class="frame s5 always">
+        <div class="person"></div>
+        <div class="ai-ui"><b>Want to see it work for your business?</b><small>This is an AI receptionist handling the call.</small></div>
+        <div class="scrub-tray">
+          <div class="t">0:28</div>
+          <div class="scrub"><div class="prog"></div></div>
+          <div class="t">1:30</div>
+        </div>
+        <div class="bar">
+          <div class="btn"><svg viewBox="0 0 16 16"><path d="M9 4 L4 8 L9 12 Z M4 8 L4 4 L4 12 Z" fill="white"/></svg></div>
+          <div class="btn play"><svg viewBox="0 0 16 16"><rect x="3" y="2" width="3" height="12" fill="white"/><rect x="10" y="2" width="3" height="12" fill="white"/></svg></div>
+          <div class="btn"><svg viewBox="0 0 16 16"><path d="M7 4 L12 8 L7 12 Z M12 8 L12 4 L12 12 Z" fill="white"/></svg></div>
+        </div>
+      </div>
+      <div class="label">
+        <h3>Apple TV+ Premium</h3>
+        <p>Centered floating transport with frosted blur. Scrubber pops above when needed. Tom-Cruise cinema energy.</p>
+        <button class="pick" onclick="alert('Reply &quot;use style 05 (Apple TV+ Premium)&quot;')">Use this style</button>
+      </div>
+    </div>
+
+    <!-- 6 — LOOM FRIENDLY -->
+    <div class="card">
+      <div class="card-num">06 · LOOM FRIENDLY</div>
+      <div class="frame s6">
+        <div class="person"></div>
+        <div class="ai-ui"><b>Want to see it work for your business?</b><small>This is an AI receptionist handling the call.</small></div>
+        <div class="bar">
+          <div class="btn play"><svg viewBox="0 0 16 16"><rect x="3" y="2" width="3" height="12" fill="white"/><rect x="10" y="2" width="3" height="12" fill="white"/></svg></div>
+          <div class="t">0:31</div>
+          <div class="scrub"><div class="prog"></div><div class="thumb"></div></div>
+          <div class="t">1:30</div>
+          <div class="speed">1x</div>
+          <div class="btn"><svg viewBox="0 0 16 16"><path d="M2 6L2 2L6 2 M10 2L14 2L14 6 M14 10L14 14L10 14 M6 14L2 14L2 10" stroke="#1a1a1a" stroke-width="1.5" fill="none"/></svg></div>
+        </div>
+      </div>
+      <div class="label">
+        <h3>Loom Friendly</h3>
+        <p>Light, rounded, low-stress. SaaS-friendly. Best when the demo audio is the conversion driver and you want zero visual tension.</p>
+        <button class="pick" onclick="alert('Reply &quot;use style 06 (Loom Friendly)&quot;')">Use this style</button>
+      </div>
+    </div>
+
+    <!-- 7 — TIKTOK NEON -->
+    <div class="card">
+      <div class="card-num">07 · TIKTOK NEON</div>
+      <div class="frame s7">
+        <div class="person"></div>
+        <div class="ai-ui"><b>Want to see it work for your business?</b><small>This is an AI receptionist handling the call.</small></div>
+        <div class="bar">
+          <div class="scrub"><div class="prog"></div><div class="thumb"></div></div>
+          <div class="row">
+            <div class="btn"><svg viewBox="0 0 16 16"><rect x="3" y="2" width="3" height="12" fill="white"/><rect x="10" y="2" width="3" height="12" fill="white"/></svg></div>
+            <div class="t">0:45</div>
+            <div class="spacer"></div>
+            <div class="t">1:30</div>
+            <div class="btn"><svg viewBox="0 0 16 16"><path d="M2 6L2 2L6 2 M10 2L14 2L14 6 M14 10L14 14L10 14 M6 14L2 14L2 10" stroke="white" stroke-width="1.5" fill="none"/></svg></div>
+          </div>
+        </div>
+      </div>
+      <div class="label">
+        <h3>TikTok Neon</h3>
+        <p>Magenta-to-cyan gradient progress with neon glow. High-energy. Great if your demo audience is &lt;35 and mobile-first.</p>
+        <button class="pick" onclick="alert('Reply &quot;use style 07 (TikTok Neon)&quot;')">Use this style</button>
+      </div>
+    </div>
+
+    <!-- 8 — TWITCH STUDIO -->
+    <div class="card">
+      <div class="card-num">08 · TWITCH STUDIO</div>
+      <div class="frame s8">
+        <div class="person"></div>
+        <div class="ai-ui"><b>Want to see it work for your business?</b><small>This is an AI receptionist handling the call.</small></div>
+        <div class="bar">
+          <div class="scrub"><div class="prog"></div></div>
+          <div class="row">
+            <div class="btn"><svg viewBox="0 0 16 16"><rect x="3" y="2" width="3" height="12" fill="white"/><rect x="10" y="2" width="3" height="12" fill="white"/></svg></div>
+            <div class="t">0:56 / 1:30</div>
+            <div class="live"><span style="width:6px;height:6px;background:#fff;border-radius:50%;display:inline-block"></span>LIVE</div>
+            <div class="spacer"></div>
+            <div class="speed">1x</div>
+            <div class="btn"><svg viewBox="0 0 16 16"><path d="M2 6L2 2L6 2 M10 2L14 2L14 6 M14 10L14 14L10 14 M6 14L2 14L2 10" stroke="white" stroke-width="1.5" fill="none"/></svg></div>
+          </div>
+        </div>
+      </div>
+      <div class="label">
+        <h3>Twitch Studio</h3>
+        <p>Stark, purple progress, "LIVE DEMO" badge. Reads as "this is happening now" — high urgency for AI live-receptionist messaging.</p>
+        <button class="pick" onclick="alert('Reply &quot;use style 08 (Twitch Studio)&quot;')">Use this style</button>
+      </div>
+    </div>
+
+    <!-- 9 — SPOTIFY BEAT -->
+    <div class="card">
+      <div class="card-num">09 · SPOTIFY BEAT</div>
+      <div class="frame s9">
+        <div class="person"></div>
+        <div class="ai-ui"><b>Want to see it work for your business?</b><small>This is an AI receptionist handling the call.</small></div>
+        <div class="bar">
+          <div class="row">
+            <div class="btn play"><svg viewBox="0 0 16 16"><rect x="3" y="2" width="3" height="12" fill="black"/><rect x="10" y="2" width="3" height="12" fill="black"/></svg></div>
+            <div class="t">0:49 / 1:30</div>
+            <div class="spacer"></div>
+            <div class="btn"><svg viewBox="0 0 16 16"><path d="M2 6L2 2L6 2 M10 2L14 2L14 6 M14 10L14 14L10 14 M6 14L2 14L2 10" stroke="white" stroke-width="1.5" fill="none"/></svg></div>
+          </div>
+          <div class="scrub"><div class="prog"></div><div class="thumb"></div></div>
+        </div>
+      </div>
+      <div class="label">
+        <h3>Spotify Beat</h3>
+        <p>Green-cyan gradient that pulses while playing. Distinctive — feels less like a video, more like an experience.</p>
+        <button class="pick" onclick="alert('Reply &quot;use style 09 (Spotify Beat)&quot;')">Use this style</button>
+      </div>
+    </div>
+
+    <!-- 10 — DISNEY+ ROYAL -->
+    <div class="card">
+      <div class="card-num">10 · DISNEY+ ROYAL</div>
+      <div class="frame s10">
+        <div class="person"></div>
+        <div class="ai-ui"><b>Want to see it work for your business?</b><small>This is an AI receptionist handling the call.</small></div>
+        <div class="bar">
+          <div class="scrub">
+            <div class="prog"></div>
+            <div class="markers"><div class="m" style="left:20%"></div><div class="m" style="left:55%"></div><div class="m" style="left:78%"></div></div>
+            <div class="thumb"></div>
+          </div>
+          <div class="row">
+            <div class="btn"><svg viewBox="0 0 16 16"><path d="M9 4 L4 8 L9 12 Z" fill="white"/></svg></div>
+            <div class="btn play"><svg viewBox="0 0 16 16"><rect x="3" y="2" width="3" height="12" fill="white"/><rect x="10" y="2" width="3" height="12" fill="white"/></svg></div>
+            <div class="btn"><svg viewBox="0 0 16 16"><path d="M7 4 L12 8 L7 12 Z" fill="white"/></svg></div>
+            <div class="t">0:30 / 1:30</div>
+            <div class="spacer"></div>
+            <div class="btn"><svg viewBox="0 0 16 16"><path d="M2 6L2 2L6 2 M10 2L14 2L14 6 M14 10L14 14L10 14 M6 14L2 14L2 10" stroke="white" stroke-width="1.5" fill="none"/></svg></div>
+          </div>
+        </div>
+      </div>
+      <div class="label">
+        <h3>Disney+ Royal</h3>
+        <p>Deep-blue gradient progress, oversized white thumb with glow, chapter dot markers. Cinematic + premium signaling.</p>
+        <button class="pick" onclick="alert('Reply &quot;use style 10 (Disney+ Royal)&quot;')">Use this style</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="foot">
+    Pick the one you like best. Reply <em>"use style N"</em> (any of 01–10) and I'll roll it out across all 8 live funnels.<br>
+    Built for <a href="https://answerra.ai">answerra.ai</a> · VSL Library 660166 · Bunny Stream + Vercel
+  </div>
+</div>
+</body>
+</html>
