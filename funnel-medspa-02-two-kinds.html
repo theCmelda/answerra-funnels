@@ -94,6 +94,30 @@
     .calendar{margin:0 28px 32px;padding:22px}
     .cal-bar{margin:-22px -22px 18px;font-size:14px}
   }
+
+  /* === Wistia-style VSL player overlay === */
+  .wistia{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;background:#0a0a0a}
+  .wistia-frame{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .wistia-overlay{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;background:radial-gradient(ellipse at center,rgba(0,0,0,.15) 0%,rgba(0,0,0,.55) 70%,rgba(0,0,0,.75) 100%);transition:opacity .35s ease,visibility .35s}
+  .wistia-overlay.gone{opacity:0;visibility:hidden;pointer-events:none}
+  .wistia-brand{position:absolute;top:14px;left:14px;background:rgba(0,0,0,.55);color:#FFE100;font-family:'Open Sans',Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.05em;padding:6px 10px;border-radius:3px;border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+  .wistia-play{position:relative;width:104px;height:104px;border:0;padding:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+  .wistia-play:hover{transform:scale(1.08)}
+  .wistia-play:active{transform:scale(.96)}
+  .wistia-ring{position:absolute;inset:0;border-radius:50%;background:#D90429;box-shadow:0 12px 40px rgba(217,4,41,.55),0 0 0 3px rgba(255,255,255,.18) inset,0 0 0 14px rgba(217,4,41,.18);animation:wistiaPulse 2.4s ease-in-out infinite}
+  .wistia-tri{position:relative;z-index:1;margin-left:5px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.3))}
+  .wistia-caption{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:#fff;font-family:'Oswald',Impact,sans-serif;font-size:12px;font-weight:600;letter-spacing:.12em;text-shadow:0 1px 3px rgba(0,0,0,.6);white-space:nowrap}
+  @keyframes wistiaPulse {
+    0%,100% { box-shadow:0 12px 40px rgba(217,4,41,.55),0 0 0 3px rgba(255,255,255,.18) inset,0 0 0 14px rgba(217,4,41,.0); }
+    50%     { box-shadow:0 12px 40px rgba(217,4,41,.55),0 0 0 3px rgba(255,255,255,.18) inset,0 0 0 22px rgba(217,4,41,.22); }
+  }
+  @media (min-width:900px){
+    .wistia-play{width:128px;height:128px}
+    .wistia-tri{width:42px;height:42px;margin-left:6px}
+    .wistia-brand{top:18px;left:18px;font-size:12px;padding:7px 12px}
+    .wistia-caption{font-size:13px;bottom:28px}
+  }
+
 </style>
 </head>
 <body>
@@ -110,13 +134,24 @@
     <div class="vsl-wrap">
       <div class="vsl" data-funnel="MED-02">
         <!-- VSL EMBED START -->
-        <iframe
-          src="https://iframe.mediadelivery.net/embed/660166/426523c4-a1cd-4688-a9dd-dc2394fec425?autoplay=true&muted=true&preload=true&responsive=true&loop=false"
-          title="Answerra VSL — MED-02"
-          loading="eager"
-          style="position:absolute;inset:0;width:100%;height:100%;border:0;"
-          allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
-          allowfullscreen="true"></iframe>
+        <div class="wistia" data-funnel="MED-02">
+          <iframe class="wistia-frame"
+            data-guid="426523c4-a1cd-4688-a9dd-dc2394fec425"
+            src="https://iframe.mediadelivery.net/embed/660166/426523c4-a1cd-4688-a9dd-dc2394fec425?autoplay=false&muted=true&preload=true&responsive=true&loop=false"
+            loading="eager"
+            allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
+            allowfullscreen="true"></iframe>
+          <div class="wistia-overlay">
+            <div class="wistia-brand">▶ ANSWERRA · 90-SEC DEMO</div>
+            <button class="wistia-play" aria-label="Play the demo">
+              <span class="wistia-ring"></span>
+              <svg class="wistia-tri" viewBox="0 0 32 32" width="34" height="34" aria-hidden="true">
+                <path d="M9 5 L9 27 L27 16 Z" fill="white"/>
+              </svg>
+            </button>
+            <div class="wistia-caption">TAP TO PLAY WITH SOUND</div>
+          </div>
+        </div>
         <!-- VSL EMBED END -->
       </div>
     </div>
@@ -153,6 +188,24 @@
     var cal = document.querySelector('.cal-bar');
     if (cal) { cal.classList.add('pulse'); }
   }, 25000);
+})();
+</script>
+
+<script>
+(function(){
+  document.querySelectorAll('.wistia').forEach(function(player){
+    var iframe = player.querySelector('.wistia-frame');
+    var overlay = player.querySelector('.wistia-overlay');
+    var guid = iframe.getAttribute('data-guid');
+    function play(){
+      // Swap src to autoplay with sound — this is the trick: a user-initiated
+      // click satisfies browser autoplay policies, so muted=false works.
+      iframe.src = 'https://iframe.mediadelivery.net/embed/660166/' + guid +
+                   '?autoplay=true&muted=false&preload=true&responsive=true&loop=false';
+      overlay.classList.add('gone');
+    }
+    overlay.addEventListener('click', play);
+  });
 })();
 </script>
 </body>
