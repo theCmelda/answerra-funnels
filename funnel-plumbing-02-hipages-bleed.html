@@ -95,53 +95,43 @@
     .cal-bar{margin:-22px -22px 18px;font-size:14px}
   }
 
-  /* === Wistia v4 player === */
-  .wistia{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;outline:none;background:#0a0a0a url('data:image/jpeg;base64,/9j//gARTGF2YzU4LjEzNC4xMDAA/9sAQwAIGBgcGBwhISEhISEnJCcoKCgnJycnKCgoKysrMzMzKysrKCgrKzAwMzM3OTc0NDM0OTk8PDxISEVFVFRXZ2d8/8QAfwAAAgMBAQEAAAAAAAAAAAAABgUHAwQCAQgBAAIDAQAAAAAAAAAAAAAAAAIEAwABBRAAAgEDAgQDBAoDAQEAAAAAAQIAEQQDEiFRE0ExkXEFYYHhIpIUobFiQkMjU1IVotEyJBEBAQEBAAMBAQAAAAAAAAAAAAERAjEhQRIy/8AAEQgAjgBQAwEiAAIRAAMRAP/aAAwDAQACEQMRAD8AioZW4CWh2mrQJcEgK4GRx1M0DM/Ge6dplXeVTMZ3msXLTEuOpmw4pjWkXRmsXQiTlSg4jwlUWC5WaBnSBXLPtl3KaXF0SY81sVGpd6b7TbS0brTxgPWTviXBiwYyyA6gOlek3FAn1fA3Z/uivkYemQeEljmWo/IPo/CdF7UH/wAD6MzGoZRuW3QzU+bV0HuElfmWv8Y+h8Jq1W1CdA2/DLjEEFyeM5q3GTkMlqfyf6/Ca/8A5iwXQtT+GaxBYciXjN75NVxgxNhf5BUA9JDXKycAIGxQrJFwer8vGqtj1UFK1kbHtKukmC+gLf1Bc/6dI+54/pIa9OJqYenJpPf3Ui1tP8yYJDcgfki970KCdEUZXFKDrFNKilCPfWRbUt5guxXyZFropKHv1Rj8lSBWBGM6HVa94rvBy8neu0a1zrMH3+STMjArp6d4P8/Cvxgvhxl9ZG52+2bTbqEbbcf8g3AI3V6zZ0iFVbhGY1b1jIRpYZNOSnGSywHefOKOyMCKiTaMnNRKGLdR0OK1ZGTvUT0aaVBlRx4wNxv5xQ1MXXuIvhrQRcFucCAdpZkJyLvUEfdMubUxqD9sUNkZWA9ka+OVfInwXJwvUCo2rxjLLdq6EDYnjIyZmxmvebhn1CXJUZuAJZp6zcEC9+8cW6rmyKh2Bj2AC+lfOGXLYY1dPeIQH0/CGIpk28O3lHGLGuNCArmnH2xep+fQS+sqQK94to2Ys57AbQ9OHC1WONqinSdaMbDTRxXbtFsMagcneZ2xhuMlk2GAE75PAS4enYtWmr7+wScqiBf2wQwBiRqEkjaHt9g5RdQa6ZHR2AmSKkdjMwcqag0M9eLq0jVqI+Nzm2/cbxM4F1n/AJG8TFR7Tqm8jEfC6zfyN4z03Wb+7eMSCWGaw3N1n/u08+uZx+o0WSh+0qtJc5CSxqT3gDkpq8odotYI3OM48hBFOsESaHt1fpSR1cIcbaZNFKSKLo63J90U5tOdSEVZu4RfSbxGijvrO+E4nskAvmhArOA3YzBWJMuUq+x7QaKJzx4MSbgQfurNblga0pwldtcM6DyhGpJInPn9OlZPyW32fk4iep2EjvGhKCprXeU+oZTleg7DtG+E6VWvCO8z0R6vssZKGVx26mteMVEQguZyZ7UCYS0IC9m0iCIBd/MxrpyZjRQYQrbZLejFQayO0cg3wJRQJvuH5eMmMVBxoC4AqKyObm6XKxUAsBwieXTt6mB1fmaF2NCwAi3FiAFY1QsG+U0nWcwRNbk4/KR4xpJEfM2j5hUew0gLnZSaqtPZIkhMYf2/p2pdWTueyzP6dbq5OVt9J2EmIKEFYt1TXPP0IrbqmwFJ3lxhkIhM8DrxymM0if01fCO76+d0GOlNOxI6wLwtpNY8pq7zlbbUwCmlZ0nKf//Z') center center / cover no-repeat}/* Blurred poster placeholder layer */.wistia::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:inherit;filter:blur(14px) saturate(1.15) brightness(.9);transform:scale(1.18);transition:opacity .22s ease;opacity:1}.wistia.video-ready::after{opacity:0}.wistia-frame{z-index:2;position:absolute;top:-2px;left:0;width:100%;height:calc(100% + 6px);border:0;background:transparent}
-  .wistia-frame{position:absolute;top:-2px;left:0;width:100%;height:calc(100% + 6px);border:0;background:#000}
-  /* Hide Bunny native controls visually via a dedicated solid-black bottom mask */
-  .wistia-ctrlmask{position:absolute;left:0;right:0;bottom:0;height:62px;z-index:6;background:#000;pointer-events:none}
+
+  /* === Wistia v7 player === */
+  .wistia{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;outline:none;
+    background:#0a0a0a url('data:image/jpeg;base64,/9j//gARTGF2YzU4LjEzNC4xMDAA/9sAQwAIGBgcGBwhISEhISEnJCcoKCgnJycnKCgoKysrMzMzKysrKCgrKzAwMzM3OTc0NDM0OTk8PDxISEVFVFRXZ2d8/8QAewAAAgMBAQEBAAAAAAAAAAAABwYEAwUCAAgBAQADAQEBAAAAAAAAAAAAAAACAQQAAwUQAAIBAgQEBAUEAwEAAAAAAAIBAAMREiExBBMiQVFhcQWRgVJCMhShouFiI7EVMxEBAQEBAQEBAQAAAAAAAAAAAAERAjEhElH/wAARCACOAFADASIAAhEAAxEA/9oADAMBAAIRAxEAPwBKDcvupo/lpRGwN5yQggMfFuwcmLcA4hoZ60ExGVUH1l2IX1g6s5fzTYeiFl3lllB5jNdXL1XNd4sbT1hn7hictyUmLdObD1Cpbfi3s0rTR/CqdLOLAN63av4z6JpFTo0KWJXxJZ69IYAWe2qr6XMt0DTzT9p9Dfk0O37Z0VegnZr9JjAMAuSvlNk6YrreFjjba/2ft/iSMe3abwLL+s2MBrEV0kbCL7qHJVds/o/bJae2ZIcKu/6zEA6pD3kjgC+sNu4o0ionyJWT6QEafVExeHSF3a+p2AQYXtlrA6OkZdmSxq/eFTno7rcp/ROHuUvomWrJayokrXku16f55Xnv0Kvw7/H+JZR9QCqN8FooPm7eUx//ABT6K8Pm/wBS9c/wY+OFrpKLx+oCDfJmLtrFGlVRuyeukX65NGQvrKEYkveFXpZAkiutYo1KAIW+VZRdps0GT62U4qqogTZazjZKxDE5s0isS84njfxmwJPtKWH9XMFa07YlgacVNhu0Swt5xxrHhWUix60rNAYpb5oRfwmuFdomsn4Rf3p/784p6Dq/Cxt9wdKonfKa9c3UJFrfWYxNqzQj7TgqubGylNeaetrVp2IStdNvOUbw0qaSd4OhrWdikkyWHJ/rF+duhXiCUvwycNO33e0l3TyluAZ1PkJOPaNVuUrq6myewpCIMRZX1zl7oUyt/jO4+Mmv1TzcLFOkFHFZPzcyixOkz0zhD4QGL5DydrXnBUQIcHDO04463rQVZPu5kkJt3hvfp9FN8hvPo/4l3/OocMisQtJ6udkwG4QIble8x9MowbgeW6+MW3rFGojm5n3kg5lPKVWuTSKrUy5y93P1Vqnzl7uQb3SnS1nMTVVer85e7nuNV+cvdzN0kiMkvj1fnL3crder1MrebkeVHpMz9vcXeI7+6PdMb5RQr0nSNpqCIeKlAXk0oOd1S4Tt3hfag03rRF5ZSPnVvWE1OacgIc5MlaNc54XK7yNfOdANKc4gxCi0bkHFIx0a5ptAVl4QaKDTRo0RSYq8xt3sx3BC72aizt6hoUm3HQLvOQeV6Hyxp16ipgyfRQVCuIsXzZuavqVVkkC+MzadxBSriJeqrIc5Aam/gum5mNTpjmzpFbktyI1CAdfT6KN4tWnpCWI1W7YUI/rBJ6dW4NWz0PKHtaayLpfz4Ua+0Fi2snMDb1eR4srdYQq5IKTb0Snz+6pELwptN9IMml1cSq6fHak8bWtNmuKR3mYKxFPR58Q30zhSWB+MQaiabUIoDy6uJ27Fg794jLDdpTPLOW6KMDhXTvpaFnb+pDhSO912UD17zQFTnZo5cP8Av/UaZ0ipjiuUH9CrgVpKwoppbfZDXJ5tJQcw7df/2Q==') center center / cover no-repeat}
+  /* Blurred poster placeholder */
+  .wistia::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:inherit;filter:blur(14px) saturate(1.15) brightness(.9);
+    transform:scale(1.18);transition:opacity .22s ease;opacity:1}
+  .wistia.video-ready::after{opacity:0}
+  .wistia-frame{position:absolute;top:-2px;left:0;width:100%;height:calc(100% + 6px);border:0;background:transparent;z-index:2}
+
+  .wistia-ctrlmask{position:absolute;left:0;right:0;bottom:0;height:38px;z-index:6;background:linear-gradient(to top,rgba(0,0,0,.65) 0%,rgba(0,0,0,.25) 60%,transparent 100%);pointer-events:none}
 
   .wistia-overlay{
     position:absolute;inset:0;z-index:8;
     display:flex;align-items:center;justify-content:center;cursor:pointer;
     background:
       linear-gradient(to bottom,
-        rgba(0,0,0,.55) 0%,
-        rgba(10,10,10,.28) 18%,
-        rgba(10,10,10,.28) 70%,
-        rgba(0,0,0,.85) 92%,
-        #000 100%);
-    transition:opacity .45s ease, visibility .45s;
-  }
-  /* Heavier initial opacity that lightens after 1.2s (hides Bunny loading flashes) */
-  .wistia-overlay{animation:wistiaSettle 1.2s ease-out forwards}
-  @keyframes wistiaSettle {
-    0%   { background:#0a0a0a; }
-    100% { background:
-      linear-gradient(to bottom,
-        rgba(0,0,0,.55) 0%,
-        rgba(10,10,10,.28) 18%,
-        rgba(10,10,10,.28) 70%,
-        rgba(0,0,0,.85) 92%,
-        #000 100%); }
+        rgba(0,0,0,.45) 0%,
+        rgba(10,10,10,.20) 18%,
+        rgba(10,10,10,.20) 75%,
+        rgba(0,0,0,.55) 100%);
+    transition:opacity .4s ease, visibility .4s;
   }
   .wistia-overlay.gone{opacity:0;visibility:hidden;pointer-events:none}
-
   .wistia-brand{
     position:absolute;top:14px;left:14px;
-    color:rgba(255,255,255,.92);
-    font-family:'Open Sans',Arial,sans-serif;font-size:10.5px;font-weight:700;
-    letter-spacing:.14em;text-transform:uppercase;
+    color:rgba(255,255,255,.92);font-family:'Open Sans',Arial,sans-serif;
+    font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
     padding:5px 9px;border-radius:3px;
-    background:rgba(0,0,0,.5);
-    border:1px solid rgba(255,255,255,.15);
+    background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.15);
   }
   @supports (backdrop-filter:blur(6px)) or (-webkit-backdrop-filter:blur(6px)){
     .wistia-brand{background:rgba(255,255,255,.08);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
   }
   .wistia-brand .dot{display:inline-block;width:6px;height:6px;background:#D90429;border-radius:50%;margin-right:6px;vertical-align:1px;box-shadow:0 0 6px rgba(217,4,41,.7);animation:wistiaDot 1.6s ease-in-out infinite}
-  @keyframes wistiaDot { 0%,100%{opacity:1} 50%{opacity:.45} }
-
+  @keyframes wistiaDot{0%,100%{opacity:1}50%{opacity:.45}}
   .wistia-play{
     position:relative;width:96px;height:96px;border:0;padding:0;background:transparent;cursor:pointer;
     display:flex;align-items:center;justify-content:center;
@@ -156,13 +146,10 @@
   }
   .wistia-tri{position:relative;z-index:1;margin-left:5px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.35))}
   .wistia-caption{
-    position:absolute;left:50%;bottom:72px;transform:translateX(-50%);
-    color:rgba(255,255,255,.82);
-    font-family:'Oswald',Impact,sans-serif;font-size:11.5px;font-weight:600;
-    letter-spacing:.16em;text-transform:uppercase;
-    text-shadow:0 1px 3px rgba(0,0,0,.6);
-    opacity:.85;transition:opacity .25s ease;
-    white-space:nowrap;pointer-events:none;
+    position:absolute;left:50%;bottom:58px;transform:translateX(-50%);
+    color:rgba(255,255,255,.82);font-family:'Oswald',Impact,sans-serif;font-size:11.5px;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;text-shadow:0 1px 3px rgba(0,0,0,.6);
+    opacity:.85;transition:opacity .25s ease;white-space:nowrap;pointer-events:none;
   }
   @keyframes wistiaPulse {
     0%,100% { box-shadow:0 14px 44px rgba(217,4,41,.45),0 0 0 3px rgba(255,255,255,.22) inset,0 0 0 0 rgba(217,4,41,0); }
@@ -174,14 +161,14 @@
   }
   @keyframes wistiaReveal {
     0%   { transform:scale(.6);opacity:.9; }
-    100% { transform:scale(2);  opacity:0;   }
+    100% { transform:scale(2);  opacity:0; }
   }
 
-  /* Wistia-style control bar */
+  /* Slim Wistia control bar — 32px, subtle gradient, 3 controls only */
   .wc-bar{
-    position:absolute;left:0;right:0;bottom:0;height:42px;z-index:9;
-    display:flex;align-items:center;gap:8px;padding:0 12px;
-    background:linear-gradient(to top, rgba(0,0,0,.96) 0%, rgba(0,0,0,.78) 60%, transparent 100%);
+    position:absolute;left:0;right:0;bottom:0;height:32px;z-index:9;
+    display:flex;align-items:center;gap:10px;padding:0 12px;
+    background:linear-gradient(to top, rgba(0,0,0,.75) 0%, rgba(0,0,0,.45) 60%, transparent 100%);
     opacity:0;visibility:hidden;transition:opacity .25s ease, visibility .25s;
     color:#fff;font-family:Inter,system-ui,-apple-system,Arial,sans-serif;
   }
@@ -189,34 +176,33 @@
   .wc-bar.idle{opacity:0;visibility:visible;pointer-events:none}
   .wistia:hover .wc-bar.shown{opacity:1;pointer-events:auto}
   .wc-btn{
-    width:26px;height:26px;border:0;background:transparent;cursor:pointer;padding:0;
+    width:24px;height:24px;border:0;background:transparent;cursor:pointer;padding:0;
     display:flex;align-items:center;justify-content:center;flex-shrink:0;
-    transition:transform .15s ease, opacity .15s ease;color:#fff;
+    transition:transform .15s ease;color:#fff;
   }
   .wc-btn:hover{transform:scale(1.12)}
   .wc-btn:active{transform:scale(.92)}
-  .wc-btn svg{width:16px;height:16px;display:block}
-  .wc-icon-pause{display:none}
-  .wc-bar[data-state="playing"] .wc-icon-play{display:none}
-  .wc-bar[data-state="playing"] .wc-icon-pause{display:block}
+  .wc-btn svg{width:13px;height:13px;display:block}
+  /* FIX: high-specificity icon visibility — use !important so .wc-btn svg{display:block} can't override */
+  .wc-bar .wc-btn .wc-icon-pause{display:none !important}
+  .wc-bar[data-state="playing"] .wc-btn .wc-icon-play{display:none !important}
+  .wc-bar[data-state="playing"] .wc-btn .wc-icon-pause{display:block !important}
   .wc-time,.wc-duration{
     font-size:11px;font-weight:600;font-variant-numeric:tabular-nums;
-    letter-spacing:.02em;color:rgba(255,255,255,.88);min-width:44px;
+    letter-spacing:.02em;color:rgba(255,255,255,.88);min-width:36px;
   }
   .wc-time{text-align:left}
   .wc-duration{text-align:right}
   .wc-scrub{
-    flex:1;height:22px;cursor:pointer;position:relative;
-    display:flex;align-items:center;margin:0 4px;
+    flex:1;height:18px;cursor:pointer;position:relative;display:flex;align-items:center;margin:0 4px;
   }
   .wc-track{
-    position:absolute;left:0;right:0;height:3px;background:rgba(255,255,255,.22);border-radius:2px;
-    transition:height .15s ease;
+    position:absolute;left:0;right:0;height:3px;background:rgba(255,255,255,.22);border-radius:99px;transition:height .15s ease;
   }
   .wc-scrub:hover .wc-track,.wc-scrub.dragging .wc-track{height:5px}
-  .wc-buffered{position:absolute;left:0;top:50%;transform:translateY(-50%);height:3px;background:rgba(255,255,255,.32);border-radius:2px;width:0%;pointer-events:none;transition:height .15s ease}
+  .wc-buffered{position:absolute;left:0;top:50%;transform:translateY(-50%);height:3px;background:rgba(255,255,255,.32);border-radius:99px;width:0%;pointer-events:none;transition:height .15s ease}
   .wc-scrub:hover .wc-buffered{height:5px}
-  .wc-progress{position:absolute;left:0;top:50%;transform:translateY(-50%);height:3px;background:#D90429;border-radius:2px;width:0%;pointer-events:none;box-shadow:0 0 6px rgba(217,4,41,.55);transition:height .15s ease}
+  .wc-progress{position:absolute;left:0;top:50%;transform:translateY(-50%);height:3px;background:#D90429;border-radius:99px;width:0%;pointer-events:none;box-shadow:0 0 6px rgba(217,4,41,.55);transition:height .15s ease}
   .wc-scrub:hover .wc-progress{height:5px}
   .wc-thumb{
     position:absolute;top:50%;left:0;transform:translate(-50%,-50%);
@@ -225,25 +211,16 @@
     opacity:0;transition:opacity .15s ease;pointer-events:none;z-index:2;
   }
   .wc-scrub:hover .wc-thumb,.wc-scrub.dragging .wc-thumb{opacity:1}
-  .wc-speed{
-    font-family:'Open Sans',Arial,sans-serif;font-size:11px;font-weight:700;
-    letter-spacing:.02em;min-width:34px;text-align:center;
-    background:transparent;border:0;color:#fff;cursor:pointer;padding:6px 8px;border-radius:3px;
-    transition:background .15s ease, transform .15s ease;
-  }
-  .wc-speed:hover{background:rgba(255,255,255,.12);transform:scale(1.05)}
-  .wc-speed:active{transform:scale(.95)}
 
   @media (min-width:900px){
     .wistia-play{width:128px;height:128px}
     .wistia-tri{width:44px;height:44px;margin-left:6px}
     .wistia-brand{top:18px;left:18px;font-size:11px;padding:6px 11px}
-    .wistia-caption{font-size:13px;bottom:78px}
-    .wc-bar{height:46px;padding:0 14px;gap:10px}
-    .wc-btn{width:34px;height:34px}
-    .wc-btn svg{width:18px;height:18px}
-    .wc-time,.wc-duration{font-size:12px;min-width:46px}
-    .wc-speed{font-size:12px;min-width:38px}
+    .wistia-caption{font-size:13px;bottom:64px}
+    .wc-bar{height:36px;padding:0 14px;gap:12px}
+    .wc-btn{width:26px;height:26px}
+    .wc-btn svg{width:14px;height:14px}
+    .wc-time,.wc-duration{font-size:12px;min-width:40px}
   }
 
 </style>
@@ -265,7 +242,7 @@
         <div class="wistia" data-funnel="PLU-02" tabindex="0">
           <iframe class="wistia-frame"
             data-guid="6cc6f109-1f63-4396-8a78-608c899fe952"
-            src="https://iframe.mediadelivery.net/embed/660166/6cc6f109-1f63-4396-8a78-608c899fe952?autoplay=true&muted=true&preload=true&responsive=true&loop=false&controls=false"
+            src="https://iframe.mediadelivery.net/embed/660166/6cc6f109-1f63-4396-8a78-608c899fe952?autoplay=true&muted=true&preload=true&responsive=true&loop=true&controls=false"
             loading="eager"
             allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
             allowfullscreen="true"></iframe>
@@ -293,10 +270,6 @@
               <div class="wc-thumb"></div>
             </div>
             <div class="wc-duration">--:--</div>
-            <button class="wc-speed" aria-label="Playback speed">1x</button>
-            <button class="wc-btn wc-full" aria-label="Fullscreen">
-              <svg viewBox="0 0 16 16"><path d="M2 6 L2 2 L6 2 M10 2 L14 2 L14 6 M14 10 L14 14 L10 14 M6 14 L2 14 L2 10" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-            </button>
           </div>
         </div>
         <!-- VSL EMBED END -->
@@ -338,32 +311,15 @@
 })();
 </script>
 
+
 <script>
 (function(){
-  var SPEEDS = [1, 1.25, 1.5, 1.75, 2];
-
-  function call(player, method, value){
-    // Player.js standard methods first, then postMessage fallback
-    try {
-      if (typeof player[method] === 'function') {
-        return value === undefined ? player[method]() : player[method](value);
-      }
-    } catch(e){}
-    try {
-      var msg = { context: 'player.js', method: method };
-      if (value !== undefined) msg.value = value;
-      player.iframe && player.iframe.contentWindow.postMessage(JSON.stringify(msg), '*');
-    } catch(e){}
-  }
-
   function init(){
     document.querySelectorAll('.wistia').forEach(function(wrap){
       var iframe   = wrap.querySelector('.wistia-frame');
       var overlay  = wrap.querySelector('.wistia-overlay');
       var bar      = wrap.querySelector('.wc-bar');
       var bPP      = wrap.querySelector('.wc-playpause');
-      var bSpeed   = wrap.querySelector('.wc-speed');
-      var bFull    = wrap.querySelector('.wc-full');
       var elTime   = wrap.querySelector('.wc-time');
       var elDur    = wrap.querySelector('.wc-duration');
       var scrub    = wrap.querySelector('.wc-scrub');
@@ -371,21 +327,17 @@
       var thumb    = wrap.querySelector('.wc-thumb');
 
       var player = new playerjs.Player(iframe);
-      player.iframe = iframe; // for postMessage fallback
-      // 4 paths to trigger the blur fade (whichever fires first):
-      // (a) iframe.onload — earliest signal that the iframe document is loaded
-      // (b) player.js ready event
-      // (c) player.js timeupdate event (first visible frame)
-      // (d) 1.5s timeout fallback
+      player.iframe = iframe;
+
+      // 4-path blur fade (whichever fires first wins)
       var blurFade=false;
       function fadeBlur(){ if(blurFade) return; blurFade=true; wrap.classList.add('video-ready'); }
       iframe.addEventListener('load', fadeBlur);
       player.on('ready', fadeBlur);
       player.on('timeupdate', fadeBlur);
       setTimeout(fadeBlur, 1500);
-      player.on('timeupdate', function(){ if(!blurFade){blurFade=true; wrap.classList.add('video-ready');} });
 
-      var duration = 0, current = 0, isPlaying = false, speedIdx = 0, dragging = false;
+      var duration = 0, current = 0, isPlaying = false, dragging = false;
       var hideT;
 
       function fmt(s){ s = Math.max(0, Math.floor(s)); var m = Math.floor(s/60); var sec = s%60; return m + ':' + (sec<10?'0':'') + sec; }
@@ -419,51 +371,29 @@
       player.on('pause', function(){ isPlaying = false; bar.setAttribute('data-state','paused'); });
       player.on('ended', function(){ isPlaying = false; bar.setAttribute('data-state','paused'); });
 
-      // First click: pause (eliminates flash), seek 0, unmute, play
+      // First overlay click: pause, seek 0, setLoop off, unmute, play
       overlay.addEventListener('click', function(){
         try { player.pause(); } catch(e){}
         try { player.setCurrentTime(0); } catch(e){}
         try { player.unmute(); } catch(e){}
         try { player.setLoop(false); } catch(e){}
-        setTimeout(function(){
-          try { player.play(); } catch(e){}
-        }, 80);
+        setTimeout(function(){ try { player.play(); } catch(e){} }, 80);
+        // Optimistic state update (don't wait for player.on('play') event)
+        isPlaying = true; bar.setAttribute('data-state','playing');
         overlay.classList.add('gone');
         bar.classList.add('shown');
         showBar();
         wrap.focus();
       });
 
-      // Play/pause button
+      // Play/pause button — optimistic state toggle
       bPP.addEventListener('click', function(e){
         e.stopPropagation();
-        if (isPlaying) { try { player.pause(); } catch(e){} }
-        else           { try { player.play();  } catch(e){} }
+        if (isPlaying) { try { player.pause(); } catch(_){} isPlaying = false; bar.setAttribute('data-state','paused'); }
+        else           { try { player.play();  } catch(_){} isPlaying = true;  bar.setAttribute('data-state','playing'); }
       });
 
-      // Speed cycler (1x → 1.25x → 1.5x → 1.75x → 2x → 1x)
-      bSpeed.addEventListener('click', function(e){
-        e.stopPropagation();
-        speedIdx = (speedIdx + 1) % SPEEDS.length;
-        var rate = SPEEDS[speedIdx];
-        bSpeed.textContent = (rate === 1 ? '1x' : rate + 'x');
-        // Try player.js setPlaybackRate, then postMessage fallback
-        call(player, 'setPlaybackRate', rate);
-      });
-
-      // Fullscreen on the WRAP so custom controls stay visible
-      bFull.addEventListener('click', function(e){
-        e.stopPropagation();
-        if (document.fullscreenElement || document.webkitFullscreenElement) {
-          if (document.exitFullscreen) document.exitFullscreen();
-          else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-        } else {
-          if (wrap.requestFullscreen) wrap.requestFullscreen();
-          else if (wrap.webkitRequestFullscreen) wrap.webkitRequestFullscreen();
-        }
-      });
-
-      // Scrubber: click + drag
+      // Scrubber drag (mouse + touch)
       function seekFromEvent(ev){
         var rect = scrub.getBoundingClientRect();
         var x = (ev.clientX !== undefined ? ev.clientX : (ev.touches && ev.touches[0] && ev.touches[0].clientX)) || 0;
@@ -475,19 +405,14 @@
         }
         return pct;
       }
-      scrub.addEventListener('mousedown', function(e){
-        e.stopPropagation();
-        dragging = true;
-        scrub.classList.add('dragging');
-        seekFromEvent(e);
-      });
+      scrub.addEventListener('mousedown', function(e){ e.stopPropagation(); dragging = true; scrub.classList.add('dragging'); seekFromEvent(e); });
       window.addEventListener('mousemove', function(e){ if (dragging) seekFromEvent(e); });
       window.addEventListener('mouseup',   function(){ if (dragging) { dragging = false; scrub.classList.remove('dragging'); } });
       scrub.addEventListener('touchstart', function(e){ e.stopPropagation(); dragging = true; scrub.classList.add('dragging'); seekFromEvent(e); }, {passive:true});
-      scrub.addEventListener('touchmove',  function(e){ if (dragging) { seekFromEvent(e); } }, {passive:true});
+      scrub.addEventListener('touchmove',  function(e){ if (dragging) seekFromEvent(e); }, {passive:true});
       scrub.addEventListener('touchend',   function(){ dragging = false; scrub.classList.remove('dragging'); });
 
-      // Mouse activity → show bar
+      // Show bar on activity
       wrap.addEventListener('mousemove', showBar);
       wrap.addEventListener('mouseenter', showBar);
       wrap.addEventListener('mouseleave', function(){
@@ -497,29 +422,21 @@
         }
       });
 
-      // Keyboard controls (when wrap is focused)
+      // Keyboard
       wrap.addEventListener('keydown', function(e){
-        if (overlay.classList.contains('gone') === false) return; // ignore until user has clicked play
+        if (!overlay.classList.contains('gone')) return;
         var handled = true;
         switch(e.key){
           case ' ': case 'k':
-            if (isPlaying) { try { player.pause(); } catch(_){} } else { try { player.play(); } catch(_){} }
+            if (isPlaying) { try { player.pause(); } catch(_){} isPlaying = false; bar.setAttribute('data-state','paused'); }
+            else { try { player.play(); } catch(_){} isPlaying = true; bar.setAttribute('data-state','playing'); }
             break;
-          case 'ArrowRight': case 'l':
-            try { player.setCurrentTime(Math.min(duration, current + 5)); } catch(_){}
-            break;
-          case 'ArrowLeft': case 'j':
-            try { player.setCurrentTime(Math.max(0, current - 5)); } catch(_){}
-            break;
-          case 'f':
-            bFull.click();
-            break;
-          default:
-            handled = false;
+          case 'ArrowRight': case 'l': try { player.setCurrentTime(Math.min(duration, current + 5)); } catch(_){}; break;
+          case 'ArrowLeft':  case 'j': try { player.setCurrentTime(Math.max(0, current - 5)); } catch(_){}; break;
+          default: handled = false;
         }
         if (handled) { e.preventDefault(); showBar(); }
       });
-
     });
   }
 
