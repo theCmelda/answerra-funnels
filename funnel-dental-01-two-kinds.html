@@ -96,7 +96,7 @@
   }
 
   /* === Wistia v4 player === */
-  .wistia{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;background:#0a0a0a;outline:none}
+  .wistia{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;outline:none;background:#0a0a0a url('data:image/jpeg;base64,/9j//gARTGF2YzU4LjEzNC4xMDAA/9sAQwAIGBgcGBwhISEhISEnJCcoKCgnJycnKCgoKysrMzMzKysrKCgrKzAwMzM3OTc0NDM0OTk8PDxISEVFVFRXZ2d8/8QAfwAAAgMBAQEBAAAAAAAAAAAABgUHAwQCAQAIAQADAQEBAAAAAAAAAAAAAAAAAQMCBAUQAAEDAwIDBQYGAwEAAAAAAAEAAwISEQQhMVFBE3FhIoEFFKHRQpEywbEz8OEjcqIVUhEBAQEBAAMBAQAAAAAAAAAAAAERAhIxIQNB/8AAEQgAjgBQAwEiAAIRAAMRAP/aAAwDAQACEQMRAD8Ab2XNym9KroU2i2or6tbTBZjBIOKgvrrMYrEbhANLqgySgyK8FygNhks2pWkQTENpGfsC7cCeATOlZsf9KH+IRLJyDMYkjfuWiJKFSW039rZ/YXRymRbQ69yeEGJNpRJtHHtbPA/RW9dmmq3O2yMCKZQV8IKRxkY8vl/1W2LjJnQAL9iABYwTERRrKMTA6WQr4uI+iw0wtAiEQeQARnGfhAIuhYJ0tEZVR/8AIXtceCwKPvUMuUD029zug0kF2A5BJ/bICFVCguUnhqah9UU42TEtmM/l96CGH/TjfRu/n/CI45MTrRqgVtuBMpAfuycxRoFEsioWslSzhWLLTwbpql1UY68lkOW1x9xWmT29goNDvUyZyPIlSG5mtUkC97cFEmLKl8iW0lirc+0lOOwLeyi37HbcVKHgsNFHjpryABsCFOOjpKDH2ny/IJkFmoEYkDS6jzqybcIq2Kq4kqLpUwNTYnxVl0GG+vIgAQO3ArQJunZr3BHNgvS422DKZAHerJIRyHPFrEX4BCJBLoI4hS+X2KpWca1J3H8Lzrsxt/YyfIfBZxSUsNxHbko5bkW3arc1N0n25Rqi42Rz20WTq44jcza152HwU5Fb1pAM2LkdNJIPkKpXIUoQfxhLWbFu4D4KzqMX0ca87cVTEAFHJcjCjePejBh+Mxvsl/qLrEox6ZiTzpSHDErmXJIJoUaeru0tCI5n8lIhKG8tuDsPELrVuCTX5rqsVoujLLxW2o3ig/SQttZOXTsx9XIAgHQ7p3EVsWsagdLIbAui7HzPZYmMYxkTzPJaYCpjKMrEEI9izEtxkbg2RAyQ/HqTETI9yX5EzAgcrKHltxe85NJ6BE6A77p+J0QlbdKYyv3phuE0x9LLj8oJSwuznuLBW2XqnarPlBvqAPTUVL9AuQDsCCoHdh05mJ5FHFW/Sf1l3XKsEZEXAK7bjXMR4ldThS1gRPSC3OAT0kLhO4xDLQHck8yV5092vT7+SQMSxwNYyt2rrpPR2N/NMJQm54QPNEwaBiInddjzjVU2WvRVkqCyPRmUZEoy+29ll9QxqjF2AuJb2Qm/4nJdpRx6fk3/AK5eV1qzPsVl8vlI9GRGI1JuNE4xcOYernGwAv5ozpabkZ0gHio+yc+cyRHQI29H4zn22ZGZVkAR+0G3ajCi9iQoZa/Uj2hTwZ9WNr0yWsxDdZbiPcqupEa3Qo7ivXvKRkFbAmIsVpJIFlydlVKVlhLo4FRWQu8KXJDvKXhyTZqibFSFkMRdnVtdYxht87ldKIek+44PEfwSoqQOg2PlVvTiOQTHsK4kKnLnlqpMETuk0RqjGWkQsGzh6nQ6oWcNZPIJnIpYQmT/2Q==') center center / cover no-repeat}/* Blurred poster placeholder layer */.wistia::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:inherit;filter:blur(14px) saturate(1.15) brightness(.9);transform:scale(1.18);transition:opacity .6s ease .35s;opacity:1}.wistia.video-ready::after{opacity:0}.wistia-frame{z-index:2;position:absolute;top:-2px;left:0;width:100%;height:calc(100% + 6px);border:0;background:transparent}
   .wistia-frame{position:absolute;top:-2px;left:0;width:100%;height:calc(100% + 6px);border:0;background:#000}
   /* Hide Bunny native controls visually via a dedicated solid-black bottom mask */
   .wistia-ctrlmask{position:absolute;left:0;right:0;bottom:0;height:62px;z-index:6;background:#000;pointer-events:none}
@@ -372,6 +372,11 @@
 
       var player = new playerjs.Player(iframe);
       player.iframe = iframe; // for postMessage fallback
+      // Once Bunny iframe player is ready, fade the blurred poster
+      var blurFade=false;
+      player.on('ready', function(){ if(!blurFade){blurFade=true; wrap.classList.add('video-ready');} });
+      player.on('timeupdate', function(){ if(!blurFade){blurFade=true; wrap.classList.add('video-ready');} });
+
       var duration = 0, current = 0, isPlaying = false, speedIdx = 0, dragging = false;
       var hideT;
 
