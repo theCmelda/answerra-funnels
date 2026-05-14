@@ -28,3 +28,6 @@ autoplay=true&muted=true&preload=true&responsive=true&loop=false
 ## Deploy
 
 Source of truth is `~/Desktop/Answerra.ai funnels/funnels/` on Daniel's Mac. Currently deployed via `vercel deploy --prod` (CLI). To switch to GitHub-triggered deploys, link this repo to the Vercel `answerra-funnels` project.
+
+---
+_Last deploy trigger: Vercel↔GitHub link enabled._
