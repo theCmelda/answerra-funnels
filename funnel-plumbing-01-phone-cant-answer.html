@@ -96,7 +96,7 @@
   }
 
   /* === Wistia v4 player === */
-  .wistia{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;background:#0a0a0a;outline:none}
+  .wistia{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;outline:none;background:#0a0a0a url('data:image/jpeg;base64,/9j//gARTGF2YzU4LjEzNC4xMDAA/9sAQwAIGBgcGBwhISEhISEnJCcoKCgnJycnKCgoKysrMzMzKysrKCgrKzAwMzM3OTc0NDM0OTk8PDxISEVFVFRXZ2d8/8QAfQAAAgMBAQEBAAAAAAAAAAAABAYDBQcIAgEAAQADAQEBAAAAAAAAAAAAAAACBAMBAAUQAAEEAQIDBQcFAQEAAAAAAAEAAxECIQQSEzFBYVEyBSKB4ZGhI3FConJiklIU8BEBAQEBAQADAQEAAAAAAAAAAAECESExQTISYf/AABEIAI4AUAMBIgACEQADEQD/2gAMAwEAAhEDEQA/AK/EokVCzy7lq2yvo1FuilwTRtgX3YkMahxGjVXWcab9i+7SlsaqyKGq7Fzl3BXvKqxqqosP0KxouVMLIUO0PVEC1D1WNZXt3mSpw2j277LVxMLfq8CjTdrUHqA6T0VUnPYbUBqZXRnF0v8Agf19y9G+lB8A/qtc5/DZJRpY7FuPG0wPg/T7kXxGCCdvL+KxznzgFRcK3cVv4e0x/D9KMFtObCu0Sf4rXOdgzftXm1bU5rop9tstXIqBAPRc/P2JqZCxyonK0trzfhN1ram6BHNZYDlfiiY2WnnFbmOF8/cm+uqBzsXPumw4FtAIAULaczJfldnVAfgqZzzINx9P5+5R3gCUsu130OFLtXuZxq3GptFo5iUrX8yrTaeHMj/3RUjTh27f8jkkVy88vxJTjy2ruazjVtQVIkLH9Y0Wx1z3pi/6HcADmlHVXvcxZS5/rixW6sQZKVgVbVsR0KYYaGIDlZWybN9Rkrn43grXtDqd9MqGodxV05TACHNRWpVa+6Z657CV+cd9EFLcOWldrVmj1wYI6KscMuE9DlA2MX8I580DZ3cDA5Jp5Nao3Zq9a2BE4+SQNVYWewqSj1Tg4+Sjtb1LZPegRs0ESr0VleGWztE4CtZFeSc4BVbB1TYw39ImnMFXOg07L+7iZiIzCYw0Gb22UBr+73qNWhSq9IAtghDHc7vt0AwnfhVtmzNSfuiTQbY4Qj9yW4Y/phFie8ql23BldDnRac2H08d+5L/mGlYZbqaDM98qpdjTopAgQULTJRb1CDPRCs5siga0a5hUZsmxzTuJRvU1ORCv/UZypNxjBXjfbvKDrZTjogcOF7d5X3dbvKEUyIKU2t3lD2sepUyCvzWORO5bKoGPEnGrfEG3vSkG7UcIg4MLGujrweSUdZQcPtTh0WZ6vUGzwbGQOa8/M9ejq+EqIR45L3ai8p4inUVSowZMK1Gkfnwow8CypmbtWd239ijeZeaEmpSZFjYETKC0UdEUq1QekAIhutLE4CS2NxAlOzVYKXz+jmvyrHng22T8FjjBNnrWPam7WkiB0VMxXqrYhbd9WtuSpLhOrbUzKVnRtJBVqmWyYWl6SmsuAd0V7eazay2Xy7UcVuLHNcR2KGlc/JiLO4ZMqpOlpBwPgmj7BU2oeDFDY5SZ8k6Y8O9qk4k+xeHtaKuAVPLms5d1FnHLEemSrri0FJgT9k5z7edb9GzWN7zX2qqFdsAJtf5hDCtRWSEWb47U9e2rWqOY9qVdVbcZgA9hlXN3O4IhsC2do+CMLM9pKPZdOntuCIftFrQIVZRvfzKJNpY80oa+EkpZf1FnznA6BC1aAXy/oGIQckUurQJarbMJy0vlzTtJtaeyYWdl656qwY1N2rY+C6gf/9k=') center center / cover no-repeat}/* Blurred poster placeholder layer */.wistia::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:inherit;filter:blur(14px) saturate(1.15) brightness(.9);transform:scale(1.18);transition:opacity .6s ease .35s;opacity:1}.wistia.video-ready::after{opacity:0}.wistia-frame{z-index:2;position:absolute;top:-2px;left:0;width:100%;height:calc(100% + 6px);border:0;background:transparent}
   .wistia-frame{position:absolute;top:-2px;left:0;width:100%;height:calc(100% + 6px);border:0;background:#000}
   /* Hide Bunny native controls visually via a dedicated solid-black bottom mask */
   .wistia-ctrlmask{position:absolute;left:0;right:0;bottom:0;height:62px;z-index:6;background:#000;pointer-events:none}
@@ -372,6 +372,11 @@
 
       var player = new playerjs.Player(iframe);
       player.iframe = iframe; // for postMessage fallback
+      // Once Bunny iframe player is ready, fade the blurred poster
+      var blurFade=false;
+      player.on('ready', function(){ if(!blurFade){blurFade=true; wrap.classList.add('video-ready');} });
+      player.on('timeupdate', function(){ if(!blurFade){blurFade=true; wrap.classList.add('video-ready');} });
+
       var duration = 0, current = 0, isPlaying = false, speedIdx = 0, dragging = false;
       var hideT;
 
