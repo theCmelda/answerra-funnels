@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>$1.4 Million Of Patients Sitting In Your Software</title>
+<meta name="description" content="Every dental practice over five years old has 1,400 dormant patients sitting in Praktika or Dental4Windows. Mrs Henderson moved suburbs and forgot to rebook. Yo">
+<!--
+  FUNNEL: DEN-03 — dental-03-mrs-henderson
+  DESIGN: 02 — High-contrast direct response (Haynes + Sultanic).
+  Mechanics:
+    Hook: niche-callout + dollar specificity (Haynes)
+    Headline: red Oswald, $-anchored (Haynes dollar-specificity)
+    Subhead: pain amplification (Sultanic)
+    Single CTA above fold, no nav, no footer (DR classic)
+    VSL: 4:5 vertical, plays the matching ad demo
+    iClosed: free demo call booking, no deposit, no contract
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#ffffff;color:#000;font-family:'Open Sans',Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  body{max-width:380px;margin:0 auto}
+  .urgency{background:#FFE100;color:#000;text-align:center;font-size:13px;font-weight:700;padding:9px 12px;letter-spacing:.02em;border-bottom:2px solid #000;line-height:1.3}
+  .urgency .pulse{display:inline-block;width:8px;height:8px;background:#D90429;border-radius:50%;margin-right:6px;vertical-align:middle;animation:p 1.4s infinite}
+  @keyframes p{0%,100%{opacity:1}50%{opacity:.4}}
+  .top{padding:20px 18px 12px}
+  .pretitle{color:#000;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:12px}
+  h1{font-family:'Oswald',Impact,sans-serif;color:#000;font-size:30px;line-height:1.05;font-weight:700;margin-bottom:6px;letter-spacing:-.005em;text-transform:uppercase}
+  h1 .red{color:#D90429}
+  h1 .u{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:4px}
+  .hsub{color:#000;font-size:15px;line-height:1.35;font-weight:700;margin-bottom:14px;text-transform:none}
+  .sub{color:#000;font-size:15px;line-height:1.5;font-weight:600;margin-bottom:16px}
+  .cta{background:#0066CC;color:#fff;text-align:center;padding:13px;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin-bottom:18px;border:2px solid #0066CC}
+  .vsl-wrap{padding:0 18px 18px}
+  .vsl{width:100%;aspect-ratio:4/5;background:#0a0a0a;border:3px solid #D90429;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;cursor:pointer;box-shadow:0 6px 22px rgba(217,4,41,0.18)}
+  
+  .vsl video,.vsl iframe{width:100%;height:100%;object-fit:cover}
+  .play{width:78px;height:78px;border-radius:50%;background:#D90429;display:flex;align-items:center;justify-content:center;z-index:2;box-shadow:0 0 0 6px rgba(255,255,255,0.15)}
+  .play svg{fill:white;margin-left:5px}
+  .arrow{text-align:center;color:#D90429;font-size:24px;margin:8px 0;font-weight:700;letter-spacing:.5em}
+  .below-vsl{padding:6px 18px 14px;text-align:center}
+  .below-vsl b{font-size:15px;font-weight:700;color:#000;text-transform:uppercase;display:block;margin-bottom:4px}
+  .below-vsl p{font-size:13px;color:#444;font-weight:600}
+  .calendar{margin:0 18px 28px;background:#fff;border:3px solid #000;padding:14px}
+  .cal-bar{background:#000;color:#FFE100;text-align:center;font-size:13px;font-weight:700;padding:8px;margin:-14px -14px 14px;text-transform:uppercase;letter-spacing:.04em}
+  .cal-h{font-size:17px;font-weight:700;text-transform:uppercase;text-align:center;margin-bottom:6px;color:#000}
+  .cal-sub{font-size:12px;text-align:center;color:#444;font-weight:600;margin-bottom:14px;line-height:1.4}
+  .iclosed-widget{min-height:680px;width:100%}
+  .trust-strip{background:#000;color:#fff;text-align:center;padding:10px 18px;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+  .trust-strip span{color:#FFE100}
+  .arrow-r{display:none}
+
+  /* ============ DESKTOP (>= 900px) — V1 SIDE-BY-SIDE ============ */
+  @media (min-width: 900px) {
+    body{max-width:none;margin:0;background:#fff}
+    .urgency{font-size:15px;padding:13px 24px;border-bottom-width:3px}
+    .urgency .pulse{width:10px;height:10px;margin-right:10px}
+    .hero{max-width:1180px;margin:0 auto;padding:32px 32px 24px;display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:center}
+    .top{padding:0;text-align:left}
+    .pretitle{font-size:13px;letter-spacing:.08em;margin-bottom:14px;color:#666}
+    h1{font-size:46px;line-height:.98;margin-bottom:14px;letter-spacing:-.01em}
+    .hsub{font-size:18px;line-height:1.3;margin-bottom:14px;font-weight:700}
+    .sub{font-size:15px;line-height:1.55;margin-bottom:18px;font-weight:500;color:#333}
+    .cta{font-size:16px;padding:16px 24px;letter-spacing:.06em;margin-bottom:0;display:inline-block;width:auto;min-width:280px;cursor:pointer}
+    .arrow-r{display:flex;align-items:center;justify-content:center;color:#D90429;font-size:48px;font-weight:900;padding:0 24px;animation:nudge 1.2s ease-in-out infinite alternate}
+    @keyframes nudge{from{transform:translateX(0)}to{transform:translateX(8px)}}
+    .vsl-wrap{padding:0;margin:0}
+    .vsl{aspect-ratio:4/5;max-width:440px;width:100%;margin:0;border-width:4px}
+    
+    .arrow{font-size:28px;margin:14px 0;letter-spacing:.6em}
+    .below-vsl{max-width:1180px;margin:0 auto;padding:0 32px 18px;text-align:center}
+    .below-vsl b{font-size:17px;letter-spacing:.04em}
+    .below-vsl p{font-size:14px;color:#222}
+    .calendar{max-width:780px;margin:0 auto 48px;padding:28px;border-width:4px}
+    .cal-bar{font-size:15px;padding:12px;margin:-28px -28px 22px;letter-spacing:.06em}
+    .cal-h{font-size:26px;margin-bottom:8px}
+    .cal-sub{font-size:14px;line-height:1.5;margin-bottom:22px}
+    .iclosed-widget{min-height:760px}
+    .trust-strip{font-size:13px;padding:16px 24px;letter-spacing:.06em}
+  }
+
+  /* Tablet (600-899) — stacked, slightly bigger */
+  @media (min-width: 600px) and (max-width: 899px) {
+    body{max-width:640px}
+    .top{padding:28px 28px 16px}
+    h1{font-size:38px}
+    .hsub{font-size:18px}
+    .sub{font-size:16px}
+    .vsl-wrap{padding:0 28px 22px}
+    .vsl{max-width:480px;margin:0 auto}
+    .calendar{margin:0 28px 32px;padding:22px}
+    .cal-bar{margin:-22px -22px 18px;font-size:14px}
+  }
+</style>
+</head>
+<body>
+  <div class="urgency"><span class="pulse"></span>ONLY 8 BUILD SLOTS LEFT THIS <span class='urg-month'></span> · AUSTRALIA ONLY</div>
+  <div class="hero">
+    <div class="top">
+      <div class="pretitle">Attention: Australian Dental Practice Owners</div>
+      <h1>There's $1,400,000 Sitting In Your <span class="red">Dental Software Right Now</span></h1>
+      <p class="hsub">1,400 Lapsed Patients. $9,000 Lifetime Each. Nobody Has Hours To Call Them.</p>
+      <p class="sub">Every dental practice over five years old has 1,400 dormant patients sitting in Praktika or Dental4Windows. Mrs Henderson moved suburbs and forgot to rebook. Your receptionist doesn't have 35 hours a month to call them. We do.</p>
+      <div class="cta">↓ WATCH THE 90-SECOND VIDEO ↓</div>
+    </div>
+    <div class="arrow-r">→</div>
+    <div class="vsl-wrap">
+      <div class="vsl" data-funnel="DEN-03">
+        <!-- VSL EMBED START -->
+        <iframe
+          src="https://iframe.mediadelivery.net/embed/660166/380ef4f0-1952-42a8-b116-bfeb5387ff5e?autoplay=true&muted=true&preload=true&responsive=true&loop=false"
+          title="Answerra VSL — DEN-03"
+          loading="eager"
+          style="position:absolute;inset:0;width:100%;height:100%;border:0;"
+          allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
+          allowfullscreen="true"></iframe>
+        <!-- VSL EMBED END -->
+      </div>
+    </div>
+  </div>
+  <div class="arrow">▼ ▼ ▼</div>
+  <div class="below-vsl">
+    <b>Hear One Of Those 1,400 Calls</b>
+    <p>No deposit. No contract. Listen to it work on your own list.</p>
+  </div>
+  <div class="calendar">
+    <div class="cal-bar">★ FREE LIVE BUILD ★</div>
+    <div class="cal-h">Pick Your Demo Slot</div>
+    <div class="cal-sub">Hear how we bring lapsed patients back. Live. On a real call.</div>
+
+    <!-- ICLOSED EMBED START -->
+    <!-- DANIEL: Paste your actual iClosed embed snippet between these comments. -->
+    <!-- Default below works once you replace YOUR_CALENDAR_ID with your real iClosed calendar ID. -->
+    <div class="iclosed-widget" data-url="https://app.iclosed.io/e/answrra/free-ai-receptionist-demo-build" style="min-height:680px;width:100%"></div>
+    <script async src="https://app.iclosed.io/assets/widget.js"></script>
+    <!-- ICLOSED EMBED END -->
+
+  </div>
+  <div class="trust-strip">No Deposit · No Contract · <span>FREE BUILD</span> · 48-Hour Turnaround</div>
+  <script>document.querySelectorAll(".urg-month").forEach(function(e){e.textContent=new Date().toLocaleString("en-AU",{month:"long"}).toUpperCase()});</script>
+
+<style>
+  @keyframes ctaPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(217,4,41,0); } 50% { box-shadow: 0 0 0 14px rgba(217,4,41,0); } }
+  .cta-bar.pulse { animation: ctaPulse 1.6s ease-in-out infinite; }
+</style>
+<script>
+(function(){
+  // After 25s on the page (proxy for "watched intro"), pulse the booking calendar
+  setTimeout(function(){
+    var cal = document.querySelector('.cal-bar');
+    if (cal) { cal.classList.add('pulse'); }
+  }, 25000);
+})();
+</script>
+</body>
+</html>
