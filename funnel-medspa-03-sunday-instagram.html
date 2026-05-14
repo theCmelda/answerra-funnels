@@ -95,53 +95,43 @@
     .cal-bar{margin:-22px -22px 18px;font-size:14px}
   }
 
-  /* === Wistia v4 player === */
-  .wistia{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;outline:none;background:#0a0a0a url('data:image/jpeg;base64,/9j//gARTGF2YzU4LjEzNC4xMDAA/9sAQwAIGBgcGBwhISEhISEnJCcoKCgnJycnKCgoKysrMzMzKysrKCgrKzAwMzM3OTc0NDM0OTk8PDxISEVFVFRXZ2d8/8QAeQAAAgIDAQEAAAAAAAAAAAAABAUGAwgCAQAHAQADAQEBAAAAAAAAAAAAAAAAAQMCBAUQAAICAQIEBAUDBQEAAAAAAAABAhEDIQRREzESQRSRYTJCgSJxkgUjUlMkM8HwEQEBAQEBAQEAAAAAAAAAAAAAAREhAjES/8AAEQgAjgBQAwEiAAIRAAMRAP/aAAwDAQACEQMRAD8Amx1FdlpxuhYWGhaBF7lK+gYtUXHRkporCTQAFKQopAznb4VONsbeXxgm2p43G+Jr5SPTmT9S0SH8iBtyYAnlo1XfPrfxAz2a/uT9TWEbcmB7kwAvLKq5k/U08qv65/qDAYcmBzkwA3tk0l3y0utdTWO1jH55/qDAM5EADLhhBWG48KgncnK+LB91JKFWZNEVaL7fFlZciKi5N8WCZc8cEe6TDEfGd9meXcLF4JjCUL9yyTvsg2vAP2/7mpy7MicH7ncDxwg1GPREM3kY5IOarujwFKrfL7bd+JS74kG/bN3zcXa/iiTZuXsCYGTlxYu1fUY22+hRQAWWI7T4P0N/o/QzptvAxtyS/wAty8O//pkPnbjik6fTgYwZXU79ysZfdcahj6K7PZuzly0S01Iptp+YxR+5px0dOrD91/Ht5RTb0/JB27xDtllWHcez0Mg3qYr4vjVcTJ7bqUsUW5O6LVxx2tfU9QZ214tlBMzvmoH5n3L6iLHK1b018RnCKnPr0MY1oDfZmsMqTfGjF2esnoZZycItxak/oQKew205uX8it9KOuTELUU2m3lhim18Woy3UXPG0j6bKOLtUKl0VadBaoYsbdqT8OhjOrS8Y0pSi0zJrY97wR7+oEsW07vgd3dV4kpx5YSailJfQtYhqztbA5QcR81QMcypQpKvhQTB66JKxcjZy7U3wNkbyky2Eu5WfOHvnWq9CZYJ3CN8DculZhzf3fQ2m9BNzLm/ZBEpWiqYvJJY497V17Gvfqq/ILJ8zF/7wIrk3XKmk18qD4JNTu2zQj23zvK3ZJDmvVviOoFzf65fgLR5pSTT8Rh8wWO2tSZRm1+ACW0aektPc9FNdTnyunZTS61vqEcxiByoLVlP1R+YZ82SVIi24TyNS4Dyn+QGeNt9TPRyKts3CTJzDKQ2MFFBanQ4lRHOKOa2UdqN6N6xjeMpSY77EwbDHWx40W8p0ieFMMWJcAgJRfIntaQxqJHNzaloTChDuYWk+Bj1OHL1D1KPzN2XSXYu7gDuPsejKvtl04nLFz2jagqqOk2l+PQedUI0qHEWdXhH0HZbGuIFlFUep0ailR6UbiyiA0fQ1fhPnskLpQskMo6sFcTzHY//Z') center center / cover no-repeat}/* Blurred poster placeholder layer */.wistia::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:inherit;filter:blur(14px) saturate(1.15) brightness(.9);transform:scale(1.18);transition:opacity .22s ease;opacity:1}.wistia.video-ready::after{opacity:0}.wistia-frame{z-index:2;position:absolute;top:-2px;left:0;width:100%;height:calc(100% + 6px);border:0;background:transparent}
-  .wistia-frame{position:absolute;top:-2px;left:0;width:100%;height:calc(100% + 6px);border:0;background:#000}
-  /* Hide Bunny native controls visually via a dedicated solid-black bottom mask */
-  .wistia-ctrlmask{position:absolute;left:0;right:0;bottom:0;height:62px;z-index:6;background:#000;pointer-events:none}
+
+  /* === Wistia v7 player === */
+  .wistia{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;outline:none;
+    background:#0a0a0a url('data:image/jpeg;base64,/9j//gARTGF2YzU4LjEzNC4xMDAA/9sAQwAIGBgcGBwhISEhISEnJCcoKCgnJycnKCgoKysrMzMzKysrKCgrKzAwMzM3OTc0NDM0OTk8PDxISEVFVFRXZ2d8/8QAeQAAAgMBAQEBAAAAAAAAAAAABAUDBgIIAQcAAQADAQEBAAAAAAAAAAAAAAACAQMEAAUQAAICAQIFAwMEAgMBAAAAAAABAhEDBCFRQTETEhQiYZGBMgVxoWIjklJC0VMRAQEBAQADAQAAAAAAAAAAAAABEQJBIRIx/8AAEQgAjgBQAwEiAAIRAAMRAP/aAAwDAQACEQMRAD8Au5pEdkpjaEhsySHEBc6fQJW6J6PRkhowEGDnBiEKITnHGDEpxtjbsYwPT08bjfEz6RdO5P6lomYdiBrswA/TRqvOfW/yBvRr/wCk/qFhG/Zgfu1AB9MqruT+pj0q/wCc/wDY7HGHagedmAG9MmknOW11vueR0sY/95/U7HDOxAAy4YxVphuPCoJ3JyviyDUyShVgmqCtE9vizBKRUTJvieSyLGrlKkaPkOuzSzZlii9uY3LrL9Twx5tjrDrMWb8Z/Yq8NLhhj9yT+SganF2GsmJurOl1S846E34g7viVrQ6xajF/aPVFjbfD+RAAScuLF276jNu30B6OIUSmTdg6aTkznGU36tv+zR0VOXjBv4OXs7ayN87KQn2jFFqLU31PMmPH2pRr5K/g1DzRTVNrZpjvInHHOTe7X2JNvh8+0efsZnX4t0dBt2rOVYfkdL6OMnhj7i1YoNrdH6gvxp9SEkI77iB/NeS+4ixzUlfzW5M3UtuXUngxeqy1hnSt0cpZm3J31Or4e5O+ZUdV+nadtSfkm9tjVzEK+V6HDOP+TemXjKnODXEuOFYMUFjTbVcDKw4oT3l05UzrPasvpzdLHOEns9mff/0vuPD7r+P2LT6TBl99J2vqNlFQVJUVxDQ3i2Byi4jkw9zMqTpxqvElVX0W4EiYMhz2MLL7d962KH6ufk113G8MkV1B+lPlbKiqdLd77BbquiK73vKUV9w7uWaEDHy8YXQP3FKq5inuexp8thL3fBLnQO4PNXlH4Q6fO8t3sWAlfZ/ivIzP8X+xtGwifLk99hjGEmWX0uPyv+AyMU5USnK16Kcfle63Hz2P08bVuL5CGs/H/wBNUmM9uj5OvIrTluWmWJtW2Jp47+CHUXlj3TzqTLpHLxKVGCiGxnROFU/eSIHmYJ4m6D0GJFOUmWCKFeOFv9h2lRblOiz2iEJRpSeKCKlqbjLYvFFa1ULSfAn1+CipprnLfgal7F5dUgRx+CWMr9s+fMyNBzRugrxPSYkmPZjvqJkNomrhHpkmTjxA8nQXQXuNOorWqAsi8osmXQk5D8EockLZQssMo7g3ieY2P//Z') center center / cover no-repeat}
+  /* Blurred poster placeholder */
+  .wistia::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:inherit;filter:blur(14px) saturate(1.15) brightness(.9);
+    transform:scale(1.18);transition:opacity .22s ease;opacity:1}
+  .wistia.video-ready::after{opacity:0}
+  .wistia-frame{position:absolute;top:-2px;left:0;width:100%;height:calc(100% + 6px);border:0;background:transparent;z-index:2}
+
+  .wistia-ctrlmask{position:absolute;left:0;right:0;bottom:0;height:38px;z-index:6;background:linear-gradient(to top,rgba(0,0,0,.65) 0%,rgba(0,0,0,.25) 60%,transparent 100%);pointer-events:none}
 
   .wistia-overlay{
     position:absolute;inset:0;z-index:8;
     display:flex;align-items:center;justify-content:center;cursor:pointer;
     background:
       linear-gradient(to bottom,
-        rgba(0,0,0,.55) 0%,
-        rgba(10,10,10,.28) 18%,
-        rgba(10,10,10,.28) 70%,
-        rgba(0,0,0,.85) 92%,
-        #000 100%);
-    transition:opacity .45s ease, visibility .45s;
-  }
-  /* Heavier initial opacity that lightens after 1.2s (hides Bunny loading flashes) */
-  .wistia-overlay{animation:wistiaSettle 1.2s ease-out forwards}
-  @keyframes wistiaSettle {
-    0%   { background:#0a0a0a; }
-    100% { background:
-      linear-gradient(to bottom,
-        rgba(0,0,0,.55) 0%,
-        rgba(10,10,10,.28) 18%,
-        rgba(10,10,10,.28) 70%,
-        rgba(0,0,0,.85) 92%,
-        #000 100%); }
+        rgba(0,0,0,.45) 0%,
+        rgba(10,10,10,.20) 18%,
+        rgba(10,10,10,.20) 75%,
+        rgba(0,0,0,.55) 100%);
+    transition:opacity .4s ease, visibility .4s;
   }
   .wistia-overlay.gone{opacity:0;visibility:hidden;pointer-events:none}
-
   .wistia-brand{
     position:absolute;top:14px;left:14px;
-    color:rgba(255,255,255,.92);
-    font-family:'Open Sans',Arial,sans-serif;font-size:10.5px;font-weight:700;
-    letter-spacing:.14em;text-transform:uppercase;
+    color:rgba(255,255,255,.92);font-family:'Open Sans',Arial,sans-serif;
+    font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
     padding:5px 9px;border-radius:3px;
-    background:rgba(0,0,0,.5);
-    border:1px solid rgba(255,255,255,.15);
+    background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.15);
   }
   @supports (backdrop-filter:blur(6px)) or (-webkit-backdrop-filter:blur(6px)){
     .wistia-brand{background:rgba(255,255,255,.08);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
   }
   .wistia-brand .dot{display:inline-block;width:6px;height:6px;background:#D90429;border-radius:50%;margin-right:6px;vertical-align:1px;box-shadow:0 0 6px rgba(217,4,41,.7);animation:wistiaDot 1.6s ease-in-out infinite}
-  @keyframes wistiaDot { 0%,100%{opacity:1} 50%{opacity:.45} }
-
+  @keyframes wistiaDot{0%,100%{opacity:1}50%{opacity:.45}}
   .wistia-play{
     position:relative;width:96px;height:96px;border:0;padding:0;background:transparent;cursor:pointer;
     display:flex;align-items:center;justify-content:center;
@@ -156,13 +146,10 @@
   }
   .wistia-tri{position:relative;z-index:1;margin-left:5px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.35))}
   .wistia-caption{
-    position:absolute;left:50%;bottom:72px;transform:translateX(-50%);
-    color:rgba(255,255,255,.82);
-    font-family:'Oswald',Impact,sans-serif;font-size:11.5px;font-weight:600;
-    letter-spacing:.16em;text-transform:uppercase;
-    text-shadow:0 1px 3px rgba(0,0,0,.6);
-    opacity:.85;transition:opacity .25s ease;
-    white-space:nowrap;pointer-events:none;
+    position:absolute;left:50%;bottom:58px;transform:translateX(-50%);
+    color:rgba(255,255,255,.82);font-family:'Oswald',Impact,sans-serif;font-size:11.5px;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;text-shadow:0 1px 3px rgba(0,0,0,.6);
+    opacity:.85;transition:opacity .25s ease;white-space:nowrap;pointer-events:none;
   }
   @keyframes wistiaPulse {
     0%,100% { box-shadow:0 14px 44px rgba(217,4,41,.45),0 0 0 3px rgba(255,255,255,.22) inset,0 0 0 0 rgba(217,4,41,0); }
@@ -174,14 +161,14 @@
   }
   @keyframes wistiaReveal {
     0%   { transform:scale(.6);opacity:.9; }
-    100% { transform:scale(2);  opacity:0;   }
+    100% { transform:scale(2);  opacity:0; }
   }
 
-  /* Wistia-style control bar */
+  /* Slim Wistia control bar — 32px, subtle gradient, 3 controls only */
   .wc-bar{
-    position:absolute;left:0;right:0;bottom:0;height:42px;z-index:9;
-    display:flex;align-items:center;gap:8px;padding:0 12px;
-    background:linear-gradient(to top, rgba(0,0,0,.96) 0%, rgba(0,0,0,.78) 60%, transparent 100%);
+    position:absolute;left:0;right:0;bottom:0;height:32px;z-index:9;
+    display:flex;align-items:center;gap:10px;padding:0 12px;
+    background:linear-gradient(to top, rgba(0,0,0,.75) 0%, rgba(0,0,0,.45) 60%, transparent 100%);
     opacity:0;visibility:hidden;transition:opacity .25s ease, visibility .25s;
     color:#fff;font-family:Inter,system-ui,-apple-system,Arial,sans-serif;
   }
@@ -189,34 +176,33 @@
   .wc-bar.idle{opacity:0;visibility:visible;pointer-events:none}
   .wistia:hover .wc-bar.shown{opacity:1;pointer-events:auto}
   .wc-btn{
-    width:26px;height:26px;border:0;background:transparent;cursor:pointer;padding:0;
+    width:24px;height:24px;border:0;background:transparent;cursor:pointer;padding:0;
     display:flex;align-items:center;justify-content:center;flex-shrink:0;
-    transition:transform .15s ease, opacity .15s ease;color:#fff;
+    transition:transform .15s ease;color:#fff;
   }
   .wc-btn:hover{transform:scale(1.12)}
   .wc-btn:active{transform:scale(.92)}
-  .wc-btn svg{width:16px;height:16px;display:block}
-  .wc-icon-pause{display:none}
-  .wc-bar[data-state="playing"] .wc-icon-play{display:none}
-  .wc-bar[data-state="playing"] .wc-icon-pause{display:block}
+  .wc-btn svg{width:13px;height:13px;display:block}
+  /* FIX: high-specificity icon visibility — use !important so .wc-btn svg{display:block} can't override */
+  .wc-bar .wc-btn .wc-icon-pause{display:none !important}
+  .wc-bar[data-state="playing"] .wc-btn .wc-icon-play{display:none !important}
+  .wc-bar[data-state="playing"] .wc-btn .wc-icon-pause{display:block !important}
   .wc-time,.wc-duration{
     font-size:11px;font-weight:600;font-variant-numeric:tabular-nums;
-    letter-spacing:.02em;color:rgba(255,255,255,.88);min-width:44px;
+    letter-spacing:.02em;color:rgba(255,255,255,.88);min-width:36px;
   }
   .wc-time{text-align:left}
   .wc-duration{text-align:right}
   .wc-scrub{
-    flex:1;height:22px;cursor:pointer;position:relative;
-    display:flex;align-items:center;margin:0 4px;
+    flex:1;height:18px;cursor:pointer;position:relative;display:flex;align-items:center;margin:0 4px;
   }
   .wc-track{
-    position:absolute;left:0;right:0;height:3px;background:rgba(255,255,255,.22);border-radius:2px;
-    transition:height .15s ease;
+    position:absolute;left:0;right:0;height:3px;background:rgba(255,255,255,.22);border-radius:99px;transition:height .15s ease;
   }
   .wc-scrub:hover .wc-track,.wc-scrub.dragging .wc-track{height:5px}
-  .wc-buffered{position:absolute;left:0;top:50%;transform:translateY(-50%);height:3px;background:rgba(255,255,255,.32);border-radius:2px;width:0%;pointer-events:none;transition:height .15s ease}
+  .wc-buffered{position:absolute;left:0;top:50%;transform:translateY(-50%);height:3px;background:rgba(255,255,255,.32);border-radius:99px;width:0%;pointer-events:none;transition:height .15s ease}
   .wc-scrub:hover .wc-buffered{height:5px}
-  .wc-progress{position:absolute;left:0;top:50%;transform:translateY(-50%);height:3px;background:#D90429;border-radius:2px;width:0%;pointer-events:none;box-shadow:0 0 6px rgba(217,4,41,.55);transition:height .15s ease}
+  .wc-progress{position:absolute;left:0;top:50%;transform:translateY(-50%);height:3px;background:#D90429;border-radius:99px;width:0%;pointer-events:none;box-shadow:0 0 6px rgba(217,4,41,.55);transition:height .15s ease}
   .wc-scrub:hover .wc-progress{height:5px}
   .wc-thumb{
     position:absolute;top:50%;left:0;transform:translate(-50%,-50%);
@@ -225,25 +211,16 @@
     opacity:0;transition:opacity .15s ease;pointer-events:none;z-index:2;
   }
   .wc-scrub:hover .wc-thumb,.wc-scrub.dragging .wc-thumb{opacity:1}
-  .wc-speed{
-    font-family:'Open Sans',Arial,sans-serif;font-size:11px;font-weight:700;
-    letter-spacing:.02em;min-width:34px;text-align:center;
-    background:transparent;border:0;color:#fff;cursor:pointer;padding:6px 8px;border-radius:3px;
-    transition:background .15s ease, transform .15s ease;
-  }
-  .wc-speed:hover{background:rgba(255,255,255,.12);transform:scale(1.05)}
-  .wc-speed:active{transform:scale(.95)}
 
   @media (min-width:900px){
     .wistia-play{width:128px;height:128px}
     .wistia-tri{width:44px;height:44px;margin-left:6px}
     .wistia-brand{top:18px;left:18px;font-size:11px;padding:6px 11px}
-    .wistia-caption{font-size:13px;bottom:78px}
-    .wc-bar{height:46px;padding:0 14px;gap:10px}
-    .wc-btn{width:34px;height:34px}
-    .wc-btn svg{width:18px;height:18px}
-    .wc-time,.wc-duration{font-size:12px;min-width:46px}
-    .wc-speed{font-size:12px;min-width:38px}
+    .wistia-caption{font-size:13px;bottom:64px}
+    .wc-bar{height:36px;padding:0 14px;gap:12px}
+    .wc-btn{width:26px;height:26px}
+    .wc-btn svg{width:14px;height:14px}
+    .wc-time,.wc-duration{font-size:12px;min-width:40px}
   }
 
 </style>
@@ -265,7 +242,7 @@
         <div class="wistia" data-funnel="MED-03" tabindex="0">
           <iframe class="wistia-frame"
             data-guid="14b306fd-d297-477a-b821-6bc21617ed76"
-            src="https://iframe.mediadelivery.net/embed/660166/14b306fd-d297-477a-b821-6bc21617ed76?autoplay=true&muted=true&preload=true&responsive=true&loop=false&controls=false"
+            src="https://iframe.mediadelivery.net/embed/660166/14b306fd-d297-477a-b821-6bc21617ed76?autoplay=true&muted=true&preload=true&responsive=true&loop=true&controls=false"
             loading="eager"
             allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
             allowfullscreen="true"></iframe>
@@ -293,10 +270,6 @@
               <div class="wc-thumb"></div>
             </div>
             <div class="wc-duration">--:--</div>
-            <button class="wc-speed" aria-label="Playback speed">1x</button>
-            <button class="wc-btn wc-full" aria-label="Fullscreen">
-              <svg viewBox="0 0 16 16"><path d="M2 6 L2 2 L6 2 M10 2 L14 2 L14 6 M14 10 L14 14 L10 14 M6 14 L2 14 L2 10" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
-            </button>
           </div>
         </div>
         <!-- VSL EMBED END -->
@@ -338,32 +311,15 @@
 })();
 </script>
 
+
 <script>
 (function(){
-  var SPEEDS = [1, 1.25, 1.5, 1.75, 2];
-
-  function call(player, method, value){
-    // Player.js standard methods first, then postMessage fallback
-    try {
-      if (typeof player[method] === 'function') {
-        return value === undefined ? player[method]() : player[method](value);
-      }
-    } catch(e){}
-    try {
-      var msg = { context: 'player.js', method: method };
-      if (value !== undefined) msg.value = value;
-      player.iframe && player.iframe.contentWindow.postMessage(JSON.stringify(msg), '*');
-    } catch(e){}
-  }
-
   function init(){
     document.querySelectorAll('.wistia').forEach(function(wrap){
       var iframe   = wrap.querySelector('.wistia-frame');
       var overlay  = wrap.querySelector('.wistia-overlay');
       var bar      = wrap.querySelector('.wc-bar');
       var bPP      = wrap.querySelector('.wc-playpause');
-      var bSpeed   = wrap.querySelector('.wc-speed');
-      var bFull    = wrap.querySelector('.wc-full');
       var elTime   = wrap.querySelector('.wc-time');
       var elDur    = wrap.querySelector('.wc-duration');
       var scrub    = wrap.querySelector('.wc-scrub');
@@ -371,21 +327,17 @@
       var thumb    = wrap.querySelector('.wc-thumb');
 
       var player = new playerjs.Player(iframe);
-      player.iframe = iframe; // for postMessage fallback
-      // 4 paths to trigger the blur fade (whichever fires first):
-      // (a) iframe.onload — earliest signal that the iframe document is loaded
-      // (b) player.js ready event
-      // (c) player.js timeupdate event (first visible frame)
-      // (d) 1.5s timeout fallback
+      player.iframe = iframe;
+
+      // 4-path blur fade (whichever fires first wins)
       var blurFade=false;
       function fadeBlur(){ if(blurFade) return; blurFade=true; wrap.classList.add('video-ready'); }
       iframe.addEventListener('load', fadeBlur);
       player.on('ready', fadeBlur);
       player.on('timeupdate', fadeBlur);
       setTimeout(fadeBlur, 1500);
-      player.on('timeupdate', function(){ if(!blurFade){blurFade=true; wrap.classList.add('video-ready');} });
 
-      var duration = 0, current = 0, isPlaying = false, speedIdx = 0, dragging = false;
+      var duration = 0, current = 0, isPlaying = false, dragging = false;
       var hideT;
 
       function fmt(s){ s = Math.max(0, Math.floor(s)); var m = Math.floor(s/60); var sec = s%60; return m + ':' + (sec<10?'0':'') + sec; }
@@ -419,51 +371,29 @@
       player.on('pause', function(){ isPlaying = false; bar.setAttribute('data-state','paused'); });
       player.on('ended', function(){ isPlaying = false; bar.setAttribute('data-state','paused'); });
 
-      // First click: pause (eliminates flash), seek 0, unmute, play
+      // First overlay click: pause, seek 0, setLoop off, unmute, play
       overlay.addEventListener('click', function(){
         try { player.pause(); } catch(e){}
         try { player.setCurrentTime(0); } catch(e){}
         try { player.unmute(); } catch(e){}
         try { player.setLoop(false); } catch(e){}
-        setTimeout(function(){
-          try { player.play(); } catch(e){}
-        }, 80);
+        setTimeout(function(){ try { player.play(); } catch(e){} }, 80);
+        // Optimistic state update (don't wait for player.on('play') event)
+        isPlaying = true; bar.setAttribute('data-state','playing');
         overlay.classList.add('gone');
         bar.classList.add('shown');
         showBar();
         wrap.focus();
       });
 
-      // Play/pause button
+      // Play/pause button — optimistic state toggle
       bPP.addEventListener('click', function(e){
         e.stopPropagation();
-        if (isPlaying) { try { player.pause(); } catch(e){} }
-        else           { try { player.play();  } catch(e){} }
+        if (isPlaying) { try { player.pause(); } catch(_){} isPlaying = false; bar.setAttribute('data-state','paused'); }
+        else           { try { player.play();  } catch(_){} isPlaying = true;  bar.setAttribute('data-state','playing'); }
       });
 
-      // Speed cycler (1x → 1.25x → 1.5x → 1.75x → 2x → 1x)
-      bSpeed.addEventListener('click', function(e){
-        e.stopPropagation();
-        speedIdx = (speedIdx + 1) % SPEEDS.length;
-        var rate = SPEEDS[speedIdx];
-        bSpeed.textContent = (rate === 1 ? '1x' : rate + 'x');
-        // Try player.js setPlaybackRate, then postMessage fallback
-        call(player, 'setPlaybackRate', rate);
-      });
-
-      // Fullscreen on the WRAP so custom controls stay visible
-      bFull.addEventListener('click', function(e){
-        e.stopPropagation();
-        if (document.fullscreenElement || document.webkitFullscreenElement) {
-          if (document.exitFullscreen) document.exitFullscreen();
-          else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-        } else {
-          if (wrap.requestFullscreen) wrap.requestFullscreen();
-          else if (wrap.webkitRequestFullscreen) wrap.webkitRequestFullscreen();
-        }
-      });
-
-      // Scrubber: click + drag
+      // Scrubber drag (mouse + touch)
       function seekFromEvent(ev){
         var rect = scrub.getBoundingClientRect();
         var x = (ev.clientX !== undefined ? ev.clientX : (ev.touches && ev.touches[0] && ev.touches[0].clientX)) || 0;
@@ -475,19 +405,14 @@
         }
         return pct;
       }
-      scrub.addEventListener('mousedown', function(e){
-        e.stopPropagation();
-        dragging = true;
-        scrub.classList.add('dragging');
-        seekFromEvent(e);
-      });
+      scrub.addEventListener('mousedown', function(e){ e.stopPropagation(); dragging = true; scrub.classList.add('dragging'); seekFromEvent(e); });
       window.addEventListener('mousemove', function(e){ if (dragging) seekFromEvent(e); });
       window.addEventListener('mouseup',   function(){ if (dragging) { dragging = false; scrub.classList.remove('dragging'); } });
       scrub.addEventListener('touchstart', function(e){ e.stopPropagation(); dragging = true; scrub.classList.add('dragging'); seekFromEvent(e); }, {passive:true});
-      scrub.addEventListener('touchmove',  function(e){ if (dragging) { seekFromEvent(e); } }, {passive:true});
+      scrub.addEventListener('touchmove',  function(e){ if (dragging) seekFromEvent(e); }, {passive:true});
       scrub.addEventListener('touchend',   function(){ dragging = false; scrub.classList.remove('dragging'); });
 
-      // Mouse activity → show bar
+      // Show bar on activity
       wrap.addEventListener('mousemove', showBar);
       wrap.addEventListener('mouseenter', showBar);
       wrap.addEventListener('mouseleave', function(){
@@ -497,29 +422,21 @@
         }
       });
 
-      // Keyboard controls (when wrap is focused)
+      // Keyboard
       wrap.addEventListener('keydown', function(e){
-        if (overlay.classList.contains('gone') === false) return; // ignore until user has clicked play
+        if (!overlay.classList.contains('gone')) return;
         var handled = true;
         switch(e.key){
           case ' ': case 'k':
-            if (isPlaying) { try { player.pause(); } catch(_){} } else { try { player.play(); } catch(_){} }
+            if (isPlaying) { try { player.pause(); } catch(_){} isPlaying = false; bar.setAttribute('data-state','paused'); }
+            else { try { player.play(); } catch(_){} isPlaying = true; bar.setAttribute('data-state','playing'); }
             break;
-          case 'ArrowRight': case 'l':
-            try { player.setCurrentTime(Math.min(duration, current + 5)); } catch(_){}
-            break;
-          case 'ArrowLeft': case 'j':
-            try { player.setCurrentTime(Math.max(0, current - 5)); } catch(_){}
-            break;
-          case 'f':
-            bFull.click();
-            break;
-          default:
-            handled = false;
+          case 'ArrowRight': case 'l': try { player.setCurrentTime(Math.min(duration, current + 5)); } catch(_){}; break;
+          case 'ArrowLeft':  case 'j': try { player.setCurrentTime(Math.max(0, current - 5)); } catch(_){}; break;
+          default: handled = false;
         }
         if (handled) { e.preventDefault(); showBar(); }
       });
-
     });
   }
 
