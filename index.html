@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1440">
+<title>Answerra. The AI receptionist Aussie businesses build, instead of hire.</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #f4f1ec;
+    color: #0a0a0a;
+    line-height: 1.4;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1440px; margin: 0 auto; padding: 0 50px; }
+
+  /* NAV */
+  nav.top {
+    padding: 28px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo { font-size: 28px; font-weight: 800; letter-spacing: -1.2px; }
+  .logo .dot { color: #ff5722; }
+  .nav-links a { color: #0a0a0a; text-decoration: none; margin-left: 36px; font-size: 15px; font-weight: 500; }
+  .btn-pill {
+    background: #0a0a0a;
+    color: #f4f1ec;
+    padding: 12px 24px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 50px 50px 0;
+    min-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  h1 {
+    font-size: 200px;
+    font-weight: 900;
+    line-height: 0.85;
+    letter-spacing: -8px;
+    text-transform: lowercase;
+  }
+  h1 .it { font-style: italic; font-weight: 200; }
+  h1 .or { color: #ff5722; }
+  .hero-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 50px;
+    align-items: end;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  .hero-bottom .lead {
+    font-size: 23px;
+    line-height: 1.3;
+    font-weight: 500;
+    max-width: 380px;
+  }
+  .hero-bottom .lead .hl { background: #ff5722; color: #fff; padding: 0 4px; }
+  .hero-bottom .meta {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+  }
+  .hero-bottom .meta .lbl { color: #888; display: block; margin-bottom: 6px; font-weight: 400; }
+  .hero-bottom .cta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+  }
+  .hero-bottom .cta .btn {
+    background: #ff5722;
+    color: #fff;
+    padding: 22px 36px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-bottom .cta .small { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #666; }
+
+  /* STATS MARQUEE */
+  .marquee {
+    background: #0a0a0a;
+    color: #f4f1ec;
+    padding: 22px 0;
+    overflow: hidden;
+  }
+  .marquee .row {
+    display: flex;
+    gap: 80px;
+    white-space: nowrap;
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .marquee .row span::after { content: " ◆"; color: #ff5722; padding-left: 80px; }
+
+  /* SARAH SELECTOR */
+  .sarah-section {
+    padding: 130px 50px 100px;
+  }
+  .sarah-head { text-align: left; max-width: 1100px; margin-bottom: 60px; }
+  .sarah-head .eyebrow {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #ff5722;
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+  .sarah-head h2 {
+    font-size: 96px;
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -4px;
+    margin-bottom: 24px;
+  }
+  .sarah-head h2 em { font-style: italic; font-weight: 200; }
+  .sarah-head p {
+    font-size: 22px;
+    color: #444;
+    max-width: 720px;
+    line-height: 1.4;
+  }
+
+  .sarah-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .sarah-tab {
+    background: #fff;
+    border: 2px solid #0a0a0a;
+    border-radius: 24px;
+    padding: 30px 32px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 200px;
+  }
+  .sarah-tab .label {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: #888;
+    margin-bottom: 14px;
+  }
+  .sarah-tab .name {
+    font-size: 44px;
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .sarah-tab .for {
+    font-size: 19px;
+    font-weight: 600;
+    color: #444;
+  }
+  .sarah-tab .arrow {
+    margin-top: 24px;
+    font-size: 22px;
+    font-weight: 700;
+  }
+  .sarah-tab.active {
+    background: #0a0a0a;
+    color: #f4f1ec;
+    border-color: #0a0a0a;
+  }
+  .sarah-tab.active .label { color: #ff5722; }
+  .sarah-tab.active .for { color: #c4c4c4; }
+
+  /* SARAH PANEL */
+  .sarah-panel {
+    background: #0a0a0a;
+    color: #f4f1ec;
+    border-radius: 28px;
+    padding: 60px;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 60px;
+    min-height: 520px;
+  }
+  .panel-content { display: none; }
+  .panel-content.active { display: contents; }
+
+  .sarah-panel .left .niche {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #ff5722;
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+  .sarah-panel .left h3 {
+    font-size: 56px;
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+  }
+  .sarah-panel .left h3 em { font-style: italic; font-weight: 200; color: #ff5722; }
+  .sarah-panel .left .pitch {
+    font-size: 19px;
+    line-height: 1.5;
+    color: #c4c4c4;
+    margin-bottom: 32px;
+  }
+  .sarah-panel .left .stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .sarah-panel .left .stat {
+    border-top: 2px solid #ff5722;
+    padding-top: 14px;
+  }
+  .sarah-panel .left .stat .num {
+    font-size: 44px;
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .sarah-panel .left .stat .lbl {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #888;
+    line-height: 1.4;
+  }
+  .sarah-panel .left .btn-row { display: flex; gap: 12px; }
+  .sarah-panel .left .btn-row .btn {
+    background: #ff5722;
+    color: #fff;
+    padding: 16px 26px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+  }
+  .sarah-panel .left .btn-row .btn.ghost {
+    background: transparent;
+    border: 2px solid #2a2a2a;
+    color: #f4f1ec;
+  }
+  .sarah-panel .free-tag {
+    display: inline-block;
+    background: #fff;
+    color: #ff5722;
+    padding: 2px 10px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    margin: 0 6px;
+    vertical-align: 2px;
+  }
+
+  /* PROPRIETARY TECH SECTION */
+  .tech-section {
+    padding: 130px 50px;
+    background: #f4f1ec;
+    border-top: 1px solid #e0dcd2;
+  }
+  .tech-section .head {
+    max-width: 1100px;
+    margin-bottom: 70px;
+  }
+  .tech-section .eyebrow {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #ff5722;
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+  .tech-section h2 {
+    font-size: 90px;
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -4px;
+    margin-bottom: 24px;
+  }
+  .tech-section h2 em { font-style: italic; font-weight: 200; }
+  .tech-section .lead {
+    font-size: 22px;
+    color: #444;
+    max-width: 720px;
+    line-height: 1.4;
+  }
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .tech-card {
+    background: #0a0a0a;
+    color: #f4f1ec;
+    border-radius: 24px;
+    padding: 50px;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+  .tech-card.orange { background: #ff5722; color: #fff; }
+  .tech-card.cream { background: #fff; color: #0a0a0a; }
+  .tech-card .num {
+    font-family: monospace;
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+    opacity: 0.7;
+    font-weight: 700;
+  }
+  .tech-card h3 {
+    font-size: 38px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -1.5px;
+    margin-bottom: 18px;
+  }
+  .tech-card h3 em { font-style: italic; font-weight: 200; }
+  .tech-card .desc {
+    font-size: 17px;
+    line-height: 1.5;
+    opacity: 0.85;
+  }
+  .tech-card .glyph {
+    position: absolute;
+    top: 30px;
+    right: 36px;
+    font-size: 80px;
+    line-height: 1;
+    opacity: 0.15;
+    font-weight: 900;
+  }
+  .tech-card.orange .glyph, .tech-card .glyph { color: currentColor; }
+
+  .no-fees-strip {
+    margin-top: 50px;
+    background: #0a0a0a;
+    color: #f4f1ec;
+    padding: 36px 50px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+  }
+  .no-fees-strip .left-side {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .no-fees-strip .badge {
+    background: #ff5722;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .no-fees-strip .text {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  .no-fees-strip .text em { color: #ff5722; font-style: italic; font-weight: 300; }
+
+  /* CALL TRANSCRIPT MOCK */
+  .call-card {
+    background: #15151a;
+    border-radius: 18px;
+    padding: 26px;
+    border: 1px solid #2a2a2a;
+  }
+  .call-card .head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #2a2a2a;
+    margin-bottom: 18px;
+  }
+  .call-card .head .live {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #4dffaa;
+    font-weight: 700;
+  }
+  .call-card .head .live .d { width: 8px; height: 8px; background: #4dffaa; border-radius: 50%; }
+  .call-card .head .meta { font-family: monospace; font-size: 12px; color: #666; }
+  .convo { display: flex; flex-direction: column; gap: 12px; }
+  .bubble {
+    padding: 12px 18px;
+    border-radius: 16px;
+    font-size: 15px;
+    line-height: 1.4;
+    max-width: 92%;
+  }
+  .bubble.ai { background: #2a2a2a; align-self: flex-start; }
+  .bubble.caller { background: #ff5722; color: #fff; align-self: flex-end; }
+  .call-card .footer {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid #2a2a2a;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+  .call-card .footer .v { color: #4dffaa; font-weight: 700; }
+
+  /* TWO KINDS SECTION */
+  .two-kinds {
+    padding: 100px 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+  }
+  .two-kinds .col {
+    padding: 60px;
+    border-radius: 24px;
+    min-height: 580px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .two-kinds .col.left {
+    background: #e8e3d9;
+  }
+  .two-kinds .col.right {
+    background: #0a0a0a;
+    color: #f4f1ec;
+  }
+  .col .label {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+  .col.left .label { color: #888; }
+  .col.right .label { color: #ff5722; }
+  .col h3 {
+    font-size: 72px;
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -3px;
+    margin-bottom: 30px;
+  }
+  .col .checklist { list-style: none; }
+  .col .checklist li {
+    font-size: 18px;
+    padding: 14px 0;
+    border-bottom: 1px solid currentColor;
+    font-weight: 500;
+  }
+  .col.left .checklist li { color: #555; border-color: #c8bfb1; }
+  .col.right .checklist li { color: #f4f1ec; border-color: #2a2a2a; }
+  .col .checklist li::before { content: "→ "; color: #ff5722; font-weight: 900; }
+
+  /* GIANT NUMBER */
+  .number-section {
+    padding: 180px 50px;
+    text-align: center;
+    background: #ff5722;
+    color: #fff;
+    position: relative;
+  }
+  .number-section .pre {
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 24px;
+    opacity: 0.85;
+    font-weight: 600;
+  }
+  .number-section .num {
+    font-size: 320px;
+    font-weight: 900;
+    line-height: 0.85;
+    letter-spacing: -16px;
+    margin-bottom: 30px;
+  }
+  .number-section .caption {
+    font-size: 30px;
+    max-width: 760px;
+    margin: 0 auto;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+  .number-section .small {
+    margin-top: 24px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.7;
+  }
+
+  /* RESEARCH STATS GRID */
+  .research {
+    padding: 130px 50px;
+    background: #fff;
+  }
+  .research .head {
+    text-align: left;
+    margin-bottom: 60px;
+    max-width: 1000px;
+  }
+  .research .eyebrow {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #ff5722;
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+  .research h2 {
+    font-size: 80px;
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -3px;
+    margin-bottom: 20px;
+  }
+  .research h2 em { font-style: italic; font-weight: 200; }
+  .research p { font-size: 19px; color: #555; max-width: 720px; line-height: 1.5; }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .stat-tile {
+    background: #f4f1ec;
+    border-radius: 18px;
+    padding: 32px;
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .stat-tile.dark {
+    background: #0a0a0a;
+    color: #f4f1ec;
+  }
+  .stat-tile.orange {
+    background: #ff5722;
+    color: #fff;
+  }
+  .stat-tile .big {
+    font-size: 64px;
+    font-weight: 900;
+    letter-spacing: -2px;
+    line-height: 0.95;
+  }
+  .stat-tile .body {
+    font-size: 15px;
+    line-height: 1.45;
+    margin-top: 16px;
+    font-weight: 500;
+  }
+  .stat-tile .src {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 12px;
+    opacity: 0.6;
+    font-weight: 600;
+  }
+
+  /* HOW */
+  .how {
+    padding: 130px 50px;
+    background: #f4f1ec;
+  }
+  .how h2 {
+    font-size: 90px;
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -4px;
+    max-width: 900px;
+    margin-bottom: 70px;
+  }
+  .how h2 em { font-style: italic; font-weight: 200; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .step {
+    background: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    min-height: 280px;
+  }
+  .step .num {
+    font-size: 60px;
+    font-weight: 900;
+    color: #ff5722;
+    line-height: 1;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+  }
+  .step h4 { font-size: 22px; font-weight: 700; margin-bottom: 10px; }
+  .step p { font-size: 16px; color: #555; line-height: 1.5; }
+
+  /* CUSTOM BUILD FORM */
+  .custom-build {
+    padding: 140px 50px;
+    background: #0a0a0a;
+    color: #f4f1ec;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .custom-build .left .eyebrow {
+    color: #ff5722;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+  .custom-build .left h2 {
+    font-size: 80px;
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -3px;
+    margin-bottom: 24px;
+  }
+  .custom-build .left h2 em { font-style: italic; font-weight: 200; color: #ff5722; }
+  .custom-build .left p {
+    font-size: 19px;
+    line-height: 1.5;
+    color: #c4c4c4;
+    margin-bottom: 32px;
+    max-width: 480px;
+  }
+  .custom-build .left ul { list-style: none; }
+  .custom-build .left li {
+    padding: 12px 0 12px 28px;
+    border-bottom: 1px solid #2a2a2a;
+    font-size: 16px;
+    font-weight: 500;
+    position: relative;
+  }
+  .custom-build .left li::before { content: "→"; color: #ff5722; position: absolute; left: 0; font-weight: 900; }
+
+  .form-card {
+    background: #15151a;
+    border: 1px solid #2a2a2a;
+    border-radius: 24px;
+    padding: 40px;
+  }
+  .form-card h3 {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.8px;
+    margin-bottom: 8px;
+  }
+  .form-card .sub { color: #888; font-size: 14px; margin-bottom: 28px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .field { margin-bottom: 14px; }
+  .field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #888;
+    margin-bottom: 6px;
+  }
+  .field input, .field select, .field textarea {
+    width: 100%;
+    padding: 14px 16px;
+    background: #0a0a0a;
+    border: 1px solid #2a2a2a;
+    border-radius: 10px;
+    font-size: 15px;
+    color: #f4f1ec;
+    font-family: inherit;
+  }
+  .field textarea { resize: vertical; min-height: 100px; }
+  .field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid #ff5722; border-color: #ff5722; }
+  .submit-btn {
+    width: 100%;
+    background: #ff5722;
+    color: #fff;
+    padding: 18px;
+    border: none;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-family: inherit;
+  }
+  .form-small { font-size: 12px; color: #888; text-align: center; margin-top: 14px; text-transform: uppercase; letter-spacing: 1.5px; }
+
+  /* FINAL CTA */
+  .cta-final {
+    padding: 140px 50px;
+    background: #f4f1ec;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 60px;
+    align-items: end;
+  }
+  .cta-final h2 {
+    font-size: 130px;
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -5px;
+  }
+  .cta-final h2 .or { color: #ff5722; }
+  .cta-final .right { padding-bottom: 30px; }
+  .cta-final .right p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 24px;
+    color: #555;
+  }
+  .cta-final .right .btn {
+    background: #0a0a0a;
+    color: #f4f1ec;
+    padding: 22px 36px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    display: inline-block;
+  }
+
+  footer {
+    background: #0a0a0a;
+    color: #555;
+    padding: 30px 50px;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+  }
+  footer a { color: #888; text-decoration: none; margin-left: 18px; }
+</style>
+</head>
+<body>
+
+  <nav class="top">
+    <div class="logo">answerra<span class="dot">.</span></div>
+    <div class="nav-links">
+      <a href="#sarah">Meet Sarah</a>
+      <a href="#tech">The Tech</a>
+      <a href="#research">The Numbers</a>
+      <a href="#how">How It Works</a>
+      <a href="#custom">Custom Build</a>
+      <a href="#sarah" class="btn-pill">Pick a Sarah ↗</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <h1>build it.<br><span class="it">or be</span><br><span class="or">built by it.</span></h1>
+    </div>
+
+    <div class="hero-bottom">
+      <div class="lead">There are two kinds of service businesses in 2026. The ones who answer every call with <span class="hl">an AI receptionist that never quits</span>, and the ones losing $126,000 a year to voicemail.</div>
+
+      <div class="meta">
+        <span class="lbl">Built for</span>
+        Service businesses<br>
+        Doing $500K to $5M / year<br><br>
+        <span class="lbl">Live in</span>
+        48 hours
+      </div>
+
+      <div class="cta">
+        <a href="#sarah" class="btn">Pick your Sarah →</a>
+        <span class="small">8 build slots left this <span class="urg-month-lc"></span></span>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee">
+    <div class="row">
+      <span>62% of calls go unanswered</span>
+      <span>$8 billion lost every year</span>
+      <span>67% won't leave a voicemail</span>
+      <span>Sarah answers in under 5 seconds</span>
+      <span>Live in 48 hours</span>
+    </div>
+  </div>
+
+  <!-- SARAH SELECTOR -->
+  <section class="sarah-section" id="sarah">
+    <div class="sarah-head">
+      <div class="eyebrow">// Meet Sarah</div>
+      <h2>One name. <em>Three trades.</em><br>Zero missed calls.</h2>
+      <p>Sarah is the AI voice receptionist we build for your business. Same playbook, tuned for your trade. Pick which Sarah fits, hear her work, then book a build slot. Or, if your business is something else entirely, scroll down and brief us.</p>
+    </div>
+
+    <div class="sarah-tabs">
+      <button class="sarah-tab active" data-tab="dental">
+        <div>
+          <div class="label">// 01 / Healthcare</div>
+          <div class="name">Sarah for Dentists</div>
+          <div class="for">Dental, ortho, perio practices</div>
+        </div>
+        <div class="arrow">→</div>
+      </button>
+      <button class="sarah-tab" data-tab="trades">
+        <div>
+          <div class="label">// 02 / Trades</div>
+          <div class="name">Sarah for Trades</div>
+          <div class="for">Plumbers, sparkies, HVAC, roofing</div>
+        </div>
+        <div class="arrow">→</div>
+      </button>
+      <button class="sarah-tab" data-tab="medspa">
+        <div>
+          <div class="label">// 03 / Beauty</div>
+          <div class="name">Sarah for Medspas</div>
+          <div class="for">Cosmetic, derm, plastic surgery</div>
+        </div>
+        <div class="arrow">→</div>
+      </button>
+    </div>
+
+    <div class="sarah-panel">
+      <!-- DENTAL PANEL -->
+      <div class="panel-content active" data-panel="dental">
+        <div class="left">
+          <div class="niche">// SARAH FOR DENTISTS</div>
+          <h3>Books the chair. Recalls the lapsed list. <em>Backfills the cancellation.</em></h3>
+          <p class="pitch">Trained on your booking rules, plugged into your PMS, working your dormant patient list while you sleep. Average practice misses 35 to 62% of inbound calls. Sarah answers all of them.</p>
+          <div class="stats">
+            <div class="stat">
+              <div class="num">$1,174</div>
+              <div class="lbl">Year-one production per booked new patient</div>
+            </div>
+            <div class="stat">
+              <div class="num">19×</div>
+              <div class="lbl">Cancellation slots Sarah backfills per month</div>
+            </div>
+            <div class="stat">
+              <div class="num">1,400</div>
+              <div class="lbl">Dormant patients Sarah works monthly</div>
+            </div>
+            <div class="stat">
+              <div class="num">48 hr</div>
+              <div class="lbl">From signing to live deployment</div>
+            </div>
+          </div>
+          <div class="btn-row">
+            <a href="/funnel-dental.html" class="btn">Hear Sarah live for your dental practice <span class="free-tag">FREE</span> →</a>
+          </div>
+        </div>
+        <div class="right">
+          <div class="call-card">
+            <div class="head">
+              <div class="live"><span class="d"></span> LIVE CALL</div>
+              <div class="meta">Tue 14:07 · 47 sec</div>
+            </div>
+            <div class="convo">
+              <div class="bubble ai">G'day, Bondi Family Dental, you're speaking with Sarah. How can I help?</div>
+              <div class="bubble caller">Hi, hoping to get a clean. My usual hygienist's Sarah.</div>
+              <div class="bubble ai">No worries. Sarah's got Tuesday 9:40 or Thursday 2:15. Which suits?</div>
+              <div class="bubble caller">Tuesday's perfect.</div>
+              <div class="bubble ai">Booked. I'll shoot you a confirmation SMS now. Anything else?</div>
+            </div>
+            <div class="footer">
+              <span>Booked: <span class="v">$327</span></span>
+              <span>SMS sent</span>
+              <span>Logged in PMS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRADES PANEL -->
+      <div class="panel-content" data-panel="trades">
+        <div class="left">
+          <div class="niche">// SARAH FOR TRADES</div>
+          <h3>Triages the emergency. Books the quote. <em>Locks in the job.</em></h3>
+          <p class="pitch">After-hours, weekends, on the tools, Sarah's still on the phone. She qualifies the lead, books the site visit, and texts you a job brief before the caller hangs up. The job goes to you, not the next bloke on Google.</p>
+          <div class="stats">
+            <div class="stat">
+              <div class="num">$50K</div>
+              <div class="lbl">Average plumber loses per year to missed calls</div>
+            </div>
+            <div class="stat">
+              <div class="num">31%</div>
+              <div class="lbl">Of HVAC calls come in after hours</div>
+            </div>
+            <div class="stat">
+              <div class="num">85%</div>
+              <div class="lbl">Of voicemail callers ring the next bloke instead</div>
+            </div>
+            <div class="stat">
+              <div class="num">$1,200</div>
+              <div class="lbl">Top end of one missed HVAC call's value</div>
+            </div>
+          </div>
+          <div class="btn-row">
+            <a href="/funnel-trades.html" class="btn">Hear Sarah live for your trade business <span class="free-tag">FREE</span> →</a>
+          </div>
+        </div>
+        <div class="right">
+          <div class="call-card">
+            <div class="head">
+              <div class="live"><span class="d"></span> LIVE CALL</div>
+              <div class="meta">Sat 19:42 · 1 min 12 sec</div>
+            </div>
+            <div class="convo">
+              <div class="bubble ai">G'day, Westside Plumbing, Sarah speaking. What's the job?</div>
+              <div class="bubble caller">Hot water system's leaking, water everywhere mate.</div>
+              <div class="bubble ai">No dramas, that's an emergency callout. I've got Mick free in 35 minutes for $290 callout plus parts. Confirm?</div>
+              <div class="bubble caller">Yeah do it. Address is 14 Beach Rd Manly.</div>
+              <div class="bubble ai">Locked in. Mick's on his way, I'll text you his ETA.</div>
+            </div>
+            <div class="footer">
+              <span>Booked: <span class="v">$290+</span></span>
+              <span>Tech dispatched</span>
+              <span>SMS sent</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MEDSPA PANEL -->
+      <div class="panel-content" data-panel="medspa">
+        <div class="left">
+          <div class="niche">// SARAH FOR MEDSPAS</div>
+          <h3>Qualifies the consult. Confirms the deposit. <em>Fills the chair.</em></h3>
+          <p class="pitch">High-AOV bookings, careful triage, deposit collection, and a calendar that never overbooks. Sarah handles the front desk so your practitioners can stay in treatment, not on the phone.</p>
+          <div class="stats">
+            <div class="stat">
+              <div class="num">64%</div>
+              <div class="lbl">Of inbound calls Sarah converts to booked appointments</div>
+            </div>
+            <div class="stat">
+              <div class="num">3 rings</div>
+              <div class="lbl">What today's caller will wait before hanging up</div>
+            </div>
+            <div class="stat">
+              <div class="num">99%</div>
+              <div class="lbl">Positive caller sentiment across AI receptionist deployments</div>
+            </div>
+            <div class="stat">
+              <div class="num">25%</div>
+              <div class="lbl">Average lift in booked appointments after launch</div>
+            </div>
+          </div>
+          <div class="btn-row">
+            <a href="/funnel-medspa.html" class="btn">Hear Sarah live for your medspa <span class="free-tag">FREE</span> →</a>
+          </div>
+        </div>
+        <div class="right">
+          <div class="call-card">
+            <div class="head">
+              <div class="live"><span class="d"></span> LIVE CALL</div>
+              <div class="meta">Wed 11:24 · 2 min 04 sec</div>
+            </div>
+            <div class="convo">
+              <div class="bubble ai">Hi, Skin & Glow Aesthetics, you're speaking with Sarah. What can I help with?</div>
+              <div class="bubble caller">I'm interested in lip filler, never had it before.</div>
+              <div class="bubble ai">Lovely. We start every new client with a 20-minute consult, $80 redeemable on treatment. I've got Friday 3pm or Saturday 11am. Which works?</div>
+              <div class="bubble caller">Saturday 11.</div>
+              <div class="bubble ai">Done. I'll text the consent form and a link to pay the $80 hold now.</div>
+            </div>
+            <div class="footer">
+              <span>Hold: <span class="v">$80</span></span>
+              <span>Consult booked</span>
+              <span>Form sent</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TWO KINDS -->
+  <section class="two-kinds">
+    <div class="col left">
+      <div>
+        <div class="label">// THE OLD WAY</div>
+        <h3>The front desk you can hire.</h3>
+      </div>
+      <ul class="checklist">
+        <li>Misses 62% of inbound calls</li>
+        <li>Salary plus super plus turnover cost</li>
+        <li>Quits when the next mob offer a $5K bonus</li>
+        <li>Six weeks to train. Again. And again.</li>
+        <li>Sick days, lunch breaks, weekends off</li>
+        <li>Won't touch your dormant client list</li>
+      </ul>
+    </div>
+    <div class="col right">
+      <div>
+        <div class="label">// THE NEW WAY</div>
+        <h3>The front desk you can build.</h3>
+      </div>
+      <ul class="checklist">
+        <li>Answers 100% of calls in under 5 seconds</li>
+        <li>Pays for itself in week one</li>
+        <li>Performance fee only on proven bookings</li>
+        <li>Live in 48 hours. Forever.</li>
+        <li>Works 24/7/365. Never sleeps.</li>
+        <li>Calls every dormant client every month</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PROPRIETARY TECH -->
+  <section class="tech-section" id="tech">
+    <div class="head">
+      <div class="eyebrow">// What makes Sarah, Sarah</div>
+      <h2>Not a wrapper. <em>Not a chatbot.</em><br>A custom build, retrained every night.</h2>
+      <p class="lead">Most "AI receptionist" tools are the same generic voice with your business name pasted on top. Sarah is built from scratch for your business, plugged into the software you already use, and gets sharper every single call.</p>
+    </div>
+
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="glyph">⌬</div>
+        <div>
+          <div class="num">// 01 / Custom built</div>
+          <h3>Built for <em>your</em> business. Not a template.</h3>
+        </div>
+        <div class="desc">Sarah is custom built around your trade, your tone, your booking rules, your trigger words, your edge cases. The voice is yours. The logic is yours. Nothing about it is off-the-shelf.</div>
+      </div>
+
+      <div class="tech-card cream">
+        <div class="glyph">⌖</div>
+        <div>
+          <div class="num">// 02 / Plugged in</div>
+          <h3>Lives <em>inside</em> the software you already run.</h3>
+        </div>
+        <div class="desc">Direct connection to your booking system, your CRM, your calendar, your payment provider. Sarah books straight into the slots you actually have. No double-bookings. No copy-paste. No IT lift.</div>
+      </div>
+
+      <div class="tech-card orange">
+        <div class="glyph">↻</div>
+        <div>
+          <div class="num">// 03 / Always learning</div>
+          <h3>Trained on every call. <em>Sharper every week.</em></h3>
+        </div>
+        <div class="desc">Every conversation Sarah has gets fed back into her training overnight. New objections. New questions. New slang. New pricing. She compounds. Month two she's better than month one. Month six she's running circles around your old front desk.</div>
+      </div>
+
+      <div class="tech-card">
+        <div class="glyph">◷</div>
+        <div>
+          <div class="num">// 04 / Always current</div>
+          <h3>Up to date <em>before you are.</em></h3>
+        </div>
+        <div class="desc">Change your prices on Tuesday, Sarah's quoting them by Tuesday afternoon. New service, new staff member, new policy, new public holiday. Push it once, she's across it forever. No retraining. No relearning.</div>
+      </div>
+    </div>
+
+    <div class="no-fees-strip">
+      <div class="left-side">
+        <span class="badge">No hidden fees</span>
+        <span class="text">One flat build fee. One monthly. <em>Performance fee only on bookings we can prove.</em></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- GIANT NUMBER -->
+  <section class="number-section">
+    <div class="pre">// What missed calls quietly cost the average Aussie service business</div>
+    <div class="num">$126K</div>
+    <div class="caption">Lost. Per year. To a phone that nobody picked up. Broadconnect Australia, 2026.</div>
+    <div class="small">Sarah answers in under 5 seconds. The maths writes itself.</div>
+  </section>
+
+  <!-- RESEARCH STATS -->
+  <section class="research" id="research">
+    <div class="head">
+      <div class="eyebrow">// The numbers we're building against</div>
+      <h2>The phone is bleeding. <em>Everyone's pretending it's not.</em></h2>
+      <p>We didn't make any of these up. They come from the research that led us to build Sarah in the first place. If your business answers a phone, every one of these numbers applies to you.</p>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-tile dark">
+        <div class="big">62%</div>
+        <div>
+          <div class="body">Of inbound calls to Aussie businesses go unanswered.</div>
+          <div class="src">Source · C9 / Broadconnect</div>
+        </div>
+      </div>
+
+      <div class="stat-tile orange">
+        <div class="big">$8B</div>
+        <div>
+          <div class="body">Drained from the Aussie economy every year by missed business calls.</div>
+          <div class="src">Source · Broadconnect, 2026</div>
+        </div>
+      </div>
+
+      <div class="stat-tile">
+        <div class="big">67%</div>
+        <div>
+          <div class="body">Of callers hang up and ring a competitor when their first call isn't answered live.</div>
+          <div class="src">Source · Trillet AI, 2026</div>
+        </div>
+      </div>
+
+      <div class="stat-tile">
+        <div class="big">85%</div>
+        <div>
+          <div class="body">Of callers who hit voicemail simply don't ring back. They've moved on.</div>
+          <div class="src">Source · 411 Locals research</div>
+        </div>
+      </div>
+
+      <div class="stat-tile">
+        <div class="big">$100<span style="font-size:36px;">–</span>$1.2K</div>
+        <div>
+          <div class="body">What every single missed call is worth to the business that lost it.</div>
+          <div class="src">Source · Bloomtools / Nextiva</div>
+        </div>
+      </div>
+
+      <div class="stat-tile orange">
+        <div class="big">64%</div>
+        <div>
+          <div class="body">Of calls Sarah converts into booked appointments. Top human reps average 60%.</div>
+          <div class="src">Source · Resonate AI, 2026</div>
+        </div>
+      </div>
+
+      <div class="stat-tile dark">
+        <div class="big">5 sec</div>
+        <div>
+          <div class="body">How fast Sarah answers, every time. Today's Aussie caller hangs up after 3 rings.</div>
+          <div class="src">Source · Resonate AI / Broadconnect</div>
+        </div>
+      </div>
+
+      <div class="stat-tile">
+        <div class="big">300%</div>
+        <div>
+          <div class="body">First-year ROI documented across AI receptionist deployments.</div>
+          <div class="src">Source · ALM Corp, 2026</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW -->
+  <section class="how" id="how">
+    <h2>Three steps. <em>Then it just runs.</em></h2>
+    <div class="steps">
+      <div class="step">
+        <div class="num">01</div>
+        <h4>Pick your Sarah</h4>
+        <p>Three prebuilt builds: Dentists, Trades, Medspas. Or brief us a custom build below if your business sits outside those three.</p>
+      </div>
+      <div class="step">
+        <div class="num">02</div>
+        <h4>We build, you sign off</h4>
+        <p>48-hour build. Trained on your tone, plugged into your booking system, modeled to your rules. You hear her work before she goes live.</p>
+      </div>
+      <div class="step">
+        <div class="num">03</div>
+        <h4>Sarah pays for herself</h4>
+        <p>Goes live and starts answering. Recovered bookings reported every month. Performance fee only on what we can prove. If we miss, you don't pay.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CUSTOM BUILD FORM -->
+  <section class="custom-build" id="custom">
+    <div class="left">
+      <div class="eyebrow">// Custom Build</div>
+      <h2>Your business <em>isn't on the list?</em></h2>
+      <p>Sarah's been built for dentists, trades, and medspas because that's where the maths is loudest. But every business that answers a phone has the same leak. Brief us and we'll tell you straight up if Sarah can fix it for you.</p>
+      <ul>
+        <li>Honest yes-or-no within 24 hours</li>
+        <li>Custom voice, custom booking flow, custom integrations</li>
+        <li>Same 48-hour build. Same performance pricing.</li>
+        <li>If it's not a fit, we'll tell you on the call</li>
+      </ul>
+    </div>
+
+    <div class="form-card">
+      <h3>Brief us a custom Sarah</h3>
+      <p class="sub">Takes about 2 minutes. We respond within 24 hours.</p>
+
+      <div class="form-row">
+        <div class="field">
+          <label>Your name</label>
+          <input type="text" placeholder="Jane Smith">
+        </div>
+        <div class="field">
+          <label>Mobile</label>
+          <input type="text" placeholder="04xx xxx xxx">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Business name</label>
+        <input type="text" placeholder="Acme Pty Ltd">
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label>Industry</label>
+          <input type="text" placeholder="e.g. Vet clinic, gym, law firm">
+        </div>
+        <div class="field">
+          <label>Annual revenue</label>
+          <select>
+            <option>Under $500K</option>
+            <option>$500K to $1M</option>
+            <option>$1M to $2.5M</option>
+            <option>$2.5M to $5M</option>
+            <option>$5M+</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>What should Sarah do for you?</label>
+        <textarea placeholder="e.g. Answer after-hours calls, book consults, qualify leads, take payment, follow up with no-shows..."></textarea>
+      </div>
+
+      <button class="submit-btn">Brief us my custom Sarah →</button>
+      <div class="form-small">No credit card · 24-hour reply · We'll tell you yes or no straight</div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="cta-final">
+    <h2>Pick a side<span class="or">.</span></h2>
+    <div class="right">
+      <p>Three build slots open this month. Pick the Sarah that fits, or brief us a custom one. The first 30 days will pay for the next 12 months. Or keep losing $126K a year. Up to you.</p>
+      <a href="#sarah" class="btn">Pick your Sarah →</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>© Answerra · Built for businesses with a phone that won't stop ringing.</span>
+    <span>
+      <a href="#sarah">Sarah</a>
+      <a href="#tech">Tech</a>
+      <a href="#research">Numbers</a>
+      <a href="#how">How</a>
+      <a href="#custom">Custom Build</a>
+    </span>
+  </footer>
+
+<script>
+  // Sarah tab switcher
+  const tabs = document.querySelectorAll('.sarah-tab');
+  const panels = document.querySelectorAll('.panel-content');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelector(`[data-panel="${target}"]`).classList.add('active');
+    });
+  });
+</script>
+<script>document.querySelectorAll(".urg-month-lc").forEach(function(e){e.textContent=new Date().toLocaleString("en-AU",{month:"long"})});document.querySelectorAll(".urg-month").forEach(function(e){e.textContent=new Date().toLocaleString("en-AU",{month:"long"}).toUpperCase()});</script></body>
+</html>
