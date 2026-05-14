@@ -84,7 +84,7 @@
 
   /* Tablet (600-899) — stacked, slightly bigger */
   @media (min-width: 600px) and (max-width: 899px) {
-    body{max-width:640px}
+    body{max-width:100%;width:100%}
     .top{padding:28px 28px 16px}
     h1{font-size:38px}
     .hsub{font-size:18px}
@@ -223,6 +223,21 @@
     .wc-time,.wc-duration{font-size:12px;min-width:40px}
   }
 
+
+  /* Mobile tap-to-pause overlay (blocks iframe clicks → no double-click fullscreen) */
+  .wistia-tap{position:absolute;left:0;right:0;top:0;bottom:36px;z-index:7;cursor:pointer;background:transparent}
+  @media (min-width:900px){.wistia-tap{bottom:40px}}
+  /* Speed button */
+  .wc-speed{
+    width:auto !important;height:24px !important;min-width:32px;padding:0 6px;
+    font-family:Inter,system-ui,-apple-system,Arial,sans-serif;font-size:11px !important;font-weight:700;
+    background:transparent;border:1px solid rgba(255,255,255,.18);border-radius:99px;
+    color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;transition:background .15s ease, transform .15s ease;
+  }
+  .wc-speed:hover{background:rgba(255,255,255,.12);transform:scale(1.05)}
+  .wc-speed:active{transform:scale(.95)}
+  @media (min-width:900px){.wc-speed{height:26px !important;min-width:36px;font-size:12px !important}}
 </style>
 </head>
 <body>
@@ -233,7 +248,7 @@
       <h1>She's Messaging Three Medspas <span class="red">At 10:47PM Sunday Night</span></h1>
       <p class="hsub">The First Clinic To Reply Books The Consult. The Other Two See It Tomorrow.</p>
       <p class="sub">60-70% of medspa enquiries arrive between 7pm and 11pm or on weekends. While the clinic is closed, the nurses are home, and the owner is putting kids to bed. Your competition is responding in 11 seconds.</p>
-      <div class="cta">↓ WATCH THE 90-SECOND VIDEO ↓</div>
+      <div class="cta">↓ WATCH THE 3-MINUTE VIDEO ↓</div>
     </div>
     <div class="arrow-r">→</div>
     <div class="vsl-wrap">
@@ -244,11 +259,12 @@
             data-guid="14b306fd-d297-477a-b821-6bc21617ed76"
             src="https://iframe.mediadelivery.net/embed/660166/14b306fd-d297-477a-b821-6bc21617ed76?autoplay=true&muted=true&preload=true&responsive=true&loop=true&controls=false"
             loading="eager"
-            allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
+            playsinline webkit-playsinline allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
             allowfullscreen="true"></iframe>
+          <div class="wistia-tap" aria-hidden="true"></div>
           <div class="wistia-ctrlmask"></div>
           <div class="wistia-overlay">
-            <div class="wistia-brand"><span class="dot"></span>ANSWERRA · 90-SEC DEMO</div>
+            <div class="wistia-brand"><span class="dot"></span>ANSWERRA · 3-MIN DEMO</div>
             <button class="wistia-play" aria-label="Play with sound">
               <span class="wistia-ring"></span>
               <svg class="wistia-tri" viewBox="0 0 32 32" width="34" height="34" aria-hidden="true">
@@ -328,6 +344,45 @@
 
       var player = new playerjs.Player(iframe);
       player.iframe = iframe;
+      // Tap-to-pause on the video frame (works on mobile + desktop)
+      var tapZone = wrap.querySelector('.wistia-tap');
+      if (tapZone) {
+        tapZone.addEventListener('click', function(e){
+          e.stopPropagation();
+          if (overlay.classList.contains('gone')) {
+            if (isPlaying) { try { player.pause(); } catch(_){} isPlaying = false; bar.setAttribute('data-state','paused'); }
+            else { try { player.play(); } catch(_){} isPlaying = true; bar.setAttribute('data-state','playing'); }
+            showBar();
+          }
+        });
+      }
+
+      // Speed control — try multiple postMessage method names since Bunny's
+      // player.js may or may not expose setPlaybackRate via the standard API.
+      var SPEEDS = [1, 1.25, 1.5, 1.75, 2];
+      var speedIdx = 0;
+      var bSpeed = wrap.querySelector('.wc-speed');
+      if (bSpeed) {
+        bSpeed.addEventListener('click', function(e){
+          e.stopPropagation();
+          speedIdx = (speedIdx + 1) % SPEEDS.length;
+          var rate = SPEEDS[speedIdx];
+          bSpeed.textContent = (rate === 1 ? '1x' : rate + 'x');
+          // Try a half-dozen method names — whichever Bunny supports will work.
+          var methods = ['setPlaybackRate','playbackRate','setSpeed','speed','setRate','rate'];
+          methods.forEach(function(m){
+            try {
+              if (typeof player[m] === 'function') player[m](rate);
+            } catch(_){}
+            try {
+              iframe.contentWindow.postMessage(JSON.stringify({
+                context:'player.js', method: m, value: rate
+              }), '*');
+            } catch(_){}
+          });
+        });
+      }
+
 
       // 4-path blur fade (whichever fires first wins)
       var blurFade=false;
