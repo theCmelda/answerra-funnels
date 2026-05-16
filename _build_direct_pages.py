@@ -24,7 +24,7 @@ FUNNELS = {
         "code": "DEN-01",
         "niche": "Dental",
         "audience": "AU Dental Owners",
-        "audio_guid": "9f39ef51-df5b-4dd0-8a44-38b41ea8e3fd",
+        "audio_guid": "d983be50-d8c9-417d-9b91-428b432a298a",
         "title": "Recover $244K-$305K A Year Without Hiring Another Receptionist",
         "urgency": "BUILDING 10 AU DENTAL RECEPTIONISTS THIS {MONTH} · 8 SLOTS LEFT",
         "pretitle": "For AU Dental Practices Missing 4+ Calls A Week",
@@ -32,7 +32,7 @@ FUNNELS = {
         "h1_red": "$244K-$305K A Year",
         "h1_post": "Without Hiring Another Receptionist",
         "subhead": "4 missed calls a week. $1,348 in year-one production lost per call. 24/7 coverage, built in 48 hours, $0 until it books.",
-        "audio_label": "Hear The Full Live Demo + How It Works",
+        "audio_label": "Watch Daniel Call His AI Receptionist Live",
         "audio_caption": "Sarah at Bright Smile Dental takes a real call. Then Daniel walks you through what just happened.",
         "calendar_header": "Book Your 15-Minute Build Call",
         "calendar_sub": "Daniel takes the call himself. Bring your worst missed-call type. Leave with a working AI receptionist by Friday.",
@@ -51,7 +51,7 @@ FUNNELS = {
         "code": "DEN-02",
         "niche": "Dental",
         "audience": "AU Dentists On Their 3rd Receptionist This Year",
-        "audio_guid": "cd65316a-b2ca-4bff-9af3-4480b1a25c73",
+        "audio_guid": "b742b098-cf3a-44b3-8909-e348a8873401",
         "title": "Replace The Receptionist Role Once, Save $88K A Year",
         "urgency": "BUILDING 10 AU DENTAL RECEPTIONISTS THIS {MONTH} · 8 SLOTS LEFT",
         "pretitle": "For AU Dentists On Their 3rd Receptionist This Year",
@@ -59,7 +59,7 @@ FUNNELS = {
         "h1_red": "$88,000 A Year",
         "h1_post": "Without Hiring Or Training A Single Receptionist",
         "subhead": "$22K wasted per hire in ads, training, mistakes and lost bookings. Build it once, in 48 hours, on your real number. Free.",
-        "audio_label": "Hear The Full Live Demo + How It Works",
+        "audio_label": "Watch Daniel Call His AI Receptionist Live",
         "audio_caption": "Sarah takes a real new-patient call. Daniel walks you through what makes it work.",
         "calendar_header": "Book Your 15-Minute Build Call",
         "calendar_sub": "Daniel takes the call. Bring your last bad receptionist call. Leave with a working AI by Friday.",
@@ -78,7 +78,7 @@ FUNNELS = {
         "code": "DEN-03",
         "niche": "Dental",
         "audience": "AU Dental Practices Over 5 Years Old",
-        "audio_guid": "efae6361-4d33-47cf-a543-a5092e733497",
+        "audio_guid": "fb5613e0-e9f0-478d-95b3-057b37485606",
         "title": "Unlock The $1.4M In Lapsed Patients Sitting In Your Praktika",
         "urgency": "REACTIVATING 10 AU DENTAL LISTS THIS {MONTH} · 8 SLOTS LEFT",
         "pretitle": "For AU Dental Practices Over 5 Years Old",
@@ -86,7 +86,7 @@ FUNNELS = {
         "h1_red": "$1.4M In Lapsed Patients",
         "h1_post": "Without Their Receptionist Making A Single Call",
         "subhead": "1,400 dormant patients. $9,000 lifetime value each. 35 hours of calls a month, done by AI in your tone. Free first batch of 50.",
-        "audio_label": "Hear A Real Lapsed Patient Get Rebooked",
+        "audio_label": "Watch A Lapsed Patient Get Rebooked, Live",
         "audio_caption": "Outbound reactivation call exactly as the patient heard it. Daniel breaks down how it books her in under 90 seconds.",
         "calendar_header": "Book Your 15-Minute Reactivation Build",
         "calendar_sub": "Daniel mines your Praktika list live on the call. Bring the export. Leave with 50 patients getting called by Friday.",
@@ -105,7 +105,7 @@ FUNNELS = {
         "code": "DEN-04",
         "niche": "Dental",
         "audience": "AU Dentists Still Taking Calls After 6PM",
-        "audio_guid": "9f39ef51-df5b-4dd0-8a44-38b41ea8e3fd",  # reuse DEN-01 (same dental inbound agent)
+        "audio_guid": "d983be50-d8c9-417d-9b91-428b432a298a",  # reuse DEN-01 (same dental inbound agent)
         "title": "24/7 Phone Coverage Without Taking Calls From Your Car Park",
         "urgency": "BUILDING 10 AU DENTAL RECEPTIONISTS THIS {MONTH} · 8 SLOTS LEFT",
         "pretitle": "For AU Dentists Still Taking Calls After 6PM",
@@ -113,7 +113,7 @@ FUNNELS = {
         "h1_red": "6PM-9AM Booking Call",
         "h1_post": "Without Touching Their Phone After Hours",
         "subhead": "Reception closes at six. The phone keeps ringing till nine. Every after-hours call costs you $1,348 or your evening. We answer both.",
-        "audio_label": "Hear The Full Live Demo + How It Works",
+        "audio_label": "Watch Daniel Call His AI Receptionist Live",
         "audio_caption": "Sarah takes a real call. Daniel walks you through how it covers every 6pm-9am ring.",
         "calendar_header": "Book Your 15-Minute Build Call",
         "calendar_sub": "Daniel takes the call. Bring your worst after-hours call type. Leave with 24/7 coverage by Friday.",
@@ -132,7 +132,7 @@ FUNNELS = {
         "code": "MED-01",
         "niche": "Medspa",
         "audience": "AU Medspa Owners With 1,000+ Past Clients In Mindbody",
-        "audio_guid": "1ce58350-f8a4-473f-ab34-e2191e937d60",
+        "audio_guid": "b5bcf9d5-a5e8-4e6c-957a-ece830e58e6f",
         "title": "Unlock $675K In Lapsed Clients Sitting In Your Mindbody",
         "urgency": "REACTIVATING 10 AU MEDSPA LISTS THIS {MONTH} · 8 SLOTS LEFT",
         "pretitle": "For AU Medspa Owners With 1,000+ Past Clients",
@@ -140,7 +140,7 @@ FUNNELS = {
         "h1_red": "$675K In Lapsed Clients",
         "h1_post": "Without Their Nurse Making A Single Call",
         "subhead": "1,500 dormant clients. $400-$900 per reactivation. AHPRA-compliant calls in your nurse's tone. Free first batch of 50.",
-        "audio_label": "Hear A Lapsed Medspa Client Get Rebooked",
+        "audio_label": "Watch A Lapsed Client Get Rebooked, Live",
         "audio_caption": "Outbound reactivation call, AHPRA-compliant. Daniel breaks down how it rebooks 30+ clients per 500 called.",
         "calendar_header": "Book Your 15-Minute Reactivation Build",
         "calendar_sub": "Daniel mines your Mindbody live on the call. Bring the export. Leave with 50 clients getting called by Friday.",
@@ -159,7 +159,7 @@ FUNNELS = {
         "code": "MED-02",
         "niche": "Medspa",
         "audience": "AU Clinic Owners Spending $2K+/Month On Meta Lead Ads",
-        "audio_guid": "da46f471-ae3a-41b2-88eb-0f0c87fac221",
+        "audio_guid": "643a901e-40e2-4530-93d4-140db84cc26c",
         "title": "Convert 3x More Meta Leads Without Touching Your Phone",
         "urgency": "BUILDING 10 AU MEDSPA RECEPTIONISTS THIS {MONTH} · 8 SLOTS LEFT",
         "pretitle": "For Clinic Owners Spending $2,000+ A Month On Meta Lead Ads",
@@ -167,7 +167,7 @@ FUNNELS = {
         "h1_red": "3x More Meta Leads",
         "h1_post": "Without Picking Up The Phone Themselves",
         "subhead": "Leads called inside 5 minutes book 21x more consults. Our AI answers in 30 seconds, AHPRA-compliant, in your clinic's voice. Built in 48 hours. Free.",
-        "audio_label": "Hear A Meta Lead Booked In 30 Seconds",
+        "audio_label": "Watch A Meta Lead Booked In 30 Seconds",
         "audio_caption": "Inbound call from a real Meta lead form submission. Daniel breaks down the 21x conversion math.",
         "calendar_header": "Book Your 15-Minute Speed-To-Lead Demo",
         "calendar_sub": "Daniel times your current callback live. Bring your last Meta lead. Leave with 30-second response by Friday.",
@@ -186,7 +186,7 @@ FUNNELS = {
         "code": "MED-03",
         "niche": "Medspa",
         "audience": "AU Medspa Owners Losing Leads Every Saturday And Sunday Night",
-        "audio_guid": "49a5eba1-6e4b-46e0-8f0a-cd31f962eacf",
+        "audio_guid": "b096c8a7-e0f3-42cd-bc80-4fe9fda86a60",
         "title": "Capture Every 10:47PM Sunday DM Without Touching Instagram",
         "urgency": "BUILDING 10 AU MEDSPA RECEPTIONISTS THIS {MONTH} · 8 SLOTS LEFT",
         "pretitle": "For AU Clinic Owners Losing Leads Every Saturday And Sunday Night",
@@ -194,7 +194,7 @@ FUNNELS = {
         "h1_red": "After-Hours DM &amp; Phone Lead",
         "h1_post": "Without Working A Single Sunday Night",
         "subhead": "60-70% of medspa enquiries arrive after 7PM. Our AI replies in 11 seconds, AHPRA-compliant. 4-5 extra weekend bookings a week.",
-        "audio_label": "Hear A Sunday Night Booking Call",
+        "audio_label": "Watch A Sunday-Night DM Booked, Live",
         "audio_caption": "Real after-hours inbound DM-to-booking. Daniel breaks down the AHPRA cooling-off receipt.",
         "calendar_header": "Book Your 15-Minute After-Hours Demo",
         "calendar_sub": "Daniel pulls your last 30 days of DMs and counts the misses. Bring your Instagram. Leave with 24/7 coverage by Friday.",
@@ -213,7 +213,7 @@ FUNNELS = {
         "code": "PLU-01",
         "niche": "Plumbing",
         "audience": "AU Plumbers Doing $400K-$1.2M And Stuck There",
-        "audio_guid": "96d46ce7-4ddd-48fb-886a-42222ed3fcad",
+        "audio_guid": "f2d9461c-5e88-4d3b-88bf-c0265ed7449f",
         "title": "Book Every Missed Call Without Ever Leaving The Tools",
         "urgency": "BUILDING 10 AU PLUMBING RECEPTIONISTS THIS {MONTH} · 8 SLOTS LEFT",
         "pretitle": "For AU Plumbers Doing $400K-$1.2M And Stuck There",
@@ -221,7 +221,7 @@ FUNNELS = {
         "h1_red": "$1,500-$1,800 More A Week",
         "h1_post": "While Still On The Tools",
         "subhead": "Average plumbing job: $396 with parts. Average missed call: $0. Our AI answers in 2 rings, dispatches the job, texts your ute rego.",
-        "audio_label": "Hear A Burst-Pipe Call Booked In 2 Rings",
+        "audio_label": "Watch A Burst-Pipe Call Booked In 2 Rings",
         "audio_caption": "Sarah at Reliable Plumbing dispatches a real emergency. Daniel breaks down the Simpro auto-booking.",
         "calendar_header": "Book Your 15-Minute Build Call",
         "calendar_sub": "Daniel builds her live on the call. Bring 3 missed call types. Leave with your phone answered by Friday. Headphones in the ute work fine.",
@@ -240,7 +240,7 @@ FUNNELS = {
         "code": "PLU-02",
         "niche": "Plumbing",
         "audience": "AU Plumbers On Hipages, Oneflare Or Service.com.au",
-        "audio_guid": "06be51b5-56fe-467d-9f07-30bd9f1c05ca",
+        "audio_guid": "4fd05080-1d50-4413-a9c3-8bad2caa4993",
         "title": "Convert 3x More Hipages Leads From The Same Spend",
         "urgency": "BUILDING 10 AU PLUMBING RECEPTIONISTS THIS {MONTH} · 8 SLOTS LEFT",
         "pretitle": "For AU Plumbers On Hipages, Oneflare Or Service.com.au",
@@ -248,7 +248,7 @@ FUNNELS = {
         "h1_red": "3x More Hipages Leads",
         "h1_post": "From The Same Spend, Without Picking Up The Phone",
         "subhead": "$200/lead. 4-hour callback kills you. Our AI fires off the Hipages notification and calls the lead back in 22 seconds. 3x more booked jobs.",
-        "audio_label": "Hear A Hipages Lead Booked In 22 Seconds",
+        "audio_label": "Watch A Hipages Lead Booked In 22 Seconds",
         "audio_caption": "Real inbound lead callback. Daniel breaks down how 22-second response triples booked jobs.",
         "calendar_header": "Book Your 15-Minute Build Call",
         "calendar_sub": "Daniel pulls last month's Hipages report on the call. Bring it. Leave with 22-second callback by Friday. Headphones in the ute work fine.",
@@ -303,17 +303,16 @@ TEMPLATE = """<!DOCTYPE html>
   .cta-scroll{{display:inline-block;background:#0066CC;color:#fff;text-align:center;padding:14px 28px;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;border:0;cursor:pointer;text-decoration:none;font-family:'Inter',sans-serif}}
   .cta-scroll:hover{{background:#0052a3}}
 
-  /* ===== AUDIO SAMPLE CARD ===== */
-  .audio-block{{padding:22px 22px 28px;background:#fafafa;border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8}}
-  .audio-label{{font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;text-align:center;color:#0a0a0a;margin-bottom:6px;line-height:1.2}}
-  .audio-caption{{font-size:12px;color:#666;text-align:center;margin-bottom:14px;line-height:1.4}}
-  .audio-card{{max-width:420px;margin:0 auto;background:#000;border:3px solid #000;position:relative;overflow:hidden}}
-  .audio-card iframe{{width:100%;height:200px;border:0;display:block}}
+  /* ===== VIDEO DEMO CARD ===== */
+  .video-block{{padding:22px 22px 28px;background:#fafafa;border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8}}
+  .video-label{{font-family:'Oswald',sans-serif;font-size:18px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;text-align:center;color:#0a0a0a;margin-bottom:6px;line-height:1.18}}
+  .video-caption{{font-size:13px;color:#444;text-align:center;margin-bottom:14px;line-height:1.45;font-weight:500;max-width:520px;margin-left:auto;margin-right:auto}}
+  .video-card{{max-width:380px;margin:0 auto;background:#000;border:3px solid #000;position:relative;aspect-ratio:4/5;overflow:hidden}}
+  .video-card iframe{{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}}
   @media (min-width:900px){{
-    .audio-block{{padding:32px 32px 36px}}
-    .audio-label{{font-size:20px}}
-    .audio-card{{max-width:560px}}
-    .audio-card iframe{{height:240px}}
+    .video-block{{padding:36px 32px 40px}}
+    .video-label{{font-size:24px}}
+    .video-card{{max-width:440px;border-width:4px}}
   }}
 
   /* ===== PRESS COLLAGE ===== */
@@ -407,13 +406,13 @@ TEMPLATE = """<!DOCTYPE html>
     <a href="#book" class="cta-scroll">Book Your 15-Min Call &rarr;</a>
   </section>
 
-  <!-- AUDIO SAMPLE -->
-  <section class="audio-block">
-    <div class="audio-label">{AUDIO_LABEL}</div>
-    <p class="audio-caption">{AUDIO_CAPTION}</p>
-    <div class="audio-card">
+  <!-- VIDEO DEMO -->
+  <section class="video-block">
+    <div class="video-label">{AUDIO_LABEL}</div>
+    <p class="video-caption">{AUDIO_CAPTION}</p>
+    <div class="video-card">
       <iframe src="https://iframe.mediadelivery.net/embed/{LIBRARY}/{AUDIO_GUID}?autoplay=false&preload=true&responsive=true"
-              title="Answerra Audio Sample - {CODE}"
+              title="Answerra Demo Video - {CODE}"
               loading="lazy"
               allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
               allowfullscreen="true"></iframe>
