@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Recover $244K-$305K A Year Without Hiring Another Receptionist</title>
-<meta name="description" content="4 missed calls a week. $1,348 in year-one production lost per call. 24/7 coverage, built in 48 hours, $0 until it books.">
+<meta name="description" content="4 missed calls a week. $1,348 in year-one production lost per call. 24/7 phone coverage built in 48 hours, in your own tone, on your real number.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Open+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -54,9 +54,10 @@
   @media (min-width:900px){.section-h{font-size:28px}}
 
   .press-bar{background:#fafafa}
-  .logo-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px 22px}
-  .logo-pub{font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:.04em;color:#222;opacity:.78;padding:4px 0}
-  @media (min-width:900px){.logo-pub{font-size:16px}}
+  .logo-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:18px 28px}
+  .logo-row img{height:24px;width:auto;max-width:130px;object-fit:contain;opacity:.78;filter:grayscale(100%) contrast(1.05)}
+  @media (min-width:900px){.logo-row img{height:30px}}
+  .logo-pub-fallback{font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:.04em;color:#222;opacity:.78;padding:4px 0}
 
   .hero-stat{background:#0a0a0a;color:#fff;text-align:center;padding:32px 22px}
   .stat-big{font-family:'Oswald',Impact,sans-serif;font-size:80px;line-height:.95;font-weight:700;color:#FFE100;letter-spacing:-.01em;margin-bottom:8px}
@@ -65,14 +66,11 @@
   @media (min-width:900px){.stat-label{font-size:20px}}
   .stat-sub{font-size:13px;color:#bbb;line-height:1.5;max-width:380px;margin:0 auto}
 
-  .cards{display:flex;flex-direction:column;gap:12px}
-  @media (min-width:900px){.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}}
-  .card{display:block;background:#fff;border:1px solid #e0e0e0;padding:16px 16px 14px;text-decoration:none;color:#0a0a0a;transition:all .15s}
-  .card:hover{border-color:#D90429;box-shadow:0 4px 14px rgba(0,0,0,.06)}
-  .card-pub{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#D90429;margin-bottom:6px}
-  .card-headline{font-family:'Oswald',sans-serif;font-size:17px;font-weight:600;line-height:1.18;color:#0a0a0a;margin-bottom:8px}
-  .card-blurb{font-size:12.5px;line-height:1.5;color:#444;margin-bottom:8px}
-  .card-link{font-family:'Inter',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#0066CC}
+  .news-montage{padding:24px 20px;background:#fafafa;border-bottom:1px solid #e8e8e8}
+  .news-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:760px;margin:0 auto}
+  @media (min-width:900px){.news-grid{grid-template-columns:repeat(4,1fr);gap:14px}}
+  .news-tile{background:#fff;border:1px solid #e0e0e0;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;color:#999;font-size:11px;font-family:'Inter',sans-serif;letter-spacing:.04em;text-transform:uppercase;font-weight:600}
+  .news-tile img{width:100%;height:100%;object-fit:cover;display:block}
 
   .stats-bg{background:#fafafa}
   .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e8e8e8;border:1px solid #e8e8e8}
@@ -85,7 +83,8 @@
 
   .tech-proof{background:#0a0a0a;color:#fff}
   .tech-proof .bar-label{color:#FFE100}
-  .tech-proof .logo-pub{color:#fff;opacity:1;font-size:15px;font-weight:700;letter-spacing:.05em}
+  .tech-proof .logo-row img{filter:invert(1) grayscale(100%);opacity:.92}
+  .tech-proof .logo-pub-fallback{color:#fff;opacity:1}
 
   .software-compat{background:#fafafa}
   .compat-niche{background:#fff;border:1px solid #e8e8e8;padding:14px 16px;text-align:center}
@@ -100,15 +99,15 @@
   .iclosed-widget{min-height:680px;width:100%;border:1px solid #e8e8e8}
   @media (min-width:900px){.iclosed-widget{min-height:760px}}
 
-  /* ===== OUTCOMES UNDER CALENDAR ===== */
-  .outcomes{padding:28px 22px;background:#fafafa;border-top:1px solid #e8e8e8}
-  .outcomes-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:#e8e8e8;border:1px solid #e8e8e8;margin-bottom:18px}
-  .outcome-tile{background:#fff;padding:18px 10px;text-align:center}
-  .outcome-num{font-family:'Oswald',Impact,sans-serif;font-size:32px;line-height:1;font-weight:700;color:#0066CC;margin-bottom:6px}
-  @media (min-width:900px){.outcome-num{font-size:42px}}
-  .outcome-label{font-size:11.5px;font-weight:600;color:#0a0a0a;line-height:1.35}
-  .risk{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#444;text-align:center;line-height:1.55;padding:14px 12px;background:#fff;border:1px solid #e8e8e8;max-width:600px;margin:0 auto}
-  .risk b{color:#D90429;font-weight:700}
+  /* ===== BENEFITS (vertical checklist, kaytoms-style) ===== */
+  .benefits{padding:28px 22px;background:#fafafa;border-top:1px solid #e8e8e8}
+  .benefits-h{font-family:'Oswald',sans-serif;font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:.01em;text-align:center;margin-bottom:16px;line-height:1.1;color:#0a0a0a}
+  @media (min-width:900px){.benefits-h{font-size:26px}}
+  .benefits-list{max-width:560px;margin:0 auto;list-style:none;padding:0}
+  .benefits-list li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;background:#fff;border:1px solid #e8e8e8;margin-bottom:8px;font-size:14.5px;line-height:1.45;font-weight:500;color:#0a0a0a}
+  @media (min-width:900px){.benefits-list li{font-size:16px;padding:14px 18px}}
+  .benefits-list .tick{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#22a06b;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;margin-top:1px}
+  .benefits-list .tick::before{content:"\2713"}
 
   /* ===== COHORT ===== */
   .cohort{background:#FFE100;color:#0a0a0a;text-align:center;padding:32px 22px}
@@ -134,14 +133,14 @@
   <section class="hero">
     <div class="pretitle">For AU Dental Practices Missing 4+ Calls A Week</div>
     <h1>How AU Dental Practices Are Recovering <span class="red">$244K-$305K A Year</span> Without Hiring Another Receptionist</h1>
-    <p class="subhead">4 missed calls a week. $1,348 in year-one production lost per call. 24/7 coverage, built in 48 hours, $0 until it books.</p>
+    <p class="subhead">4 missed calls a week. $1,348 in year-one production lost per call. 24/7 phone coverage built in 48 hours, in your own tone, on your real number.</p>
     <a href="#book" class="cta-scroll">Book Your 15-Min Call &rarr;</a>
   </section>
 
   <!-- VIDEO DEMO -->
   <section class="video-block">
     <div class="video-label">Watch Daniel Call His AI Receptionist Live</div>
-    <p class="video-caption">Sarah at Bright Smile Dental takes a real call. Then Daniel walks you through what just happened.</p>
+    <p class="video-caption">Sarah at Bright Smile Dental takes a real new-patient call. This is what 24/7 phone coverage sounds like in your own tone.</p>
     <div class="video-card">
       <iframe src="https://iframe.mediadelivery.net/embed/660166/d983be50-d8c9-417d-9b91-428b432a298a?autoplay=false&preload=true&responsive=true"
               title="Answerra Demo Video - DEN-01"
@@ -155,12 +154,23 @@
   <section class="press-section press-bar">
     <div class="bar-label">The AI Receptionist Shift, Covered By:</div>
     <div class="logo-row">
-      <span class="logo-pub">OpenAI</span>
-      <span class="logo-pub">McKinsey</span>
-      <span class="logo-pub">CBS News</span>
-      <span class="logo-pub">Fast Company</span>
-      <span class="logo-pub">Salesforce</span>
-      <span class="logo-pub">Bloomberg</span>
+      <img src="/logos/openai.svg" alt="OpenAI" onerror="this.outerHTML='<span class=&quot;logo-pub-fallback&quot;>OpenAI</span>'">
+      <img src="/logos/mckinsey.svg" alt="McKinsey" onerror="this.outerHTML='<span class=&quot;logo-pub-fallback&quot;>McKinsey</span>'">
+      <img src="/logos/cbs-news.svg" alt="CBS News" onerror="this.outerHTML='<span class=&quot;logo-pub-fallback&quot;>CBS News</span>'">
+      <img src="/logos/fast-company.svg" alt="Fast Company" onerror="this.outerHTML='<span class=&quot;logo-pub-fallback&quot;>Fast Company</span>'">
+      <img src="/logos/salesforce.svg" alt="Salesforce" onerror="this.outerHTML='<span class=&quot;logo-pub-fallback&quot;>Salesforce</span>'">
+      <img src="/logos/bloomberg.svg" alt="Bloomberg" onerror="this.outerHTML='<span class=&quot;logo-pub-fallback&quot;>Bloomberg</span>'">
+    </div>
+  </section>
+
+  <!-- NEWS ARTICLE MONTAGE (non-clickable visual proof) -->
+  <section class="news-montage">
+    <div class="bar-label">Recent Coverage Of The AI Receptionist Shift:</div>
+    <div class="news-grid">
+      <div class="news-tile"><img src="/news/article-01.jpg" alt="" onerror="this.outerHTML='<span>Article 01</span>'"></div>
+      <div class="news-tile"><img src="/news/article-02.jpg" alt="" onerror="this.outerHTML='<span>Article 02</span>'"></div>
+      <div class="news-tile"><img src="/news/article-03.jpg" alt="" onerror="this.outerHTML='<span>Article 03</span>'"></div>
+      <div class="news-tile"><img src="/news/article-04.jpg" alt="" onerror="this.outerHTML='<span>Article 04</span>'"></div>
     </div>
   </section>
 
@@ -169,37 +179,6 @@
     <div class="stat-big">700</div>
     <div class="stat-label">Customer Service Agents<br>Replaced By AI At Klarna</div>
     <div class="stat-sub">2.3 million conversations in month one. Resolution time cut from 11 minutes to under 2. $40M/year saved. Same voice AI infrastructure powers Answerra. (OpenAI Case Study, Klarna, 2024)</div>
-  </section>
-
-  <!-- ARTICLE CARDS -->
-  <section class="press-section">
-    <h2 class="section-h">What The Press Is Reporting</h2>
-    <div class="cards">
-      <a class="card" href="https://openai.com/index/klarna/" target="_blank" rel="noopener">
-        <div class="card-pub">OpenAI Case Study &middot; 2024</div>
-        <div class="card-headline">"Klarna's AI assistant does the work of 700 full-time agents."</div>
-        <div class="card-blurb">2.3M conversations in month one. Two-thirds of all customer service chats. Resolution time cut from 11 min to under 2.</div>
-        <div class="card-link">Read source &rarr;</div>
-      </a>
-      <a class="card" href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener">
-        <div class="card-pub">McKinsey &amp; Company &middot; 2025</div>
-        <div class="card-headline">"80% of businesses will integrate voice AI into customer service by end of 2026."</div>
-        <div class="card-blurb">78% of organisations already using AI in at least one business function. Voice AI growth concentrated in healthcare and SMB services.</div>
-        <div class="card-link">Read source &rarr;</div>
-      </a>
-      <a class="card" href="https://www.cbsnews.com/news/klarna-ceo-ai-chatbot-replacing-workers-sebastian-siemiatkowski/" target="_blank" rel="noopener">
-        <div class="card-pub">CBS News &middot; 2024</div>
-        <div class="card-headline">"Klarna CEO: AI can do the job of 700 workers."</div>
-        <div class="card-blurb">Sebastian Siemiatkowski on how Klarna's AI assistant handled two-thirds of all customer service chats in its first month.</div>
-        <div class="card-link">Read source &rarr;</div>
-      </a>
-      <a class="card" href="https://smallbizai.au/chime-labs-sydney-ai-receptionist-tradies-australia/" target="_blank" rel="noopener">
-        <div class="card-pub">SmallBizAI &middot; 2026</div>
-        <div class="card-headline">"Sydney AI receptionist startup raises $900K to help Aussie tradies."</div>
-        <div class="card-blurb">Australian tradies miss an estimated 270,000 calls a day. The AI receptionist category is moving fast in AU.</div>
-        <div class="card-link">Read source &rarr;</div>
-      </a>
-    </div>
   </section>
 
   <!-- STATS GRID -->
@@ -229,20 +208,19 @@
     </div>
   </section>
 
-  <!-- TECH PROOF -->
+  <!-- TECH PROOF (OpenAI, ElevenLabs, Twilio only - no Retell) -->
   <section class="press-section tech-proof">
     <div class="bar-label">Built On The Same AI Infrastructure As Klarna:</div>
     <div class="logo-row">
-      <span class="logo-pub">OpenAI</span>
-      <span class="logo-pub">Retell AI</span>
-      <span class="logo-pub">ElevenLabs</span>
-      <span class="logo-pub">Twilio</span>
+      <img src="/logos/openai.svg" alt="OpenAI" onerror="this.outerHTML='<span class=&quot;logo-pub-fallback&quot;>OpenAI</span>'">
+      <img src="/logos/elevenlabs.svg" alt="ElevenLabs" onerror="this.outerHTML='<span class=&quot;logo-pub-fallback&quot;>ElevenLabs</span>'">
+      <img src="/logos/twilio.svg" alt="Twilio" onerror="this.outerHTML='<span class=&quot;logo-pub-fallback&quot;>Twilio</span>'">
     </div>
   </section>
 
   <!-- SOFTWARE COMPAT (niche-specific) -->
   <section class="press-section software-compat">
-    <div class="bar-label">Plugs Into: The Software You Already Use:</div>
+    <div class="bar-label">Plugs Into The Software You Already Use:</div>
     <div class="compat-niche">
       <div class="niche-label">Dental</div>
       <div class="compat-row">Praktika · Dental4Windows · Centaur · Core Practice</div>
@@ -252,46 +230,43 @@
   <!-- CALENDAR -->
   <section id="book" class="calendar">
     <h2 class="calendar-h">Book Your 15-Minute Build Call</h2>
-    <p class="calendar-sub">Daniel takes the call himself. Bring your worst missed-call type. Leave with a working AI receptionist by Friday.</p>
+    <p class="calendar-sub">On the call you'll hear what your own AI receptionist sounds like, built to your practice in your tone, on your real number. Test it on real booking calls before you commit to anything.</p>
     <div class="iclosed-widget" data-url="https://app.iclosed.io/e/answrra/free-ai-receptionist-demo-build"></div>
     <script async src="https://app.iclosed.io/assets/widget.js"></script>
   </section>
 
-  <!-- OUTCOMES UNDER CALENDAR -->
-  <section class="outcomes">
-    <div class="outcomes-grid">
-      <div class="outcome-tile">
-        <div class="outcome-num">+4-7</div>
-        <div class="outcome-label">New patient bookings recovered each week</div>
-      </div>
-      <div class="outcome-tile">
-        <div class="outcome-num">48hr</div>
-        <div class="outcome-label">Built and live on your real number</div>
-      </div>
-      <div class="outcome-tile">
-        <div class="outcome-num">$0</div>
-        <div class="outcome-label">Until the first booking lands</div>
-      </div>
-    </div>
-    <p class="risk"><b>Our promise:</b> If it doesn't sound like your front desk on day one, walk. We eat the build cost.</p>
+  <!-- BENEFITS (vertical checkmark list) -->
+  <section class="benefits">
+    <h2 class="benefits-h">What You Get</h2>
+    <ul class="benefits-list">
+      <li><span class="tick" aria-hidden="true"></span><span>4 to 7 new patient calls recovered every week</span></li>
+      <li><span class="tick" aria-hidden="true"></span><span>24/7 phone coverage, including after reception closes at 6PM</span></li>
+      <li><span class="tick" aria-hidden="true"></span><span>Built in 48 hours, in your own tone, on your real number</span></li>
+      <li><span class="tick" aria-hidden="true"></span><span>Plugs into Praktika &amp; Dental4Windows out of the box</span></li>
+      <li><span class="tick" aria-hidden="true"></span><span>Cancel anytime. No deposits. No contracts.</span></li>
+    </ul>
   </section>
 
-  <!-- COHORT -->
+  <!-- COHORT (month + year both dynamic) -->
   <section class="cohort">
-    <div class="cohort-badge">Founding AU Cohort &middot; <span class="urg-month"></span> 2026</div>
+    <div class="cohort-badge">Founding AU Cohort &middot; <span class="urg-month"></span> <span class="urg-year"></span></div>
     <div class="cohort-h">10 Free Builds This Month<br>8 Slots Left</div>
-    <p class="cohort-body">You get the full build at <b>$0</b> in exchange for a 60-second testimonial when it's live. No deposit. No contract. Live on your real number in 48 hours.</p>
+    <p class="cohort-body">You get the full build at <b>$0</b> in exchange for a 60-second testimonial when it's live. No deposit. No contracts. Live on your real number in 48 hours.</p>
   </section>
 
   <!-- TRUST STRIP -->
-  <div class="trust-strip">Built In Melbourne · $0 Until It Books · 48-Hour Build · Cancel Anytime</div>
+  <div class="trust-strip">Australian Build · 48-Hour Turnaround · No Deposit · Cancel Anytime</div>
 
 </div>
 
 <script>
-  document.querySelectorAll(".urg-month").forEach(function(e){
-    e.textContent = new Date().toLocaleString("en-AU", {month: "long"}).toUpperCase();
-  });
+  (function() {
+    var now = new Date();
+    var month = now.toLocaleString("en-AU", {month: "long"}).toUpperCase();
+    var year = now.getFullYear();
+    document.querySelectorAll(".urg-month").forEach(function(e){ e.textContent = month; });
+    document.querySelectorAll(".urg-year").forEach(function(e){ e.textContent = year; });
+  })();
 </script>
 </body>
 </html>
