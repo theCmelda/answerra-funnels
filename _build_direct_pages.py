@@ -1,29 +1,29 @@
 #!/usr/bin/env python3
 """
-Generate 9 direct-to-calendar funnel pages.
+Generate 9 direct-to-calendar funnel pages (v3).
 
-Structure (no VSL, outcome-led, press-authority instead of testimonials):
-  Urgency bar
-  Hero (pretitle + outcome H1 + math subhead + scroll CTA)
-  60-sec audio sample (Bunny Stream iframe)
-  Press authority collage (6 layers)
-  Calendar (iClosed embed)
-  Below-calendar outcomes + cohort badge
-  Trust strip footer
+Changes from v2:
+  * Vertical checkmark benefits list under calendar (kaytoms-style)
+  * No "Daniel takes the call himself" copy. Benefit-focused everywhere.
+  * No "$0 until..." promise copy. Risk reversal handled by cohort badge.
+  * "Australian Build" not "Built in Melbourne".
+  * Tech stack: OpenAI, ElevenLabs, Twilio (Retell removed).
+  * Cohort badge month + year both dynamic via JS.
+  * Logo bars use img tags so real SVG/PNG logos can be dropped in.
 """
 
-import os
 from pathlib import Path
 
 LIBRARY = "660166"
 CAL_URL = "https://app.iclosed.io/e/answrra/free-ai-receptionist-demo-build"
 
-# Per-funnel config: copy + audio GUID + niche.
+# ============================================================
+#  FUNNEL CONTENT
+# ============================================================
 FUNNELS = {
     "dental-01-two-kinds": {
         "code": "DEN-01",
         "niche": "Dental",
-        "audience": "AU Dental Owners",
         "audio_guid": "d983be50-d8c9-417d-9b91-428b432a298a",
         "title": "Recover $244K-$305K A Year Without Hiring Another Receptionist",
         "urgency": "BUILDING 10 AU DENTAL RECEPTIONISTS THIS {MONTH} · 8 SLOTS LEFT",
@@ -31,53 +31,49 @@ FUNNELS = {
         "h1_pre": "How AU Dental Practices Are Recovering",
         "h1_red": "$244K-$305K A Year",
         "h1_post": "Without Hiring Another Receptionist",
-        "subhead": "4 missed calls a week. $1,348 in year-one production lost per call. 24/7 coverage, built in 48 hours, $0 until it books.",
+        "subhead": "4 missed calls a week. $1,348 in year-one production lost per call. 24/7 phone coverage built in 48 hours, in your own tone, on your real number.",
         "audio_label": "Watch Daniel Call His AI Receptionist Live",
-        "audio_caption": "Sarah at Bright Smile Dental takes a real call. Then Daniel walks you through what just happened.",
+        "audio_caption": "Sarah at Bright Smile Dental takes a real new-patient call. This is what 24/7 phone coverage sounds like in your own tone.",
         "calendar_header": "Book Your 15-Minute Build Call",
-        "calendar_sub": "Daniel takes the call himself. Bring your worst missed-call type. Leave with a working AI receptionist by Friday.",
-        "outcome_1_num": "+4-7",
-        "outcome_1_label": "New patient bookings recovered each week",
-        "outcome_2_num": "48hr",
-        "outcome_2_label": "Built and live on your real number",
-        "outcome_3_num": "$0",
-        "outcome_3_label": "Until the first booking lands",
-        "risk_reversal": "If it doesn't sound like your front desk on day one, walk. We eat the build cost.",
-        "compat_label": "Plugs Into:",
+        "calendar_sub": "On the call you'll hear what your own AI receptionist sounds like, built to your practice in your tone, on your real number. Test it on real booking calls before you commit to anything.",
+        "benefits": [
+            "4 to 7 new patient calls recovered every week",
+            "24/7 phone coverage, including after reception closes at 6PM",
+            "Built in 48 hours, in your own tone, on your real number",
+            "Plugs into Praktika &amp; Dental4Windows out of the box",
+            "Cancel anytime. No deposits. No contracts.",
+        ],
         "compat_list": "Praktika · Dental4Windows · Centaur · Core Practice",
-        "trust_strip": "Built In Melbourne · $0 Until It Books · 48-Hour Build · Cancel Anytime",
+        "trust_strip": "Australian Build · 48-Hour Turnaround · No Deposit · Cancel Anytime",
     },
     "dental-02-freest-job": {
         "code": "DEN-02",
         "niche": "Dental",
-        "audience": "AU Dentists On Their 3rd Receptionist This Year",
         "audio_guid": "b742b098-cf3a-44b3-8909-e348a8873401",
-        "title": "Replace The Receptionist Role Once, Save $88K A Year",
+        "title": "Replace The Receptionist Role Once And Save $88K A Year",
         "urgency": "BUILDING 10 AU DENTAL RECEPTIONISTS THIS {MONTH} · 8 SLOTS LEFT",
         "pretitle": "For AU Dentists On Their 3rd Receptionist This Year",
         "h1_pre": "How AU Dentists Are Saving",
         "h1_red": "$88,000 A Year",
         "h1_post": "Without Hiring Or Training A Single Receptionist",
-        "subhead": "$22K wasted per hire in ads, training, mistakes and lost bookings. Build it once, in 48 hours, on your real number. Free.",
+        "subhead": "$22K wasted per hire in ads, training, mistakes and lost bookings. Times four. Build the role once, in 48 hours, in your own tone.",
         "audio_label": "Watch Daniel Call His AI Receptionist Live",
-        "audio_caption": "Sarah takes a real new-patient call. Daniel walks you through what makes it work.",
+        "audio_caption": "Sarah takes a real new-patient call. The role that doesn't quit, doesn't call in sick, doesn't go on Seek every 14 months.",
         "calendar_header": "Book Your 15-Minute Build Call",
-        "calendar_sub": "Daniel takes the call. Bring your last bad receptionist call. Leave with a working AI by Friday.",
-        "outcome_1_num": "$88K",
-        "outcome_1_label": "Saved a year on hiring + training + churn",
-        "outcome_2_num": "24/7",
-        "outcome_2_label": "Coverage, no sick days, no resignations",
-        "outcome_3_num": "$0",
-        "outcome_3_label": "Until the first booking lands",
-        "risk_reversal": "If it doesn't outperform your last receptionist on day one, walk. We eat the build cost.",
-        "compat_label": "Plugs Into:",
+        "calendar_sub": "You'll walk away with a working AI receptionist tailored to your practice, voice and call types. Built to your real number, live in 48 hours, ready to test.",
+        "benefits": [
+            "One build replaces the hiring cycle forever",
+            "No job ads, no training, no 14-month resignation reset",
+            "24/7 coverage, zero sick days, zero attrition",
+            "Built in 48 hours, in your own tone, on your real number",
+            "Cancel anytime. No deposits. No contracts.",
+        ],
         "compat_list": "Praktika · Dental4Windows · Centaur · Core Practice",
-        "trust_strip": "Replaces 1 Hire · Saves $22K A Year · 48-Hour Build · Cancel Anytime",
+        "trust_strip": "Australian Build · Replaces 1 Hire · 48-Hour Turnaround · Cancel Anytime",
     },
     "dental-03-mrs-henderson": {
         "code": "DEN-03",
         "niche": "Dental",
-        "audience": "AU Dental Practices Over 5 Years Old",
         "audio_guid": "fb5613e0-e9f0-478d-95b3-057b37485606",
         "title": "Unlock The $1.4M In Lapsed Patients Sitting In Your Praktika",
         "urgency": "REACTIVATING 10 AU DENTAL LISTS THIS {MONTH} · 8 SLOTS LEFT",
@@ -87,25 +83,23 @@ FUNNELS = {
         "h1_post": "Without Their Receptionist Making A Single Call",
         "subhead": "1,400 dormant patients. $9,000 lifetime value each. 35 hours of calls a month, done by AI in your tone. Free first batch of 50.",
         "audio_label": "Watch A Lapsed Patient Get Rebooked, Live",
-        "audio_caption": "Outbound reactivation call exactly as the patient heard it. Daniel breaks down how it books her in under 90 seconds.",
+        "audio_caption": "Outbound reactivation call exactly as the patient heard it. The AI books her in under 90 seconds, in your tone, on your real number.",
         "calendar_header": "Book Your 15-Minute Reactivation Build",
-        "calendar_sub": "Daniel mines your Praktika list live on the call. Bring the export. Leave with 50 patients getting called by Friday.",
-        "outcome_1_num": "47",
-        "outcome_1_label": "Patients rebooked in 14 days (Caulfield case)",
-        "outcome_2_num": "$43,800",
-        "outcome_2_label": "In new production from that one batch",
-        "outcome_3_num": "$0",
-        "outcome_3_label": "Until a patient actually rebooks",
-        "risk_reversal": "If we don't rebook at least 3 patients in the first batch, we walk and you keep the recordings.",
-        "compat_label": "Plugs Into:",
+        "calendar_sub": "We'll pull your Praktika export live on the call, sample 50 lapsed patients, and rebuild your reactivation script in your own tone. You see exactly how it works on your list.",
+        "benefits": [
+            "1,400 dormant patients called automatically, in your tone",
+            "30 to 47 rebookings per 500 lapsed patients called",
+            "35 hours of calls a month handled, none of it your front desk's job",
+            "Plugs into Praktika &amp; Dental4Windows exports directly",
+            "Cancel anytime. No deposits. No contracts.",
+        ],
         "compat_list": "Praktika · Dental4Windows · Centaur · Core Practice",
-        "trust_strip": "Works With Praktika · $0 Until A Patient Books · 48-Hour Build · Cancel Anytime",
+        "trust_strip": "Australian Build · Works With Praktika · 48-Hour Turnaround · Cancel Anytime",
     },
     "dental-04-647pm": {
         "code": "DEN-04",
         "niche": "Dental",
-        "audience": "AU Dentists Still Taking Calls After 6PM",
-        "audio_guid": "d983be50-d8c9-417d-9b91-428b432a298a",  # reuse DEN-01 (same dental inbound agent)
+        "audio_guid": "d983be50-d8c9-417d-9b91-428b432a298a",  # reuse DEN-01 audio
         "title": "24/7 Phone Coverage Without Taking Calls From Your Car Park",
         "urgency": "BUILDING 10 AU DENTAL RECEPTIONISTS THIS {MONTH} · 8 SLOTS LEFT",
         "pretitle": "For AU Dentists Still Taking Calls After 6PM",
@@ -114,24 +108,22 @@ FUNNELS = {
         "h1_post": "Without Touching Their Phone After Hours",
         "subhead": "Reception closes at six. The phone keeps ringing till nine. Every after-hours call costs you $1,348 or your evening. We answer both.",
         "audio_label": "Watch Daniel Call His AI Receptionist Live",
-        "audio_caption": "Sarah takes a real call. Daniel walks you through how it covers every 6pm-9am ring.",
+        "audio_caption": "Sarah takes a real new-patient call. The same agent that covers every 6PM-9AM ring while you're at the dinner table.",
         "calendar_header": "Book Your 15-Minute Build Call",
-        "calendar_sub": "Daniel takes the call. Bring your worst after-hours call type. Leave with 24/7 coverage by Friday.",
-        "outcome_1_num": "24/7",
-        "outcome_1_label": "Phone coverage including weekends",
-        "outcome_2_num": "2 rings",
-        "outcome_2_label": "Answer time, evenings and Saturdays",
-        "outcome_3_num": "$0",
-        "outcome_3_label": "Until the first after-hours booking",
-        "risk_reversal": "If it doesn't book a patient between 6pm and 10pm this week, you owe us nothing.",
-        "compat_label": "Plugs Into:",
+        "calendar_sub": "You'll hear your own AI receptionist take a live after-hours call, built to your practice in your tone. Test it on a real evening booking before you commit.",
+        "benefits": [
+            "Every 6PM-9AM booking call answered in 2 rings",
+            "24/7 coverage, including weekends and public holidays",
+            "Books direct into Praktika, sends confirmation SMS",
+            "Your evenings back. Your phone silent after six.",
+            "Cancel anytime. No deposits. No contracts.",
+        ],
         "compat_list": "Praktika · Dental4Windows · Centaur · Core Practice",
-        "trust_strip": "Answers 24/7 · $0 Until It Books · 48-Hour Build · Cancel Anytime",
+        "trust_strip": "Answers 24/7 · Australian Build · 48-Hour Turnaround · Cancel Anytime",
     },
     "medspa-01-1500-lapsed": {
         "code": "MED-01",
         "niche": "Medspa",
-        "audience": "AU Medspa Owners With 1,000+ Past Clients In Mindbody",
         "audio_guid": "b5bcf9d5-a5e8-4e6c-957a-ece830e58e6f",
         "title": "Unlock $675K In Lapsed Clients Sitting In Your Mindbody",
         "urgency": "REACTIVATING 10 AU MEDSPA LISTS THIS {MONTH} · 8 SLOTS LEFT",
@@ -139,26 +131,24 @@ FUNNELS = {
         "h1_pre": "How AU Medspas Are Reactivating",
         "h1_red": "$675K In Lapsed Clients",
         "h1_post": "Without Their Nurse Making A Single Call",
-        "subhead": "1,500 dormant clients. $400-$900 per reactivation. AHPRA-compliant calls in your nurse's tone. Free first batch of 50.",
+        "subhead": "1,500 dormant clients. $400-$900 per reactivation. AHPRA-compliant calls in your senior nurse's tone. Free first batch of 50.",
         "audio_label": "Watch A Lapsed Client Get Rebooked, Live",
-        "audio_caption": "Outbound reactivation call, AHPRA-compliant. Daniel breaks down how it rebooks 30+ clients per 500 called.",
+        "audio_caption": "Outbound reactivation call, AHPRA-compliant. The same agent that rebooks 30+ dormant clients per 500 called.",
         "calendar_header": "Book Your 15-Minute Reactivation Build",
-        "calendar_sub": "Daniel mines your Mindbody live on the call. Bring the export. Leave with 50 clients getting called by Friday.",
-        "outcome_1_num": "30-47",
-        "outcome_1_label": "Rebookings per 500 dormant clients called",
-        "outcome_2_num": "$640",
-        "outcome_2_label": "Average rebooking value (anti-wrinkle, filler)",
-        "outcome_3_num": "$0",
-        "outcome_3_label": "Until a client actually rebooks",
-        "risk_reversal": "First 50 calls free. Cooling-off notice on every booking. You see the rebookings before you pay a cent.",
-        "compat_label": "Plugs Into:",
+        "calendar_sub": "We'll pull your Mindbody export live on the call, sample 50 lapsed clients, and build your reactivation script in your senior nurse's tone, AHPRA-compliant.",
+        "benefits": [
+            "1,500 dormant Mindbody clients called in your nurse's tone",
+            "30 to 47 rebookings per 500 lapsed clients called",
+            "AHPRA cooling-off notice sent automatically on every booking",
+            "Audit-ready call logs, fully compliant from day one",
+            "Cancel anytime. No deposits. No contracts.",
+        ],
         "compat_list": "Mindbody · Vagaro · Acuity · Fresha",
-        "trust_strip": "AHPRA Cooling-Off Auto-Sent · $0 Until A Client Books · 48-Hour Build · Audit-Ready Logs",
+        "trust_strip": "AHPRA Cooling-Off Auto-Sent · Audit-Ready Logs · Australian Build · Cancel Anytime",
     },
     "medspa-02-two-kinds": {
         "code": "MED-02",
         "niche": "Medspa",
-        "audience": "AU Clinic Owners Spending $2K+/Month On Meta Lead Ads",
         "audio_guid": "643a901e-40e2-4530-93d4-140db84cc26c",
         "title": "Convert 3x More Meta Leads Without Touching Your Phone",
         "urgency": "BUILDING 10 AU MEDSPA RECEPTIONISTS THIS {MONTH} · 8 SLOTS LEFT",
@@ -166,26 +156,24 @@ FUNNELS = {
         "h1_pre": "How AU Medspas Book",
         "h1_red": "3x More Meta Leads",
         "h1_post": "Without Picking Up The Phone Themselves",
-        "subhead": "Leads called inside 5 minutes book 21x more consults. Our AI answers in 30 seconds, AHPRA-compliant, in your clinic's voice. Built in 48 hours. Free.",
+        "subhead": "Leads called inside 5 minutes book 21x more consults. Our AI answers in 30 seconds, AHPRA-compliant, in your clinic's voice.",
         "audio_label": "Watch A Meta Lead Booked In 30 Seconds",
-        "audio_caption": "Inbound call from a real Meta lead form submission. Daniel breaks down the 21x conversion math.",
+        "audio_caption": "Real inbound call from a Meta lead form submission. AHPRA-compliant, in your clinic's voice, booked direct to your calendar.",
         "calendar_header": "Book Your 15-Minute Speed-To-Lead Demo",
-        "calendar_sub": "Daniel times your current callback live. Bring your last Meta lead. Leave with 30-second response by Friday.",
-        "outcome_1_num": "30 sec",
-        "outcome_1_label": "Callback time on every Meta lead",
-        "outcome_2_num": "3-4x",
-        "outcome_2_label": "More booked consults from the same ad spend",
-        "outcome_3_num": "$0",
-        "outcome_3_label": "Until a lead actually books",
-        "risk_reversal": "We dial your real Meta lead form on the demo and time the response. If 30 seconds doesn't beat your current setup, walk.",
-        "compat_label": "Plugs Into:",
+        "calendar_sub": "On the call you'll hear a real Meta lead get called back in 30 seconds, AHPRA-compliant, in your clinic's voice. Tested on your real lead funnel.",
+        "benefits": [
+            "Every Meta lead called in under 30 seconds",
+            "3 to 4x more booked consults from the same ad spend",
+            "AHPRA cooling-off notice sent automatically on every booking",
+            "Books direct into Mindbody, Vagaro, Acuity or Fresha",
+            "Cancel anytime. No deposits. No contracts.",
+        ],
         "compat_list": "Mindbody · Vagaro · Acuity · Fresha",
-        "trust_strip": "AHPRA-Aware · Australian Voice · $0 Until A Lead Books · 48-Hour Build",
+        "trust_strip": "AHPRA-Aware · Australian Voice · 48-Hour Turnaround · Cancel Anytime",
     },
     "medspa-03-sunday-instagram": {
         "code": "MED-03",
         "niche": "Medspa",
-        "audience": "AU Medspa Owners Losing Leads Every Saturday And Sunday Night",
         "audio_guid": "b096c8a7-e0f3-42cd-bc80-4fe9fda86a60",
         "title": "Capture Every 10:47PM Sunday DM Without Touching Instagram",
         "urgency": "BUILDING 10 AU MEDSPA RECEPTIONISTS THIS {MONTH} · 8 SLOTS LEFT",
@@ -195,24 +183,22 @@ FUNNELS = {
         "h1_post": "Without Working A Single Sunday Night",
         "subhead": "60-70% of medspa enquiries arrive after 7PM. Our AI replies in 11 seconds, AHPRA-compliant. 4-5 extra weekend bookings a week.",
         "audio_label": "Watch A Sunday-Night DM Booked, Live",
-        "audio_caption": "Real after-hours inbound DM-to-booking. Daniel breaks down the AHPRA cooling-off receipt.",
+        "audio_caption": "Real after-hours inbound DM-to-booking. AHPRA cooling-off notice attached, in your clinic's voice.",
         "calendar_header": "Book Your 15-Minute After-Hours Demo",
-        "calendar_sub": "Daniel pulls your last 30 days of DMs and counts the misses. Bring your Instagram. Leave with 24/7 coverage by Friday.",
-        "outcome_1_num": "11 sec",
-        "outcome_1_label": "DM reply time, 24/7",
-        "outcome_2_num": "+4-5",
-        "outcome_2_label": "Extra weekend bookings per week",
-        "outcome_3_num": "$0",
-        "outcome_3_label": "Until a DM actually books",
-        "risk_reversal": "On the demo we play the actual midnight DM that became a Friday consult, with the AHPRA cooling-off notice attached. You see the whole receipt.",
-        "compat_label": "Plugs Into:",
+        "calendar_sub": "You'll hear your own AI handle a Sunday-night DM live, built to your clinic in your tone, AHPRA cooling-off notice attached. Tested on a real enquiry.",
+        "benefits": [
+            "Every after-hours DM answered in 11 seconds",
+            "4 to 5 extra weekend bookings every week",
+            "AHPRA cooling-off notice sent automatically on every booking",
+            "Audit-ready logs for every after-hours interaction",
+            "Cancel anytime. No deposits. No contracts.",
+        ],
         "compat_list": "Instagram · Mindbody · Vagaro · Acuity · Fresha",
-        "trust_strip": "AHPRA Cooling-Off Auto-Sent · 7 Days A Week · $0 Until A DM Books · 48-Hour Build",
+        "trust_strip": "AHPRA Cooling-Off Auto-Sent · 7 Days A Week · Australian Build · Cancel Anytime",
     },
     "plumbing-01-phone-cant-answer": {
         "code": "PLU-01",
         "niche": "Plumbing",
-        "audience": "AU Plumbers Doing $400K-$1.2M And Stuck There",
         "audio_guid": "f2d9461c-5e88-4d3b-88bf-c0265ed7449f",
         "title": "Book Every Missed Call Without Ever Leaving The Tools",
         "urgency": "BUILDING 10 AU PLUMBING RECEPTIONISTS THIS {MONTH} · 8 SLOTS LEFT",
@@ -222,24 +208,22 @@ FUNNELS = {
         "h1_post": "While Still On The Tools",
         "subhead": "Average plumbing job: $396 with parts. Average missed call: $0. Our AI answers in 2 rings, dispatches the job, texts your ute rego.",
         "audio_label": "Watch A Burst-Pipe Call Booked In 2 Rings",
-        "audio_caption": "Sarah at Reliable Plumbing dispatches a real emergency. Daniel breaks down the Simpro auto-booking.",
+        "audio_caption": "Sarah at Reliable Plumbing dispatches a real emergency. Same agent that books into Simpro automatically while you're under a sink.",
         "calendar_header": "Book Your 15-Minute Build Call",
-        "calendar_sub": "Daniel builds her live on the call. Bring 3 missed call types. Leave with your phone answered by Friday. Headphones in the ute work fine.",
-        "outcome_1_num": "+$1,500",
-        "outcome_1_label": "To $1,800/week in recovered jobs",
-        "outcome_2_num": "2 rings",
-        "outcome_2_label": "Answer time, even after-hours emergencies",
-        "outcome_3_num": "$0",
-        "outcome_3_label": "Until a job actually books",
-        "risk_reversal": "If she doesn't book at least 3 jobs in the first week, you owe us nothing. No deposit, no contract.",
-        "compat_label": "Plugs Into:",
+        "calendar_sub": "You'll hear your own AI receptionist dispatch a real emergency call, in your business name, on your real number. Built for Aussie plumbers, tested on the tools.",
+        "benefits": [
+            "Every missed call answered in 2 rings",
+            "$1,500 to $1,800 a week in recovered jobs",
+            "Books direct into Simpro, ServiceM8, AroFlo or Tradify",
+            "Texts the customer your ute rego &amp; tech photo",
+            "Cancel anytime. No deposits. No contracts.",
+        ],
         "compat_list": "Simpro · ServiceM8 · AroFlo · Tradify",
-        "trust_strip": "Works With Simpro &amp; ServiceM8 · $0 Until A Job Books · 48-Hour Build · 90-Day Money Back",
+        "trust_strip": "Australian Build · 48-Hour Turnaround · 90-Day Money Back · Cancel Anytime",
     },
     "plumbing-02-hipages-bleed": {
         "code": "PLU-02",
         "niche": "Plumbing",
-        "audience": "AU Plumbers On Hipages, Oneflare Or Service.com.au",
         "audio_guid": "4fd05080-1d50-4413-a9c3-8bad2caa4993",
         "title": "Convert 3x More Hipages Leads From The Same Spend",
         "urgency": "BUILDING 10 AU PLUMBING RECEPTIONISTS THIS {MONTH} · 8 SLOTS LEFT",
@@ -247,25 +231,27 @@ FUNNELS = {
         "h1_pre": "How AU Plumbers Convert",
         "h1_red": "3x More Hipages Leads",
         "h1_post": "From The Same Spend, Without Picking Up The Phone",
-        "subhead": "$200/lead. 4-hour callback kills you. Our AI fires off the Hipages notification and calls the lead back in 22 seconds. 3x more booked jobs.",
+        "subhead": "$200 a lead. 4-hour callback kills you. Our AI triggers off the Hipages notification and calls the lead back in 22 seconds.",
         "audio_label": "Watch A Hipages Lead Booked In 22 Seconds",
-        "audio_caption": "Real inbound lead callback. Daniel breaks down how 22-second response triples booked jobs.",
+        "audio_caption": "Real inbound lead callback. The same agent that triples your booked jobs from the same Hipages spend.",
         "calendar_header": "Book Your 15-Minute Build Call",
-        "calendar_sub": "Daniel pulls last month's Hipages report on the call. Bring it. Leave with 22-second callback by Friday. Headphones in the ute work fine.",
-        "outcome_1_num": "22 sec",
-        "outcome_1_label": "Hipages lead callback time",
-        "outcome_2_num": "3x",
-        "outcome_2_label": "More booked jobs from the same Hipages spend",
-        "outcome_3_num": "$0",
-        "outcome_3_label": "Until a job actually books",
-        "risk_reversal": "We dial your real Hipages number on the demo and you hear her answer. If it doesn't beat your callback time, walk.",
-        "compat_label": "Plugs Into:",
+        "calendar_sub": "We'll pull last month's Hipages report on the call and show you exactly how 22-second callback would convert. You hear your own AI answer a real Hipages lead.",
+        "benefits": [
+            "Every Hipages lead called back in 22 seconds",
+            "3x more booked jobs from the same Hipages spend",
+            "Triggers automatically off the Hipages notification",
+            "Books direct into ServiceM8, Simpro &amp; Oneflare",
+            "Cancel anytime. No deposits. No contracts.",
+        ],
         "compat_list": "Hipages · Oneflare · Service.com.au · ServiceM8 · Simpro",
-        "trust_strip": "Works With Hipages &amp; Oneflare · Pays For Itself In 3 Jobs · 48-Hour Build · 90-Day Money Back",
+        "trust_strip": "Works With Hipages &amp; Oneflare · 48-Hour Turnaround · 90-Day Money Back · Cancel Anytime",
     },
 }
 
 
+# ============================================================
+#  TEMPLATE
+# ============================================================
 TEMPLATE = """<!DOCTYPE html>
 <html lang="en-AU">
 <head>
@@ -322,9 +308,10 @@ TEMPLATE = """<!DOCTYPE html>
   @media (min-width:900px){{.section-h{{font-size:28px}}}}
 
   .press-bar{{background:#fafafa}}
-  .logo-row{{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px 22px}}
-  .logo-pub{{font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:.04em;color:#222;opacity:.78;padding:4px 0}}
-  @media (min-width:900px){{.logo-pub{{font-size:16px}}}}
+  .logo-row{{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:18px 28px}}
+  .logo-row img{{height:24px;width:auto;max-width:130px;object-fit:contain;opacity:.78;filter:grayscale(100%) contrast(1.05)}}
+  @media (min-width:900px){{.logo-row img{{height:30px}}}}
+  .logo-pub-fallback{{font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:.04em;color:#222;opacity:.78;padding:4px 0}}
 
   .hero-stat{{background:#0a0a0a;color:#fff;text-align:center;padding:32px 22px}}
   .stat-big{{font-family:'Oswald',Impact,sans-serif;font-size:80px;line-height:.95;font-weight:700;color:#FFE100;letter-spacing:-.01em;margin-bottom:8px}}
@@ -333,14 +320,11 @@ TEMPLATE = """<!DOCTYPE html>
   @media (min-width:900px){{.stat-label{{font-size:20px}}}}
   .stat-sub{{font-size:13px;color:#bbb;line-height:1.5;max-width:380px;margin:0 auto}}
 
-  .cards{{display:flex;flex-direction:column;gap:12px}}
-  @media (min-width:900px){{.cards{{display:grid;grid-template-columns:1fr 1fr;gap:14px}}}}
-  .card{{display:block;background:#fff;border:1px solid #e0e0e0;padding:16px 16px 14px;text-decoration:none;color:#0a0a0a;transition:all .15s}}
-  .card:hover{{border-color:#D90429;box-shadow:0 4px 14px rgba(0,0,0,.06)}}
-  .card-pub{{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#D90429;margin-bottom:6px}}
-  .card-headline{{font-family:'Oswald',sans-serif;font-size:17px;font-weight:600;line-height:1.18;color:#0a0a0a;margin-bottom:8px}}
-  .card-blurb{{font-size:12.5px;line-height:1.5;color:#444;margin-bottom:8px}}
-  .card-link{{font-family:'Inter',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#0066CC}}
+  .news-montage{{padding:24px 20px;background:#fafafa;border-bottom:1px solid #e8e8e8}}
+  .news-grid{{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:760px;margin:0 auto}}
+  @media (min-width:900px){{.news-grid{{grid-template-columns:repeat(4,1fr);gap:14px}}}}
+  .news-tile{{background:#fff;border:1px solid #e0e0e0;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;color:#999;font-size:11px;font-family:'Inter',sans-serif;letter-spacing:.04em;text-transform:uppercase;font-weight:600}}
+  .news-tile img{{width:100%;height:100%;object-fit:cover;display:block}}
 
   .stats-bg{{background:#fafafa}}
   .stats-grid{{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e8e8e8;border:1px solid #e8e8e8}}
@@ -353,7 +337,8 @@ TEMPLATE = """<!DOCTYPE html>
 
   .tech-proof{{background:#0a0a0a;color:#fff}}
   .tech-proof .bar-label{{color:#FFE100}}
-  .tech-proof .logo-pub{{color:#fff;opacity:1;font-size:15px;font-weight:700;letter-spacing:.05em}}
+  .tech-proof .logo-row img{{filter:invert(1) grayscale(100%);opacity:.92}}
+  .tech-proof .logo-pub-fallback{{color:#fff;opacity:1}}
 
   .software-compat{{background:#fafafa}}
   .compat-niche{{background:#fff;border:1px solid #e8e8e8;padding:14px 16px;text-align:center}}
@@ -368,15 +353,15 @@ TEMPLATE = """<!DOCTYPE html>
   .iclosed-widget{{min-height:680px;width:100%;border:1px solid #e8e8e8}}
   @media (min-width:900px){{.iclosed-widget{{min-height:760px}}}}
 
-  /* ===== OUTCOMES UNDER CALENDAR ===== */
-  .outcomes{{padding:28px 22px;background:#fafafa;border-top:1px solid #e8e8e8}}
-  .outcomes-grid{{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:#e8e8e8;border:1px solid #e8e8e8;margin-bottom:18px}}
-  .outcome-tile{{background:#fff;padding:18px 10px;text-align:center}}
-  .outcome-num{{font-family:'Oswald',Impact,sans-serif;font-size:32px;line-height:1;font-weight:700;color:#0066CC;margin-bottom:6px}}
-  @media (min-width:900px){{.outcome-num{{font-size:42px}}}}
-  .outcome-label{{font-size:11.5px;font-weight:600;color:#0a0a0a;line-height:1.35}}
-  .risk{{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#444;text-align:center;line-height:1.55;padding:14px 12px;background:#fff;border:1px solid #e8e8e8;max-width:600px;margin:0 auto}}
-  .risk b{{color:#D90429;font-weight:700}}
+  /* ===== BENEFITS (vertical checklist, kaytoms-style) ===== */
+  .benefits{{padding:28px 22px;background:#fafafa;border-top:1px solid #e8e8e8}}
+  .benefits-h{{font-family:'Oswald',sans-serif;font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:.01em;text-align:center;margin-bottom:16px;line-height:1.1;color:#0a0a0a}}
+  @media (min-width:900px){{.benefits-h{{font-size:26px}}}}
+  .benefits-list{{max-width:560px;margin:0 auto;list-style:none;padding:0}}
+  .benefits-list li{{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;background:#fff;border:1px solid #e8e8e8;margin-bottom:8px;font-size:14.5px;line-height:1.45;font-weight:500;color:#0a0a0a}}
+  @media (min-width:900px){{.benefits-list li{{font-size:16px;padding:14px 18px}}}}
+  .benefits-list .tick{{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#22a06b;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;margin-top:1px}}
+  .benefits-list .tick::before{{content:"\\2713"}}
 
   /* ===== COHORT ===== */
   .cohort{{background:#FFE100;color:#0a0a0a;text-align:center;padding:32px 22px}}
@@ -423,12 +408,23 @@ TEMPLATE = """<!DOCTYPE html>
   <section class="press-section press-bar">
     <div class="bar-label">The AI Receptionist Shift, Covered By:</div>
     <div class="logo-row">
-      <span class="logo-pub">OpenAI</span>
-      <span class="logo-pub">McKinsey</span>
-      <span class="logo-pub">CBS News</span>
-      <span class="logo-pub">Fast Company</span>
-      <span class="logo-pub">Salesforce</span>
-      <span class="logo-pub">Bloomberg</span>
+      <img src="/logos/openai.svg" alt="OpenAI" onerror="this.outerHTML='<span class=&quot;logo-pub-fallback&quot;>OpenAI</span>'">
+      <img src="/logos/mckinsey.svg" alt="McKinsey" onerror="this.outerHTML='<span class=&quot;logo-pub-fallback&quot;>McKinsey</span>'">
+      <img src="/logos/cbs-news.svg" alt="CBS News" onerror="this.outerHTML='<span class=&quot;logo-pub-fallback&quot;>CBS News</span>'">
+      <img src="/logos/fast-company.svg" alt="Fast Company" onerror="this.outerHTML='<span class=&quot;logo-pub-fallback&quot;>Fast Company</span>'">
+      <img src="/logos/salesforce.svg" alt="Salesforce" onerror="this.outerHTML='<span class=&quot;logo-pub-fallback&quot;>Salesforce</span>'">
+      <img src="/logos/bloomberg.svg" alt="Bloomberg" onerror="this.outerHTML='<span class=&quot;logo-pub-fallback&quot;>Bloomberg</span>'">
+    </div>
+  </section>
+
+  <!-- NEWS ARTICLE MONTAGE (non-clickable visual proof) -->
+  <section class="news-montage">
+    <div class="bar-label">Recent Coverage Of The AI Receptionist Shift:</div>
+    <div class="news-grid">
+      <div class="news-tile"><img src="/news/article-01.jpg" alt="" onerror="this.outerHTML='<span>Article 01</span>'"></div>
+      <div class="news-tile"><img src="/news/article-02.jpg" alt="" onerror="this.outerHTML='<span>Article 02</span>'"></div>
+      <div class="news-tile"><img src="/news/article-03.jpg" alt="" onerror="this.outerHTML='<span>Article 03</span>'"></div>
+      <div class="news-tile"><img src="/news/article-04.jpg" alt="" onerror="this.outerHTML='<span>Article 04</span>'"></div>
     </div>
   </section>
 
@@ -437,37 +433,6 @@ TEMPLATE = """<!DOCTYPE html>
     <div class="stat-big">700</div>
     <div class="stat-label">Customer Service Agents<br>Replaced By AI At Klarna</div>
     <div class="stat-sub">2.3 million conversations in month one. Resolution time cut from 11 minutes to under 2. $40M/year saved. Same voice AI infrastructure powers Answerra. (OpenAI Case Study, Klarna, 2024)</div>
-  </section>
-
-  <!-- ARTICLE CARDS -->
-  <section class="press-section">
-    <h2 class="section-h">What The Press Is Reporting</h2>
-    <div class="cards">
-      <a class="card" href="https://openai.com/index/klarna/" target="_blank" rel="noopener">
-        <div class="card-pub">OpenAI Case Study &middot; 2024</div>
-        <div class="card-headline">"Klarna's AI assistant does the work of 700 full-time agents."</div>
-        <div class="card-blurb">2.3M conversations in month one. Two-thirds of all customer service chats. Resolution time cut from 11 min to under 2.</div>
-        <div class="card-link">Read source &rarr;</div>
-      </a>
-      <a class="card" href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener">
-        <div class="card-pub">McKinsey &amp; Company &middot; 2025</div>
-        <div class="card-headline">"80% of businesses will integrate voice AI into customer service by end of 2026."</div>
-        <div class="card-blurb">78% of organisations already using AI in at least one business function. Voice AI growth concentrated in healthcare and SMB services.</div>
-        <div class="card-link">Read source &rarr;</div>
-      </a>
-      <a class="card" href="https://www.cbsnews.com/news/klarna-ceo-ai-chatbot-replacing-workers-sebastian-siemiatkowski/" target="_blank" rel="noopener">
-        <div class="card-pub">CBS News &middot; 2024</div>
-        <div class="card-headline">"Klarna CEO: AI can do the job of 700 workers."</div>
-        <div class="card-blurb">Sebastian Siemiatkowski on how Klarna's AI assistant handled two-thirds of all customer service chats in its first month.</div>
-        <div class="card-link">Read source &rarr;</div>
-      </a>
-      <a class="card" href="https://smallbizai.au/chime-labs-sydney-ai-receptionist-tradies-australia/" target="_blank" rel="noopener">
-        <div class="card-pub">SmallBizAI &middot; 2026</div>
-        <div class="card-headline">"Sydney AI receptionist startup raises $900K to help Aussie tradies."</div>
-        <div class="card-blurb">Australian tradies miss an estimated 270,000 calls a day. The AI receptionist category is moving fast in AU.</div>
-        <div class="card-link">Read source &rarr;</div>
-      </a>
-    </div>
   </section>
 
   <!-- STATS GRID -->
@@ -497,20 +462,19 @@ TEMPLATE = """<!DOCTYPE html>
     </div>
   </section>
 
-  <!-- TECH PROOF -->
+  <!-- TECH PROOF (OpenAI, ElevenLabs, Twilio only - no Retell) -->
   <section class="press-section tech-proof">
     <div class="bar-label">Built On The Same AI Infrastructure As Klarna:</div>
     <div class="logo-row">
-      <span class="logo-pub">OpenAI</span>
-      <span class="logo-pub">Retell AI</span>
-      <span class="logo-pub">ElevenLabs</span>
-      <span class="logo-pub">Twilio</span>
+      <img src="/logos/openai.svg" alt="OpenAI" onerror="this.outerHTML='<span class=&quot;logo-pub-fallback&quot;>OpenAI</span>'">
+      <img src="/logos/elevenlabs.svg" alt="ElevenLabs" onerror="this.outerHTML='<span class=&quot;logo-pub-fallback&quot;>ElevenLabs</span>'">
+      <img src="/logos/twilio.svg" alt="Twilio" onerror="this.outerHTML='<span class=&quot;logo-pub-fallback&quot;>Twilio</span>'">
     </div>
   </section>
 
   <!-- SOFTWARE COMPAT (niche-specific) -->
   <section class="press-section software-compat">
-    <div class="bar-label">{COMPAT_LABEL} The Software You Already Use:</div>
+    <div class="bar-label">Plugs Into The Software You Already Use:</div>
     <div class="compat-niche">
       <div class="niche-label">{NICHE}</div>
       <div class="compat-row">{COMPAT_LIST}</div>
@@ -525,30 +489,19 @@ TEMPLATE = """<!DOCTYPE html>
     <script async src="https://app.iclosed.io/assets/widget.js"></script>
   </section>
 
-  <!-- OUTCOMES UNDER CALENDAR -->
-  <section class="outcomes">
-    <div class="outcomes-grid">
-      <div class="outcome-tile">
-        <div class="outcome-num">{OUT_1_NUM}</div>
-        <div class="outcome-label">{OUT_1_LABEL}</div>
-      </div>
-      <div class="outcome-tile">
-        <div class="outcome-num">{OUT_2_NUM}</div>
-        <div class="outcome-label">{OUT_2_LABEL}</div>
-      </div>
-      <div class="outcome-tile">
-        <div class="outcome-num">{OUT_3_NUM}</div>
-        <div class="outcome-label">{OUT_3_LABEL}</div>
-      </div>
-    </div>
-    <p class="risk"><b>Our promise:</b> {RISK_REVERSAL}</p>
+  <!-- BENEFITS (vertical checkmark list) -->
+  <section class="benefits">
+    <h2 class="benefits-h">What You Get</h2>
+    <ul class="benefits-list">
+      {BENEFITS_HTML}
+    </ul>
   </section>
 
-  <!-- COHORT -->
+  <!-- COHORT (month + year both dynamic) -->
   <section class="cohort">
-    <div class="cohort-badge">Founding AU Cohort &middot; <span class="urg-month"></span> 2026</div>
+    <div class="cohort-badge">Founding AU Cohort &middot; <span class="urg-month"></span> <span class="urg-year"></span></div>
     <div class="cohort-h">10 Free Builds This Month<br>8 Slots Left</div>
-    <p class="cohort-body">You get the full build at <b>$0</b> in exchange for a 60-second testimonial when it's live. No deposit. No contract. Live on your real number in 48 hours.</p>
+    <p class="cohort-body">You get the full build at <b>$0</b> in exchange for a 60-second testimonial when it's live. No deposit. No contracts. Live on your real number in 48 hours.</p>
   </section>
 
   <!-- TRUST STRIP -->
@@ -557,9 +510,13 @@ TEMPLATE = """<!DOCTYPE html>
 </div>
 
 <script>
-  document.querySelectorAll(".urg-month").forEach(function(e){{
-    e.textContent = new Date().toLocaleString("en-AU", {{month: "long"}}).toUpperCase();
-  }});
+  (function() {{
+    var now = new Date();
+    var month = now.toLocaleString("en-AU", {{month: "long"}}).toUpperCase();
+    var year = now.getFullYear();
+    document.querySelectorAll(".urg-month").forEach(function(e){{ e.textContent = month; }});
+    document.querySelectorAll(".urg-year").forEach(function(e){{ e.textContent = year; }});
+  }})();
 </script>
 </body>
 </html>
@@ -568,6 +525,10 @@ TEMPLATE = """<!DOCTYPE html>
 
 def render(cfg):
     subhead_plain = cfg["subhead"].replace("&amp;", "&")
+    benefits_html = "\n      ".join(
+        f'<li><span class="tick" aria-hidden="true"></span><span>{b}</span></li>'
+        for b in cfg["benefits"]
+    )
     return TEMPLATE.format(
         TITLE=cfg["title"],
         SUBHEAD_PLAIN=subhead_plain[:180],
@@ -583,18 +544,11 @@ def render(cfg):
         LIBRARY=LIBRARY,
         CODE=cfg["code"],
         NICHE=cfg["niche"],
-        COMPAT_LABEL=cfg["compat_label"],
         COMPAT_LIST=cfg["compat_list"],
         CALENDAR_HEADER=cfg["calendar_header"],
         CALENDAR_SUB=cfg["calendar_sub"],
         CAL_URL=CAL_URL,
-        OUT_1_NUM=cfg["outcome_1_num"],
-        OUT_1_LABEL=cfg["outcome_1_label"],
-        OUT_2_NUM=cfg["outcome_2_num"],
-        OUT_2_LABEL=cfg["outcome_2_label"],
-        OUT_3_NUM=cfg["outcome_3_num"],
-        OUT_3_LABEL=cfg["outcome_3_label"],
-        RISK_REVERSAL=cfg["risk_reversal"],
+        BENEFITS_HTML=benefits_html,
         TRUST_STRIP=cfg["trust_strip"],
     )
 
