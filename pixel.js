@@ -110,12 +110,30 @@
   // Captures clicks on <a> tags pointing to app.iclosed.io and rewrites the href to include
   // ?visitor_id=<v_id> so iClosed's "Forward event parameters" config flows it back to
   // /api/booking-confirm webhook for full attribution.
+  // Derive niche from current page path so iClosed forwards it back to /quiz
+  function deriveNiche() {
+    var p = window.location.pathname.toLowerCase();
+    if (p.indexOf('dental') !== -1) return 'dental';
+    if (p.indexOf('medspa') !== -1 || p.indexOf('skin') !== -1 || p.indexOf('injectable') !== -1) return 'medspa';
+    if (p.indexOf('plumb') !== -1 || p.indexOf('trade') !== -1 || p.indexOf('hvac') !== -1) return 'plumbing';
+    return null;
+  }
+  var pageNiche = deriveNiche();
+
   function appendVidToUrl(href, vId) {
     try {
       var u = new URL(href, window.location.origin);
       if (!/iclosed\.io/.test(u.hostname)) return null;
       if (!u.searchParams.has('visitor_id')) u.searchParams.set('visitor_id', vId);
-      // Pass utm_source as q1 too (common iClosed custom field key for first invitee question)
+      if (pageNiche && !u.searchParams.has('niche')) u.searchParams.set('niche', pageNiche);
+      // Pass through any captured fbclid / utm_campaign for downstream attribution display
+      var passThrough = ['fbclid','gclid','utm_source','utm_medium','utm_campaign','utm_content'];
+      passThrough.forEach(function(k){
+        var v = getCookie('aa_' + k.replace('utm_','utm_')) || getCookie('aa_' + k);
+        if (k === 'fbclid') v = getCookie('aa_fbclid');
+        if (k === 'gclid') v = getCookie('aa_gclid');
+        if (v && !u.searchParams.has(k)) u.searchParams.set(k, v);
+      });
       return u.toString();
     } catch (e) { return null; }
   }
