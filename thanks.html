@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>You're locked in · Answerra</title>
+<meta name="description" content="Your AI receptionist build call is confirmed. Here's what happens next.">
+
+<!-- Meta Pixel via /pixel.js -->
+<script src="/pixel.js" async></script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1511657447261837&ev=PageView&noscript=1" alt=""/></noscript>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
+
+<style>
+:root{ --bg:#fafaf7; --ink:#0a0a0a; --muted:#6a6a6a; --accent:#D90429; --good:#0f9d58; --line:rgba(10,10,10,.08); }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh}
+.shell{max-width:560px;margin:0 auto;padding:32px 22px 56px}
+.brand{font-family:'Inter';font-weight:700;font-size:18px;letter-spacing:-.02em;margin-bottom:32px;display:inline-block}
+.brand .dot{color:var(--accent)}
+
+.confetti{display:flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;background:var(--good);margin-bottom:22px}
+.confetti svg{width:30px;height:30px}
+
+h1{font-family:'Fraunces',serif;font-size:36px;font-weight:700;line-height:1.05;letter-spacing:-.02em;margin-bottom:14px}
+h1 .accent{color:var(--accent)}
+.sub{font-size:16px;line-height:1.6;color:var(--muted);margin-bottom:30px}
+.sub b{color:var(--ink)}
+
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;margin-bottom:18px}
+.card h3{font-family:'Inter';font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px}
+.card .when{font-size:18px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.card .when-sub{font-size:14px;color:var(--muted);margin-bottom:14px}
+
+.cal-row{display:flex;gap:8px;flex-wrap:wrap}
+.cal-btn{flex:1;min-width:120px;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 12px;border:1px solid var(--line);background:#fff;border-radius:99px;font-size:13px;font-weight:600;color:var(--ink);text-decoration:none;transition:all .15s ease}
+.cal-btn:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.cal-btn svg{width:14px;height:14px}
+
+.steps{margin:30px 0 24px}
+.steps h2{font-family:'Inter';font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px}
+.step{display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--line)}
+.step:last-child{border-bottom:1px solid var(--line)}
+.step-num{flex:0 0 28px;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:'Inter'}
+.step-body b{display:block;font-size:14px;font-weight:600;margin-bottom:2px}
+.step-body span{font-size:13px;color:var(--muted);line-height:1.5}
+
+.escape{margin-top:32px;text-align:center;font-size:13px;color:var(--muted)}
+.escape a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+
+.footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-size:11px;color:var(--muted);line-height:1.6;text-align:center}
+
+@media (max-width:480px){
+  h1{font-size:30px}
+  .shell{padding:24px 18px 40px}
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <span class="brand">answerra<span class="dot">.</span></span>
+
+  <div class="confetti">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+  <h1>You're <span class="accent">locked in</span>, <span id="firstName">there</span>.</h1>
+  <p class="sub">Your AI receptionist build call is on the calendar. We've sent a confirmation email with the Zoom link. <b>One last thing</b> — block out the time below so you don't miss it.</p>
+
+  <div class="card" id="bookingCard" style="display:none">
+    <h3>Your call</h3>
+    <div class="when" id="bookingWhen">Time to be confirmed</div>
+    <div class="when-sub" id="bookingWith">15 minutes · Zoom · with Daniel</div>
+    <div class="cal-row">
+      <a class="cal-btn" id="calGoogle" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 11h5v5H7z" opacity=".4"/><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2zm0 16H5V9h14v11z"/></svg>
+        Google Calendar
+      </a>
+      <a class="cal-btn" id="calIcs" href="#" download="answerra-call.ics">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13z"/></svg>
+        Apple / Outlook
+      </a>
+    </div>
+  </div>
+
+  <div class="steps">
+    <h2>What happens on the call</h2>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <b>You'll hear your own AI receptionist live</b>
+        <span>Built to your practice in your tone, on your real number. We'll call her on the demo and you can hear how she handles a real new-patient call.</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <b>You test her on a real booking call</b>
+        <span>You decide if her tone, pace, and answers work for your patients before you commit to anything.</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <b>If you like her, she's live in 48 hours</b>
+        <span>Plugged into your practice software, your real number, answering inbound calls 24/7. Cancel anytime. No contract.</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="escape">Need to reschedule? <a href="https://app.iclosed.io/e/answrra/free-ai-receptionist-demo-build" target="_blank">Pick a new time</a></p>
+
+  <div class="footer">
+    Answerra Pty Ltd · ABN 12 345 678 901 · Sydney, AU<br>
+    Results vary by practice. Numbers shown reflect typical AU operators that fully implement Answerra.
+  </div>
+</div>
+
+<script>
+// Hydrate booking details from URL params. iClosed posts booking_id, name, start_time, end_time, etc.
+const params = new URLSearchParams(window.location.search);
+const firstName = params.get('first_name') || params.get('name') || '';
+const bookingId = params.get('id') || params.get('booking_id') || '';
+const startIso = params.get('start') || params.get('start_time') || '';
+const endIso = params.get('end') || params.get('end_time') || '';
+
+if (firstName) document.getElementById('firstName').textContent = firstName.split(' ')[0];
+
+if (startIso) {
+  try {
+    const start = new Date(startIso);
+    const end = endIso ? new Date(endIso) : new Date(start.getTime() + 15 * 60 * 1000);
+    const opts = { weekday:'long', day:'numeric', month:'long', hour:'numeric', minute:'2-digit', hour12:true, timeZoneName:'short' };
+    document.getElementById('bookingWhen').textContent = new Intl.DateTimeFormat('en-AU', opts).format(start);
+    document.getElementById('bookingCard').style.display = 'block';
+
+    // Google Calendar add link
+    const fmt = d => d.toISOString().replace(/[-:]|\.\d{3}/g, '');
+    const title = encodeURIComponent('Answerra AI Receptionist Build Call');
+    const details = encodeURIComponent('Your free 15-min AI receptionist build call with Daniel. Zoom link in your email.\n\nNeed to reschedule? https://app.iclosed.io/e/answrra/free-ai-receptionist-demo-build');
+    document.getElementById('calGoogle').href =
+      'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + title +
+      '&dates=' + fmt(start) + '/' + fmt(end) +
+      '&details=' + details;
+
+    // ICS file for Apple / Outlook
+    const ics = [
+      'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Answerra//EN',
+      'BEGIN:VEVENT',
+      'UID:' + (bookingId || ('answerra-' + Date.now())) + '@answerra.ai',
+      'DTSTAMP:' + fmt(new Date()),
+      'DTSTART:' + fmt(start),
+      'DTEND:' + fmt(end),
+      'SUMMARY:Answerra AI Receptionist Build Call',
+      'DESCRIPTION:Free 15-min build call with Daniel. Zoom link in your email.',
+      'END:VEVENT','END:VCALENDAR'
+    ].join('\r\n');
+    document.getElementById('calIcs').href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics);
+  } catch (e) { /* leave card hidden if dates are malformed */ }
+}
+</script>
+
+</body>
+</html>
