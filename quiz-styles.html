@@ -6,91 +6,90 @@
 <title>Answerra · 5 quiz designs · pick one</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html,body{background:#f4f1ec;color:#0a0a0a;font-family:'Inter',system-ui,Arial,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh}
-.wrap{max-width:1280px;margin:0 auto;padding:48px 22px 80px}
-.eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:#6a6a6a;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
-.eyebrow::before{content:"// "}
-h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:48px;line-height:1.05;letter-spacing:-.02em;margin-bottom:14px}
-h1 .ital{font-style:italic;color:#ff5722;font-weight:500}
-.intro{font-size:16px;line-height:1.55;color:#2a2a2a;max-width:720px;margin-bottom:14px}
+html,body{background:#fafaf7;color:#0a0a0a;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh}
+.wrap{max-width:1280px;margin:0 auto;padding:48px 24px 80px}
+.kicker{font-size:11px;font-weight:600;color:#6a6a6a;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+h1{font-size:40px;line-height:1.05;letter-spacing:-.03em;font-weight:700;margin-bottom:14px}
+.intro{font-size:16px;line-height:1.55;color:#444;max-width:680px;margin-bottom:14px}
 .intro b{color:#0a0a0a}
-.note{font-size:13px;color:#6a6a6a;margin-bottom:36px;max-width:720px}
-.note code{background:rgba(10,10,10,.06);padding:1px 6px;border-radius:3px;font-family:'JetBrains Mono',monospace;font-size:12px}
+.note{font-size:13px;color:#6a6a6a;margin-bottom:40px;max-width:680px;line-height:1.5}
+.note code{background:rgba(10,10,10,.06);padding:1px 6px;border-radius:3px;font-size:12px;font-family:'SF Mono',Menlo,monospace}
 
-.grid{display:grid;grid-template-columns:1fr;gap:24px}
+.grid{display:grid;grid-template-columns:1fr;gap:22px}
 @media(min-width:680px){.grid{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1080px){.grid{grid-template-columns:repeat(3,1fr)}}
 
-.card{background:#fff;border:1px solid rgba(10,10,10,.10);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease}
-.card:hover{transform:translateY(-3px);border-color:#0a0a0a;box-shadow:0 18px 40px rgba(10,10,10,.08)}
-.card-head{padding:18px 22px 12px;display:flex;align-items:flex-start;gap:10px;flex-direction:column}
-.num{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;color:#fff;background:#0a0a0a;padding:4px 10px;border-radius:99px;letter-spacing:.06em;display:inline-block}
-.name{font-family:'Fraunces',Georgia,serif;font-size:24px;font-weight:600;letter-spacing:-.015em;color:#0a0a0a;line-height:1.1}
-.tagline{font-size:13px;color:#6a6a6a;line-height:1.5;padding:0 22px 16px;flex:1}
+.card{background:#fff;border:1px solid rgba(10,10,10,.08);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.card:hover{transform:translateY(-3px);border-color:#0a0a0a;box-shadow:0 14px 40px rgba(10,10,10,.06)}
+.card-head{padding:18px 22px 8px;display:flex;flex-direction:column;gap:6px}
+.num{font-size:11px;font-weight:600;color:#6a6a6a;letter-spacing:.08em;text-transform:uppercase}
+.name{font-size:22px;font-weight:700;letter-spacing:-.02em;color:#0a0a0a;line-height:1.1}
+.tagline{font-size:13px;color:#555;line-height:1.5;padding:0 22px 14px;flex:1}
+
 .phone{margin:0 22px 14px;background:#000;border-radius:30px;padding:6px;position:relative;overflow:hidden}
 .phone::before{content:"";position:absolute;top:6px;left:50%;transform:translateX(-50%);width:80px;height:18px;background:#000;border-radius:0 0 14px 14px;z-index:2}
-.phone iframe{display:block;width:100%;height:580px;border:0;background:#fff;border-radius:24px}
+.phone iframe{display:block;width:100%;height:560px;border:0;background:#fff;border-radius:24px}
+
 .cta{margin:0 22px 22px;display:flex;gap:8px}
-.cta a{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:6px;background:#0a0a0a;color:#fff;padding:11px 16px;border-radius:99px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;transition:all .2s ease}
-.cta a:hover{background:#ff5722;transform:translateY(-1px)}
+.cta a{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:6px;background:#0a0a0a;color:#fff;padding:11px 16px;border-radius:99px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s ease;letter-spacing:.02em}
+.cta a:hover{background:#D90429;transform:translateY(-1px)}
 .cta a.alt{background:transparent;color:#0a0a0a;border:1px solid rgba(10,10,10,.18)}
 .cta a.alt:hover{background:#0a0a0a;color:#fff;border-color:#0a0a0a}
+
 .foot-note{margin-top:48px;padding-top:24px;border-top:1px solid rgba(10,10,10,.08);font-size:13px;color:#6a6a6a;line-height:1.6}
-.foot-note code{background:rgba(10,10,10,.06);padding:1px 6px;border-radius:3px;font-family:'JetBrains Mono',monospace;font-size:12px}
+.foot-note code{background:rgba(10,10,10,.06);padding:1px 6px;border-radius:3px;font-size:12px;font-family:'SF Mono',Menlo,monospace}
 </style>
 </head>
 <body>
 <div class="wrap">
-<div class="eyebrow">Answerra · Internal</div>
-<h1>5 <span class="ital">quiz designs</span> · pick one</h1>
-<p class="intro">Same 8-step flow, same backend, five different visual treatments. Each preview is the <b>actual live quiz rendered in a phone-sized iframe</b> — tap, scroll, click through the entire form. Reply <code>"use design N"</code> and I'll roll it out as the canonical <code>/quiz</code> endpoint.</p>
-<p class="note">All five use the same pixel conditioning logic ($1M+ revenue AND today/yesterday urgency = fire Purchase $30). Backend is wired to <code>/api/quiz-submit</code> already.</p>
+<div class="kicker">Answerra · Internal</div>
+<h1>5 quiz designs · pick one</h1>
+<p class="intro">All five strip the design back to <b>just what converts</b>. Same 8 steps, same backend, same pixel conditioning. Each preview is the actual live quiz in a phone-sized iframe — tap to interact end-to-end.</p>
+<p class="note">Reply <code>"use v1"</code> through <code>"use v5"</code> and I'll roll that one to the canonical <code>/quiz</code> URL. The old over-designed <code>/quiz</code> still works for now.</p>
 
 <div class="grid">
-
   <article class="card">
-    <div class="card-head"><span class="num">01 · WISTIA CLEAN</span><span class="name">Minimal SaaS</span></div>
-    <p class="tagline">White on white. Blue accent. Generous whitespace. Reads like Stripe or Linear. Best for trust-first, premium-feeling SaaS quizzes.</p>
-    <div class="phone"><iframe src="/quiz/v1-wistia-clean?niche=dental&first_name=Daniel" loading="lazy"></iframe></div>
-    <div class="cta"><a href="/quiz/v1-wistia-clean?niche=dental&first_name=Daniel" target="_blank">Open ↗</a></div>
+    <div class="card-head"><span class="num">01 · TYPEFORM</span><span class="name">Typeform Classic</span></div>
+    <p class="tagline">The original. White, big bold black headlines, single red accent. Famous because it converts. <b>Recommended baseline.</b></p>
+    <div class="phone"><iframe src="/quiz/v1-typeform?niche=dental&first_name=Daniel" loading="lazy"></iframe></div>
+    <div class="cta"><a href="/quiz/v1-typeform?niche=dental&first_name=Daniel" target="_blank">Open ↗</a></div>
   </article>
 
   <article class="card">
-    <div class="card-head"><span class="num">02 · CONVERSATIONAL</span><span class="name">Chat-bubble</span></div>
-    <p class="tagline">iMessage-style bubbles. Feels personal, not formal. One question per screen, soft pastels. Best for high-completion-rate.</p>
-    <div class="phone"><iframe src="/quiz/v2-conversational?niche=dental&first_name=Daniel" loading="lazy"></iframe></div>
-    <div class="cta"><a href="/quiz/v2-conversational?niche=dental&first_name=Daniel" target="_blank">Open ↗</a></div>
+    <div class="card-head"><span class="num">02 · CALENDLY</span><span class="name">Calendly Warm</span></div>
+    <p class="tagline">Cream background, rounded pills, no letter shortcuts. Friendly + trustworthy. Best when warmth = trust.</p>
+    <div class="phone"><iframe src="/quiz/v2-calendly-warm?niche=dental&first_name=Daniel" loading="lazy"></iframe></div>
+    <div class="cta"><a href="/quiz/v2-calendly-warm?niche=dental&first_name=Daniel" target="_blank">Open ↗</a></div>
   </article>
 
   <article class="card">
-    <div class="card-head"><span class="num">03 · PREMIUM DARK</span><span class="name">Black &amp; gold</span></div>
-    <p class="tagline">Dark mode. Gold accent. Fraunces serif. Quiet luxury. Best for high-ticket niches where the audience expects sophistication.</p>
-    <div class="phone"><iframe src="/quiz/v3-premium-dark?niche=dental&first_name=Daniel" loading="lazy"></iframe></div>
-    <div class="cta"><a href="/quiz/v3-premium-dark?niche=dental&first_name=Daniel" target="_blank">Open ↗</a></div>
+    <div class="card-head"><span class="num">03 · LINEAR</span><span class="name">Linear Dark</span></div>
+    <p class="tagline">Dark mode. Indigo accent. Lightning-fast SaaS feel. Best for technical audiences.</p>
+    <div class="phone"><iframe src="/quiz/v3-linear-dark?niche=dental&first_name=Daniel" loading="lazy"></iframe></div>
+    <div class="cta"><a href="/quiz/v3-linear-dark?niche=dental&first_name=Daniel" target="_blank">Open ↗</a></div>
   </article>
 
   <article class="card">
-    <div class="card-head"><span class="num">04 · DIRECT RESPONSE</span><span class="name">Bold &amp; loud</span></div>
-    <p class="tagline">Yellow + red + Oswald. Maximum urgency. Matches the funnel sales pages. Best when the quiz traffic is paid Meta cold.</p>
-    <div class="phone"><iframe src="/quiz/v4-direct-response?niche=dental&first_name=Daniel" loading="lazy"></iframe></div>
-    <div class="cta"><a href="/quiz/v4-direct-response?niche=dental&first_name=Daniel" target="_blank">Open ↗</a></div>
+    <div class="card-head"><span class="num">04 · STRIPE</span><span class="name">Stripe Premium</span></div>
+    <p class="tagline">Stripe-grade polish. Indigo on white. Premium feel without heaviness. Best for higher-ticket audiences.</p>
+    <div class="phone"><iframe src="/quiz/v4-stripe?niche=dental&first_name=Daniel" loading="lazy"></iframe></div>
+    <div class="cta"><a href="/quiz/v4-stripe?niche=dental&first_name=Daniel" target="_blank">Open ↗</a></div>
   </article>
 
   <article class="card">
-    <div class="card-head"><span class="num">05 · EDITORIAL</span><span class="name">Magazine-grade</span></div>
-    <p class="tagline">Cream + black. Large Fraunces serif. Italic accents. Magazine-style typography. Best for the editorial brand voice from the homepage.</p>
-    <div class="phone"><iframe src="/quiz/v5-editorial?niche=dental&first_name=Daniel" loading="lazy"></iframe></div>
-    <div class="cta"><a href="/quiz/v5-editorial?niche=dental&first_name=Daniel" target="_blank">Open ↗</a></div>
+    <div class="card-head"><span class="num">05 · APPLE</span><span class="name">Apple Hello</span></div>
+    <p class="tagline">Maximum minimalism. Pure white, pure black, SF Pro. Nothing extra. Highest perceived quality.</p>
+    <div class="phone"><iframe src="/quiz/v5-apple-hello?niche=dental&first_name=Daniel" loading="lazy"></iframe></div>
+    <div class="cta"><a href="/quiz/v5-apple-hello?niche=dental&first_name=Daniel" target="_blank">Open ↗</a></div>
   </article>
-
 </div>
 
 <div class="foot-note">
-<p>Pixel conditioning is already in the backend — only fires Purchase $30 when revenue ≥ $1M AND urgency ∈ {today, yesterday}. Everyone else still gets the call, still gets Slack ping, still gets stored in Supabase. Reply <code>"use design N"</code> to commit.</p>
-<p style="margin-top:8px">Once you pick: I'll roll it to <code>/quiz</code> as the canonical URL and wire it into the booking confirmation redirect.</p>
+<p>All five use the same backend (<code>/api/quiz-submit</code>) and the same pixel conditioning logic — only fire Purchase $30 when revenue ≥ $1M AND urgency ∈ {today, yesterday}.</p>
+<p style="margin-top:8px">Reply <code>"use v1"</code> (or any 1-5) and I'll make it the canonical <code>/quiz</code>.</p>
 </div>
 </div>
 </body>
