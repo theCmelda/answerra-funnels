@@ -289,13 +289,7 @@ const BENEFITS = {
   medspa: ["Never miss an inbound call or DM","Respond in seconds, 24/7","Send AHPRA-compliant consent forms","Reactivate dormant clients automatically","Pre-qualify enquiries by treatment + budget","Cut $4-5K/month in receptionist costs"],
   plumbing: ["Pick up every call while you're on the tools","Beat competitors to lead-response time","Send tech ETA + photo + rego before arrival","Capture every after-hours emergency","Sync straight to your job-management software","Cut $4-5K/month in receptionist costs"],
 };
-const MOCK_BIZ = [
-  {name:"Bright Smile Dental",address:"14 Beach Rd, Bondi NSW 2026",phone:"+61 2 9365 1234",website:"brightsmiledental.com.au",place_id:"mock_bright",rating:4.8,reviews:132},
-  {name:"Reliable Plumbing Sydney",address:"22 King St, Newtown NSW 2042",phone:"+61 2 9550 0011",website:"reliableplumbing.com.au",place_id:"mock_reliable",rating:4.9,reviews:217},
-  {name:"Refined Skin + Injectables",address:"5 Oxford St, Paddington NSW 2021",phone:"+61 2 9332 8800",website:"refinedskin.com.au",place_id:"mock_refined",rating:4.7,reviews:89},
-  {name:"Smile Studio Melbourne",address:"187 Chapel St, Prahran VIC 3181",phone:"+61 3 9510 0202",website:"smilestudiomelb.com.au",place_id:"mock_smile",rating:4.6,reviews:54},
-  {name:"Westside Plumbing Co",address:"99 Beach Rd, Manly NSW 2095",phone:"+61 2 9977 5566",website:"westsideplumbing.com.au",place_id:"mock_west",rating:4.8,reviews:178},
-];
+// MOCK_BIZ removed — using live Google Places API via /api/places-* proxies
 
 function showStep(n){
   state.step = n;
@@ -330,21 +324,67 @@ const bizSearch = document.getElementById('bizSearch');
 const bizSug = document.getElementById('bizSuggest');
 const bizNext = document.getElementById('bizNext');
 let suggestActive = -1;
-function renderSuggestions(matches){
-  bizSug.innerHTML = matches.map((m,i) =>
-    '<div class="suggest-item" data-idx="' + i + '"><b>' + m.name + '</b><span>' + m.address + '</span></div>'
+// Render Google Places predictions (main + secondary text from structured_formatting)
+function renderSuggestions(predictions){
+  if (!predictions || predictions.length === 0) {
+    bizSug.innerHTML = '<div class="suggest-item" style="opacity:.6"><b>No matches</b><span>Try the full business name + suburb</span></div>';
+    bizSug.style.display = 'block';
+    return;
+  }
+  bizSug.innerHTML = predictions.map((p,i) =>
+    '<div class="suggest-item" data-idx="' + i + '"><b>' + p.main_text + '</b><span>' + p.secondary_text + '</span></div>'
   ).join('');
-  bizSug.style.display = matches.length ? 'block' : 'none';
-  bizSug.querySelectorAll('.suggest-item').forEach(el => el.addEventListener('click', () => selectBiz(matches[parseInt(el.dataset.idx)])));
+  bizSug.style.display = 'block';
+  bizSug.querySelectorAll('.suggest-item').forEach(el => {
+    const idx = parseInt(el.dataset.idx);
+    if (isNaN(idx)) return;
+    el.addEventListener('click', () => pickPrediction(predictions[idx]));
+  });
 }
-function selectBiz(m){
-  state.business = m; bizSearch.value = m.name;
-  bizSug.style.display = 'none'; bizNext.disabled = false; suggestActive = -1;
+
+// User clicked a prediction — fetch full details from Places Details API
+async function pickPrediction(pred){
+  bizSearch.value = pred.main_text;
+  bizSug.style.display = 'none';
+  bizNext.disabled = true; // disable until details fetch resolves
+  try {
+    const r = await fetch('/api/places-details?place_id=' + encodeURIComponent(pred.place_id));
+    const d = await r.json();
+    if (d.ok && d.business) {
+      state.business = d.business;
+      bizNext.disabled = false;
+    } else {
+      // Fallback: minimal record from autocomplete only
+      state.business = { place_id: pred.place_id, name: pred.main_text, address: pred.secondary_text, phone:'', website:'', rating:null, reviews:0 };
+      bizNext.disabled = false;
+    }
+  } catch (e) {
+    state.business = { place_id: pred.place_id, name: pred.main_text, address: pred.secondary_text, phone:'', website:'', rating:null, reviews:0 };
+    bizNext.disabled = false;
+  }
 }
+
+// Debounced autocomplete — only fire after 250ms of no typing to avoid burning Places API budget
+let bizDebounce;
+let bizReq = 0;
 bizSearch.addEventListener('input', () => {
-  const q = bizSearch.value.toLowerCase().trim();
-  if (q.length < 2) { bizSug.style.display = 'none'; bizNext.disabled = true; return; }
-  renderSuggestions(MOCK_BIZ.filter(s => s.name.toLowerCase().includes(q) || s.address.toLowerCase().includes(q)));
+  const q = bizSearch.value.trim();
+  bizNext.disabled = true;
+  state.business = null;
+  if (q.length < 2) { bizSug.style.display = 'none'; return; }
+  clearTimeout(bizDebounce);
+  bizDebounce = setTimeout(async () => {
+    const myReq = ++bizReq; // only render if no newer request fired
+    try {
+      const r = await fetch('/api/places-autocomplete?q=' + encodeURIComponent(q));
+      const d = await r.json();
+      if (myReq !== bizReq) return; // stale response — newer request in flight
+      renderSuggestions(d.predictions || []);
+    } catch (e) {
+      // network failure — show empty state
+      renderSuggestions([]);
+    }
+  }, 250);
 });
 
 document.querySelectorAll('#revenueOpts .opt').forEach(p => p.addEventListener('click', () => {
