@@ -130,6 +130,15 @@ textarea.text-input{min-height:120px;line-height:1.45;resize:none}
   .stage{padding-top:130px}
 }
 
+
+.success-bar{background:#0f9d58;color:#fff;text-align:center;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;padding:14px 18px;line-height:1.45;letter-spacing:.01em}
+.success-bar b{font-weight:700}
+@media(min-width:760px){.success-bar{padding:16px 24px;font-size:15px}}
+.step-counter{position:fixed;top:auto;right:14px;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;color:#6a6a6a;letter-spacing:.04em;z-index:5;padding:6px 0}
+.step-counter b{color:#0a0a0a}
+@media(min-width:760px){.step-counter{right:24px;font-size:13px}}
+.biz-photo{width:100%;aspect-ratio:16/9;background:#f4f1ec center/cover no-repeat;border-radius:8px 8px 0 0;margin:-22px -22px 16px;display:block}
+.biz-photo[data-no-photo="true"]{display:none}
 </style>
 
 <!-- Meta Pixel via /pixel.js -->
@@ -137,12 +146,10 @@ textarea.text-input{min-height:120px;line-height:1.45;resize:none}
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1511657447261837&ev=PageView&noscript=1" alt=""/></noscript>
 </head>
 <body>
+<div class="warn-bar" id="warnBar"><b>Heads up:</b> Your call isn't scheduled yet. We need a couple more pieces of info from you below.</div>
+<div class="success-bar" id="successBar" style="display:none"><b>Your call is booked.</b> Our AI assistant will call you shortly to confirm.</div>
 <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
-<header class="nav">
-  <span class="brand">answerra<span class="dot">.</span></span>
-  <span class="step-count"><b id="stepNum">1</b> / 8</span>
-</header>
-<div class="warn-bar"><b>Heads up:</b> Your call isn't scheduled yet. We need a couple more pieces of info from you below.</div>
+<div class="step-counter"><b id="stepNum">1</b> / 8</div>
 
 <main class="stage"><div class="wrap">
 
@@ -165,6 +172,7 @@ textarea.text-input{min-height:120px;line-height:1.45;resize:none}
   <h2 class="q-text">Is this <span class="accent">you</span>?</h2>
   <p class="q-sub">Double-check the details.</p>
   <div class="biz-card">
+    <img class="biz-photo" id="bizPhoto" data-no-photo="true" alt="">
     <h3 id="bizName">-</h3>
     <div class="biz-row"><b>Address</b><span id="bizAddr">-</span></div>
     <div class="biz-row"><b>Phone</b><span id="bizPhone">-</span></div>
@@ -179,16 +187,15 @@ textarea.text-input{min-height:120px;line-height:1.45;resize:none}
 
 <section class="q" data-step="2">
   <div class="q-head"><span class="q-num">03</span> Revenue <span class="q-required">*</span></div>
-  <h2 class="q-text">How much did your business do <span class="accent">last year</span>?</h2>
-  <p class="q-sub">In Australian dollars.</p>
+  <h2 class="q-text" id="revHeader">How much did your business do <span class="accent">last year</span>?</h2>
   <div class="options" id="revenueOpts">
-    <button class="opt" data-revenue="Under $250K"><span class="opt-letter">A</span><span class="opt-text">Under $250,000</span></button>
-    <button class="opt" data-revenue="$250K-$500K"><span class="opt-letter">B</span><span class="opt-text">$250,000 – $500,000</span></button>
-    <button class="opt" data-revenue="$500K-$1M"><span class="opt-letter">C</span><span class="opt-text">$500,000 – $1 million</span></button>
-    <button class="opt" data-revenue="$1M-$2.5M"><span class="opt-letter">D</span><span class="opt-text">$1 million – $2.5 million</span></button>
-    <button class="opt" data-revenue="$2.5M-$5M"><span class="opt-letter">E</span><span class="opt-text">$2.5 million – $5 million</span></button>
-    <button class="opt" data-revenue="$5M-$10M"><span class="opt-letter">F</span><span class="opt-text">$5 million – $10 million</span></button>
-    <button class="opt" data-revenue="$10M+"><span class="opt-letter">G</span><span class="opt-text">$10 million+</span></button>
+    <button class="opt" data-revenue="Under $250K"><span class="opt-letter">A</span><span class="opt-text">Under AUD 250,000</span></button>
+    <button class="opt" data-revenue="$250K-$500K"><span class="opt-letter">B</span><span class="opt-text">AUD 250,000 – AUD 500,000</span></button>
+    <button class="opt" data-revenue="$500K-$1M"><span class="opt-letter">C</span><span class="opt-text">AUD 500,000 – AUD 1 million</span></button>
+    <button class="opt" data-revenue="$1M-$2.5M"><span class="opt-letter">D</span><span class="opt-text">AUD 1 million – AUD 2.5 million</span></button>
+    <button class="opt" data-revenue="$2.5M-$5M"><span class="opt-letter">E</span><span class="opt-text">AUD 2.5 million – AUD 5 million</span></button>
+    <button class="opt" data-revenue="$5M-$10M"><span class="opt-letter">F</span><span class="opt-text">AUD 5 million – AUD 10 million</span></button>
+    <button class="opt" data-revenue="$10M+"><span class="opt-letter">G</span><span class="opt-text">AUD 10 million+</span></button>
   </div>
   <div class="cta-row">
     <button class="cta-ok" data-next disabled id="revNext">OK</button>
@@ -269,30 +276,75 @@ textarea.text-input{min-height:120px;line-height:1.45;resize:none}
 </section>
 
 </div></main>
-<div class="foot">© Answerra · EJX Ventures LLC · <a href="/terms">Terms</a> · <a href="/privacy">Privacy</a></div>
+<div class="foot">© Answerra · <a href="/terms">Terms</a> · <a href="/privacy">Privacy</a></div>
 
 <script>
 const params = new URLSearchParams(location.search);
+// iClosed forwards many possible param shapes. Try every one we've seen.
+function pickParam(keys, fallback) {
+  for (const k of keys) {
+    const v = params.get(k);
+    if (v && v.trim()) return v.trim();
+  }
+  return fallback;
+}
+// Pull "first" word out of full-name shapes ("Sarah Jones" -> "Sarah")
+function firstWord(s) { return (s || '').toString().split(' ')[0]; }
+
+const rawName = pickParam(['first_name','firstName','invitee_first_name','first','given_name'], '')
+              || firstWord(pickParam(['name','full_name','fullName','invitee_name','invitee.name'], ''));
+
 const state = {
   step: 0,
-  first_name: params.get('first_name') || params.get('name') || 'there',
-  email: params.get('email') || '',
-  phone: params.get('phone') || '',
-  niche: (params.get('niche') || 'dental').toLowerCase(),
-  booking_id: params.get('booking_id') || params.get('id') || null,
+  first_name: rawName || 'there',
+  email: pickParam(['email','invitee_email','invitee.email','data.email'], ''),
+  phone: pickParam(['phone','phone_number','invitee_phone'], ''),
+  niche: pickParam(['niche'], 'dental').toLowerCase(),
+  booking_id: pickParam(['booking_id','id','event_id','invitee_uuid','uuid'], null),
   business: null, revenue: null, benefits: [], notes: '',
   urgency: null, showup_commitment: null,
 };
+console.log('[quiz] state hydrated:', { first_name: state.first_name, niche: state.niche, booking_id: state.booking_id });
 const TOTAL = 8;
 const BENEFITS = {
   dental: ["Never miss an inbound call","Answer 24/7, after-hours and weekends","Capture every after-hours emergency","Reactivate dormant patients automatically","Send SMS confirmations & forms automatically","Free up front desk for in-chair patients","Cut $4-5K/month in receptionist costs"],
   medspa: ["Never miss an inbound call or DM","Respond in seconds, 24/7","Send AHPRA-compliant consent forms","Reactivate dormant clients automatically","Pre-qualify enquiries by treatment + budget","Cut $4-5K/month in receptionist costs"],
   plumbing: ["Pick up every call while you're on the tools","Beat competitors to lead-response time","Send tech ETA + photo + rego before arrival","Capture every after-hours emergency","Sync straight to your job-management software","Cut $4-5K/month in receptionist costs"],
 };
+// Per-niche copy so the quiz feels tailored, not generic
+const NICHE_COPY = {
+  dental: {
+    bizLabel: 'practice', bizPlaceholder: 'e.g. Bright Smile Dental Bondi',
+    revenueVerb: 'your practice', commitNoun: 'practice', receptionist: 'AI receptionist',
+  },
+  medspa: {
+    bizLabel: 'clinic', bizPlaceholder: 'e.g. Refined Skin + Injectables Paddington',
+    revenueVerb: 'your clinic', commitNoun: 'clinic', receptionist: 'AI receptionist',
+  },
+  plumbing: {
+    bizLabel: 'business', bizPlaceholder: 'e.g. Reliable Plumbing Sydney',
+    revenueVerb: 'your business', commitNoun: 'business', receptionist: 'AI dispatcher',
+  },
+};
+function nicheCopy() { return NICHE_COPY[state.niche] || NICHE_COPY.dental; }
+function applyNicheCopy() {
+  const c = nicheCopy();
+  const bizSearch = document.getElementById('bizSearch');
+  if (bizSearch) bizSearch.placeholder = c.bizPlaceholder;
+  const bizLabel = document.querySelector('section[data-step="0"] .q-text');
+  if (bizLabel) bizLabel.innerHTML = "What's your " + c.bizLabel + " called, <span class=\"q-name\" data-bind=\"first_name\">there</span>?";
+  const revH = document.getElementById('revHeader');
+  if (revH) revH.innerHTML = "How much did " + c.revenueVerb + " do <span class=\"accent\">last year</span>?";
+  const ben = document.querySelector('section[data-step="3"] .q-text');
+  if (ben) ben.innerHTML = "What do you want your " + c.receptionist + " to <span class=\"accent\">fix</span>?";
+  // Re-bind any first_name placeholders
+  document.querySelectorAll('[data-bind="first_name"]').forEach(el => el.textContent = state.first_name);
+}
 // MOCK_BIZ removed — using live Google Places API via /api/places-* proxies
 
 function showStep(n){
   state.step = n;
+  applyNicheCopy();
   document.querySelectorAll('.q').forEach(q => q.classList.remove('active'));
   const next = document.querySelector('.q[data-step="' + n + '"]');
   if (next) next.classList.add('active');
@@ -314,6 +366,13 @@ function hydrateBiz(){
   document.getElementById('bizWeb').textContent = state.business.website || '-';
   document.getElementById('bizStars').textContent = state.business.rating || '-';
   document.getElementById('bizReviews').textContent = (state.business.reviews || 0) + ' reviews';
+  const photo = document.getElementById('bizPhoto');
+  if (state.business.photo_url) {
+    photo.src = state.business.photo_url;
+    photo.dataset.noPhoto = 'false';
+  } else {
+    photo.dataset.noPhoto = 'true';
+  }
 }
 function nextStep(){ if (state.step === 6) return submitForm(); showStep(state.step + 1); }
 function backStep(){ if (state.step > 0) showStep(state.step - 1); }
@@ -455,7 +514,12 @@ async function submitForm(){
       fbq('track','Purchase', {value:30,currency:'AUD',content_name:'Answerra Quiz Qualified Lead'}, {eventID: data.event_id});
     }
   } catch (e) { console.error(e); } finally {
-    showStep(8); buildCalendarLinks();
+    // Switch warn -> success bar, hide step counter
+    document.getElementById('warnBar').style.display = 'none';
+    document.getElementById('successBar').style.display = 'block';
+    document.querySelector('.step-counter').style.display = 'none';
+    document.querySelector('.progress').style.display = 'none';
+    showStep(7); buildCalendarLinks();
   }
 }
 function buildCalendarLinks(){

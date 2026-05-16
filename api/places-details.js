@@ -17,7 +17,7 @@ export default async function handler(req, res) {
 
   const url = new URL("https://maps.googleapis.com/maps/api/place/details/json");
   url.searchParams.set("place_id", place_id);
-  url.searchParams.set("fields", "name,formatted_address,formatted_phone_number,international_phone_number,website,rating,user_ratings_total,url");
+  url.searchParams.set("fields", "name,formatted_address,formatted_phone_number,international_phone_number,website,rating,user_ratings_total,url,photos");
   url.searchParams.set("language", "en-AU");
   url.searchParams.set("key", key);
 
@@ -29,9 +29,12 @@ export default async function handler(req, res) {
       return res.status(200).json({ ok: false, error: data.status });
     }
     const p = data.result || {};
+    const photoRef = (p.photos && p.photos[0] && p.photos[0].photo_reference) || null;
+    const photo_url = photoRef ? `/api/places-photo?ref=${encodeURIComponent(photoRef)}&w=800` : null;
     const out = {
       place_id,
       name: p.name || "",
+      photo_url,
       address: p.formatted_address || "",
       phone: p.formatted_phone_number || p.international_phone_number || "",
       website: p.website ? p.website.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "") : "",
