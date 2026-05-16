@@ -1,15 +1,12 @@
 #!/usr/bin/env python3
 """
-Generate 9 direct-to-calendar funnel pages (v3).
+Generate 9 direct-to-calendar funnel pages (v4).
 
-Changes from v2:
-  * Vertical checkmark benefits list under calendar (kaytoms-style)
-  * No "Daniel takes the call himself" copy. Benefit-focused everywhere.
-  * No "$0 until..." promise copy. Risk reversal handled by cohort badge.
-  * "Australian Build" not "Built in Melbourne".
-  * Tech stack: OpenAI, ElevenLabs, Twilio (Retell removed).
-  * Cohort badge month + year both dynamic via JS.
-  * Logo bars use img tags so real SVG/PNG logos can be dropped in.
+Changes from v3:
+  * Press section now = AS COVERED BY logo wall (real SVG logos) + Polaroid Stack (10 articles, 2 tilted rows).
+  * Old text logo bar, hero stat, article cards, stats grid, tech proof sections removed.
+  * Software compatibility section retained (niche-specific value).
+  * Vertical checkmark benefits list, no Daniel-takes-the-call, no $0-until, Australian Build, dynamic year.
 """
 
 from pathlib import Path
@@ -261,10 +258,10 @@ TEMPLATE = """<!DOCTYPE html>
 <meta name="description" content="{SUBHEAD_PLAIN}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Open+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Open+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800;900&family=Source+Serif+Pro:wght@600;700;900&display=swap" rel="stylesheet">
 <style>
   *,*::before,*::after{{box-sizing:border-box;margin:0;padding:0}}
-  html,body{{background:#f4f4f4;color:#0a0a0a;font-family:'Open Sans',Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.45}}
+  html,body{{background:#f4f4f4;color:#0a0a0a;font-family:'Open Sans',Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.45;overflow-x:hidden}}
   .shell{{max-width:420px;margin:0 auto;background:#fff}}
   @media (min-width:900px){{.shell{{max-width:780px}}}}
 
@@ -280,12 +277,7 @@ TEMPLATE = """<!DOCTYPE html>
   h1{{font-family:'Oswald',Impact,sans-serif;color:#0a0a0a;font-size:30px;line-height:1.05;font-weight:700;margin-bottom:14px;letter-spacing:-.005em;text-transform:uppercase}}
   h1 .red{{color:#D90429}}
   .subhead{{font-size:15px;line-height:1.5;font-weight:500;color:#222;margin:0 auto 22px;max-width:520px}}
-  @media (min-width:900px){{
-    .hero{{padding:48px 32px 32px}}
-    h1{{font-size:48px}}
-    .subhead{{font-size:18px;margin-bottom:28px}}
-    .pretitle{{font-size:13px;letter-spacing:.14em}}
-  }}
+  @media (min-width:900px){{.hero{{padding:48px 32px 32px}}h1{{font-size:48px}}.subhead{{font-size:18px;margin-bottom:28px}}.pretitle{{font-size:13px;letter-spacing:.14em}}}}
   .cta-scroll{{display:inline-block;background:#0066CC;color:#fff;text-align:center;padding:14px 28px;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;border:0;cursor:pointer;text-decoration:none;font-family:'Inter',sans-serif}}
   .cta-scroll:hover{{background:#0052a3}}
 
@@ -295,65 +287,82 @@ TEMPLATE = """<!DOCTYPE html>
   .video-caption{{font-size:13px;color:#444;text-align:center;margin-bottom:14px;line-height:1.45;font-weight:500;max-width:520px;margin-left:auto;margin-right:auto}}
   .video-card{{max-width:380px;margin:0 auto;background:#000;border:3px solid #000;position:relative;aspect-ratio:4/5;overflow:hidden}}
   .video-card iframe{{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}}
-  @media (min-width:900px){{
-    .video-block{{padding:36px 32px 40px}}
-    .video-label{{font-size:24px}}
-    .video-card{{max-width:440px;border-width:4px}}
+  @media (min-width:900px){{.video-block{{padding:36px 32px 40px}}.video-label{{font-size:24px}}.video-card{{max-width:440px;border-width:4px}}}}
+
+  /* ===== AS COVERED BY LOGO WALL (full-bleed, dark) ===== */
+  .logo-wall{{background:#000;padding:60px 22px 50px;width:100vw;margin-left:calc(-50vw + 50%);text-align:center;position:relative}}
+  .lw-h{{color:#fff;font-family:'Oswald',sans-serif;font-size:32px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;display:block;margin-bottom:34px;line-height:1.1}}
+  @media (min-width:900px){{.lw-h{{font-size:46px;margin-bottom:42px}}}}
+  .lw-card{{max-width:1100px;margin:0 auto;background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.08);border-radius:22px;padding:36px 28px}}
+  @media (min-width:900px){{.lw-card{{padding:50px 60px}}}}
+  .lw-grid{{display:grid;grid-template-columns:repeat(3,1fr);gap:30px 18px;align-items:center;justify-items:center}}
+  @media (min-width:700px){{.lw-grid{{grid-template-columns:repeat(4,1fr);gap:32px 24px}}}}
+  @media (min-width:900px){{.lw-grid{{grid-template-columns:repeat(6,1fr);gap:38px 28px}}}}
+  .lw-item{{display:flex;align-items:center;justify-content:center;height:40px;width:100%}}
+  .lw-item img{{height:26px;width:auto;max-width:120px;object-fit:contain;filter:brightness(0) invert(1) opacity(0.9)}}
+  @media (min-width:900px){{.lw-item img{{height:30px;max-width:140px}}}}
+  .lw-item .wm{{color:#fff;font-weight:800;line-height:1;white-space:nowrap}}
+  .wm-openai{{font-family:'Inter',sans-serif;font-weight:700;letter-spacing:-.02em;font-size:18px}}
+  .wm-mckinsey{{font-family:'Source Serif Pro','Playfair Display',serif;font-weight:900;letter-spacing:-.01em;font-size:18px}}
+  .wm-smartcompany{{font-family:'Inter',sans-serif;font-weight:800;letter-spacing:-.01em;font-size:16px}}
+  .wm-afr{{font-family:'Playfair Display',serif;font-weight:900;font-style:italic;letter-spacing:-.01em;font-size:17px}}
+
+  /* ===== POLAROID STACK PRESS SECTION ===== */
+  .polaroid-stack{{background:#000;padding:30px 22px 80px;width:100vw;margin-left:calc(-50vw + 50%);text-align:center}}
+  .ps-h{{color:#fff;font-family:'Oswald',sans-serif;font-size:28px;text-transform:uppercase;text-align:center;margin-bottom:40px;letter-spacing:.04em;line-height:1.1;font-weight:700}}
+  @media (min-width:900px){{.ps-h{{font-size:40px;margin-bottom:56px}}}}
+  .ps-row{{position:relative;max-width:1000px;margin:0 auto 40px;height:340px}}
+  @media (max-width:700px){{.ps-row{{height:240px;max-width:380px;margin-bottom:30px}}}}
+  .ps-card{{position:absolute;background:#fff;border-radius:10px;box-shadow:0 16px 40px rgba(0,0,0,0.55), 0 3px 10px rgba(0,0,0,0.3);overflow:hidden;border:7px solid #fff;border-bottom-width:38px}}
+  .ps-card .pill{{position:absolute;top:8px;left:50%;transform:translateX(-50%);z-index:3;display:inline-flex;align-items:center;background:#fff;border-radius:999px;padding:5px 14px;box-shadow:0 4px 12px rgba(0,0,0,0.25);height:28px;white-space:nowrap}}
+  .ps-card .pill img{{height:16px;max-width:80px;object-fit:contain}}
+  .ps-card .pill .wm{{font-size:12px;color:#0a0a0a;line-height:1;letter-spacing:-.005em;font-weight:800}}
+  .ps-card img.thumb{{width:100%;height:100%;display:block;object-fit:cover;border-radius:3px}}
+  /* Row 1 (5 cards, varied tilts) */
+  .ps-a1{{width:240px;height:255px;top:55px;left:4%;transform:rotate(-6deg);z-index:2}}
+  .ps-a2{{width:250px;height:265px;top:25px;left:22%;transform:rotate(3deg);z-index:4}}
+  .ps-a3{{width:240px;height:255px;top:55px;left:41%;transform:rotate(-3deg);z-index:3}}
+  .ps-a4{{width:250px;height:265px;top:30px;right:21%;transform:rotate(4deg);z-index:5}}
+  .ps-a5{{width:230px;height:245px;top:60px;right:4%;transform:rotate(-5deg);z-index:2}}
+  /* Row 2 */
+  .ps-b1{{width:250px;height:265px;top:50px;left:5%;transform:rotate(4deg);z-index:3}}
+  .ps-b2{{width:240px;height:255px;top:30px;left:23%;transform:rotate(-3deg);z-index:5}}
+  .ps-b3{{width:250px;height:265px;top:55px;left:42%;transform:rotate(2deg);z-index:4}}
+  .ps-b4{{width:230px;height:245px;top:40px;right:23%;transform:rotate(-4deg);z-index:3}}
+  .ps-b5{{width:250px;height:265px;top:50px;right:4%;transform:rotate(5deg);z-index:5}}
+  @media (max-width:700px){{
+    .ps-a1,.ps-a2,.ps-a3,.ps-a4,.ps-a5,.ps-b1,.ps-b2,.ps-b3,.ps-b4,.ps-b5{{width:140px;height:160px;border-width:5px;border-bottom-width:28px}}
+    .ps-a1{{top:35px;left:0}}
+    .ps-a2{{top:15px;left:60px}}
+    .ps-a3{{top:50px;left:120px}}
+    .ps-a4{{top:25px;right:60px}}
+    .ps-a5{{top:50px;right:0}}
+    .ps-b1{{top:30px;left:10px}}
+    .ps-b2{{top:50px;left:70px}}
+    .ps-b3{{top:25px;left:130px}}
+    .ps-b4{{top:50px;right:70px}}
+    .ps-b5{{top:30px;right:0}}
+    .ps-card .pill{{padding:3px 9px;height:22px}}
+    .ps-card .pill img{{height:13px;max-width:50px}}
+    .ps-card .pill .wm{{font-size:10px}}
   }}
 
-  /* ===== PRESS COLLAGE ===== */
-  section.press-section{{padding:24px 20px;border-bottom:1px solid #e8e8e8}}
-  .bar-label{{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#666;text-align:center;margin-bottom:14px}}
-  .section-h{{font-family:'Oswald',sans-serif;font-size:22px;font-weight:700;letter-spacing:.01em;text-transform:uppercase;text-align:center;margin-bottom:18px;line-height:1.05;color:#0a0a0a}}
-  @media (min-width:900px){{.section-h{{font-size:28px}}}}
-
-  .press-bar{{background:#fafafa}}
-  .logo-row{{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:18px 28px}}
-  .logo-row img{{height:24px;width:auto;max-width:130px;object-fit:contain;opacity:.78;filter:grayscale(100%) contrast(1.05)}}
-  @media (min-width:900px){{.logo-row img{{height:30px}}}}
-  .logo-pub-fallback{{font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:.04em;color:#222;opacity:.78;padding:4px 0}}
-
-  .hero-stat{{background:#0a0a0a;color:#fff;text-align:center;padding:32px 22px}}
-  .stat-big{{font-family:'Oswald',Impact,sans-serif;font-size:80px;line-height:.95;font-weight:700;color:#FFE100;letter-spacing:-.01em;margin-bottom:8px}}
-  @media (min-width:900px){{.stat-big{{font-size:112px}}}}
-  .stat-label{{font-family:'Oswald',sans-serif;font-size:17px;font-weight:600;letter-spacing:.01em;text-transform:uppercase;line-height:1.18;margin-bottom:10px}}
-  @media (min-width:900px){{.stat-label{{font-size:20px}}}}
-  .stat-sub{{font-size:13px;color:#bbb;line-height:1.5;max-width:380px;margin:0 auto}}
-
-  .news-montage{{padding:24px 20px;background:#fafafa;border-bottom:1px solid #e8e8e8}}
-  .news-grid{{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:760px;margin:0 auto}}
-  @media (min-width:900px){{.news-grid{{grid-template-columns:repeat(4,1fr);gap:14px}}}}
-  .news-tile{{background:#fff;border:1px solid #e0e0e0;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;color:#999;font-size:11px;font-family:'Inter',sans-serif;letter-spacing:.04em;text-transform:uppercase;font-weight:600}}
-  .news-tile img{{width:100%;height:100%;object-fit:cover;display:block}}
-
-  .stats-bg{{background:#fafafa}}
-  .stats-grid{{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e8e8e8;border:1px solid #e8e8e8}}
-  @media (min-width:900px){{.stats-grid{{grid-template-columns:1fr 1fr 1fr 1fr}}}}
-  .stat-tile{{background:#fff;padding:16px 12px;text-align:center}}
-  .stat-num{{font-family:'Oswald',Impact,sans-serif;font-size:30px;line-height:1;font-weight:700;color:#D90429;margin-bottom:6px}}
-  @media (min-width:900px){{.stat-num{{font-size:38px}}}}
-  .stat-line{{font-size:11.5px;font-weight:600;line-height:1.35;color:#0a0a0a;margin-bottom:4px}}
-  .stat-src{{font-size:10px;font-weight:500;color:#888}}
-
-  .tech-proof{{background:#0a0a0a;color:#fff}}
-  .tech-proof .bar-label{{color:#FFE100}}
-  .tech-proof .logo-row img{{filter:invert(1) grayscale(100%);opacity:.92}}
-  .tech-proof .logo-pub-fallback{{color:#fff;opacity:1}}
-
-  .software-compat{{background:#fafafa}}
-  .compat-niche{{background:#fff;border:1px solid #e8e8e8;padding:14px 16px;text-align:center}}
+  /* ===== SOFTWARE COMPAT (kept) ===== */
+  .software-compat{{padding:30px 22px;background:#fafafa;border-bottom:1px solid #e8e8e8}}
+  .sc-label{{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#666;text-align:center;margin-bottom:14px}}
+  .compat-niche{{background:#fff;border:1px solid #e8e8e8;padding:16px 18px;text-align:center;max-width:760px;margin:0 auto;border-radius:8px}}
   .niche-label{{font-family:'Oswald',sans-serif;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#D90429;margin-bottom:6px}}
   .compat-row{{font-size:13px;font-weight:600;color:#222;line-height:1.5}}
 
   /* ===== CALENDAR ===== */
-  .calendar{{padding:32px 22px 24px;background:#fff}}
+  .calendar{{padding:42px 22px 28px;background:#fff}}
   .calendar-h{{font-family:'Oswald',sans-serif;font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:.01em;text-align:center;margin-bottom:8px;line-height:1.1;color:#0a0a0a}}
   @media (min-width:900px){{.calendar-h{{font-size:32px}}}}
   .calendar-sub{{font-size:14px;color:#444;text-align:center;line-height:1.5;margin-bottom:20px;max-width:540px;margin-left:auto;margin-right:auto}}
   .iclosed-widget{{min-height:680px;width:100%;border:1px solid #e8e8e8}}
   @media (min-width:900px){{.iclosed-widget{{min-height:760px}}}}
 
-  /* ===== BENEFITS (vertical checklist, kaytoms-style) ===== */
+  /* ===== BENEFITS (vertical checklist) ===== */
   .benefits{{padding:28px 22px;background:#fafafa;border-top:1px solid #e8e8e8}}
   .benefits-h{{font-family:'Oswald',sans-serif;font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:.01em;text-align:center;margin-bottom:16px;line-height:1.1;color:#0a0a0a}}
   @media (min-width:900px){{.benefits-h{{font-size:26px}}}}
@@ -403,78 +412,53 @@ TEMPLATE = """<!DOCTYPE html>
               allowfullscreen="true"></iframe>
     </div>
   </section>
+</div>
 
-  <!-- PRESS LOGO BAR -->
-  <section class="press-section press-bar">
-    <div class="bar-label">The AI Receptionist Shift, Covered By:</div>
-    <div class="logo-row">
-      <img src="/logos/openai.svg" alt="OpenAI" onerror="this.outerHTML='<span class=&quot;logo-pub-fallback&quot;>OpenAI</span>'">
-      <img src="/logos/mckinsey.svg" alt="McKinsey" onerror="this.outerHTML='<span class=&quot;logo-pub-fallback&quot;>McKinsey</span>'">
-      <img src="/logos/cbs-news.svg" alt="CBS News" onerror="this.outerHTML='<span class=&quot;logo-pub-fallback&quot;>CBS News</span>'">
-      <img src="/logos/fast-company.svg" alt="Fast Company" onerror="this.outerHTML='<span class=&quot;logo-pub-fallback&quot;>Fast Company</span>'">
-      <img src="/logos/salesforce.svg" alt="Salesforce" onerror="this.outerHTML='<span class=&quot;logo-pub-fallback&quot;>Salesforce</span>'">
-      <img src="/logos/bloomberg.svg" alt="Bloomberg" onerror="this.outerHTML='<span class=&quot;logo-pub-fallback&quot;>Bloomberg</span>'">
+<!-- ============ AS COVERED BY LOGO WALL (full-bleed) ============ -->
+<section class="logo-wall">
+  <div class="lw-h">As Covered By</div>
+  <div class="lw-card">
+    <div class="lw-grid">
+      <div class="lw-item"><img src="/logos/cnbc.svg" alt="CNBC"></div>
+      <div class="lw-item"><span class="wm wm-openai">OpenAI</span></div>
+      <div class="lw-item"><span class="wm wm-mckinsey">McKinsey</span></div>
+      <div class="lw-item"><img src="/logos/cbs.svg" alt="CBS"></div>
+      <div class="lw-item"><img src="/logos/forbes.svg" alt="Forbes"></div>
+      <div class="lw-item"><img src="/logos/bloomberg.svg" alt="Bloomberg"></div>
+      <div class="lw-item"><img src="/logos/cnn.svg" alt="CNN"></div>
+      <div class="lw-item"><span class="wm wm-afr">Financial Review</span></div>
+      <div class="lw-item"><span class="wm wm-smartcompany">SmartCompany</span></div>
+      <div class="lw-item"><img src="/logos/techcrunch.svg" alt="TechCrunch"></div>
+      <div class="lw-item"><img src="/logos/wsj.svg" alt="Wall Street Journal"></div>
+      <div class="lw-item"><img src="/logos/ft.svg" alt="Financial Times"></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- NEWS ARTICLE MONTAGE (non-clickable visual proof) -->
-  <section class="news-montage">
-    <div class="bar-label">Recent Coverage Of The AI Receptionist Shift:</div>
-    <div class="news-grid">
-      <div class="news-tile"><img src="/news/article-01.jpg" alt="" onerror="this.outerHTML='<span>Article 01</span>'"></div>
-      <div class="news-tile"><img src="/news/article-02.jpg" alt="" onerror="this.outerHTML='<span>Article 02</span>'"></div>
-      <div class="news-tile"><img src="/news/article-03.jpg" alt="" onerror="this.outerHTML='<span>Article 03</span>'"></div>
-      <div class="news-tile"><img src="/news/article-04.jpg" alt="" onerror="this.outerHTML='<span>Article 04</span>'"></div>
-    </div>
-  </section>
+<!-- ============ POLAROID STACK PRESS (full-bleed) ============ -->
+<section class="polaroid-stack">
+  <div class="ps-h">As Covered By The Press</div>
+  <div class="ps-row">
+    <div class="ps-card ps-a1"><span class="pill"><img src="/logos/cnbc.svg" alt=""></span><img class="thumb" src="/moodboard/M01.jpg" alt=""></div>
+    <div class="ps-card ps-a2"><span class="pill"><span class="wm wm-openai" style="font-size:11px">OpenAI</span></span><img class="thumb" src="/moodboard/M02.jpg" alt=""></div>
+    <div class="ps-card ps-a3"><span class="pill"><span class="wm wm-mckinsey" style="font-size:11px">McKinsey</span></span><img class="thumb" src="/moodboard/M03.jpg" alt=""></div>
+    <div class="ps-card ps-a4"><span class="pill"><img src="/logos/cbs.svg" alt=""></span><img class="thumb" src="/moodboard/M04.jpg" alt=""></div>
+    <div class="ps-card ps-a5"><span class="pill"><img src="/logos/forbes.svg" alt=""></span><img class="thumb" src="/moodboard/M05.jpg" alt=""></div>
+  </div>
+  <div class="ps-row">
+    <div class="ps-card ps-b1"><span class="pill"><span class="wm wm-afr" style="font-size:11px">Financial Review</span></span><img class="thumb" src="/moodboard/M06.jpg" alt=""></div>
+    <div class="ps-card ps-b2"><span class="pill"><span class="wm wm-smartcompany" style="font-size:11px">SmartCompany</span></span><img class="thumb" src="/moodboard/M07.jpg" alt=""></div>
+    <div class="ps-card ps-b3"><span class="pill"><img src="/logos/bloomberg.svg" alt=""></span><img class="thumb" src="/moodboard/M08.jpg" alt=""></div>
+    <div class="ps-card ps-b4"><span class="pill"><img src="/logos/cnn.svg" alt=""></span><img class="thumb" src="/moodboard/M09.jpg" alt=""></div>
+    <div class="ps-card ps-b5"><span class="pill"><img src="/logos/techcrunch.svg" alt=""></span><img class="thumb" src="/moodboard/M10.jpg" alt=""></div>
+  </div>
+</section>
 
-  <!-- HERO STAT -->
-  <section class="press-section hero-stat">
-    <div class="stat-big">700</div>
-    <div class="stat-label">Customer Service Agents<br>Replaced By AI At Klarna</div>
-    <div class="stat-sub">2.3 million conversations in month one. Resolution time cut from 11 minutes to under 2. $40M/year saved. Same voice AI infrastructure powers Answerra. (OpenAI Case Study, Klarna, 2024)</div>
-  </section>
+<div class="shell">
 
-  <!-- STATS GRID -->
-  <section class="press-section stats-bg">
-    <h2 class="section-h">The Math On Missed Calls</h2>
-    <div class="stats-grid">
-      <div class="stat-tile">
-        <div class="stat-num">270K</div>
-        <div class="stat-line">Calls missed by AU tradies every day</div>
-        <div class="stat-src">SmallBizAI, 2026</div>
-      </div>
-      <div class="stat-tile">
-        <div class="stat-num">62%</div>
-        <div class="stat-line">Of small business calls go unanswered</div>
-        <div class="stat-src">Nextiva, 2024</div>
-      </div>
-      <div class="stat-tile">
-        <div class="stat-num">88%</div>
-        <div class="stat-line">Of AU SMBs using AI report higher revenue</div>
-        <div class="stat-src">Salesforce, 2025</div>
-      </div>
-      <div class="stat-tile">
-        <div class="stat-num">$40M</div>
-        <div class="stat-line">Klarna's annual saving from AI customer service</div>
-        <div class="stat-src">Klarna PR, 2024</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TECH PROOF (OpenAI, ElevenLabs, Twilio only - no Retell) -->
-  <section class="press-section tech-proof">
-    <div class="bar-label">Built On The Same AI Infrastructure As Klarna:</div>
-    <div class="logo-row">
-      <img src="/logos/openai.svg" alt="OpenAI" onerror="this.outerHTML='<span class=&quot;logo-pub-fallback&quot;>OpenAI</span>'">
-      <img src="/logos/elevenlabs.svg" alt="ElevenLabs" onerror="this.outerHTML='<span class=&quot;logo-pub-fallback&quot;>ElevenLabs</span>'">
-      <img src="/logos/twilio.svg" alt="Twilio" onerror="this.outerHTML='<span class=&quot;logo-pub-fallback&quot;>Twilio</span>'">
-    </div>
-  </section>
-
-  <!-- SOFTWARE COMPAT (niche-specific) -->
-  <section class="press-section software-compat">
-    <div class="bar-label">Plugs Into The Software You Already Use:</div>
+  <!-- SOFTWARE COMPAT -->
+  <section class="software-compat">
+    <div class="sc-label">Plugs Into The Software You Already Use:</div>
     <div class="compat-niche">
       <div class="niche-label">{NICHE}</div>
       <div class="compat-row">{COMPAT_LIST}</div>
@@ -489,7 +473,7 @@ TEMPLATE = """<!DOCTYPE html>
     <script async src="https://app.iclosed.io/assets/widget.js"></script>
   </section>
 
-  <!-- BENEFITS (vertical checkmark list) -->
+  <!-- BENEFITS -->
   <section class="benefits">
     <h2 class="benefits-h">What You Get</h2>
     <ul class="benefits-list">
@@ -497,7 +481,7 @@ TEMPLATE = """<!DOCTYPE html>
     </ul>
   </section>
 
-  <!-- COHORT (month + year both dynamic) -->
+  <!-- COHORT -->
   <section class="cohort">
     <div class="cohort-badge">Founding AU Cohort &middot; <span class="urg-month"></span> <span class="urg-year"></span></div>
     <div class="cohort-h">10 Free Builds This Month<br>8 Slots Left</div>
