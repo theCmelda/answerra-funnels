@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Answerra · Sales admin</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#0a0a0a;color:#eee;font-family:-apple-system,BlinkMacSystemFont,'Inter',sans-serif;-webkit-font-smoothing:antialiased;font-size:13px;line-height:1.4}
+.wrap{max-width:1400px;margin:0 auto;padding:24px}
+h1{font-size:20px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px}
+.sub{color:#888;margin-bottom:24px}
+.auth{background:#1a1a1a;border:1px solid #333;border-radius:10px;padding:18px;margin-bottom:20px}
+.auth input{background:#000;border:1px solid #444;color:#fff;padding:8px 12px;border-radius:6px;font-family:inherit;font-size:13px;width:280px;margin-right:8px}
+.auth button{background:#0f9d58;color:#fff;border:0;padding:8px 18px;border-radius:6px;font-weight:600;cursor:pointer;font-family:inherit}
+table{width:100%;border-collapse:collapse;background:#111;border-radius:10px;overflow:hidden}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid #222;vertical-align:top}
+th{background:#1a1a1a;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#888;font-weight:600;position:sticky;top:0}
+tr:hover{background:#181818}
+.tag{display:inline-block;font-size:10px;padding:2px 7px;border-radius:99px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.tag.qual{background:#0f9d58;color:#fff}
+.tag.unqual{background:#444;color:#bbb}
+.tag.booked{background:#1d4ed8;color:#fff}
+.tag.closed{background:#d97706;color:#fff}
+.tag.lost{background:#7f1d1d;color:#fff}
+.tag.niche{background:#222;color:#bbb;text-transform:lowercase}
+.attr{color:#888;font-size:11px}
+.attr b{color:#bbb;font-weight:600}
+.sale-btn{background:#0f9d58;color:#fff;border:0;padding:4px 9px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;font-family:inherit}
+.sale-btn:hover{background:#0d8a4f}
+.empty{padding:60px;text-align:center;color:#888}
+.dollar{color:#0f9d58;font-weight:600}
+.error{background:#7f1d1d;padding:10px;border-radius:6px;margin-top:10px;color:#fee}
+.muted{color:#666}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Answerra · Sales admin</h1>
+  <p class="sub">Recent leads, bookings, and attribution. Click "Mark sale" to fire CAPI Purchase with original ad attribution.</p>
+
+  <div class="auth" id="authBox">
+    <input type="password" id="secret" placeholder="Admin secret (from ADMIN_SECRET env var)" />
+    <button onclick="load()">Load bookings</button>
+    <div id="err"></div>
+  </div>
+
+  <div id="tableWrap"></div>
+</div>
+
+<script>
+const SECRET_KEY = 'answerra_admin_secret';
+const secretInput = document.getElementById('secret');
+const errEl = document.getElementById('err');
+
+// Restore secret from sessionStorage so refresh doesn't kick you out
+if (sessionStorage.getItem(SECRET_KEY)) {
+  secretInput.value = sessionStorage.getItem(SECRET_KEY);
+  load();
+}
+
+async function load(){
+  errEl.innerHTML = '';
+  const secret = secretInput.value.trim();
+  if (!secret) { errEl.innerHTML = '<div class="error">Enter the admin secret</div>'; return; }
+  try {
+    const r = await fetch('/api/admin-bookings?secret=' + encodeURIComponent(secret));
+    if (!r.ok) {
+      errEl.innerHTML = '<div class="error">' + (r.status === 401 ? 'Wrong secret' : 'Error ' + r.status) + '</div>';
+      return;
+    }
+    sessionStorage.setItem(SECRET_KEY, secret);
+    const { rows } = await r.json();
+    renderTable(rows || []);
+  } catch (e) {
+    errEl.innerHTML = '<div class="error">' + e.message + '</div>';
+  }
+}
+
+function fmtDate(iso){
+  if (!iso) return '';
+  const d = new Date(iso);
+  return d.toLocaleString('en-AU', { dateStyle:'medium', timeStyle:'short' });
+}
+function fmtDollar(cents, currency){
+  if (cents == null) return '';
+  return '$' + (cents/100).toLocaleString('en-AU') + ' ' + (currency || 'AUD');
+}
+
+function renderTable(rows){
+  if (rows.length === 0) {
+    document.getElementById('tableWrap').innerHTML = '<div class="empty">No leads yet.</div>';
+    return;
+  }
+  document.getElementById('tableWrap').innerHTML = `
+  <table>
+    <thead><tr>
+      <th>When</th><th>Lead</th><th>Niche</th><th>Qual</th><th>Revenue / Urg</th>
+      <th>Booked</th><th>Status</th><th>Sale</th><th>Attribution</th><th>Action</th>
+    </tr></thead>
+    <tbody>` +
+    rows.map(r => `
+      <tr>
+        <td class="muted">${fmtDate(r.created_at)}</td>
+        <td><b>${r.first_name || '?'}</b><br><span class="muted">${r.email || ''}<br>${r.phone || ''}</span><br><span class="muted">${r.business_name || ''}</span></td>
+        <td><span class="tag niche">${r.niche || '-'}</span></td>
+        <td>${r.pixel_fired ? '<span class="tag qual">qual</span>' : '<span class="tag unqual">cold</span>'}</td>
+        <td>${r.revenue || '-'}<br><span class="muted">${r.urgency || '-'}</span></td>
+        <td class="muted">${fmtDate(r.booked_at)}</td>
+        <td>${r.booking_status ? '<span class="tag ' + r.booking_status + '">' + r.booking_status + '</span>' : ''}</td>
+        <td class="dollar">${fmtDollar(r.sale_value_cents, r.sale_currency)}</td>
+        <td class="attr">
+          ${r.utm_campaign ? '<b>camp:</b> ' + r.utm_campaign + '<br>' : ''}
+          ${r.utm_content  ? '<b>creative:</b> ' + r.utm_content + '<br>' : ''}
+          ${r.utm_source   ? '<b>src:</b> ' + r.utm_source + '<br>' : ''}
+          ${r.fbclid ? '🎯 fbclid' : (r.utm_campaign ? '' : '<span class="muted">organic</span>')}
+        </td>
+        <td>${r.booking_status === 'closed' ? '<span class="muted">done</span>' :
+              (r.booked_at ? '<button class="sale-btn" onclick="markSale(\\''+(r.business_name||'').replace(/\\'/g,'')+'\\','+'\\''+r.email+'\\')">Mark sale</button>' : '<span class="muted">-</span>')}</td>
+      </tr>`).join('') +
+    `</tbody></table>`;
+}
+
+async function markSale(name, email){
+  const bookingId = prompt('Confirm booking_id for ' + (name || email) + ':\\n(copy from the row attribution if unsure)');
+  if (!bookingId) return;
+  const valueStr = prompt('Sale value in AUD (e.g. 3000 for $3,000):');
+  if (!valueStr) return;
+  const value = parseFloat(valueStr);
+  if (isNaN(value) || value <= 0) { alert('Invalid amount'); return; }
+  const notes = prompt('Notes (optional):') || null;
+
+  const secret = sessionStorage.getItem(SECRET_KEY);
+  const r = await fetch('/api/mark-sale?secret=' + encodeURIComponent(secret), {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ booking_id: bookingId, value, currency: 'AUD', notes })
+  });
+  const j = await r.json();
+  if (j.ok) {
+    alert('Sale marked! CAPI: ' + (j.capi.ok ? 'fired ✓' : 'failed/skipped'));
+    load();
+  } else {
+    alert('Failed: ' + (j.error || JSON.stringify(j)));
+  }
+}
+</script>
+</body>
+</html>

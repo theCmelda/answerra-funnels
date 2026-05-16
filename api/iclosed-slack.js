@@ -53,7 +53,7 @@ async function slackPost(text) {
   }
 }
 
-async function fireCapiSchedule({ event_id, email, phone, first_name, niche, source_url, client_ip, client_ua }) {
+async function fireCapiSchedule({ event_id, email, phone, first_name, niche, source_url, client_ip, client_ua, fbc, fbp }) {
   const token = process.env.META_CAPI_ACCESS_TOKEN;
   if (!token) return { skipped: true, reason: "no_token" };
   const user_data = { country: [sha256("au")] };
@@ -62,6 +62,8 @@ async function fireCapiSchedule({ event_id, email, phone, first_name, niche, sou
   if (first_name) user_data.fn = [sha256(first_name)];
   if (client_ip) user_data.client_ip_address = client_ip;
   if (client_ua) user_data.client_user_agent = client_ua;
+  if (fbc) user_data.fbc = fbc;
+  if (fbp) user_data.fbp = fbp;
   const payload = {
     data: [{
       event_name: "Schedule",
@@ -122,6 +124,9 @@ export default async function handler(req, res) {
   const niche      = pickNiche(body);
 
   // 1. Persist to Supabase
+  // iClosed may pass our visitor_id as a custom field or via UTM-style query in source_url
+  const visitor_id = body.visitor_id || body.v_id || body.q1 || null;
+
   const supRow = {
     booking_id,
     first_name, last_name, email, phone,
@@ -129,6 +134,7 @@ export default async function handler(req, res) {
     booked_at: start_iso,
     source_url: body.source_url || body.utm_source || null,
     capi_event_id: booking_id,
+    visitor_id,
     raw_payload: body,
   };
   await supabaseUpsertBooking(supRow);
@@ -147,11 +153,30 @@ export default async function handler(req, res) {
   // 3. Fire Schedule CAPI event (no $value — that comes from quiz qualifying)
   const client_ip = req.headers["x-forwarded-for"]?.split(",")[0]?.trim() || req.headers["x-real-ip"];
   const client_ua = req.headers["user-agent"];
+  // Pull fbc/fbp from the original click attribution
+  let fbc = null, fbp = null;
+  if (visitor_id) {
+    try {
+      const supUrl = process.env.SUPABASE_URL;
+      const supKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+      if (supUrl && supKey) {
+        const vr = await fetch(`${supUrl}/rest/v1/visits?visitor_id=eq.${encodeURIComponent(visitor_id)}&select=fbc,fbp&order=first_seen_at.asc&limit=1`, {
+          headers: { apikey: supKey, Authorization: `Bearer ${supKey}` }
+        });
+        if (vr.ok) {
+          const arr = await vr.json();
+          if (arr[0]) { fbc = arr[0].fbc || null; fbp = arr[0].fbp || null; }
+        }
+      }
+    } catch (e) {}
+  }
+
   await fireCapiSchedule({
     event_id: booking_id,
     email, phone, first_name, niche,
     source_url: body.source_url || "https://answerra.ai",
     client_ip, client_ua,
+    fbc, fbp,
   });
 
   return res.status(200).json({ ok: true, booking_id });

@@ -71,7 +71,7 @@ async function slackPost(payload) {
   }
 }
 
-async function fireCapi({ event_id, email, phone, first_name, business_name, niche, source_url, client_ip, client_ua }) {
+async function fireCapi({ event_id, email, phone, first_name, business_name, niche, source_url, client_ip, client_ua, fbc, fbp }) {
   const token = process.env.META_CAPI_ACCESS_TOKEN;
   if (!token) return { skipped: true, reason: "no_token" };
 
@@ -82,6 +82,8 @@ async function fireCapi({ event_id, email, phone, first_name, business_name, nic
   user_data.country = [sha256("au")];
   if (client_ip) user_data.client_ip_address = client_ip;
   if (client_ua) user_data.client_user_agent = client_ua;
+  if (fbc) user_data.fbc = fbc;
+  if (fbp) user_data.fbp = fbp;
 
   const event_payload = {
     data: [{
@@ -190,6 +192,7 @@ export default async function handler(req, res) {
     showup_commitment: body.showup_commitment || null,
     pixel_fired,
     capi_event_id: event_id,
+    visitor_id: body.visitor_id || null,
     user_agent: client_ua,
     ip_address: client_ip,
   };
@@ -199,6 +202,30 @@ export default async function handler(req, res) {
   const slackResult = await slackPost(buildSlackPayload({ pixel_fired, showup_commitment: body.showup_commitment, body, business }));
 
   // 3) Fire CAPI ONLY if pixel_fired === true
+  // Pull fbc/fbp from the original click attribution (visits table) OR from cookies as fallback
+  let fbc = null, fbp = null;
+  if (body.visitor_id) {
+    try {
+      const supUrl = process.env.SUPABASE_URL;
+      const supKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+      if (supUrl && supKey) {
+        const vr = await fetch(`${supUrl}/rest/v1/visits?visitor_id=eq.${encodeURIComponent(body.visitor_id)}&select=fbc,fbp&order=first_seen_at.asc&limit=1`, {
+          headers: { apikey: supKey, Authorization: `Bearer ${supKey}` }
+        });
+        if (vr.ok) {
+          const arr = await vr.json();
+          if (arr[0]) { fbc = arr[0].fbc || null; fbp = arr[0].fbp || null; }
+        }
+      }
+    } catch (e) { /* swallow */ }
+  }
+  // Fallback to request cookies if no visit row found
+  if (!fbc || !fbp) {
+    const cookieStr = req.headers.cookie || "";
+    if (!fbc) { const m = cookieStr.match(/(?:^|; )_fbc=([^;]*)/); if (m) fbc = decodeURIComponent(m[1]); }
+    if (!fbp) { const m = cookieStr.match(/(?:^|; )_fbp=([^;]*)/); if (m) fbp = decodeURIComponent(m[1]); }
+  }
+
   let capiResult = { skipped: true, reason: "not qualified" };
   if (pixel_fired) {
     capiResult = await fireCapi({
@@ -211,6 +238,8 @@ export default async function handler(req, res) {
       source_url: req.headers.referer,
       client_ip,
       client_ua,
+      fbc,
+      fbp,
     });
   }
 

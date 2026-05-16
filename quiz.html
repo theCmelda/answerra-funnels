@@ -446,6 +446,9 @@ async function submitForm(){
   const okBtn = document.querySelector('.q[data-step="6"] .cta-ok');
   if (okBtn) { okBtn.disabled = true; okBtn.textContent = 'Submitting...'; }
   try {
+    // Attach visitor_id from /pixel.js cookie so backend can join click attribution
+    var vId = (function(){ var m = document.cookie.match(/(?:^|; )v_id=([^;]*)/); return m ? decodeURIComponent(m[1]) : null; })();
+    if (vId) state.visitor_id = vId;
     const r = await fetch('/api/quiz-submit', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(state)});
     const data = await r.json().catch(() => ({}));
     if (data.pixel_fired && window.fbq) {
