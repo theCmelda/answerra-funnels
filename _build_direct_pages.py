@@ -384,6 +384,10 @@ TEMPLATE = """<!DOCTYPE html>
   @media (min-width:900px){{.trust-strip{{font-size:13.5px;padding:18px 24px}}}}
 
 </style>
+
+<!-- Meta Pixel via /pixel.js -->
+<script src="/pixel.js" async></script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1511657447261837&ev=PageView&noscript=1" alt=""/></noscript>
 </head>
 <body>
 
