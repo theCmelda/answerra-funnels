@@ -7,6 +7,73 @@
 
 import crypto from "node:crypto";
 
+// ===== Retell appointment-confirmation agents =====
+// Each niche has its own Aria agent with niche-specific qualifying questions baked into the prompt.
+// Now that quiz answers come into THIS endpoint, we enrich Aria's dynamic variables so she can
+// skip questions the user already answered in the quiz and reference their context directly.
+const RETELL_AGENT_MAP = {
+  dental:   "agent_2725c7e726f65714997eecdd0f",
+  medspa:   "agent_0849668d84d08f9eecf415ad9c",
+  plumbing: "agent_f54be66feca18d5a89d0ef85ba",
+};
+const RETELL_FROM_NUMBER = "+13185960765";
+
+function normalisePhoneE164(p) {
+  if (!p) return null;
+  const d = String(p).replace(/\D/g, "");
+  if (d.startsWith("61") && d.length === 11) return "+" + d;
+  if (d.startsWith("0")  && d.length === 10) return "+61" + d.slice(1);
+  if (d.startsWith("4")  && d.length === 9)  return "+61" + d;
+  if (d.startsWith("+"))                     return p;
+  return d ? "+" + d : null;
+}
+
+async function fireRetellCall({ phone, niche, first_name, business, revenue, urgency, benefits, notes, booking_id }) {
+  const key = process.env.RETELL_API_KEY;
+  if (!key) return { skipped: true, reason: "no_retell_key" };
+
+  const agent_id = RETELL_AGENT_MAP[(niche || "dental").toLowerCase()] || RETELL_AGENT_MAP.dental;
+  const toNumber = normalisePhoneE164(phone);
+  if (!toNumber) return { skipped: true, reason: "no_phone" };
+
+  // Enrich Aria's context with everything the user just told us in the quiz.
+  // Aria's LLM prompts have been updated to read these and skip duplicate questions.
+  const dynamicVars = {
+    first_name:     first_name || "there",
+    business_name:  (business && business.name) || "",
+    business_phone: (business && business.phone) || "",
+    business_website: (business && business.website) || "",
+    revenue:        revenue || "",
+    urgency:        urgency || "",
+    top_benefit:    (benefits && benefits[0]) || "",
+    all_benefits:   (benefits && benefits.join(", ")) || "",
+    notes:          notes || "",
+    booking_time:   "your booked time", // booking-confirm has the actual time; we just confirm
+    niche:          niche || "dental",
+  };
+
+  try {
+    const r = await fetch("https://api.retellai.com/v2/create-phone-call", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        from_number: RETELL_FROM_NUMBER,
+        to_number: toNumber,
+        override_agent_id: agent_id,
+        retell_llm_dynamic_variables: dynamicVars,
+        metadata: { source: "quiz_submit", niche, booking_id },
+      }),
+    });
+    const body = await r.json().catch(() => ({}));
+    if (!r.ok) console.error("[quiz-submit] retell call failed " + JSON.stringify({ status: r.status, body }));
+    return { ok: r.ok, status: r.status, call_id: body.call_id };
+  } catch (e) {
+    console.error("[quiz-submit] retell exception " + e.message);
+    return { ok: false, error: e.message };
+  }
+}
+
+
 const PIXEL_ID = process.env.PIXEL_ID || "1511657447261837";
 const META_API_VERSION = "v19.0";
 const PURCHASE_VALUE = 30;
@@ -201,6 +268,20 @@ export default async function handler(req, res) {
   // 2) Slack notification — always (qualified or not, including reschedules)
   const slackResult = await slackPost(buildSlackPayload({ pixel_fired, showup_commitment: body.showup_commitment, body, business }));
 
+  // 2b) Retell outbound call to confirm the appointment — fires for every quiz submission
+  // (booking-confirm no longer fires the call, this is the single source so Aria has full context).
+  const retellResult = await fireRetellCall({
+    phone: body.phone,
+    niche: body.niche,
+    first_name: body.first_name,
+    business,
+    revenue: body.revenue,
+    urgency: body.urgency,
+    benefits: body.benefits,
+    notes: body.notes,
+    booking_id: body.booking_id,
+  });
+
   // 3) Fire CAPI ONLY if pixel_fired === true
   // Pull fbc/fbp from the original click attribution (visits table) OR from cookies as fallback
   let fbc = null, fbp = null;
@@ -251,6 +332,7 @@ export default async function handler(req, res) {
     supabase: supResult.skipped ? "skipped (no env)" : (supResult.ok ? "stored" : "error"),
     slack: slackResult.skipped ? "skipped (no env)" : (slackResult.ok ? "posted" : "error"),
     capi: capiResult.skipped ? `skipped (${capiResult.reason})` : (capiResult.ok ? "fired" : "error"),
+    retell: retellResult.skipped ? `skipped (${retellResult.reason})` : (retellResult.ok ? "called" : "error"),
   });
 }
 

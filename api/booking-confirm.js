@@ -245,34 +245,20 @@ export default async function handler(req, res) {
     fbc ? `🎯 Ad-attributed (fbc cookie present)` : `⚠️ No fbclid attribution`,
   ].join("\n"));
 
-  // 3. Fire Retell call + Meta CAPI in parallel — neither blocks the other.
-  const [retellResult, capiResult] = await Promise.allSettled([
-    fetch("https://api.retellai.com/v2/create-phone-call", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${RETELL_KEY}`, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        from_number: FROM_NUMBER,
-        to_number: phone,
-        override_agent_id: agentId,
-        retell_llm_dynamic_variables: {
-          first_name: firstName || "there",
-          booking_time: bookingTime,
-        },
-        metadata: { source: "iclosed_booking", niche, vercel_request_id: req.headers["x-vercel-id"] },
-      }),
-    }).then(async r => ({ ok: r.ok, status: r.status, body: await r.json().catch(() => ({})) })),
+  // 3. Fire Meta CAPI Purchase (Retell call moved to /api/quiz-submit so Aria has
+  // the full quiz context — business name, revenue band, urgency, top benefit, etc).
+  const capiResult = await fireMetaCapi({
+    email, phone, first_name: firstName, last_name: lastName,
+    niche, booking_id: bookingId, source_url: sourceUrl,
+    client_ip: clientIp, client_ua: clientUa,
+    fbc, fbp,
+  }).catch(e => ({ ok: false, error: e.message }));
+  // Retell stub — kept so downstream code that reads `retellResult` doesn't break
+  const retellResult = { status: "fulfilled", value: { ok: true, skipped: true, reason: "moved_to_quiz_submit" } };
 
-    fireMetaCapi({
-      email, phone, first_name: firstName, last_name: lastName,
-      niche, booking_id: bookingId, source_url: sourceUrl,
-      client_ip: clientIp, client_ua: clientUa,
-      fbc, fbp,
-    }),
-  ]);
-
-  // Always return success if Retell call worked (CAPI is best-effort)
-  const retell = retellResult.status === "fulfilled" ? retellResult.value : { ok: false, error: String(retellResult.reason) };
-  const capi   = capiResult.status   === "fulfilled" ? capiResult.value   : { ok: false, error: String(capiResult.reason) };
+  // Always return success — Retell moved to quiz-submit; CAPI is best-effort
+  const retell = retellResult.value;
+  const capi   = capiResult;
 
   if (!retell.ok) {
     console.error("Retell error", retell);
