@@ -8,19 +8,6 @@
   "framework": null,
   "headers": [
     {
-      "source": "/pixel.js",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=60, must-revalidate"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        }
-      ]
-    },
-    {
       "source": "/(.*)",
       "headers": [
         {
@@ -38,6 +25,19 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=300, s-maxage=600"
+        }
+      ]
+    },
+    {
+      "source": "/pixel.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=60, must-revalidate"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
         }
       ]
     }
