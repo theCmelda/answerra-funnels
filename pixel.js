@@ -105,4 +105,42 @@
     fbc:          getCookie('_fbc'),
     fbp:          getCookie('_fbp'),
   });
+
+  // ===== Auto-append visitor_id to every iClosed link/widget =====
+  // Captures clicks on <a> tags pointing to app.iclosed.io and rewrites the href to include
+  // ?visitor_id=<v_id> so iClosed's "Forward event parameters" config flows it back to
+  // /api/booking-confirm webhook for full attribution.
+  function appendVidToUrl(href, vId) {
+    try {
+      var u = new URL(href, window.location.origin);
+      if (!/iclosed\.io/.test(u.hostname)) return null;
+      if (!u.searchParams.has('visitor_id')) u.searchParams.set('visitor_id', vId);
+      // Pass utm_source as q1 too (common iClosed custom field key for first invitee question)
+      return u.toString();
+    } catch (e) { return null; }
+  }
+
+  // Rewrite any existing iClosed links on the page now
+  document.querySelectorAll('a[href*="iclosed.io"]').forEach(function(a){
+    var nu = appendVidToUrl(a.href, visitorId);
+    if (nu) a.href = nu;
+  });
+
+  // Also rewrite any iClosed iframes
+  document.querySelectorAll('iframe[src*="iclosed.io"]').forEach(function(f){
+    var nu = appendVidToUrl(f.src, visitorId);
+    if (nu) f.src = nu;
+  });
+
+  // Catch clicks on iClosed links added later (dynamic CTAs)
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest('a');
+    if (!a || !a.href || !/iclosed\.io/.test(a.href)) return;
+    if (a.href.indexOf('visitor_id=') !== -1) return;
+    var nu = appendVidToUrl(a.href, visitorId);
+    if (nu) a.href = nu;
+  }, true);
+
+  // Expose for debugging
+  window.AnswerraVisitorId = visitorId;
 })();
