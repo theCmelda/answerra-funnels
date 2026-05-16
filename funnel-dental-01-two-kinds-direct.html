@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Open+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
+<style data-v="v7-white-everywhere">
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html,body{background:#f4f4f4;color:#0a0a0a;font-family:'Open Sans',Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.45;overflow-x:hidden}
   .shell{max-width:420px;margin:0 auto;background:#fff}
@@ -44,80 +44,82 @@
   .iclosed-widget{min-height:680px;width:100%;border:1px solid #e8e8e8;border-radius:6px}
   @media (min-width:900px){.iclosed-widget{min-height:760px}}
 
-  /* ===== NEWS POLAROID STACK (clean, no pills) ===== */
-  .news{background:#000;padding:60px 22px 80px;width:100vw;margin-left:calc(-50vw + 50%);text-align:center}
-  .news-h{color:#fff;font-family:'Oswald',sans-serif;font-size:26px;text-transform:uppercase;text-align:center;margin-bottom:40px;letter-spacing:.02em;line-height:1.12;font-weight:700;max-width:760px;margin-left:auto;margin-right:auto}
-  @media (min-width:900px){.news-h{font-size:36px;margin-bottom:56px;line-height:1.1}}
-  .news-row{position:relative;max-width:1100px;margin:0 auto 40px;height:340px}
-  @media (min-width:900px){.news-row{height:380px;margin-bottom:50px}}
-  @media (max-width:700px){.news-row{height:260px;max-width:400px;margin-bottom:30px}}
-  .ns-card{position:absolute;background:#fff;border-radius:10px;box-shadow:0 16px 40px rgba(0,0,0,0.55), 0 3px 10px rgba(0,0,0,0.3);overflow:hidden;border:5px solid #fff}
+  /* ===== 3 BENEFITS CHECKLIST (white) ===== */
+  .benefits{padding:48px 22px 40px;background:#fff;border-bottom:1px solid #f0f0f0}
+  @media (min-width:900px){.benefits{padding:72px 40px 48px}}
+  .benefits-list{max-width:720px;margin:0 auto;list-style:none;padding:0}
+  .benefits-list li{display:flex;gap:16px;align-items:flex-start;padding:18px 22px;background:#fafafa;border:1px solid #ececec;margin-bottom:12px;font-size:15.5px;line-height:1.5;font-weight:600;color:#0a0a0a;border-radius:12px}
+  @media (min-width:900px){.benefits-list li{font-size:18px;padding:22px 28px;gap:18px}}
+  .benefits-list .tick{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:#22a06b;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:15px;margin-top:1px;box-shadow:0 4px 10px rgba(34,160,107,.3)}
+  .benefits-list .tick::before{content:"\2713"}
+
+  /* ===== NEWS POLAROID STACK (WHITE, single row of 5) ===== */
+  .news{background:#fff;padding:60px 22px 80px;text-align:center;border-bottom:1px solid #f0f0f0}
+  @media (min-width:900px){.news{padding:80px 40px 100px}}
+  .news-h{color:#0a0a0a;font-family:'Oswald',sans-serif;font-size:28px;text-transform:uppercase;text-align:center;margin-bottom:46px;letter-spacing:.02em;line-height:1.12;font-weight:700;max-width:760px;margin-left:auto;margin-right:auto}
+  @media (min-width:900px){.news-h{font-size:38px;margin-bottom:60px;line-height:1.1}}
+  .news-row{position:relative;max-width:1100px;margin:0 auto;height:360px}
+  @media (min-width:900px){.news-row{height:400px}}
+  @media (max-width:700px){.news-row{height:280px;max-width:400px}}
+  .ns-card{position:absolute;background:#fff;border-radius:10px;box-shadow:0 14px 36px rgba(0,0,0,0.16), 0 3px 10px rgba(0,0,0,0.08);overflow:hidden;border:5px solid #fff}
   .ns-card img{width:100%;height:100%;display:block;object-fit:cover;border-radius:2px}
   .ns-a1{width:260px;height:275px;top:50px;left:2%;transform:rotate(-6deg);z-index:2}
   .ns-a2{width:270px;height:285px;top:25px;left:21%;transform:rotate(3deg);z-index:4}
   .ns-a3{width:260px;height:275px;top:55px;left:40%;transform:rotate(-3deg);z-index:3}
   .ns-a4{width:270px;height:285px;top:30px;right:20%;transform:rotate(4deg);z-index:5}
   .ns-a5{width:250px;height:265px;top:60px;right:2%;transform:rotate(-5deg);z-index:2}
-  .ns-b1{width:270px;height:285px;top:50px;left:3%;transform:rotate(4deg);z-index:3}
-  .ns-b2{width:260px;height:275px;top:30px;left:22%;transform:rotate(-3deg);z-index:5}
-  .ns-b3{width:270px;height:285px;top:55px;left:42%;transform:rotate(2deg);z-index:4}
-  .ns-b4{width:250px;height:265px;top:40px;right:22%;transform:rotate(-4deg);z-index:3}
-  .ns-b5{width:270px;height:285px;top:50px;right:3%;transform:rotate(5deg);z-index:5}
   @media (max-width:700px){
-    .ns-a1,.ns-a2,.ns-a3,.ns-a4,.ns-a5,.ns-b1,.ns-b2,.ns-b3,.ns-b4,.ns-b5{width:155px;height:170px;border-width:4px}
-    .ns-a1{top:40px;left:0} .ns-a2{top:15px;left:65px} .ns-a3{top:55px;left:130px}
-    .ns-a4{top:25px;right:65px} .ns-a5{top:55px;right:0}
-    .ns-b1{top:35px;left:10px} .ns-b2{top:55px;left:75px} .ns-b3{top:30px;left:140px}
-    .ns-b4{top:55px;right:75px} .ns-b5{top:35px;right:0}
+    .ns-a1,.ns-a2,.ns-a3,.ns-a4,.ns-a5{width:155px;height:170px;border-width:4px}
+    .ns-a1{top:50px;left:0} .ns-a2{top:20px;left:65px} .ns-a3{top:65px;left:130px}
+    .ns-a4{top:30px;right:65px} .ns-a5{top:65px;right:0}
   }
 
-  /* ===== 3 BENEFITS CHECKLIST ===== */
-  .benefits{padding:40px 22px;background:#fafafa;border-bottom:1px solid #e8e8e8}
-  @media (min-width:900px){.benefits{padding:64px 40px}}
-  .benefits-list{max-width:720px;margin:0 auto;list-style:none;padding:0}
-  .benefits-list li{display:flex;gap:16px;align-items:flex-start;padding:18px 20px;background:#fff;border:1px solid #e8e8e8;margin-bottom:10px;font-size:15.5px;line-height:1.5;font-weight:600;color:#0a0a0a;border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-  @media (min-width:900px){.benefits-list li{font-size:18px;padding:22px 26px;gap:18px}}
-  .benefits-list .tick{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:#22a06b;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:15px;margin-top:1px;box-shadow:0 4px 10px rgba(34,160,107,.3)}
-  .benefits-list .tick::before{content:"\2713"}
-
-  /* ===== INTEGRATES WITH (software badges) ===== */
-  .integrates{padding:40px 22px;background:#fff;text-align:center;border-bottom:1px solid #e8e8e8}
-  @media (min-width:900px){.integrates{padding:56px 40px}}
-  .integrates-label{font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#666;margin-bottom:22px}
-  @media (min-width:900px){.integrates-label{font-size:14px;letter-spacing:.16em;margin-bottom:30px}}
+  /* ===== BOOKS STRAIGHT INTO (software logo card, white) ===== */
+  .integrates{padding:48px 22px;background:#fff;text-align:center;border-bottom:1px solid #f0f0f0}
+  @media (min-width:900px){.integrates{padding:72px 40px}}
+  .integrates-label{font-family:'Oswald',sans-serif;font-size:22px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:#0a0a0a;margin-bottom:26px;line-height:1.15}
+  @media (min-width:900px){.integrates-label{font-size:32px;margin-bottom:36px}}
   .integrates-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px 16px;max-width:900px;margin:0 auto}
   @media (min-width:900px){.integrates-row{gap:18px 24px}}
-  .integrate-badge{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid #e0e0e0;border-radius:999px;padding:10px 18px;box-shadow:0 2px 6px rgba(0,0,0,.05);transition:transform .15s, box-shadow .15s}
-  .integrate-badge:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.08)}
+  .integrate-badge{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid #e0e0e0;border-radius:999px;padding:11px 20px;box-shadow:0 2px 6px rgba(0,0,0,.05);transition:transform .15s, box-shadow .15s}
+  .integrate-badge:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.10)}
   .integrate-badge img{width:22px;height:22px;object-fit:contain;border-radius:4px}
   .integrate-badge span{font-family:'Inter',sans-serif;font-size:14px;font-weight:600;color:#0a0a0a;letter-spacing:-.005em;line-height:1}
   @media (min-width:900px){
-    .integrate-badge{padding:12px 22px;gap:12px}
-    .integrate-badge img{width:26px;height:26px}
-    .integrate-badge span{font-size:16px}
+    .integrate-badge{padding:14px 26px;gap:12px}
+    .integrate-badge img{width:28px;height:28px}
+    .integrate-badge span{font-size:17px}
   }
 
-  /* ===== HEAR IT IN ACTION (video) ===== */
-  .video-block{padding:48px 22px 60px;background:#fafafa;border-bottom:1px solid #e8e8e8;text-align:center}
-  @media (min-width:900px){.video-block{padding:72px 40px 80px}}
-  .video-h{font-family:'Oswald',sans-serif;font-size:26px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;color:#0a0a0a;margin-bottom:14px;line-height:1.12}
-  @media (min-width:900px){.video-h{font-size:36px;margin-bottom:18px}}
-  .video-caption{font-size:14.5px;color:#444;line-height:1.55;margin-bottom:28px;max-width:680px;margin-left:auto;margin-right:auto;font-weight:500}
-  @media (min-width:900px){.video-caption{font-size:16.5px;margin-bottom:36px}}
-  .video-card{max-width:380px;margin:0 auto;background:#000;border:3px solid #000;position:relative;aspect-ratio:4/5;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.3)}
-  @media (min-width:900px){.video-card{max-width:480px;border-width:4px}}
-  .video-card iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+  /* ===== HEAR IT IN ACTION (Wistia-clean, white) ===== */
+  .video-block{padding:60px 22px 70px;background:#fff;text-align:center;border-bottom:1px solid #f0f0f0}
+  @media (min-width:900px){.video-block{padding:84px 40px 90px}}
+  .video-h{font-family:'Oswald',sans-serif;font-size:28px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;color:#0a0a0a;margin-bottom:14px;line-height:1.12}
+  @media (min-width:900px){.video-h{font-size:38px;margin-bottom:18px}}
+  .video-caption{font-size:14.5px;color:#444;line-height:1.55;margin-bottom:32px;max-width:680px;margin-left:auto;margin-right:auto;font-weight:500}
+  @media (min-width:900px){.video-caption{font-size:17px;margin-bottom:40px}}
+  .video-card{max-width:380px;margin:0 auto;background:#0a0a0a;border-radius:14px;position:relative;aspect-ratio:4/5;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.25), 0 6px 16px rgba(0,0,0,.10)}
+  @media (min-width:900px){.video-card{max-width:480px;border-radius:18px}}
+  .video-card iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;border-radius:inherit}
 
   /* ===== URGENCY CLOSER ===== */
-  .urgency-closer{background:#0a0a0a;color:#FFE100;text-align:center;padding:24px 22px;font-family:'Inter',sans-serif;font-size:13.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;line-height:1.5;border-top:3px solid #FFE100}
+  .urgency-closer{background:#0a0a0a;color:#FFE100;text-align:center;padding:24px 22px;font-family:'Inter',sans-serif;font-size:13.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;line-height:1.5}
   @media (min-width:900px){.urgency-closer{font-size:16px;padding:30px 24px;letter-spacing:.06em}}
   .urgency-closer .pulse{display:inline-block;width:9px;height:9px;background:#D90429;border-radius:50%;margin-right:10px;vertical-align:middle;animation:p 1.4s infinite}
 
-</style>
+  /* ===== FOOTER ===== */
+  .site-footer{background:#0a0a0a;color:#888;padding:40px 22px 32px;text-align:center;font-family:'Inter',sans-serif}
+  @media (min-width:900px){.site-footer{padding:56px 40px 40px}}
+  .footer-brand{font-family:'Oswald',sans-serif;font-size:24px;font-weight:700;color:#fff;letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px}
+  @media (min-width:900px){.footer-brand{font-size:28px}}
+  .footer-tagline{font-size:13px;color:#999;margin-bottom:24px;letter-spacing:.01em}
+  .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;margin-bottom:22px;font-size:12.5px}
+  .footer-links a{color:#aaa;text-decoration:none;letter-spacing:.04em;transition:color .15s}
+  .footer-links a:hover{color:#FFE100}
+  .footer-sep{color:#444}
+  .footer-copy{font-size:11px;color:#666;letter-spacing:.06em}
 
-<!-- Meta Pixel via /pixel.js -->
-<script src="/pixel.js" async></script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1511657447261837&ev=PageView&noscript=1" alt=""/></noscript>
+</style>
 </head>
 <body>
 
@@ -131,51 +133,41 @@
     <div class="pretitle">For Australian Dental Practices Doing $1.2M-$2.8M A Year</div>
     <h1>How AU Dental Practices Are Recovering <span class="red">$244K-$305K A Year</span> In Missed Calls Without Hiring Another Receptionist</h1>
     <p class="subhead">Your front desk misses 35-62% of inbound calls. At $1,348 in year-one production per booked patient, that is $244K-$305K walking to the practice down the road. We build the AI receptionist that catches every one. Live in 48 hours.</p>
-    <a href="#book" class="cta-scroll">Book Your 15-Min Build Call &rarr;</a>
+    <a href="#book" class="cta-scroll">Book Your Custom Receptionist Demo Call &rarr;</a>
   </section>
 
   <!-- 3. CALENDAR (first) -->
   <section id="book" class="calendar">
-    <h2 class="calendar-h">Book Your 15-Minute Build Call</h2>
-    <p class="calendar-sub">Pick a time below. On the call we map your current missed-call leak and show you the build, no pitch.</p>
+    <h2 class="calendar-h">Book Your Custom Receptionist Demo Call</h2>
+    <p class="calendar-sub">Pick a time below. On the call we map your current missed-call leak and show you the build.</p>
     <div class="iclosed-widget" data-url="https://app.iclosed.io/e/answrra/free-ai-receptionist-demo-build"></div>
     <script async src="https://app.iclosed.io/assets/widget.js"></script>
   </section>
-</div>
 
-<!-- 4. NEWS POLAROID STACK (full-bleed) -->
-<section class="news">
-  <h2 class="news-h">Why Every AU Practice Owner Is Asking About This Right Now</h2>
-  <div class="news-row">
-    <div class="ns-card ns-a1"><img src="/moodboard/M01.jpg" alt=""></div>
-    <div class="ns-card ns-a2"><img src="/moodboard/M02.jpg" alt=""></div>
-    <div class="ns-card ns-a3"><img src="/moodboard/M03.jpg" alt=""></div>
-    <div class="ns-card ns-a4"><img src="/moodboard/M04.jpg" alt=""></div>
-    <div class="ns-card ns-a5"><img src="/moodboard/M05.jpg" alt=""></div>
-  </div>
-  <div class="news-row">
-    <div class="ns-card ns-b1"><img src="/moodboard/M06.jpg" alt=""></div>
-    <div class="ns-card ns-b2"><img src="/moodboard/M07.jpg" alt=""></div>
-    <div class="ns-card ns-b3"><img src="/moodboard/M08.jpg" alt=""></div>
-    <div class="ns-card ns-b4"><img src="/moodboard/M09.jpg" alt=""></div>
-    <div class="ns-card ns-b5"><img src="/moodboard/M10.jpg" alt=""></div>
-  </div>
-</section>
-
-<div class="shell">
-
-  <!-- 5. 3 BENEFITS -->
+  <!-- 4. 3 BENEFITS (white) -->
   <section class="benefits">
     <ul class="benefits-list">
       <li><span class="tick" aria-hidden="true"></span><span>Recovers $244K-$305K a year in production from missed calls</span></li>
       <li><span class="tick" aria-hidden="true"></span><span>Answers every call in under 2 rings, 24 hours a day</span></li>
-      <li><span class="tick" aria-hidden="true"></span><span>Books straight into Praktika or Dental4Windows in 48 hours</span></li>
+      <li><span class="tick" aria-hidden="true"></span><span>Cancel anytime. No deposit. No contract.</span></li>
     </ul>
   </section>
 
-  <!-- 6. INTEGRATES WITH (software badges) -->
+  <!-- 5. NEWS POLAROID STACK (white, single row) -->
+  <section class="news">
+    <h2 class="news-h">What The Press Is Saying</h2>
+    <div class="news-row">
+      <div class="ns-card ns-a1"><img src="/moodboard/M01.jpg" alt=""></div>
+      <div class="ns-card ns-a2"><img src="/moodboard/M02.jpg" alt=""></div>
+      <div class="ns-card ns-a3"><img src="/moodboard/M07.jpg" alt=""></div>
+      <div class="ns-card ns-a4"><img src="/moodboard/M04.jpg" alt=""></div>
+      <div class="ns-card ns-a5"><img src="/moodboard/M10.jpg" alt=""></div>
+    </div>
+  </section>
+
+  <!-- 6. BOOKS STRAIGHT INTO (software logos) -->
   <section class="integrates">
-    <div class="integrates-label">Plugs Straight Into The Software You Already Run</div>
+    <div class="integrates-label">Books Straight Into:</div>
     <div class="integrates-row">
       <a class="integrate-badge"><img src="/logos/sw-praktika.png" alt="Praktika"><span>Praktika</span></a>
       <a class="integrate-badge"><img src="/logos/sw-d4w.png" alt="Dental4Windows"><span>Dental4Windows</span></a>
@@ -184,7 +176,7 @@
     </div>
   </section>
 
-  <!-- 7. HEAR IT IN ACTION (video) -->
+  <!-- 7. HEAR IT IN ACTION (Wistia-clean video) -->
   <section class="video-block">
     <h2 class="video-h">Hear It In Action</h2>
     <p class="video-caption">Watch Sarah at Bright Smile Dental answer an after-hours new-patient call and book the appointment in 90 seconds, so you can hear exactly what your patients will hear.</p>
@@ -207,6 +199,20 @@
 
 <!-- 9. URGENCY CLOSER -->
 <div class="urgency-closer"><span class="pulse"></span>8 of 10 <span class="urg-month-mixed"></span> slots left. Cancel anytime, no lock-in.</div>
+
+<!-- 10. FOOTER -->
+<footer class="site-footer">
+  <div class="footer-brand">Answerra</div>
+  <div class="footer-tagline">The AI receptionist that books while you work.</div>
+  <div class="footer-links">
+    <a href="mailto:hello@answerra.ai">hello@answerra.ai</a>
+    <span class="footer-sep">·</span>
+    <a href="/privacy">Privacy</a>
+    <span class="footer-sep">·</span>
+    <a href="/terms">Terms</a>
+  </div>
+  <div class="footer-copy">&copy; <span class="urg-year"></span> Answerra &middot; Built in Australia</div>
+</footer>
 
 <script>
   (function() {
