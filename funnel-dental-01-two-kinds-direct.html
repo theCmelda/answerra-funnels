@@ -7,12 +7,12 @@
 <meta name="description" content="4 missed calls a week. $1,348 in year-one production lost per call. 24/7 phone coverage built in 48 hours, in your own tone, on your real number.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Open+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800;900&family=Source+Serif+Pro:wght@600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Open+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html,body{background:#f4f4f4;color:#0a0a0a;font-family:'Open Sans',Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.45;overflow-x:hidden}
   .shell{max-width:420px;margin:0 auto;background:#fff}
-  @media (min-width:900px){.shell{max-width:780px}}
+  @media (min-width:900px){.shell{max-width:1100px}}
 
   /* ===== URGENCY ===== */
   .urgency{background:#FFE100;color:#000;text-align:center;font-family:'Inter',sans-serif;font-size:13px;font-weight:700;padding:10px 14px;letter-spacing:.04em;border-bottom:2px solid #000;line-height:1.3}
@@ -20,123 +20,146 @@
   @keyframes p{0%,100%{opacity:1}50%{opacity:.4}}
   @media (min-width:900px){.urgency{font-size:15px;padding:13px 24px}}
 
-  /* ===== HERO ===== */
-  .hero{padding:28px 22px 24px;text-align:center}
-  .pretitle{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#666;margin-bottom:14px}
-  h1{font-family:'Oswald',Impact,sans-serif;color:#0a0a0a;font-size:30px;line-height:1.05;font-weight:700;margin-bottom:14px;letter-spacing:-.005em;text-transform:uppercase}
+  /* ===== HERO (mobile = stacked, desktop = side-by-side with video) ===== */
+  .hero-wrap{padding:28px 22px 24px}
+  .pretitle{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#666;margin-bottom:14px;text-align:center}
+  h1{font-family:'Oswald',Impact,sans-serif;color:#0a0a0a;font-size:30px;line-height:1.05;font-weight:700;margin-bottom:14px;letter-spacing:-.005em;text-transform:uppercase;text-align:center}
   h1 .red{color:#D90429}
-  .subhead{font-size:15px;line-height:1.5;font-weight:500;color:#222;margin:0 auto 22px;max-width:520px}
-  @media (min-width:900px){.hero{padding:48px 32px 32px}h1{font-size:48px}.subhead{font-size:18px;margin-bottom:28px}.pretitle{font-size:13px;letter-spacing:.14em}}
+  .subhead{font-size:15px;line-height:1.5;font-weight:500;color:#222;margin:0 auto 22px;max-width:520px;text-align:center}
   .cta-scroll{display:inline-block;background:#0066CC;color:#fff;text-align:center;padding:14px 28px;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;border:0;cursor:pointer;text-decoration:none;font-family:'Inter',sans-serif}
   .cta-scroll:hover{background:#0052a3}
+  .cta-wrap{text-align:center;margin-bottom:16px}
+  @media (min-width:900px){
+    .hero-wrap{padding:56px 40px 24px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center;max-width:1100px;margin:0 auto}
+    .hero-text{text-align:left}
+    .pretitle{text-align:left;font-size:13px;letter-spacing:.14em}
+    h1{text-align:left;font-size:50px;line-height:1.02}
+    .subhead{text-align:left;font-size:18px;margin:0 0 24px;max-width:none}
+    .cta-wrap{text-align:left}
+  }
 
-  /* ===== VIDEO DEMO CARD ===== */
-  .video-block{padding:22px 22px 28px;background:#fafafa;border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8}
+  /* ===== VIDEO DEMO ===== */
+  .video-block{margin-top:18px}
   .video-label{font-family:'Oswald',sans-serif;font-size:18px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;text-align:center;color:#0a0a0a;margin-bottom:6px;line-height:1.18}
   .video-caption{font-size:13px;color:#444;text-align:center;margin-bottom:14px;line-height:1.45;font-weight:500;max-width:520px;margin-left:auto;margin-right:auto}
   .video-card{max-width:380px;margin:0 auto;background:#000;border:3px solid #000;position:relative;aspect-ratio:4/5;overflow:hidden}
   .video-card iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
-  @media (min-width:900px){.video-block{padding:36px 32px 40px}.video-label{font-size:24px}.video-card{max-width:440px;border-width:4px}}
+  @media (min-width:900px){
+    .video-block{margin-top:0}
+    .video-label{display:none}
+    .video-caption{display:none}
+    .video-card{max-width:420px;border-width:4px}
+  }
+  /* Mobile-only video label/caption (shown below the desktop-hidden block) */
+  .video-block-mobile{padding:0 22px 28px;border-bottom:1px solid #e8e8e8;background:#fafafa;padding-top:22px}
+  @media (min-width:900px){.video-block-mobile{display:none}}
 
-  /* ===== AS COVERED BY LOGO WALL (full-bleed, dark) ===== */
-  .logo-wall{background:#000;padding:60px 22px 50px;width:100vw;margin-left:calc(-50vw + 50%);text-align:center;position:relative}
+  /* ===== AS COVERED BY LOGO WALL (real SVG logos) ===== */
+  .logo-wall{background:#000;padding:60px 22px 50px;width:100vw;margin-left:calc(-50vw + 50%);text-align:center}
   .lw-h{color:#fff;font-family:'Oswald',sans-serif;font-size:32px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;display:block;margin-bottom:34px;line-height:1.1}
-  @media (min-width:900px){.lw-h{font-size:46px;margin-bottom:42px}}
-  .lw-card{max-width:1100px;margin:0 auto;background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.08);border-radius:22px;padding:36px 28px}
-  @media (min-width:900px){.lw-card{padding:50px 60px}}
-  .lw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px 18px;align-items:center;justify-items:center}
-  @media (min-width:700px){.lw-grid{grid-template-columns:repeat(4,1fr);gap:32px 24px}}
-  @media (min-width:900px){.lw-grid{grid-template-columns:repeat(6,1fr);gap:38px 28px}}
-  .lw-item{display:flex;align-items:center;justify-content:center;height:40px;width:100%}
-  .lw-item img{height:26px;width:auto;max-width:120px;object-fit:contain;filter:brightness(0) invert(1) opacity(0.9)}
-  @media (min-width:900px){.lw-item img{height:30px;max-width:140px}}
-  .lw-item .wm{color:#fff;font-weight:800;line-height:1;white-space:nowrap}
-  .wm-openai{font-family:'Inter',sans-serif;font-weight:700;letter-spacing:-.02em;font-size:18px}
-  .wm-mckinsey{font-family:'Source Serif Pro','Playfair Display',serif;font-weight:900;letter-spacing:-.01em;font-size:18px}
-  .wm-smartcompany{font-family:'Inter',sans-serif;font-weight:800;letter-spacing:-.01em;font-size:16px}
-  .wm-afr{font-family:'Playfair Display',serif;font-weight:900;font-style:italic;letter-spacing:-.01em;font-size:17px}
-
-  /* ===== POLAROID STACK PRESS SECTION ===== */
-  .polaroid-stack{background:#000;padding:30px 22px 80px;width:100vw;margin-left:calc(-50vw + 50%);text-align:center}
-  .ps-h{color:#fff;font-family:'Oswald',sans-serif;font-size:28px;text-transform:uppercase;text-align:center;margin-bottom:40px;letter-spacing:.04em;line-height:1.1;font-weight:700}
-  @media (min-width:900px){.ps-h{font-size:40px;margin-bottom:56px}}
-  .ps-row{position:relative;max-width:1000px;margin:0 auto 40px;height:340px}
-  @media (max-width:700px){.ps-row{height:240px;max-width:380px;margin-bottom:30px}}
-  .ps-card{position:absolute;background:#fff;border-radius:10px;box-shadow:0 16px 40px rgba(0,0,0,0.55), 0 3px 10px rgba(0,0,0,0.3);overflow:hidden;border:7px solid #fff;border-bottom-width:38px}
-  .ps-card .pill{position:absolute;top:8px;left:50%;transform:translateX(-50%);z-index:3;display:inline-flex;align-items:center;background:#fff;border-radius:999px;padding:5px 14px;box-shadow:0 4px 12px rgba(0,0,0,0.25);height:28px;white-space:nowrap}
-  .ps-card .pill img{height:16px;max-width:80px;object-fit:contain}
-  .ps-card .pill .wm{font-size:12px;color:#0a0a0a;line-height:1;letter-spacing:-.005em;font-weight:800}
-  .ps-card img.thumb{width:100%;height:100%;display:block;object-fit:cover;border-radius:3px}
-  /* Row 1 (5 cards, varied tilts) */
-  .ps-a1{width:240px;height:255px;top:55px;left:4%;transform:rotate(-6deg);z-index:2}
-  .ps-a2{width:250px;height:265px;top:25px;left:22%;transform:rotate(3deg);z-index:4}
-  .ps-a3{width:240px;height:255px;top:55px;left:41%;transform:rotate(-3deg);z-index:3}
-  .ps-a4{width:250px;height:265px;top:30px;right:21%;transform:rotate(4deg);z-index:5}
-  .ps-a5{width:230px;height:245px;top:60px;right:4%;transform:rotate(-5deg);z-index:2}
-  /* Row 2 */
-  .ps-b1{width:250px;height:265px;top:50px;left:5%;transform:rotate(4deg);z-index:3}
-  .ps-b2{width:240px;height:255px;top:30px;left:23%;transform:rotate(-3deg);z-index:5}
-  .ps-b3{width:250px;height:265px;top:55px;left:42%;transform:rotate(2deg);z-index:4}
-  .ps-b4{width:230px;height:245px;top:40px;right:23%;transform:rotate(-4deg);z-index:3}
-  .ps-b5{width:250px;height:265px;top:50px;right:4%;transform:rotate(5deg);z-index:5}
-  @media (max-width:700px){
-    .ps-a1,.ps-a2,.ps-a3,.ps-a4,.ps-a5,.ps-b1,.ps-b2,.ps-b3,.ps-b4,.ps-b5{width:140px;height:160px;border-width:5px;border-bottom-width:28px}
-    .ps-a1{top:35px;left:0}
-    .ps-a2{top:15px;left:60px}
-    .ps-a3{top:50px;left:120px}
-    .ps-a4{top:25px;right:60px}
-    .ps-a5{top:50px;right:0}
-    .ps-b1{top:30px;left:10px}
-    .ps-b2{top:50px;left:70px}
-    .ps-b3{top:25px;left:130px}
-    .ps-b4{top:50px;right:70px}
-    .ps-b5{top:30px;right:0}
-    .ps-card .pill{padding:3px 9px;height:22px}
-    .ps-card .pill img{height:13px;max-width:50px}
-    .ps-card .pill .wm{font-size:10px}
+  @media (min-width:900px){.lw-h{font-size:48px;margin-bottom:42px}}
+  .lw-card{max-width:1100px;margin:0 auto;background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.08);border-radius:24px;padding:36px 22px}
+  @media (min-width:900px){.lw-card{padding:52px 50px}}
+  .lw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px 14px;align-items:center;justify-items:center}
+  @media (min-width:700px){.lw-grid{grid-template-columns:repeat(4,1fr);gap:34px 22px}}
+  @media (min-width:1000px){.lw-grid{grid-template-columns:repeat(7,1fr);gap:40px 26px}}
+  .lw-item{display:flex;align-items:center;justify-content:center;height:36px;width:100%;max-width:140px}
+  .lw-item img{height:auto;width:100%;max-height:30px;object-fit:contain;filter:brightness(0) invert(1) opacity(0.92)}
+  @media (min-width:900px){.lw-item{height:42px;max-width:150px}.lw-item img{max-height:36px}}
+  /* Tweak individual logos that render differently */
+  .lw-item.lw-cnn img{max-height:26px}
+  .lw-item.lw-wsj img,.lw-item.lw-ft img{max-height:24px}
+  .lw-item.lw-mck img{max-height:18px}
+  @media (min-width:900px){
+    .lw-item.lw-cnn img{max-height:32px}
+    .lw-item.lw-wsj img,.lw-item.lw-ft img{max-height:28px}
+    .lw-item.lw-mck img{max-height:22px}
   }
 
-  /* ===== SOFTWARE COMPAT (kept) ===== */
-  .software-compat{padding:30px 22px;background:#fafafa;border-bottom:1px solid #e8e8e8}
-  .sc-label{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#666;text-align:center;margin-bottom:14px}
-  .compat-niche{background:#fff;border:1px solid #e8e8e8;padding:16px 18px;text-align:center;max-width:760px;margin:0 auto;border-radius:8px}
-  .niche-label{font-family:'Oswald',sans-serif;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#D90429;margin-bottom:6px}
-  .compat-row{font-size:13px;font-weight:600;color:#222;line-height:1.5}
+  /* ===== POLAROID STACK (clean screenshots, NO pills) ===== */
+  .polaroid-stack{background:#000;padding:30px 22px 80px;width:100vw;margin-left:calc(-50vw + 50%);text-align:center}
+  .ps-h{color:#fff;font-family:'Oswald',sans-serif;font-size:28px;text-transform:uppercase;text-align:center;margin-bottom:40px;letter-spacing:.04em;line-height:1.1;font-weight:700}
+  @media (min-width:900px){.ps-h{font-size:42px;margin-bottom:56px}}
+  .ps-row{position:relative;max-width:1100px;margin:0 auto 40px;height:340px}
+  @media (min-width:900px){.ps-row{height:380px;margin-bottom:50px}}
+  @media (max-width:700px){.ps-row{height:260px;max-width:400px;margin-bottom:30px}}
+  .ps-card{position:absolute;background:#fff;border-radius:10px;box-shadow:0 16px 40px rgba(0,0,0,0.55), 0 3px 10px rgba(0,0,0,0.3);overflow:hidden;border:5px solid #fff}
+  .ps-card img{width:100%;height:100%;display:block;object-fit:cover;border-radius:2px}
+  /* Desktop row 1 (5 cards in tilted stack) */
+  .ps-a1{width:260px;height:275px;top:50px;left:2%;transform:rotate(-6deg);z-index:2}
+  .ps-a2{width:270px;height:285px;top:25px;left:21%;transform:rotate(3deg);z-index:4}
+  .ps-a3{width:260px;height:275px;top:55px;left:40%;transform:rotate(-3deg);z-index:3}
+  .ps-a4{width:270px;height:285px;top:30px;right:20%;transform:rotate(4deg);z-index:5}
+  .ps-a5{width:250px;height:265px;top:60px;right:2%;transform:rotate(-5deg);z-index:2}
+  .ps-b1{width:270px;height:285px;top:50px;left:3%;transform:rotate(4deg);z-index:3}
+  .ps-b2{width:260px;height:275px;top:30px;left:22%;transform:rotate(-3deg);z-index:5}
+  .ps-b3{width:270px;height:285px;top:55px;left:42%;transform:rotate(2deg);z-index:4}
+  .ps-b4{width:250px;height:265px;top:40px;right:22%;transform:rotate(-4deg);z-index:3}
+  .ps-b5{width:270px;height:285px;top:50px;right:3%;transform:rotate(5deg);z-index:5}
+  @media (max-width:700px){
+    .ps-a1,.ps-a2,.ps-a3,.ps-a4,.ps-a5,.ps-b1,.ps-b2,.ps-b3,.ps-b4,.ps-b5{width:155px;height:170px;border-width:4px}
+    .ps-a1{top:40px;left:0}
+    .ps-a2{top:15px;left:65px}
+    .ps-a3{top:55px;left:130px}
+    .ps-a4{top:25px;right:65px}
+    .ps-a5{top:55px;right:0}
+    .ps-b1{top:35px;left:10px}
+    .ps-b2{top:55px;left:75px}
+    .ps-b3{top:30px;left:140px}
+    .ps-b4{top:55px;right:75px}
+    .ps-b5{top:35px;right:0}
+  }
+
+  /* ===== SOFTWARE COMPATIBILITY (real-logo bar) ===== */
+  .software-bar{padding:40px 22px;background:#fafafa;text-align:center;border-bottom:1px solid #e8e8e8}
+  .sb-label{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#666;margin-bottom:20px}
+  @media (min-width:900px){.sb-label{font-size:13px;letter-spacing:.16em;margin-bottom:28px}}
+  .sb-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px 24px;max-width:900px;margin:0 auto}
+  @media (min-width:900px){.sb-row{gap:18px 36px}}
+  .sb-item{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #e8e8e8;border-radius:8px;padding:10px 14px;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+  .sb-item img{width:22px;height:22px;object-fit:contain;border-radius:4px}
+  .sb-item span{font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#0a0a0a;letter-spacing:-.005em;line-height:1}
+  @media (min-width:900px){
+    .sb-item{padding:12px 18px;gap:10px}
+    .sb-item img{width:26px;height:26px}
+    .sb-item span{font-size:15px}
+  }
 
   /* ===== CALENDAR ===== */
   .calendar{padding:42px 22px 28px;background:#fff}
-  .calendar-h{font-family:'Oswald',sans-serif;font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:.01em;text-align:center;margin-bottom:8px;line-height:1.1;color:#0a0a0a}
-  @media (min-width:900px){.calendar-h{font-size:32px}}
-  .calendar-sub{font-size:14px;color:#444;text-align:center;line-height:1.5;margin-bottom:20px;max-width:540px;margin-left:auto;margin-right:auto}
-  .iclosed-widget{min-height:680px;width:100%;border:1px solid #e8e8e8}
+  @media (min-width:900px){.calendar{padding:60px 40px 40px;max-width:900px;margin:0 auto}}
+  .calendar-h{font-family:'Oswald',sans-serif;font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:.01em;text-align:center;margin-bottom:10px;line-height:1.1;color:#0a0a0a}
+  @media (min-width:900px){.calendar-h{font-size:36px}}
+  .calendar-sub{font-size:14px;color:#444;text-align:center;line-height:1.5;margin-bottom:24px;max-width:600px;margin-left:auto;margin-right:auto}
+  @media (min-width:900px){.calendar-sub{font-size:16px;margin-bottom:32px}}
+  .iclosed-widget{min-height:680px;width:100%;border:1px solid #e8e8e8;border-radius:6px}
   @media (min-width:900px){.iclosed-widget{min-height:760px}}
 
   /* ===== BENEFITS (vertical checklist) ===== */
-  .benefits{padding:28px 22px;background:#fafafa;border-top:1px solid #e8e8e8}
-  .benefits-h{font-family:'Oswald',sans-serif;font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:.01em;text-align:center;margin-bottom:16px;line-height:1.1;color:#0a0a0a}
-  @media (min-width:900px){.benefits-h{font-size:26px}}
-  .benefits-list{max-width:560px;margin:0 auto;list-style:none;padding:0}
-  .benefits-list li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;background:#fff;border:1px solid #e8e8e8;margin-bottom:8px;font-size:14.5px;line-height:1.45;font-weight:500;color:#0a0a0a}
-  @media (min-width:900px){.benefits-list li{font-size:16px;padding:14px 18px}}
-  .benefits-list .tick{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#22a06b;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;margin-top:1px}
+  .benefits{padding:32px 22px;background:#fafafa;border-top:1px solid #e8e8e8}
+  @media (min-width:900px){.benefits{padding:60px 40px}}
+  .benefits-h{font-family:'Oswald',sans-serif;font-size:22px;font-weight:700;text-transform:uppercase;letter-spacing:.01em;text-align:center;margin-bottom:20px;line-height:1.1;color:#0a0a0a}
+  @media (min-width:900px){.benefits-h{font-size:30px;margin-bottom:28px}}
+  .benefits-list{max-width:640px;margin:0 auto;list-style:none;padding:0}
+  .benefits-list li{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;background:#fff;border:1px solid #e8e8e8;margin-bottom:8px;font-size:15px;line-height:1.45;font-weight:500;color:#0a0a0a;border-radius:8px}
+  @media (min-width:900px){.benefits-list li{font-size:17px;padding:16px 22px;gap:16px}}
+  .benefits-list .tick{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:#22a06b;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;margin-top:1px}
   .benefits-list .tick::before{content:"\2713"}
 
   /* ===== COHORT ===== */
-  .cohort{background:#FFE100;color:#0a0a0a;text-align:center;padding:32px 22px}
+  .cohort{background:#FFE100;color:#0a0a0a;text-align:center;padding:36px 22px}
+  @media (min-width:900px){.cohort{padding:56px 22px}}
   .cohort-badge{display:inline-block;background:#0a0a0a;color:#FFE100;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;margin-bottom:14px}
-  .cohort-h{font-family:'Oswald',sans-serif;font-size:24px;font-weight:700;letter-spacing:.01em;text-transform:uppercase;line-height:1.1;margin-bottom:12px}
-  @media (min-width:900px){.cohort-h{font-size:30px}}
-  .cohort-body{font-size:14px;line-height:1.55;font-weight:500;max-width:480px;margin:0 auto}
+  .cohort-h{font-family:'Oswald',sans-serif;font-size:26px;font-weight:700;letter-spacing:.01em;text-transform:uppercase;line-height:1.1;margin-bottom:14px}
+  @media (min-width:900px){.cohort-h{font-size:36px}}
+  .cohort-body{font-size:14px;line-height:1.55;font-weight:500;max-width:520px;margin:0 auto}
+  @media (min-width:900px){.cohort-body{font-size:16px}}
 
   /* ===== TRUST STRIP ===== */
-  .trust-strip{background:#000;color:#fff;text-align:center;padding:14px 18px;font-family:'Inter',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;line-height:1.5}
-  @media (min-width:900px){.trust-strip{font-size:13.5px;padding:18px 24px}}
+  .trust-strip{background:#000;color:#fff;text-align:center;padding:16px 18px;font-family:'Inter',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;line-height:1.5}
+  @media (min-width:900px){.trust-strip{font-size:14px;padding:20px 24px}}
 
 </style>
-
-<!-- Meta Pixel via /pixel.js -->
-<script src="/pixel.js" async></script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1511657447261837&ev=PageView&noscript=1" alt=""/></noscript>
 </head>
 <body>
 
@@ -145,26 +168,32 @@
   <!-- URGENCY -->
   <div class="urgency"><span class="pulse"></span>BUILDING 10 AU DENTAL RECEPTIONISTS THIS <span class="urg-month"></span> · 8 SLOTS LEFT</div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="pretitle">For AU Dental Practices Missing 4+ Calls A Week</div>
-    <h1>How AU Dental Practices Are Recovering <span class="red">$244K-$305K A Year</span> Without Hiring Another Receptionist</h1>
-    <p class="subhead">4 missed calls a week. $1,348 in year-one production lost per call. 24/7 phone coverage built in 48 hours, in your own tone, on your real number.</p>
-    <a href="#book" class="cta-scroll">Book Your 15-Min Call &rarr;</a>
-  </section>
-
-  <!-- VIDEO DEMO -->
-  <section class="video-block">
-    <div class="video-label">Watch Daniel Call His AI Receptionist Live</div>
-    <p class="video-caption">Sarah at Bright Smile Dental takes a real new-patient call. This is what 24/7 phone coverage sounds like in your own tone.</p>
-    <div class="video-card">
-      <iframe src="https://iframe.mediadelivery.net/embed/660166/d983be50-d8c9-417d-9b91-428b432a298a?autoplay=false&preload=true&responsive=true"
-              title="Answerra Demo Video - DEN-01"
-              loading="lazy"
-              allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
-              allowfullscreen="true"></iframe>
+  <!-- HERO (mobile: stacked, desktop: side-by-side w/ video) -->
+  <section class="hero-wrap">
+    <div class="hero-text">
+      <div class="pretitle">For AU Dental Practices Missing 4+ Calls A Week</div>
+      <h1>How AU Dental Practices Are Recovering <span class="red">$244K-$305K A Year</span> Without Hiring Another Receptionist</h1>
+      <p class="subhead">4 missed calls a week. $1,348 in year-one production lost per call. 24/7 phone coverage built in 48 hours, in your own tone, on your real number.</p>
+      <div class="cta-wrap"><a href="#book" class="cta-scroll">Book Your 15-Min Call &rarr;</a></div>
+    </div>
+    <div class="video-block">
+      <div class="video-label">Watch Daniel Call His AI Receptionist Live</div>
+      <p class="video-caption">Sarah at Bright Smile Dental takes a real new-patient call. This is what 24/7 phone coverage sounds like in your own tone.</p>
+      <div class="video-card">
+        <iframe src="https://iframe.mediadelivery.net/embed/660166/d983be50-d8c9-417d-9b91-428b432a298a?autoplay=false&preload=true&responsive=true"
+                title="Answerra Demo Video - DEN-01"
+                loading="lazy"
+                allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
+                allowfullscreen="true"></iframe>
+      </div>
     </div>
   </section>
+
+  <!-- MOBILE-ONLY VIDEO CAPTION (shown below the stacked video on mobile) -->
+  <div class="video-block-mobile">
+    <div class="video-label" style="display:block;text-align:center;font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;text-transform:uppercase;margin-bottom:6px">Watch Daniel Call His AI Receptionist Live</div>
+    <p class="video-caption" style="display:block;text-align:center;font-size:13px;color:#444;line-height:1.45">Sarah at Bright Smile Dental takes a real new-patient call. This is what 24/7 phone coverage sounds like in your own tone.</p>
+  </div>
 </div>
 
 <!-- ============ AS COVERED BY LOGO WALL (full-bleed) ============ -->
@@ -172,49 +201,51 @@
   <div class="lw-h">As Covered By</div>
   <div class="lw-card">
     <div class="lw-grid">
-      <div class="lw-item"><img src="/logos/cnbc.svg" alt="CNBC"></div>
-      <div class="lw-item"><span class="wm wm-openai">OpenAI</span></div>
-      <div class="lw-item"><span class="wm wm-mckinsey">McKinsey</span></div>
-      <div class="lw-item"><img src="/logos/cbs.svg" alt="CBS"></div>
-      <div class="lw-item"><img src="/logos/forbes.svg" alt="Forbes"></div>
-      <div class="lw-item"><img src="/logos/bloomberg.svg" alt="Bloomberg"></div>
-      <div class="lw-item"><img src="/logos/cnn.svg" alt="CNN"></div>
-      <div class="lw-item"><span class="wm wm-afr">Financial Review</span></div>
-      <div class="lw-item"><span class="wm wm-smartcompany">SmartCompany</span></div>
-      <div class="lw-item"><img src="/logos/techcrunch.svg" alt="TechCrunch"></div>
-      <div class="lw-item"><img src="/logos/wsj.svg" alt="Wall Street Journal"></div>
-      <div class="lw-item"><img src="/logos/ft.svg" alt="Financial Times"></div>
+      <div class="lw-item lw-cnbc"><img src="/logos/cnbc.svg" alt="CNBC"></div>
+      <div class="lw-item lw-openai"><img src="/logos/openai.svg" alt="OpenAI"></div>
+      <div class="lw-item lw-mck"><img src="/logos/mckinsey.svg" alt="McKinsey &amp; Company"></div>
+      <div class="lw-item lw-cbs"><img src="/logos/cbs.svg" alt="CBS"></div>
+      <div class="lw-item lw-forbes"><img src="/logos/forbes.svg" alt="Forbes"></div>
+      <div class="lw-item lw-bloomberg"><img src="/logos/bloomberg.svg" alt="Bloomberg"></div>
+      <div class="lw-item lw-cnn"><img src="/logos/cnn.svg" alt="CNN"></div>
+      <div class="lw-item lw-afr"><img src="/logos/afr.svg" alt="Financial Review"></div>
+      <div class="lw-item lw-smartcompany"><img src="/logos/smartcompany.svg" alt="SmartCompany"></div>
+      <div class="lw-item lw-techcrunch"><img src="/logos/techcrunch.svg" alt="TechCrunch"></div>
+      <div class="lw-item lw-wsj"><img src="/logos/wsj.svg" alt="Wall Street Journal"></div>
+      <div class="lw-item lw-ft"><img src="/logos/ft.svg" alt="Financial Times"></div>
     </div>
   </div>
 </section>
 
-<!-- ============ POLAROID STACK PRESS (full-bleed) ============ -->
+<!-- ============ POLAROID STACK (CLEAN, NO PILLS) ============ -->
 <section class="polaroid-stack">
   <div class="ps-h">As Covered By The Press</div>
   <div class="ps-row">
-    <div class="ps-card ps-a1"><span class="pill"><img src="/logos/cnbc.svg" alt=""></span><img class="thumb" src="/moodboard/M01.jpg" alt=""></div>
-    <div class="ps-card ps-a2"><span class="pill"><span class="wm wm-openai" style="font-size:11px">OpenAI</span></span><img class="thumb" src="/moodboard/M02.jpg" alt=""></div>
-    <div class="ps-card ps-a3"><span class="pill"><span class="wm wm-mckinsey" style="font-size:11px">McKinsey</span></span><img class="thumb" src="/moodboard/M03.jpg" alt=""></div>
-    <div class="ps-card ps-a4"><span class="pill"><img src="/logos/cbs.svg" alt=""></span><img class="thumb" src="/moodboard/M04.jpg" alt=""></div>
-    <div class="ps-card ps-a5"><span class="pill"><img src="/logos/forbes.svg" alt=""></span><img class="thumb" src="/moodboard/M05.jpg" alt=""></div>
+    <div class="ps-card ps-a1"><img src="/moodboard/M01.jpg" alt=""></div>
+    <div class="ps-card ps-a2"><img src="/moodboard/M02.jpg" alt=""></div>
+    <div class="ps-card ps-a3"><img src="/moodboard/M03.jpg" alt=""></div>
+    <div class="ps-card ps-a4"><img src="/moodboard/M04.jpg" alt=""></div>
+    <div class="ps-card ps-a5"><img src="/moodboard/M05.jpg" alt=""></div>
   </div>
   <div class="ps-row">
-    <div class="ps-card ps-b1"><span class="pill"><span class="wm wm-afr" style="font-size:11px">Financial Review</span></span><img class="thumb" src="/moodboard/M06.jpg" alt=""></div>
-    <div class="ps-card ps-b2"><span class="pill"><span class="wm wm-smartcompany" style="font-size:11px">SmartCompany</span></span><img class="thumb" src="/moodboard/M07.jpg" alt=""></div>
-    <div class="ps-card ps-b3"><span class="pill"><img src="/logos/bloomberg.svg" alt=""></span><img class="thumb" src="/moodboard/M08.jpg" alt=""></div>
-    <div class="ps-card ps-b4"><span class="pill"><img src="/logos/cnn.svg" alt=""></span><img class="thumb" src="/moodboard/M09.jpg" alt=""></div>
-    <div class="ps-card ps-b5"><span class="pill"><img src="/logos/techcrunch.svg" alt=""></span><img class="thumb" src="/moodboard/M10.jpg" alt=""></div>
+    <div class="ps-card ps-b1"><img src="/moodboard/M06.jpg" alt=""></div>
+    <div class="ps-card ps-b2"><img src="/moodboard/M07.jpg" alt=""></div>
+    <div class="ps-card ps-b3"><img src="/moodboard/M08.jpg" alt=""></div>
+    <div class="ps-card ps-b4"><img src="/moodboard/M09.jpg" alt=""></div>
+    <div class="ps-card ps-b5"><img src="/moodboard/M10.jpg" alt=""></div>
   </div>
 </section>
 
 <div class="shell">
 
-  <!-- SOFTWARE COMPAT -->
-  <section class="software-compat">
-    <div class="sc-label">Plugs Into The Software You Already Use:</div>
-    <div class="compat-niche">
-      <div class="niche-label">Dental</div>
-      <div class="compat-row">Praktika · Dental4Windows · Centaur · Core Practice</div>
+  <!-- SOFTWARE COMPATIBILITY (real-logo bar) -->
+  <section class="software-bar">
+    <div class="sb-label">Plugs Into The Software You Already Use:</div>
+    <div class="sb-row">
+      <div class="sb-item"><img src="/logos/sw-praktika.png" alt="Praktika"><span>Praktika</span></div>
+      <div class="sb-item"><img src="/logos/sw-d4w.png" alt="Dental4Windows"><span>Dental4Windows</span></div>
+      <div class="sb-item"><img src="/logos/sw-d4w.png" alt="Centaur"><span>Centaur</span></div>
+      <div class="sb-item"><img src="/logos/sw-core-practice.png" alt="Core Practice"><span>Core Practice</span></div>
     </div>
   </section>
 
