@@ -82,17 +82,22 @@ TEMPLATE = """<!DOCTYPE html>
 <style data-v="v8-minimal">
   *,*::before,*::after{{box-sizing:border-box;margin:0;padding:0}}
   html,body{{background:#fff;color:#0a0a0a;font-family:'Inter','Open Sans',Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.45}}
-  main{{max-width:960px;margin:0 auto;padding:48px 22px 60px;text-align:center}}
-  @media (min-width:900px){{main{{padding:80px 40px 80px}}}}
+  main{{max-width:960px;margin:0 auto;padding:48px 22px 40px;text-align:center}}
+  @media (min-width:900px){{main{{padding:80px 40px 60px}}}}
   h1{{font-family:'Oswald',Impact,sans-serif;color:#0a0a0a;font-size:32px;line-height:1.06;font-weight:700;margin-bottom:36px;letter-spacing:-.005em;text-transform:uppercase}}
   @media (min-width:900px){{h1{{font-size:54px;line-height:1.04;margin-bottom:48px;max-width:980px;margin-left:auto;margin-right:auto}}}}
   h1 .red{{color:#D90429}}
-  .iclosed-widget{{min-height:680px;width:100%;border:1px solid #e8e8e8;border-radius:8px}}
+  .iclosed-widget{{min-height:680px;width:100%;border:0;outline:0;background:transparent}}
+  .iclosed-widget iframe{{border:0!important;outline:0!important}}
   @media (min-width:900px){{.iclosed-widget{{min-height:760px}}}}
+
+  /* Invisible-but-compliant footer */
+  .footer{{padding:20px 22px 28px;text-align:center;font-family:'Inter',sans-serif;font-size:10.5px;font-weight:400;color:#bcbcbc;line-height:1.7;letter-spacing:.01em;max-width:780px;margin:0 auto}}
+  .footer a{{color:#bcbcbc;text-decoration:none;border-bottom:1px solid transparent;transition:color .15s, border-color .15s}}
+  .footer a:hover{{color:#0a0a0a;border-bottom-color:#0a0a0a}}
+  .footer .sep{{color:#dadada;margin:0 6px}}
+  .footer .legal{{display:block;margin-top:6px;color:#cfcfcf;font-size:10px;letter-spacing:.02em}}
 </style>
-<!-- Meta Pixel via /pixel.js -->
-<script src="/pixel.js" async></script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1511657447261837&ev=PageView&noscript=1" alt=""/></noscript>
 </head>
 <body>
 <main>
@@ -100,6 +105,15 @@ TEMPLATE = """<!DOCTYPE html>
   <div class="iclosed-widget" data-url="{CAL_URL}"></div>
   <script async src="https://app.iclosed.io/assets/widget.js"></script>
 </main>
+
+<footer class="footer">
+  <a href="mailto:hello@answerra.ai">hello@answerra.ai</a><span class="sep">&middot;</span><a href="/privacy">Privacy</a><span class="sep">&middot;</span><a href="/terms">Terms</a><span class="sep">&middot;</span>&copy; <span class="urg-year"></span> Answerra
+  <span class="legal">Results referenced are case examples and not guaranteed. Not affiliated with Meta, Mindbody, Praktika, Simpro or any other software shown. Australia.</span>
+</footer>
+
+<script>
+  (function(){{ var y=new Date().getFullYear(); document.querySelectorAll(".urg-year").forEach(function(e){{e.textContent=y}}); }})();
+</script>
 </body>
 </html>
 """
