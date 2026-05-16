@@ -18,8 +18,11 @@
     }
   ],
   "redirects": [
-    {"source": "/dental", "destination": "/funnel-dental-01-two-kinds", "permanent": false},
-    {"source": "/medspa", "destination": "/funnel-medspa-01-1500-lapsed", "permanent": false},
-    {"source": "/plumbing", "destination": "/funnel-plumbing-01-phone-cant-answer", "permanent": false}
+    {"source": "/dental", "destination": "/funnel-dental-01-two-kinds-direct", "permanent": false},
+    {"source": "/medspa", "destination": "/funnel-medspa-01-1500-lapsed-direct", "permanent": false},
+    {"source": "/plumbing", "destination": "/funnel-plumbing-01-phone-cant-answer-direct", "permanent": false},
+    {"source": "/dental-vsl", "destination": "/funnel-dental-01-two-kinds", "permanent": false},
+    {"source": "/medspa-vsl", "destination": "/funnel-medspa-01-1500-lapsed", "permanent": false},
+    {"source": "/plumbing-vsl", "destination": "/funnel-plumbing-01-phone-cant-answer", "permanent": false}
   ]
 }
