@@ -35,17 +35,16 @@
   .cta-scroll{display:inline-block;background:#0066CC;color:#fff;text-align:center;padding:14px 28px;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;border:0;cursor:pointer;text-decoration:none;font-family:'Inter',sans-serif}
   .cta-scroll:hover{background:#0052a3}
 
-  /* ===== AUDIO SAMPLE CARD ===== */
-  .audio-block{padding:22px 22px 28px;background:#fafafa;border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8}
-  .audio-label{font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;text-align:center;color:#0a0a0a;margin-bottom:6px;line-height:1.2}
-  .audio-caption{font-size:12px;color:#666;text-align:center;margin-bottom:14px;line-height:1.4}
-  .audio-card{max-width:420px;margin:0 auto;background:#000;border:3px solid #000;position:relative;overflow:hidden}
-  .audio-card iframe{width:100%;height:200px;border:0;display:block}
+  /* ===== VIDEO DEMO CARD ===== */
+  .video-block{padding:22px 22px 28px;background:#fafafa;border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8}
+  .video-label{font-family:'Oswald',sans-serif;font-size:18px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;text-align:center;color:#0a0a0a;margin-bottom:6px;line-height:1.18}
+  .video-caption{font-size:13px;color:#444;text-align:center;margin-bottom:14px;line-height:1.45;font-weight:500;max-width:520px;margin-left:auto;margin-right:auto}
+  .video-card{max-width:380px;margin:0 auto;background:#000;border:3px solid #000;position:relative;aspect-ratio:4/5;overflow:hidden}
+  .video-card iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
   @media (min-width:900px){
-    .audio-block{padding:32px 32px 36px}
-    .audio-label{font-size:20px}
-    .audio-card{max-width:560px}
-    .audio-card iframe{height:240px}
+    .video-block{padding:36px 32px 40px}
+    .video-label{font-size:24px}
+    .video-card{max-width:440px;border-width:4px}
   }
 
   /* ===== PRESS COLLAGE ===== */
@@ -139,13 +138,13 @@
     <a href="#book" class="cta-scroll">Book Your 15-Min Call &rarr;</a>
   </section>
 
-  <!-- AUDIO SAMPLE -->
-  <section class="audio-block">
-    <div class="audio-label">Hear A Hipages Lead Booked In 22 Seconds</div>
-    <p class="audio-caption">Real inbound lead callback. Daniel breaks down how 22-second response triples booked jobs.</p>
-    <div class="audio-card">
-      <iframe src="https://iframe.mediadelivery.net/embed/660166/06be51b5-56fe-467d-9f07-30bd9f1c05ca?autoplay=false&preload=true&responsive=true"
-              title="Answerra Audio Sample - PLU-02"
+  <!-- VIDEO DEMO -->
+  <section class="video-block">
+    <div class="video-label">Watch A Hipages Lead Booked In 22 Seconds</div>
+    <p class="video-caption">Real inbound lead callback. Daniel breaks down how 22-second response triples booked jobs.</p>
+    <div class="video-card">
+      <iframe src="https://iframe.mediadelivery.net/embed/660166/4fd05080-1d50-4413-a9c3-8bad2caa4993?autoplay=false&preload=true&responsive=true"
+              title="Answerra Demo Video - PLU-02"
               loading="lazy"
               allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
               allowfullscreen="true"></iframe>
