@@ -55,7 +55,51 @@ function normalisePhone(p) {
   return d;
 }
 
-async function fireMetaCapi({ email, phone, first_name, last_name, niche, booking_id, source_url, client_ip, client_ua }) {
+
+// ===== Slack + Supabase helpers (added for consolidation) =====
+async function slackPost(text) {
+  const url = process.env.SLACK_BOOKED_WEBHOOK || process.env.SLACK_QUALIFIED_WEBHOOK;
+  if (!url) return { skipped: true };
+  try {
+    const r = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text, mrkdwn: true }) });
+    return { ok: r.ok };
+  } catch (e) { return { ok: false, error: e.message }; }
+}
+
+async function supabaseUpsertBooking(row) {
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) return { skipped: true };
+  const r = await fetch(`${url}/rest/v1/bookings?on_conflict=booking_id`, {
+    method: "POST",
+    headers: {
+      apikey: key,
+      Authorization: `Bearer ${key}`,
+      "Content-Type": "application/json",
+      Prefer: "resolution=merge-duplicates,return=representation",
+    },
+    body: JSON.stringify([row]),
+  });
+  if (!r.ok) console.error("[booking-confirm] supabase upsert " + JSON.stringify({ status: r.status, body: await r.json().catch(()=>({}))}));
+  return { ok: r.ok };
+}
+
+async function lookupVisitorFbc(visitor_id) {
+  if (!visitor_id) return { fbc: null, fbp: null };
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) return { fbc: null, fbp: null };
+  try {
+    const r = await fetch(`${url}/rest/v1/visits?visitor_id=eq.${encodeURIComponent(visitor_id)}&select=fbc,fbp&order=first_seen_at.asc&limit=1`, {
+      headers: { apikey: key, Authorization: `Bearer ${key}` }
+    });
+    if (!r.ok) return { fbc: null, fbp: null };
+    const arr = await r.json();
+    return arr[0] ? { fbc: arr[0].fbc || null, fbp: arr[0].fbp || null } : { fbc: null, fbp: null };
+  } catch { return { fbc: null, fbp: null }; }
+}
+
+async function fireMetaCapi({ email, phone, first_name, last_name, niche, booking_id, source_url, client_ip, client_ua, fbc, fbp }) {
   const token = process.env.META_CAPI_ACCESS_TOKEN;
   if (!token) {
     console.warn("[booking-confirm] META_CAPI_ACCESS_TOKEN not set — skipping CAPI fire");
@@ -76,6 +120,8 @@ async function fireMetaCapi({ email, phone, first_name, last_name, niche, bookin
   user_data.country = [await sha256("au")];
   if (client_ip) user_data.client_ip_address = client_ip;
   if (client_ua) user_data.client_user_agent = client_ua;
+  if (fbc) user_data.fbc = fbc;
+  if (fbp) user_data.fbp = fbp;
 
   const event_payload = {
     data: [{
@@ -169,7 +215,37 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "no phone number in payload", body_keys: Object.keys(body) });
   }
 
-  // Fire Retell call + Meta CAPI in parallel — neither blocks the other.
+  // iClosed passes our visitor_id back via custom field, q-param or metadata
+  const visitorId = pluck(body, ["visitor_id", "v_id", "data.visitor_id", "metadata.visitor_id", "fields.visitor_id", "fields.v_id"]);
+
+  // Look up original click attribution (fbc/fbp) so CAPI Purchase ties to the originating ad
+  const { fbc, fbp } = await lookupVisitorFbc(visitorId);
+
+  // 1. Persist booking row (upsert on booking_id) — needed for /api/mark-sale to find it later
+  await supabaseUpsertBooking({
+    booking_id: bookingId,
+    first_name: firstName, last_name: lastName, email, phone,
+    niche,
+    booked_at: bookingTime !== "your booked slot" ? bookingTime : null,
+    source_url: sourceUrl,
+    capi_event_id: bookingId,
+    visitor_id: visitorId,
+    raw_payload: body,
+  });
+
+  // 2. Slack ping
+  const slackTime = (bookingTime && bookingTime !== "your booked slot")
+    ? (() => { try { return new Date(bookingTime).toLocaleString("en-AU", { dateStyle: "medium", timeStyle: "short", timeZone: "Australia/Sydney" }) + " AEST"; } catch { return bookingTime; } })()
+    : "(no time)";
+  await slackPost([
+    `📅 *NEW BOOKING* — ${firstName || "?"} ${lastName || ""}`.trim(),
+    `When: *${slackTime}*`,
+    `Contact: ${email || "?"} · ${phone || "?"}`,
+    `Niche: *${niche}*  ·  Booking: \`${bookingId || "?"}\``,
+    fbc ? `🎯 Ad-attributed (fbc cookie present)` : `⚠️ No fbclid attribution`,
+  ].join("\n"));
+
+  // 3. Fire Retell call + Meta CAPI in parallel — neither blocks the other.
   const [retellResult, capiResult] = await Promise.allSettled([
     fetch("https://api.retellai.com/v2/create-phone-call", {
       method: "POST",
@@ -190,6 +266,7 @@ export default async function handler(req, res) {
       email, phone, first_name: firstName, last_name: lastName,
       niche, booking_id: bookingId, source_url: sourceUrl,
       client_ip: clientIp, client_ua: clientUa,
+      fbc, fbp,
     }),
   ]);
 
