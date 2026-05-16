@@ -90,6 +90,9 @@ TEMPLATE = """<!DOCTYPE html>
   .iclosed-widget{{min-height:680px;width:100%;border:1px solid #e8e8e8;border-radius:8px}}
   @media (min-width:900px){{.iclosed-widget{{min-height:760px}}}}
 </style>
+<!-- Meta Pixel via /pixel.js -->
+<script src="/pixel.js" async></script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1511657447261837&ev=PageView&noscript=1" alt=""/></noscript>
 </head>
 <body>
 <main>
