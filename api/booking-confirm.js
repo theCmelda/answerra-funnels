@@ -3,7 +3,7 @@
 //
 // Triggered by iClosed when a booking is created. We:
 //   • map niche (from referrer URL or event slug) → Aria agent → fire Retell call
-//   • POST a Purchase event to Meta CAPI (pixel 1566272154506353) for $30 AUD
+//   • POST a Purchase event to Meta CAPI (pixel 1511657447261837) for $30 AUD
 //     so Meta ad delivery optimises toward people who actually book.
 //
 // Required env vars:
@@ -17,7 +17,7 @@ const AGENT_MAP = {
 };
 
 const FROM_NUMBER = "+13185960765";
-const PIXEL_ID = "1566272154506353";
+const PIXEL_ID = process.env.PIXEL_ID || "1511657447261837";
 const META_API_VERSION = "v19.0";
 const PURCHASE_VALUE = 30;
 const PURCHASE_CURRENCY = "AUD";

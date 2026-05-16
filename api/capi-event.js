@@ -1,7 +1,7 @@
 // /api/capi-event.js
 // Meta Conversions API server-side event handler.
 //
-// Fires a Purchase event (default $30 AUD) to Meta Pixel 1566272154506353.
+// Fires a Purchase event (default $30 AUD) to Meta Pixel 1511657447261837.
 // Used to track booking → form completion → show-up commitment as a single
 // $30 sales event for Meta ad optimisation.
 //
@@ -25,7 +25,7 @@
 
 import crypto from "node:crypto";
 
-const PIXEL_ID = "1566272154506353";
+const PIXEL_ID = process.env.PIXEL_ID || "1511657447261837";
 const META_API_VERSION = "v19.0";
 
 function sha256(input) {

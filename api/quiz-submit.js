@@ -7,7 +7,7 @@
 
 import crypto from "node:crypto";
 
-const PIXEL_ID = "1566272154506353";
+const PIXEL_ID = process.env.PIXEL_ID || "1511657447261837";
 const META_API_VERSION = "v19.0";
 const PURCHASE_VALUE = 30;
 const PURCHASE_CURRENCY = "AUD";
