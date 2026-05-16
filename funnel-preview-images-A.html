@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Preview · Option A: Editorial Concept Photos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Open+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#f4f4f4;color:#0a0a0a;font-family:'Open Sans',Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.45}
+  .preview-banner{background:#0a0a0a;color:#FFE100;padding:14px 18px;text-align:center;font-family:'Inter',sans-serif;font-size:13px;letter-spacing:.04em}
+  .preview-banner b{color:#fff}
+  .preview-banner a{color:#FFE100;text-decoration:underline;margin-left:8px}
+  .shell{max-width:420px;margin:0 auto;background:#fff}
+  @media (min-width:900px){.shell{max-width:780px}}
+
+  .urgency{background:#FFE100;color:#000;text-align:center;font-family:'Inter',sans-serif;font-size:13px;font-weight:700;padding:10px 14px;letter-spacing:.04em;border-bottom:2px solid #000;line-height:1.3}
+  .urgency .pulse{display:inline-block;width:8px;height:8px;background:#D90429;border-radius:50%;margin-right:8px;vertical-align:middle;animation:p 1.4s infinite}
+  @keyframes p{0%,100%{opacity:1}50%{opacity:.4}}
+
+  .hero{padding:28px 22px 24px;text-align:center}
+  .pretitle{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#666;margin-bottom:14px}
+  h1{font-family:'Oswald',Impact,sans-serif;color:#0a0a0a;font-size:30px;line-height:1.05;font-weight:700;margin-bottom:14px;text-transform:uppercase}
+  h1 .red{color:#D90429}
+  .subhead{font-size:15px;line-height:1.5;font-weight:500;color:#222;margin:0 auto 22px;max-width:520px}
+  @media (min-width:900px){.hero{padding:48px 32px 32px}h1{font-size:48px}.subhead{font-size:18px}}
+
+  section.section{padding:24px 20px;border-bottom:1px solid #e8e8e8}
+  .bar-label{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#666;text-align:center;margin-bottom:14px}
+
+  /* OPTION A: photo with overlay caption */
+  .news-montage{background:#fafafa}
+  .news-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:760px;margin:0 auto}
+  @media (min-width:900px){.news-grid{grid-template-columns:repeat(4,1fr);gap:14px}}
+  .news-tile{background:#fff;border:1px solid #e0e0e0;position:relative;aspect-ratio:4/3;overflow:hidden}
+  .news-tile img{width:100%;height:100%;object-fit:cover;display:block}
+  .news-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.95) 100%);color:#fff;padding:38px 12px 12px;}
+  .news-pub{font-family:'Inter',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#FFE100;display:block;margin-bottom:5px}
+  .news-headline{font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;line-height:1.18;color:#fff}
+  @media (min-width:900px){.news-pub{font-size:10.5px}.news-headline{font-size:14px}}
+
+  .footer-note{padding:32px 22px;background:#0a0a0a;color:#bbb;text-align:center;font-size:13px;line-height:1.55}
+  .footer-note b{color:#fff}
+</style>
+</head>
+<body>
+
+<div class="preview-banner">
+  <b>OPTION A · CONCEPT PHOTOS</b> with CSS publication/headline overlay
+  <a href="/funnel-preview-images-B">Compare Option B &rarr;</a>
+</div>
+
+<div class="shell">
+
+  <div class="urgency"><span class="pulse"></span>BUILDING 10 AU DENTAL RECEPTIONISTS THIS MONTH · 8 SLOTS LEFT</div>
+
+  <section class="hero">
+    <div class="pretitle">For AU Dental Practices Missing 4+ Calls A Week</div>
+    <h1>How AU Dental Practices Are Recovering <span class="red">$244K-$305K A Year</span> Without Hiring Another Receptionist</h1>
+    <p class="subhead">Scroll down to see the news montage section as it would appear with Option A images.</p>
+  </section>
+
+  <section class="section news-montage">
+    <div class="bar-label">Recent Coverage Of The AI Receptionist Shift:</div>
+    <div class="news-grid">
+      <div class="news-tile">
+        <img src="/news-a/01-klarna.jpg" alt="">
+        <div class="news-overlay">
+          <span class="news-pub">OpenAI Case Study &middot; 2024</span>
+          <span class="news-headline">Klarna's AI Does The Work Of 700 Customer Service Agents</span>
+        </div>
+      </div>
+      <div class="news-tile">
+        <img src="/news-a/02-mckinsey.jpg" alt="">
+        <div class="news-overlay">
+          <span class="news-pub">McKinsey &amp; Co &middot; 2025</span>
+          <span class="news-headline">80% Of Businesses Will Use Voice AI By End Of 2026</span>
+        </div>
+      </div>
+      <div class="news-tile">
+        <img src="/news-a/03-cbs.jpg" alt="">
+        <div class="news-overlay">
+          <span class="news-pub">CBS News &middot; 2024</span>
+          <span class="news-headline">Klarna CEO: AI Can Do The Job Of 700 Workers</span>
+        </div>
+      </div>
+      <div class="news-tile">
+        <img src="/news-a/04-tradies.jpg" alt="">
+        <div class="news-overlay">
+          <span class="news-pub">SmallBizAI &middot; 2026</span>
+          <span class="news-headline">Sydney AI Receptionist Startup Raises $900K For Tradies</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer-note">
+    <b>Option A:</b> Editorial concept photo with CSS overlay caption. Same image library can be reused across all 9 funnels. Easy to swap individual tiles. Looks like a stock-photo press wall.
+  </div>
+
+</div>
+
+</body>
+</html>
