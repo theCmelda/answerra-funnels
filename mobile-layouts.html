@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Answerra · 5 mobile layout variants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#f4f1ec;color:#0a0a0a;font-family:'Inter',system-ui,Arial,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh}
+.wrap{max-width:1280px;margin:0 auto;padding:48px 22px 80px}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:#6a6a6a;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.eyebrow::before{content:"// "}
+h1{font-family:'Oswald',Impact,sans-serif;font-weight:700;font-size:44px;line-height:1.05;letter-spacing:-.015em;text-transform:uppercase;margin-bottom:14px}
+.intro{font-size:15px;line-height:1.55;color:#2a2a2a;max-width:680px;margin-bottom:14px}
+.intro code{background:rgba(10,10,10,.06);padding:1px 6px;border-radius:3px;font-family:'JetBrains Mono',monospace;font-size:13px}
+.note{font-size:13px;color:#6a6a6a;margin-bottom:36px;max-width:680px}
+.note b{color:#0a0a0a}
+
+.grid{display:grid;grid-template-columns:1fr;gap:24px}
+@media(min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1080px){.grid{grid-template-columns:repeat(3,1fr)}}
+
+.card{background:#fff;border:1px solid rgba(10,10,10,.10);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease}
+.card:hover{transform:translateY(-3px);border-color:#0a0a0a;box-shadow:0 18px 40px rgba(10,10,10,.08)}
+.card-head{padding:18px 22px 12px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.num{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#fff;background:#D90429;padding:5px 10px;border-radius:99px;letter-spacing:.06em}
+.name{font-family:'Oswald',Impact,sans-serif;font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:-.005em;color:#0a0a0a;flex:1;text-align:right}
+
+.phone{margin:0 22px 14px;background:#000;border-radius:34px;padding:8px;position:relative;overflow:hidden}
+.phone::before{content:"";position:absolute;top:8px;left:50%;transform:translateX(-50%);width:80px;height:18px;background:#000;border-radius:0 0 14px 14px;z-index:2}
+.phone iframe{display:block;width:100%;height:580px;border:0;background:#fff;border-radius:26px;pointer-events:auto}
+
+.desc{padding:0 22px 18px;font-size:13px;line-height:1.5;color:#444}
+.desc b{color:#0a0a0a;font-weight:600}
+
+.cta{margin:0 22px 22px;display:flex;gap:8px}
+.cta a{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:6px;background:#0a0a0a;color:#fff;padding:11px 16px;border-radius:99px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;transition:all .2s ease}
+.cta a:hover{background:#D90429;transform:translateY(-1px)}
+.cta a.alt{background:transparent;color:#0a0a0a;border:1px solid rgba(10,10,10,.18)}
+.cta a.alt:hover{background:#0a0a0a;color:#fff;border-color:#0a0a0a}
+
+.foot-note{margin-top:48px;padding-top:24px;border-top:1px solid rgba(10,10,10,.08);font-size:13px;color:#6a6a6a;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="eyebrow">Answerra · Internal · DEN-01 base content</div>
+<h1>5 mobile layouts · pick one</h1>
+<p class="intro">Same colors, same VSL, same calendar, same footer — five different <b>mobile hero treatments</b> for the sales pages. Each maximises a different direct-response pattern.</p>
+<p class="note">Each preview is the <b>actual live page rendered inside a phone-sized iframe</b>. Tap to interact. Headlines on all five are now <b>42-55px on mobile</b> (was 30px) and centred. Reply <code>"use layout 4 for DEN funnels"</code> to roll your pick across all 8 sales pages.</p>
+
+<div class="grid">
+
+  <article class="card">
+    <div class="card-head"><div class="num">01</div><div class="name">Centered Stack</div></div>
+    <div class="phone"><iframe src="/mobile-layouts/v1-centered-stack.html" loading="lazy"></iframe></div>
+    <p class="desc"><b>Classic Russell Brunson.</b> Tight urgency bar → giant centered headline → subhead → red CTA → VSL. Maximum readability. Best for <b>healthcare/professional</b> niches.</p>
+    <div class="cta">
+      <a href="/mobile-layouts/v1-centered-stack.html" target="_blank">Open ↗</a>
+      <a class="alt" href="#" onclick="navigator.clipboard.writeText('https://answerra.ai/mobile-layouts/v1-centered-stack.html');this.textContent='Copied ✓';return false">Copy URL</a>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-head"><div class="num">02</div><div class="name">Attention Bar</div></div>
+    <div class="phone"><iframe src="/mobile-layouts/v2-attention-bar.html" loading="lazy"></iframe></div>
+    <p class="desc"><b>Pre-hero shock.</b> Full-width yellow bar with massive red type before the headline. Highest "scroll-stop" rate. Best for <b>cold Meta traffic</b> where you need to break their feed-scroll trance.</p>
+    <div class="cta">
+      <a href="/mobile-layouts/v2-attention-bar.html" target="_blank">Open ↗</a>
+      <a class="alt" href="#" onclick="navigator.clipboard.writeText('https://answerra.ai/mobile-layouts/v2-attention-bar.html');this.textContent='Copied ✓';return false">Copy URL</a>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-head"><div class="num">03</div><div class="name">VSL First</div></div>
+    <div class="phone"><iframe src="/mobile-layouts/v3-vsl-first.html" loading="lazy"></iframe></div>
+    <p class="desc"><b>YouTube/TikTok pattern.</b> Tiny urgency bar → VSL above the fold → headline + sub BELOW the video. Highest video-watch rate. Best when the <b>video itself is the hook</b>.</p>
+    <div class="cta">
+      <a href="/mobile-layouts/v3-vsl-first.html" target="_blank">Open ↗</a>
+      <a class="alt" href="#" onclick="navigator.clipboard.writeText('https://answerra.ai/mobile-layouts/v3-vsl-first.html');this.textContent='Copied ✓';return false">Copy URL</a>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-head"><div class="num">04</div><div class="name">Massive Number</div></div>
+    <div class="phone"><iframe src="/mobile-layouts/v4-number-hero.html" loading="lazy"></iframe></div>
+    <p class="desc"><b>Halbert anchor.</b> Tiny pretitle → enormous $280K → small subline → headline → VSL. Maximum dollar-specificity. Best for <b>operators who think in P&L terms</b>.</p>
+    <div class="cta">
+      <a href="/mobile-layouts/v4-number-hero.html" target="_blank">Open ↗</a>
+      <a class="alt" href="#" onclick="navigator.clipboard.writeText('https://answerra.ai/mobile-layouts/v4-number-hero.html');this.textContent='Copied ✓';return false">Copy URL</a>
+    </div>
+  </article>
+
+  <article class="card">
+    <div class="card-head"><div class="num">05</div><div class="name">Bullet List Hero</div></div>
+    <div class="phone"><iframe src="/mobile-layouts/v5-bullet-list.html" loading="lazy"></iframe></div>
+    <p class="desc"><b>Self-identification.</b> Headline → 4 checkbox pain bullets → VSL. Viewer recognises themselves before they hit the video. Best for <b>nurturing warm traffic</b> or retargeting.</p>
+    <div class="cta">
+      <a href="/mobile-layouts/v5-bullet-list.html" target="_blank">Open ↗</a>
+      <a class="alt" href="#" onclick="navigator.clipboard.writeText('https://answerra.ai/mobile-layouts/v5-bullet-list.html');this.textContent='Copied ✓';return false">Copy URL</a>
+    </div>
+  </article>
+
+</div>
+
+<div class="foot-note">
+<p>The <b>previews are interactive</b> — tap, scroll, watch the moving thumbnail. Each loads the real VSL + iClosed calendar so what you see is exactly what a paid-traffic visitor would see on their phone.</p>
+<p style="margin-top:8px">Reply <code>"use layout N"</code> and I'll roll it across all 8 sales pages (or specific funnels like <code>"layout 4 for DEN only, layout 2 for trades"</code>).</p>
+</div>
+</div>
+</body>
+</html>
