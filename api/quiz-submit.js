@@ -219,7 +219,7 @@ export default async function handler(req, res) {
     pixel_fired,
     event_id,
     redirect: `/thanks?id=${encodeURIComponent(event_id)}`,
-    supabase: supResult.skipped ? "skipped (no env)" : (supResult.ok ? "stored" : ("error: " + (supResult.body?.message || supResult.body?.hint || JSON.stringify(supResult.body || {}).slice(0,200) || "unknown"))),
+    supabase: supResult.skipped ? "skipped (no env)" : (supResult.ok ? "stored" : "error"),
     slack: slackResult.skipped ? "skipped (no env)" : (slackResult.ok ? "posted" : "error"),
     capi: capiResult.skipped ? `skipped (${capiResult.reason})` : (capiResult.ok ? "fired" : "error"),
   });
