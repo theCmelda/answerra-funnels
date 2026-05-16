@@ -46,6 +46,9 @@ async function supabaseInsert(row) {
     body: JSON.stringify([row]),
   });
   const body = await r.json().catch(() => ({}));
+  if (!r.ok) {
+    console.error("[supabase] insert failed", { status: r.status, body, hasUrl: !!url, urlPrefix: (url||"").slice(0,40), keyPrefix: (key||"").slice(0,12) });
+  }
   return { ok: r.ok, status: r.status, body };
 }
 
