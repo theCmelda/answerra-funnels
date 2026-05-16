@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Recover $244K-$305K A Year From Missed Dental Calls</title>
-<meta name="description" content="Your front desk misses 35-62% of inbound calls. At $1,348 in year-one production per booked patient, that is $244K-$305K walking to the practice down the road. We build the AI rece">
+<title>Two Kinds Of Dental Practices In Australia. Which One Are You?</title>
+<meta name="description" content="The first answers every call. The second loses $244K-$305K a year to voicemail and never knows. We build the AI receptionist that turns the second kind into the first. Live in 48 hours.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Open+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -52,6 +52,25 @@
   @media (min-width:900px){.benefits-list li{font-size:18px;padding:22px 28px;gap:18px}}
   .benefits-list .tick{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:#22a06b;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:15px;margin-top:1px;box-shadow:0 4px 10px rgba(34,160,107,.3)}
   .benefits-list .tick::before{content:"\2713"}
+
+  /* ===== QUALIFY (who this is for / not for) ===== */
+  .qualify{padding:40px 22px 56px;background:#fff;border-bottom:1px solid #f0f0f0}
+  @media (min-width:900px){.qualify{padding:56px 40px 72px}}
+  .qualify-inner{max-width:920px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:16px}
+  @media (min-width:900px){.qualify-inner{grid-template-columns:1fr 1fr;gap:24px}}
+  .qualify-col{padding:24px 22px;border-radius:12px;border:1px solid #ececec;background:#fafafa}
+  @media (min-width:900px){.qualify-col{padding:30px 28px}}
+  .qualify-col.qualify-yes{border-left:4px solid #22a06b}
+  .qualify-col.qualify-no{border-left:4px solid #D90429}
+  .qualify-h{font-family:'Oswald',sans-serif;font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;margin-bottom:14px;color:#0a0a0a;line-height:1.15}
+  @media (min-width:900px){.qualify-h{font-size:24px;margin-bottom:18px}}
+  .qualify-col ul{list-style:none;padding:0;margin:0}
+  .qualify-col li{position:relative;padding:8px 0 8px 26px;font-size:14.5px;line-height:1.5;color:#222;font-weight:500;border-bottom:1px solid #eee}
+  .qualify-col li:last-child{border-bottom:0}
+  @media (min-width:900px){.qualify-col li{font-size:16px;padding:10px 0 10px 28px}}
+  .qualify-yes li::before{content:"\2713";position:absolute;left:0;top:8px;color:#22a06b;font-weight:700;font-size:16px}
+  .qualify-no li::before{content:"\2715";position:absolute;left:0;top:8px;color:#D90429;font-weight:700;font-size:16px}
+  @media (min-width:900px){.qualify-yes li::before,.qualify-no li::before{top:10px;font-size:18px}}
 
   /* ===== NEWS POLAROID STACK (WHITE, single row of 5) ===== */
   .news{background:#fff;padding:60px 22px 80px;text-align:center;border-bottom:1px solid #f0f0f0}
@@ -130,16 +149,16 @@
 
   <!-- 2. HERO -->
   <section class="hero">
-    <div class="pretitle">For Australian Dental Practices Doing $1.2M-$2.8M A Year</div>
-    <h1>How AU Dental Practices Are Recovering <span class="red">$244K-$305K A Year</span> In Missed Calls Without Hiring Another Receptionist</h1>
-    <p class="subhead">Your front desk misses 35-62% of inbound calls. At $1,348 in year-one production per booked patient, that is $244K-$305K walking to the practice down the road. We build the AI receptionist that catches every one. Live in 48 hours.</p>
-    <a href="#book" class="cta-scroll">Book Your Custom Receptionist Demo Call &rarr;</a>
+    <div class="pretitle">For Australian Private Practices Doing $1.2M-$2.8M A Year</div>
+    <h1>There Are Two Kinds Of Dental Practices In Australia Right Now. <span class="red">Which One Are You?</span></h1>
+    <p class="subhead"><strong>The first answers every call.</strong> The second misses 35 to 62% of inbound, loses <strong>$244K to $305K a year</strong> in production to voicemail, and never sees the patients who quietly book with the practice down the road. We build the AI receptionist that turns the second kind into the first. No new hire. Live in 48 hours.</p>
+    <a href="#book" class="cta-scroll">Show Me My Missed-Call Leak &rarr;</a>
   </section>
 
   <!-- 3. CALENDAR (first) -->
   <section id="book" class="calendar">
-    <h2 class="calendar-h">Book Your Custom Receptionist Demo Call</h2>
-    <p class="calendar-sub">Pick a time below. On the call we map your current missed-call leak and show you the build.</p>
+    <h2 class="calendar-h">Book Your Missed-Call Audit + Custom Build Plan</h2>
+    <p class="calendar-sub">Pick a time below. In 15 minutes we show you the exact calls your front desk missed last month, what that's costing in production, and the AI receptionist build we'd run for your practice. No pitch, no obligation. If we can't show you a real leak worth fixing, we end the call.</p>
     <div class="iclosed-widget" data-url="https://app.iclosed.io/e/answrra/free-ai-receptionist-demo-build"></div>
     <script async src="https://app.iclosed.io/assets/widget.js"></script>
   </section>
@@ -147,15 +166,39 @@
   <!-- 4. 3 BENEFITS (white) -->
   <section class="benefits">
     <ul class="benefits-list">
-      <li><span class="tick" aria-hidden="true"></span><span>Recovers $244K-$305K a year in production from missed calls</span></li>
-      <li><span class="tick" aria-hidden="true"></span><span>Answers every call in under 2 rings, 24 hours a day</span></li>
-      <li><span class="tick" aria-hidden="true"></span><span>Cancel anytime. No deposit. No contract.</span></li>
+      <li><span class="tick" aria-hidden="true"></span><span>Answers every call in under 2 rings, 24/7, books straight into Praktika, D4W, Centaur or Core Practice</span></li>
+      <li><span class="tick" aria-hidden="true"></span><span>Recovers $244K-$305K a year in production from calls your front desk drops today</span></li>
+      <li><span class="tick" aria-hidden="true"></span><span>14-day money-back. If we don't book real new patients into your diary in the first two weeks, you don't pay. No deposit, no contract.</span></li>
     </ul>
+  </section>
+
+  <!-- 4b. WHO THIS IS FOR (Jeremy-style qualification filter) -->
+  <section class="qualify">
+    <div class="qualify-inner">
+      <div class="qualify-col qualify-yes">
+        <div class="qualify-h">This Is For You If:</div>
+        <ul>
+          <li>You run a private practice doing $1.2M-$2.8M a year</li>
+          <li>You have 1 to 3 dentists and a front desk that's drowning in calls</li>
+          <li>You use Praktika, Dental4Windows, Centaur or Core Practice</li>
+          <li>You're tired of patients quietly voting with their thumbs to the practice down the road</li>
+        </ul>
+      </div>
+      <div class="qualify-col qualify-no">
+        <div class="qualify-h">This Isn't For You If:</div>
+        <ul>
+          <li>You're a corporate group with central booking</li>
+          <li>You're happy with your current missed-call rate</li>
+          <li>You're shopping for the cheapest possible chatbot &mdash; we're not it</li>
+          <li>You're not the decision-maker on receptionist hires</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
   <!-- 5. NEWS POLAROID STACK (white, single row) -->
   <section class="news">
-    <h2 class="news-h">What The Press Is Saying</h2>
+    <h2 class="news-h">The Front Desk Is Already Changing. The Industry Knows.</h2>
     <div class="news-row">
       <div class="ns-card ns-a1"><img src="/moodboard/M01.jpg" alt=""></div>
       <div class="ns-card ns-a2"><img src="/moodboard/M02.jpg" alt=""></div>
@@ -178,8 +221,8 @@
 
   <!-- 7. HEAR IT IN ACTION (Wistia-clean video) -->
   <section class="video-block">
-    <h2 class="video-h">Hear It In Action</h2>
-    <p class="video-caption">Watch Sarah at Bright Smile Dental answer an after-hours new-patient call and book the appointment in 90 seconds, so you can hear exactly what your patients will hear.</p>
+    <h2 class="video-h">Hear It In Action. 90 Seconds. Real Call.</h2>
+    <p class="video-caption">This is a real after-hours new-patient call. 8:47pm on a Tuesday. Your front desk is gone. Ours answers in two rings, qualifies the caller, and books her straight into the diary while you sleep. This is the exact voice and flow your patients will hear.</p>
     <div class="video-card">
       <iframe src="https://iframe.mediadelivery.net/embed/660166/d983be50-d8c9-417d-9b91-428b432a298a?autoplay=false&preload=true&responsive=true"
               title="Answerra Demo Video - DEN-01"
@@ -191,14 +234,14 @@
 
   <!-- 8. CALENDAR (second) -->
   <section id="book2" class="calendar">
-    <h2 class="calendar-h">Ready To Build Yours? Pick A Time.</h2>
-    <p class="calendar-sub">Two of the ten <span class="urg-month-mixed"></span> slots are gone. Grab one before the cohort closes.</p>
+    <h2 class="calendar-h">Ready To Be The First Kind? Pick A Time.</h2>
+    <p class="calendar-sub">Two of ten <span class="urg-month-mixed"></span> slots are gone. Each build takes our engineer 8 hours of custom voice + booking-software work, which is why we cap the cohort at 10. Grab yours before it closes.</p>
     <div class="iclosed-widget" data-url="https://app.iclosed.io/e/answrra/free-ai-receptionist-demo-build"></div>
   </section>
 </div>
 
 <!-- 9. URGENCY CLOSER -->
-<div class="urgency-closer"><span class="pulse"></span>8 of 10 <span class="urg-month-mixed"></span> slots left. Cancel anytime, no lock-in.</div>
+<div class="urgency-closer"><span class="pulse"></span>8 of 10 <span class="urg-month-mixed"></span> slots left &middot; 14-day money-back &middot; No contract, cancel anytime</div>
 
 <!-- 10. FOOTER -->
 <footer class="site-footer">
