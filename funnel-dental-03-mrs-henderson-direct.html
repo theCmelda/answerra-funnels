@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Unlock The $1.4M In Lapsed Patients Sitting In Your Praktika</title>
+<meta name="description" content="1,400 dormant patients. $9,000 lifetime value each. 35 hours of calls a month, done by AI in your tone. Free first batch of 50.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Open+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#f4f4f4;color:#0a0a0a;font-family:'Open Sans',Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.45}
+  .shell{max-width:420px;margin:0 auto;background:#fff}
+  @media (min-width:900px){.shell{max-width:780px}}
+
+  /* ===== URGENCY ===== */
+  .urgency{background:#FFE100;color:#000;text-align:center;font-family:'Inter',sans-serif;font-size:13px;font-weight:700;padding:10px 14px;letter-spacing:.04em;border-bottom:2px solid #000;line-height:1.3}
+  .urgency .pulse{display:inline-block;width:8px;height:8px;background:#D90429;border-radius:50%;margin-right:8px;vertical-align:middle;animation:p 1.4s infinite}
+  @keyframes p{0%,100%{opacity:1}50%{opacity:.4}}
+  @media (min-width:900px){.urgency{font-size:15px;padding:13px 24px}}
+
+  /* ===== HERO ===== */
+  .hero{padding:28px 22px 24px;text-align:center}
+  .pretitle{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#666;margin-bottom:14px}
+  h1{font-family:'Oswald',Impact,sans-serif;color:#0a0a0a;font-size:30px;line-height:1.05;font-weight:700;margin-bottom:14px;letter-spacing:-.005em;text-transform:uppercase}
+  h1 .red{color:#D90429}
+  .subhead{font-size:15px;line-height:1.5;font-weight:500;color:#222;margin:0 auto 22px;max-width:520px}
+  @media (min-width:900px){
+    .hero{padding:48px 32px 32px}
+    h1{font-size:48px}
+    .subhead{font-size:18px;margin-bottom:28px}
+    .pretitle{font-size:13px;letter-spacing:.14em}
+  }
+  .cta-scroll{display:inline-block;background:#0066CC;color:#fff;text-align:center;padding:14px 28px;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;border:0;cursor:pointer;text-decoration:none;font-family:'Inter',sans-serif}
+  .cta-scroll:hover{background:#0052a3}
+
+  /* ===== AUDIO SAMPLE CARD ===== */
+  .audio-block{padding:22px 22px 28px;background:#fafafa;border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8}
+  .audio-label{font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;text-align:center;color:#0a0a0a;margin-bottom:6px;line-height:1.2}
+  .audio-caption{font-size:12px;color:#666;text-align:center;margin-bottom:14px;line-height:1.4}
+  .audio-card{max-width:420px;margin:0 auto;background:#000;border:3px solid #000;position:relative;overflow:hidden}
+  .audio-card iframe{width:100%;height:200px;border:0;display:block}
+  @media (min-width:900px){
+    .audio-block{padding:32px 32px 36px}
+    .audio-label{font-size:20px}
+    .audio-card{max-width:560px}
+    .audio-card iframe{height:240px}
+  }
+
+  /* ===== PRESS COLLAGE ===== */
+  section.press-section{padding:24px 20px;border-bottom:1px solid #e8e8e8}
+  .bar-label{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#666;text-align:center;margin-bottom:14px}
+  .section-h{font-family:'Oswald',sans-serif;font-size:22px;font-weight:700;letter-spacing:.01em;text-transform:uppercase;text-align:center;margin-bottom:18px;line-height:1.05;color:#0a0a0a}
+  @media (min-width:900px){.section-h{font-size:28px}}
+
+  .press-bar{background:#fafafa}
+  .logo-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px 22px}
+  .logo-pub{font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:.04em;color:#222;opacity:.78;padding:4px 0}
+  @media (min-width:900px){.logo-pub{font-size:16px}}
+
+  .hero-stat{background:#0a0a0a;color:#fff;text-align:center;padding:32px 22px}
+  .stat-big{font-family:'Oswald',Impact,sans-serif;font-size:80px;line-height:.95;font-weight:700;color:#FFE100;letter-spacing:-.01em;margin-bottom:8px}
+  @media (min-width:900px){.stat-big{font-size:112px}}
+  .stat-label{font-family:'Oswald',sans-serif;font-size:17px;font-weight:600;letter-spacing:.01em;text-transform:uppercase;line-height:1.18;margin-bottom:10px}
+  @media (min-width:900px){.stat-label{font-size:20px}}
+  .stat-sub{font-size:13px;color:#bbb;line-height:1.5;max-width:380px;margin:0 auto}
+
+  .cards{display:flex;flex-direction:column;gap:12px}
+  @media (min-width:900px){.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}}
+  .card{display:block;background:#fff;border:1px solid #e0e0e0;padding:16px 16px 14px;text-decoration:none;color:#0a0a0a;transition:all .15s}
+  .card:hover{border-color:#D90429;box-shadow:0 4px 14px rgba(0,0,0,.06)}
+  .card-pub{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#D90429;margin-bottom:6px}
+  .card-headline{font-family:'Oswald',sans-serif;font-size:17px;font-weight:600;line-height:1.18;color:#0a0a0a;margin-bottom:8px}
+  .card-blurb{font-size:12.5px;line-height:1.5;color:#444;margin-bottom:8px}
+  .card-link{font-family:'Inter',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#0066CC}
+
+  .stats-bg{background:#fafafa}
+  .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e8e8e8;border:1px solid #e8e8e8}
+  @media (min-width:900px){.stats-grid{grid-template-columns:1fr 1fr 1fr 1fr}}
+  .stat-tile{background:#fff;padding:16px 12px;text-align:center}
+  .stat-num{font-family:'Oswald',Impact,sans-serif;font-size:30px;line-height:1;font-weight:700;color:#D90429;margin-bottom:6px}
+  @media (min-width:900px){.stat-num{font-size:38px}}
+  .stat-line{font-size:11.5px;font-weight:600;line-height:1.35;color:#0a0a0a;margin-bottom:4px}
+  .stat-src{font-size:10px;font-weight:500;color:#888}
+
+  .tech-proof{background:#0a0a0a;color:#fff}
+  .tech-proof .bar-label{color:#FFE100}
+  .tech-proof .logo-pub{color:#fff;opacity:1;font-size:15px;font-weight:700;letter-spacing:.05em}
+
+  .software-compat{background:#fafafa}
+  .compat-niche{background:#fff;border:1px solid #e8e8e8;padding:14px 16px;text-align:center}
+  .niche-label{font-family:'Oswald',sans-serif;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#D90429;margin-bottom:6px}
+  .compat-row{font-size:13px;font-weight:600;color:#222;line-height:1.5}
+
+  /* ===== CALENDAR ===== */
+  .calendar{padding:32px 22px 24px;background:#fff}
+  .calendar-h{font-family:'Oswald',sans-serif;font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:.01em;text-align:center;margin-bottom:8px;line-height:1.1;color:#0a0a0a}
+  @media (min-width:900px){.calendar-h{font-size:32px}}
+  .calendar-sub{font-size:14px;color:#444;text-align:center;line-height:1.5;margin-bottom:20px;max-width:540px;margin-left:auto;margin-right:auto}
+  .iclosed-widget{min-height:680px;width:100%;border:1px solid #e8e8e8}
+  @media (min-width:900px){.iclosed-widget{min-height:760px}}
+
+  /* ===== OUTCOMES UNDER CALENDAR ===== */
+  .outcomes{padding:28px 22px;background:#fafafa;border-top:1px solid #e8e8e8}
+  .outcomes-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:#e8e8e8;border:1px solid #e8e8e8;margin-bottom:18px}
+  .outcome-tile{background:#fff;padding:18px 10px;text-align:center}
+  .outcome-num{font-family:'Oswald',Impact,sans-serif;font-size:32px;line-height:1;font-weight:700;color:#0066CC;margin-bottom:6px}
+  @media (min-width:900px){.outcome-num{font-size:42px}}
+  .outcome-label{font-size:11.5px;font-weight:600;color:#0a0a0a;line-height:1.35}
+  .risk{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#444;text-align:center;line-height:1.55;padding:14px 12px;background:#fff;border:1px solid #e8e8e8;max-width:600px;margin:0 auto}
+  .risk b{color:#D90429;font-weight:700}
+
+  /* ===== COHORT ===== */
+  .cohort{background:#FFE100;color:#0a0a0a;text-align:center;padding:32px 22px}
+  .cohort-badge{display:inline-block;background:#0a0a0a;color:#FFE100;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;margin-bottom:14px}
+  .cohort-h{font-family:'Oswald',sans-serif;font-size:24px;font-weight:700;letter-spacing:.01em;text-transform:uppercase;line-height:1.1;margin-bottom:12px}
+  @media (min-width:900px){.cohort-h{font-size:30px}}
+  .cohort-body{font-size:14px;line-height:1.55;font-weight:500;max-width:480px;margin:0 auto}
+
+  /* ===== TRUST STRIP ===== */
+  .trust-strip{background:#000;color:#fff;text-align:center;padding:14px 18px;font-family:'Inter',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;line-height:1.5}
+  @media (min-width:900px){.trust-strip{font-size:13.5px;padding:18px 24px}}
+
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- URGENCY -->
+  <div class="urgency"><span class="pulse"></span>REACTIVATING 10 AU DENTAL LISTS THIS <span class="urg-month"></span> · 8 SLOTS LEFT</div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="pretitle">For AU Dental Practices Over 5 Years Old</div>
+    <h1>How AU Dental Practices Unlock <span class="red">$1.4M In Lapsed Patients</span> Without Their Receptionist Making A Single Call</h1>
+    <p class="subhead">1,400 dormant patients. $9,000 lifetime value each. 35 hours of calls a month, done by AI in your tone. Free first batch of 50.</p>
+    <a href="#book" class="cta-scroll">Book Your 15-Min Call &rarr;</a>
+  </section>
+
+  <!-- AUDIO SAMPLE -->
+  <section class="audio-block">
+    <div class="audio-label">Hear A Real Lapsed Patient Get Rebooked</div>
+    <p class="audio-caption">Outbound reactivation call exactly as the patient heard it. Daniel breaks down how it books her in under 90 seconds.</p>
+    <div class="audio-card">
+      <iframe src="https://iframe.mediadelivery.net/embed/660166/efae6361-4d33-47cf-a543-a5092e733497?autoplay=false&preload=true&responsive=true"
+              title="Answerra Audio Sample - DEN-03"
+              loading="lazy"
+              allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
+              allowfullscreen="true"></iframe>
+    </div>
+  </section>
+
+  <!-- PRESS LOGO BAR -->
+  <section class="press-section press-bar">
+    <div class="bar-label">The AI Receptionist Shift, Covered By:</div>
+    <div class="logo-row">
+      <span class="logo-pub">OpenAI</span>
+      <span class="logo-pub">McKinsey</span>
+      <span class="logo-pub">CBS News</span>
+      <span class="logo-pub">Fast Company</span>
+      <span class="logo-pub">Salesforce</span>
+      <span class="logo-pub">Bloomberg</span>
+    </div>
+  </section>
+
+  <!-- HERO STAT -->
+  <section class="press-section hero-stat">
+    <div class="stat-big">700</div>
+    <div class="stat-label">Customer Service Agents<br>Replaced By AI At Klarna</div>
+    <div class="stat-sub">2.3 million conversations in month one. Resolution time cut from 11 minutes to under 2. $40M/year saved. Same voice AI infrastructure powers Answerra. (OpenAI Case Study, Klarna, 2024)</div>
+  </section>
+
+  <!-- ARTICLE CARDS -->
+  <section class="press-section">
+    <h2 class="section-h">What The Press Is Reporting</h2>
+    <div class="cards">
+      <a class="card" href="https://openai.com/index/klarna/" target="_blank" rel="noopener">
+        <div class="card-pub">OpenAI Case Study &middot; 2024</div>
+        <div class="card-headline">"Klarna's AI assistant does the work of 700 full-time agents."</div>
+        <div class="card-blurb">2.3M conversations in month one. Two-thirds of all customer service chats. Resolution time cut from 11 min to under 2.</div>
+        <div class="card-link">Read source &rarr;</div>
+      </a>
+      <a class="card" href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener">
+        <div class="card-pub">McKinsey &amp; Company &middot; 2025</div>
+        <div class="card-headline">"80% of businesses will integrate voice AI into customer service by end of 2026."</div>
+        <div class="card-blurb">78% of organisations already using AI in at least one business function. Voice AI growth concentrated in healthcare and SMB services.</div>
+        <div class="card-link">Read source &rarr;</div>
+      </a>
+      <a class="card" href="https://www.cbsnews.com/news/klarna-ceo-ai-chatbot-replacing-workers-sebastian-siemiatkowski/" target="_blank" rel="noopener">
+        <div class="card-pub">CBS News &middot; 2024</div>
+        <div class="card-headline">"Klarna CEO: AI can do the job of 700 workers."</div>
+        <div class="card-blurb">Sebastian Siemiatkowski on how Klarna's AI assistant handled two-thirds of all customer service chats in its first month.</div>
+        <div class="card-link">Read source &rarr;</div>
+      </a>
+      <a class="card" href="https://smallbizai.au/chime-labs-sydney-ai-receptionist-tradies-australia/" target="_blank" rel="noopener">
+        <div class="card-pub">SmallBizAI &middot; 2026</div>
+        <div class="card-headline">"Sydney AI receptionist startup raises $900K to help Aussie tradies."</div>
+        <div class="card-blurb">Australian tradies miss an estimated 270,000 calls a day. The AI receptionist category is moving fast in AU.</div>
+        <div class="card-link">Read source &rarr;</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- STATS GRID -->
+  <section class="press-section stats-bg">
+    <h2 class="section-h">The Math On Missed Calls</h2>
+    <div class="stats-grid">
+      <div class="stat-tile">
+        <div class="stat-num">270K</div>
+        <div class="stat-line">Calls missed by AU tradies every day</div>
+        <div class="stat-src">SmallBizAI, 2026</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-num">62%</div>
+        <div class="stat-line">Of small business calls go unanswered</div>
+        <div class="stat-src">Nextiva, 2024</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-num">88%</div>
+        <div class="stat-line">Of AU SMBs using AI report higher revenue</div>
+        <div class="stat-src">Salesforce, 2025</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-num">$40M</div>
+        <div class="stat-line">Klarna's annual saving from AI customer service</div>
+        <div class="stat-src">Klarna PR, 2024</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH PROOF -->
+  <section class="press-section tech-proof">
+    <div class="bar-label">Built On The Same AI Infrastructure As Klarna:</div>
+    <div class="logo-row">
+      <span class="logo-pub">OpenAI</span>
+      <span class="logo-pub">Retell AI</span>
+      <span class="logo-pub">ElevenLabs</span>
+      <span class="logo-pub">Twilio</span>
+    </div>
+  </section>
+
+  <!-- SOFTWARE COMPAT (niche-specific) -->
+  <section class="press-section software-compat">
+    <div class="bar-label">Plugs Into: The Software You Already Use:</div>
+    <div class="compat-niche">
+      <div class="niche-label">Dental</div>
+      <div class="compat-row">Praktika · Dental4Windows · Centaur · Core Practice</div>
+    </div>
+  </section>
+
+  <!-- CALENDAR -->
+  <section id="book" class="calendar">
+    <h2 class="calendar-h">Book Your 15-Minute Reactivation Build</h2>
+    <p class="calendar-sub">Daniel mines your Praktika list live on the call. Bring the export. Leave with 50 patients getting called by Friday.</p>
+    <div class="iclosed-widget" data-url="https://app.iclosed.io/e/answrra/free-ai-receptionist-demo-build"></div>
+    <script async src="https://app.iclosed.io/assets/widget.js"></script>
+  </section>
+
+  <!-- OUTCOMES UNDER CALENDAR -->
+  <section class="outcomes">
+    <div class="outcomes-grid">
+      <div class="outcome-tile">
+        <div class="outcome-num">47</div>
+        <div class="outcome-label">Patients rebooked in 14 days (Caulfield case)</div>
+      </div>
+      <div class="outcome-tile">
+        <div class="outcome-num">$43,800</div>
+        <div class="outcome-label">In new production from that one batch</div>
+      </div>
+      <div class="outcome-tile">
+        <div class="outcome-num">$0</div>
+        <div class="outcome-label">Until a patient actually rebooks</div>
+      </div>
+    </div>
+    <p class="risk"><b>Our promise:</b> If we don't rebook at least 3 patients in the first batch, we walk and you keep the recordings.</p>
+  </section>
+
+  <!-- COHORT -->
+  <section class="cohort">
+    <div class="cohort-badge">Founding AU Cohort &middot; <span class="urg-month"></span> 2026</div>
+    <div class="cohort-h">10 Free Builds This Month<br>8 Slots Left</div>
+    <p class="cohort-body">You get the full build at <b>$0</b> in exchange for a 60-second testimonial when it's live. No deposit. No contract. Live on your real number in 48 hours.</p>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">Works With Praktika · $0 Until A Patient Books · 48-Hour Build · Cancel Anytime</div>
+
+</div>
+
+<script>
+  document.querySelectorAll(".urg-month").forEach(function(e){
+    e.textContent = new Date().toLocaleString("en-AU", {month: "long"}).toUpperCase();
+  });
+</script>
+</body>
+</html>
