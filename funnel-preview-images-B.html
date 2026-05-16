@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Preview · Option B: Article-Card Mockups</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Open+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#f4f4f4;color:#0a0a0a;font-family:'Open Sans',Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.45}
+  .preview-banner{background:#0a0a0a;color:#FFE100;padding:14px 18px;text-align:center;font-family:'Inter',sans-serif;font-size:13px;letter-spacing:.04em}
+  .preview-banner b{color:#fff}
+  .preview-banner a{color:#FFE100;text-decoration:underline;margin-left:8px}
+  .shell{max-width:420px;margin:0 auto;background:#fff}
+  @media (min-width:900px){.shell{max-width:780px}}
+
+  .urgency{background:#FFE100;color:#000;text-align:center;font-family:'Inter',sans-serif;font-size:13px;font-weight:700;padding:10px 14px;letter-spacing:.04em;border-bottom:2px solid #000;line-height:1.3}
+  .urgency .pulse{display:inline-block;width:8px;height:8px;background:#D90429;border-radius:50%;margin-right:8px;vertical-align:middle;animation:p 1.4s infinite}
+  @keyframes p{0%,100%{opacity:1}50%{opacity:.4}}
+
+  .hero{padding:28px 22px 24px;text-align:center}
+  .pretitle{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#666;margin-bottom:14px}
+  h1{font-family:'Oswald',Impact,sans-serif;color:#0a0a0a;font-size:30px;line-height:1.05;font-weight:700;margin-bottom:14px;text-transform:uppercase}
+  h1 .red{color:#D90429}
+  .subhead{font-size:15px;line-height:1.5;font-weight:500;color:#222;margin:0 auto 22px;max-width:520px}
+  @media (min-width:900px){.hero{padding:48px 32px 32px}h1{font-size:48px}.subhead{font-size:18px}}
+
+  section.section{padding:24px 20px;border-bottom:1px solid #e8e8e8}
+  .bar-label{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#666;text-align:center;margin-bottom:14px}
+
+  /* OPTION B: pre-rendered article cards, no overlay */
+  .news-montage{background:#fafafa}
+  .news-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:760px;margin:0 auto}
+  @media (min-width:900px){.news-grid{grid-template-columns:repeat(4,1fr);gap:14px}}
+  .news-tile{background:#fff;border:1px solid #e0e0e0;aspect-ratio:1/1;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+  .news-tile img{width:100%;height:100%;object-fit:cover;display:block}
+
+  .footer-note{padding:32px 22px;background:#0a0a0a;color:#bbb;text-align:center;font-size:13px;line-height:1.55}
+  .footer-note b{color:#fff}
+</style>
+</head>
+<body>
+
+<div class="preview-banner">
+  <b>OPTION B · ARTICLE-CARD MOCKUPS</b> with embedded headlines + publication branding
+  <a href="/funnel-preview-images-A">&larr; Compare Option A</a>
+</div>
+
+<div class="shell">
+
+  <div class="urgency"><span class="pulse"></span>BUILDING 10 AU DENTAL RECEPTIONISTS THIS MONTH · 8 SLOTS LEFT</div>
+
+  <section class="hero">
+    <div class="pretitle">For AU Dental Practices Missing 4+ Calls A Week</div>
+    <h1>How AU Dental Practices Are Recovering <span class="red">$244K-$305K A Year</span> Without Hiring Another Receptionist</h1>
+    <p class="subhead">Scroll down to see the news montage section as it would appear with Option B images.</p>
+  </section>
+
+  <section class="section news-montage">
+    <div class="bar-label">Recent Coverage Of The AI Receptionist Shift:</div>
+    <div class="news-grid">
+      <div class="news-tile"><img src="/news-b/01-klarna.jpg" alt=""></div>
+      <div class="news-tile"><img src="/news-b/02-mckinsey.jpg" alt=""></div>
+      <div class="news-tile"><img src="/news-b/03-cbs.jpg" alt=""></div>
+      <div class="news-tile"><img src="/news-b/04-tradies.jpg" alt=""></div>
+    </div>
+  </section>
+
+  <div class="footer-note">
+    <b>Option B:</b> Self-contained article-preview cards with publication banner + headline + thumbnail baked into the image. Looks like a real press-coverage montage. No CSS overlay needed.
+  </div>
+
+</div>
+
+</body>
+</html>
