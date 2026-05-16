@@ -28,7 +28,7 @@ export default async function handler(req, res) {
     const data = await r.json();
     if (data.status !== "OK" && data.status !== "ZERO_RESULTS") {
       console.error("[places-autocomplete] google error", JSON.stringify({ status: data.status, error_message: data.error_message }));
-      return res.status(200).json({ predictions: [], error: data.status });
+      return res.status(200).json({ predictions: [], error: data.status, error_message: data.error_message });
     }
     const predictions = (data.predictions || []).slice(0, 5).map(p => ({
       place_id: p.place_id,
