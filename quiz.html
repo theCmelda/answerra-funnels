@@ -3,337 +3,156 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
-<title>Answerra · Your custom build</title>
+<title>Answerra · 01 · Typeform Classic</title>
 <meta name="robots" content="noindex,nofollow">
-
-<!-- Meta Pixel -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','1566272154506353');fbq('track','PageView',{page:'quiz'});
+fbq('init','1566272154506353');fbq('track','PageView',{page:'quiz',design:'v1-typeform'});
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1566272154506353&ev=PageView&noscript=1" alt=""/></noscript>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{
-  --red:#D90429; --red-soft:rgba(217,4,41,.10);
-  --yellow:#FFE100; --blue:#0066CC; --blue-soft:rgba(0,102,204,.10);
-  --ink:#0a0a0a; --ink-soft:#2a2a2a; --ink-mute:#6a6a6a;
-  --bg:#ffffff; --bg-warm:#fafaf7;
-  --line:rgba(10,10,10,.10); --line-strong:rgba(10,10,10,.22);
-}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html,body{
-  background:var(--bg);color:var(--ink);
-  font-family:'Open Sans',Arial,sans-serif;
-  -webkit-font-smoothing:antialiased;
-  min-height:100vh;min-height:100dvh;
-  overflow-x:hidden;
-}
+html,body{background:#ffffff;color:#0a0a0a;font-family:'Inter',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh;min-height:100dvh}
 body{display:flex;flex-direction:column;min-height:100vh;min-height:100dvh}
-a{color:inherit}
 button{cursor:pointer;font-family:inherit;border:0;background:none;color:inherit}
 input,textarea{font-family:inherit;color:inherit}
 
-/* ============ NAV ============ */
-.nav{
-  position:fixed;top:0;left:0;right:0;z-index:50;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:14px 22px;background:rgba(255,255,255,.92);backdrop-filter:blur(14px) saturate(160%);
-  -webkit-backdrop-filter:blur(14px) saturate(160%);
-  border-bottom:1px solid var(--line);
-}
-.brand{font-family:'Oswald',Impact,sans-serif;font-weight:700;font-size:20px;letter-spacing:-.01em;text-transform:uppercase}
-.brand .dot{color:var(--red)}
-.step-count{font-family:'Oswald',Impact,sans-serif;font-size:13px;font-weight:600;letter-spacing:.06em;color:var(--ink-mute)}
-.step-count b{color:var(--red);font-size:15px}
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:rgba(255,255,255,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #e5e7eb}
+.brand{font-family:'Inter',system-ui,-apple-system,sans-serif;font-weight:700;font-size:18px;letter-spacing:-.02em}
+.brand .dot{color:#D90429}
+.step-count{font-size:13px;font-weight:500;color:#6b7280}
+.step-count b{color:#0a0a0a;font-weight:600}
+.progress{position:fixed;left:0;right:0;top:0;z-index:51;height:2px;background:#e5e7eb}
+.progress-bar{height:100%;background:#D90429;width:0%;transition:width .4s cubic-bezier(.2,.8,.2,1)}
 
-.progress{
-  position:fixed;left:0;right:0;bottom:0;z-index:50;
-  height:4px;background:rgba(10,10,10,.06);
-}
-.progress-bar{height:100%;background:var(--red);width:0%;transition:width .45s cubic-bezier(.2,.8,.2,1)}
+.stage{flex:1;display:flex;align-items:center;justify-content:center;padding:88px 24px 64px}
+.wrap{width:100%;max-width:680px}
 
-/* ============ STAGE ============ */
-.stage{
-  flex:1;display:flex;align-items:center;justify-content:center;
-  padding:88px 24px 96px;position:relative;
-}
-.wrap{width:100%;max-width:780px;position:relative}
+.q{display:none;animation:slideIn .4s cubic-bezier(.2,.8,.2,1)}
+.q.active{display:block}
+@keyframes slideIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
-/* ============ QUESTION SLIDES ============ */
-.q{
-  display:none;
-  position:relative;
-}
-.q.active{
-  display:block;
-  animation:slideIn .5s cubic-bezier(.2,.8,.2,1);
-}
-@keyframes slideIn{
-  from{opacity:0;transform:translateY(32px)}
-  to{opacity:1;transform:translateY(0)}
-}
+.q-head{display:flex;align-items:center;gap:8px;margin-bottom:20px;font-size:14px;font-weight:500;color:#6b7280}
+.q-num{color:#D90429;font-weight:600}
+.q-required{color:#D90429;font-size:12px}
 
-/* Question header */
-.q-head{
-  display:flex;align-items:center;gap:10px;margin-bottom:24px;
-  font-family:'Oswald',Impact,sans-serif;
-}
-.q-num{
-  color:var(--red);font-weight:700;font-size:16px;
-  display:inline-flex;align-items:center;gap:8px;
-  letter-spacing:.04em;
-}
-.q-num svg{width:14px;height:14px}
-.q-num span.required{color:var(--red);font-size:14px;margin-left:4px}
-
-/* Question text */
-h2.q-text{
-  font-family:'Oswald',Impact,sans-serif;
-  font-weight:700;text-transform:none;
-  font-size:32px;line-height:1.1;letter-spacing:-.005em;
-  color:var(--ink);margin-bottom:14px;text-wrap:balance;
-}
-h2.q-text .red{color:var(--red)}
-h2.q-text .ital{font-style:italic;color:var(--red);font-weight:600}
-h2.q-text .ul{background:linear-gradient(180deg,transparent 60%,var(--yellow) 60%);padding:0 4px}
-.q-sub{
-  font-size:16px;line-height:1.5;color:var(--ink-mute);
-  margin-bottom:32px;font-weight:500;
-}
-.q-name{color:var(--red);font-weight:700}
+h2.q-text{font-family:'Inter',system-ui,-apple-system,sans-serif;font-weight:700;font-size:32px;line-height:1.15;letter-spacing:-.025em;color:#0a0a0a;margin-bottom:14px;text-wrap:balance}
+h2.q-text .accent{color:#D90429}
+.q-sub{font-size:16px;line-height:1.55;color:#6b7280;margin-bottom:32px;font-weight:400}
+.q-name{color:#D90429;font-weight:600}
 
 @media(min-width:760px){
-  h2.q-text{font-size:48px}
+  h2.q-text{font-size:46px}
   .q-sub{font-size:18px;margin-bottom:40px}
-  .q-num{font-size:18px}
-}
-@media(min-width:1100px){
-  h2.q-text{font-size:58px}
 }
 
-/* ============ INPUTS ============ */
-.input-row{margin-bottom:20px}
-.text-input{
-  width:100%;background:transparent;border:0;
-  border-bottom:2px solid var(--line-strong);
-  padding:14px 0 14px;font-size:22px;font-weight:500;
-  color:var(--ink);outline:none;
-  transition:border-color .2s ease,padding .2s ease;
-  font-family:'Open Sans',Arial,sans-serif;
-}
-.text-input:focus{border-color:var(--red)}
-.text-input::placeholder{color:var(--ink-mute);font-weight:400}
-@media(min-width:760px){.text-input{font-size:28px;padding:18px 0}}
+.input-row{margin-bottom:24px}
+.text-input{width:100%;background:transparent;border-style:none none solid none;border-width:0 0 2px 0;border-color:#e5e7eb;padding:14px 0;font-size:20px;font-weight:500;color:#0a0a0a;outline:none;transition:all .2s ease}
+.text-input:focus{border-color:#0a0a0a}
+.text-input::placeholder{color:#9ca3af;font-weight:400}
+@media(min-width:760px){.text-input{font-size:24px;padding:16px 0}}
+textarea.text-input{min-height:120px;line-height:1.45;resize:none}
 
-textarea.text-input{
-  resize:none;line-height:1.4;min-height:120px;
-  border:2px solid var(--line-strong);border-radius:4px;
-  padding:16px;font-size:18px;
-}
-
-/* Google Places suggestions */
-.suggest{
-  margin-top:8px;
-  background:#fff;border:2px solid var(--ink);
-  border-radius:4px;max-height:280px;overflow-y:auto;
-  box-shadow:6px 6px 0 var(--ink);
-}
-.suggest-item{
-  display:flex;flex-direction:column;gap:4px;
-  padding:14px 18px;cursor:pointer;
-  border-bottom:1px solid var(--line);
-  transition:background .12s ease;
-}
+.suggest{margin-top:8px;background:#ffffff;border:1px solid #e5e7eb;border-radius:10px;max-height:280px;overflow-y:auto}
+.suggest-item{padding:14px 18px;cursor:pointer;border-bottom:1px solid #e5e7eb;display:flex;flex-direction:column;gap:3px;transition:background .12s ease}
 .suggest-item:last-child{border-bottom:0}
-.suggest-item:hover,.suggest-item.kbdactive{background:var(--yellow)}
-.suggest-item b{font-size:16px;font-weight:700;color:var(--ink)}
-.suggest-item span{font-size:13px;color:var(--ink-mute)}
+.suggest-item:hover,.suggest-item.kbdactive{background:#fef2f4}
+.suggest-item b{font-size:15px;font-weight:600;color:#0a0a0a}
+.suggest-item span{font-size:13px;color:#6b7280}
 
-/* Business confirm card */
-.biz-card{
-  background:#fff;border:3px solid var(--ink);border-radius:4px;
-  padding:24px;margin-bottom:24px;
-  box-shadow:6px 6px 0 var(--ink);
-}
-.biz-card h3{
-  font-family:'Oswald',Impact,sans-serif;font-weight:700;
-  font-size:24px;line-height:1.1;margin-bottom:12px;text-transform:uppercase;
-  color:var(--ink);
-}
-.biz-row{
-  display:flex;gap:8px;font-size:14px;color:var(--ink-soft);
-  line-height:1.5;margin-top:8px;
-}
-.biz-row b{
-  color:var(--ink);font-weight:700;text-transform:uppercase;
-  font-size:11px;letter-spacing:.06em;min-width:80px;
-}
-.biz-stars{
-  margin-top:14px;padding-top:14px;border-top:1px solid var(--line);
-  display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink);
-}
-.biz-stars b{font-size:16px;color:var(--red);font-weight:700}
+.biz-card{background:#ffffff;border:1px solid #e5e7eb;border-radius:10px;padding:22px;margin-bottom:24px}
+.biz-card h3{font-family:'Inter',system-ui,-apple-system,sans-serif;font-weight:600;font-size:20px;line-height:1.2;margin-bottom:12px}
+.biz-row{display:flex;gap:10px;font-size:14px;color:#6b7280;line-height:1.5;margin-top:8px}
+.biz-row b{color:#0a0a0a;font-weight:500;min-width:70px}
+.biz-stars{margin-top:14px;padding-top:14px;border-top:1px solid #e5e7eb;font-size:13px;color:#6b7280}
+.biz-stars b{color:#D90429;font-weight:600;font-size:15px}
 
-/* ============ OPTION PILLS ============ */
-.options{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
-.opt{
-  display:flex;align-items:center;gap:14px;
-  background:#fff;border:2px solid var(--line-strong);
-  border-radius:4px;padding:16px 18px;
-  text-align:left;font-family:inherit;
-  cursor:pointer;transition:all .15s ease;
-  font-size:16px;font-weight:600;color:var(--ink);
-}
-.opt:hover{border-color:var(--red);background:var(--red-soft);transform:translateX(2px)}
-.opt.active{
-  border-color:var(--red);background:var(--red);color:#fff;
-  box-shadow:4px 4px 0 var(--ink);
-}
-.opt.active .opt-letter{background:#fff;color:var(--red);border-color:#fff}
-.opt-letter{
-  flex-shrink:0;width:28px;height:28px;border:2px solid var(--line-strong);
-  border-radius:4px;display:flex;align-items:center;justify-content:center;
-  font-family:'Oswald',Impact,sans-serif;font-size:13px;font-weight:700;
-  background:#fff;color:var(--ink);transition:all .15s ease;
-}
-.opt-text{flex:1;line-height:1.3}
-.opt-check{
-  flex-shrink:0;width:22px;height:22px;border-radius:50%;
-  border:2px solid var(--line-strong);
-  display:none;align-items:center;justify-content:center;
-}
-.opt-check svg{width:14px;height:14px}
-.opt[data-multi].active .opt-check{display:flex;background:#fff;border-color:#fff}
+.options{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.opt{display:flex;align-items:center;gap:14px;background:#ffffff;border:1px solid #e5e7eb;border-radius:10px;padding:15px 18px;text-align:left;font-family:inherit;font-size:16px;font-weight:500;color:#0a0a0a;transition:all .15s ease;cursor:pointer;width:100%}
+.opt:hover{border-color:#0a0a0a}
+.opt.active{background:#D90429;color:#ffffff;border-color:#D90429}
+.opt.active .opt-letter{background:rgba(255,255,255,.2);color:#fff;border-color:transparent}
+.opt-letter{flex-shrink:0;width:24px;height:24px;border:1px solid #e5e7eb;border-radius:5px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#6b7280;background:#ffffff;transition:all .15s ease}
+.opt-text{flex:1;line-height:1.35}
+.opt-check{flex-shrink:0;width:20px;height:20px;border-radius:50%;border:1.5px solid #e5e7eb;display:none;align-items:center;justify-content:center;background:#ffffff}
+.opt-check svg{width:12px;height:12px}
 .opt[data-multi] .opt-check{display:flex}
+.opt[data-multi].active .opt-check{background:#fff;border-color:#fff}
 
-/* Inline grid for revenue pills */
-.options.grid2{flex-direction:row;flex-wrap:wrap}
-.options.grid2 .opt{flex:1 1 calc(50% - 5px);min-width:140px}
-@media(min-width:520px){.options.grid2 .opt{flex:1 1 calc(33.333% - 7px)}}
-
-/* ============ COMMIT CARD ============ */
-.commit-card{
-  background:var(--yellow);border:3px solid var(--ink);border-radius:4px;
-  padding:24px;margin-bottom:24px;
-  box-shadow:6px 6px 0 var(--ink);
-}
-.commit-card p{
-  font-size:16px;line-height:1.55;color:var(--ink);margin-bottom:14px;font-weight:500;
-}
+.commit-card{background:#fef2f4;border:1px solid #e5e7eb;border-radius:10px;padding:22px;margin-bottom:24px}
+.commit-card p{font-size:15px;line-height:1.6;color:#0a0a0a;margin-bottom:12px;font-weight:400}
 .commit-card p:last-child{margin-bottom:0}
-.commit-card b{font-weight:800}
+.commit-card b{font-weight:600}
 
-/* ============ CTA / OK button ============ */
 .cta-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:8px}
-.cta-ok{
-  display:inline-flex;align-items:center;gap:10px;
-  background:var(--red);color:#fff;
-  font-family:'Oswald',Impact,sans-serif;font-weight:700;text-transform:uppercase;
-  font-size:16px;letter-spacing:.04em;padding:16px 28px;
-  border-radius:4px;border:2px solid var(--ink);
-  box-shadow:5px 5px 0 var(--ink);
-  cursor:pointer;transition:all .15s ease;
-}
-.cta-ok:hover:not(:disabled){transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink);background:#e0123a}
-.cta-ok:active:not(:disabled){transform:translate(1px,1px);box-shadow:3px 3px 0 var(--ink)}
-.cta-ok:disabled{opacity:.35;cursor:not-allowed;box-shadow:none}
-.cta-ok::after{content:"→";font-size:18px}
-.kbd-hint{font-size:12px;color:var(--ink-mute);font-weight:500;display:none;align-items:center;gap:6px}
-.kbd-hint kbd{
-  font-family:'Open Sans',monospace;font-size:11px;font-weight:700;
-  background:#fff;border:1px solid var(--line-strong);
-  padding:3px 7px;border-radius:3px;color:var(--ink);
-  box-shadow:0 1px 0 var(--ink-soft);
-}
+.cta-ok{display:inline-flex;align-items:center;gap:8px;background:#D90429;color:#ffffff;font-family:inherit;font-weight:600;font-size:15px;padding:14px 24px;border-radius:6px;border:0;transition:all .15s ease;letter-spacing:.005em}
+.cta-ok:hover:not(:disabled){filter:brightness(.92);transform:translateY(-1px)}
+.cta-ok:disabled{opacity:.35;cursor:not-allowed;transform:none}
+.cta-ok::after{content:"→";font-size:16px}
+.kbd-hint{font-size:12px;color:#9ca3af;display:none;align-items:center;gap:6px;font-weight:500}
+.kbd-hint kbd{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;background:#ffffff;border:1px solid #e5e7eb;padding:2px 6px;border-radius:4px;color:#6b7280}
 @media(min-width:760px){.kbd-hint{display:inline-flex}}
-.cta-secondary{
-  background:transparent;color:var(--ink-mute);
-  font-size:14px;font-weight:600;
-  text-decoration:underline;text-underline-offset:3px;
-  padding:8px 4px;border:0;
-}
-.cta-secondary:hover{color:var(--ink)}
+.cta-secondary{background:transparent;color:#6b7280;font-size:14px;font-weight:500;text-decoration:underline;text-underline-offset:3px;padding:8px 4px;border:0}
+.cta-secondary:hover{color:#0a0a0a}
 
-/* ============ CONFIRM PAGE ============ */
 .confirm{text-align:center;padding:8px 0 32px}
-.confirm-icon{
-  width:80px;height:80px;background:var(--red);
-  border:3px solid var(--ink);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  margin:0 auto 28px;box-shadow:6px 6px 0 var(--ink);
-}
-.confirm-icon svg{width:42px;height:42px}
-.confirm h2.q-text{margin-bottom:14px}
-.cal-row{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:24px 0 28px}
-.cal-btn{
-  display:inline-flex;align-items:center;gap:6px;
-  padding:12px 18px;background:#fff;border:2px solid var(--ink);
-  border-radius:4px;font-family:'Oswald',Impact,sans-serif;font-weight:700;
-  font-size:13px;letter-spacing:.04em;text-transform:uppercase;
-  color:var(--ink);text-decoration:none;
-  transition:all .15s ease;
-  box-shadow:3px 3px 0 var(--ink);
-}
-.cal-btn:hover{background:var(--yellow);transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
-.next-steps{
-  list-style:none;text-align:left;
-  background:var(--bg-warm);border:2px solid var(--line);border-radius:4px;
-  padding:20px 22px;margin:0 auto;max-width:520px;
-}
-.next-steps li{
-  display:flex;gap:14px;font-size:14px;line-height:1.55;
-  color:var(--ink-soft);margin-bottom:12px;
-}
+.confirm-icon{width:64px;height:64px;background:#D90429;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px}
+.confirm-icon svg{width:32px;height:32px}
+.cal-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:20px 0 24px}
+.cal-btn{display:inline-flex;align-items:center;gap:6px;padding:11px 18px;background:#ffffff;border:1px solid #e5e7eb;border-radius:6px;font-size:13px;font-weight:600;color:#0a0a0a;text-decoration:none;transition:all .15s ease}
+.cal-btn:hover{border-color:#0a0a0a}
+.next-steps{list-style:none;text-align:left;background:#ffffff;border:1px solid #e5e7eb;border-radius:10px;padding:20px 22px;margin:0 auto;max-width:520px}
+.next-steps li{display:flex;gap:14px;font-size:14px;line-height:1.55;color:#6b7280;margin-bottom:12px}
 .next-steps li:last-child{margin-bottom:0}
-.next-steps li b{
-  flex-shrink:0;color:var(--red);font-weight:700;font-family:'Oswald',Impact,sans-serif;
-  font-size:16px;
-}
+.next-steps li b{flex-shrink:0;color:#D90429;font-weight:600;font-size:14px;min-width:18px}
 
-/* ============ FOOT ============ */
-.foot{text-align:center;padding:14px 22px;font-size:11px;color:var(--ink-mute)}
+.foot{text-align:center;padding:16px 22px;font-size:11px;color:#9ca3af}
+.foot a{color:#6b7280;text-decoration:none}
 
-/* ============ a11y motion ============ */
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation-duration:.001s !important;transition-duration:.05s !important}
 }
+
+
+        .opt{border-radius:6px}
+        .opt:hover{border-color:#0a0a0a}
+        .opt-letter{background:#f3f4f6;border-color:#e5e7eb;color:#0a0a0a}
+
+.warn-bar{
+  position:fixed;top:55px;left:0;right:0;z-index:49;
+  background:#FFE100;color:#0a0a0a;text-align:center;
+  padding:11px 18px;font-size:13px;font-weight:600;line-height:1.4;
+  border-bottom:1px solid rgba(10,10,10,.15);
+  letter-spacing:.005em;
+}
+.warn-bar b{font-weight:700;color:#D90429;text-transform:uppercase;letter-spacing:.04em;margin-right:6px}
+.stage{padding-top:120px}
+@media(min-width:760px){
+  .warn-bar{padding:14px 24px;font-size:14px}
+  .stage{padding-top:130px}
+}
+
 </style>
 </head>
 <body>
-
+<div class="progress"><div class="progress-bar" id="progressBar"></div></div>
 <header class="nav">
-  <span class="brand">ANSWERRA<span class="dot">.</span></span>
+  <span class="brand">answerra<span class="dot">.</span></span>
   <span class="step-count"><b id="stepNum">1</b> / 8</span>
 </header>
+<div class="warn-bar"><b>Heads up:</b> Your call isn't scheduled yet. We need a couple more pieces of info from you below.</div>
 
-<main class="stage">
-<div class="wrap">
+<main class="stage"><div class="wrap">
 
-<!-- ============ STEP 0 · WELCOME ============ -->
 <section class="q active" data-step="0">
-  <div class="q-head">
-    <span class="q-num"><svg viewBox="0 0 16 16"><path d="M3 5h10M3 8h10M3 11h6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg> Welcome</span>
-  </div>
-  <h2 class="q-text">G'day <span class="q-name" data-bind="first_name">there</span> — your <span class="ul">build slot</span> is locked in.</h2>
-  <p class="q-sub">Four quick questions before our senior dev starts building your AI receptionist. Takes <b>90 seconds</b>.</p>
-  <div class="cta-row">
-    <button class="cta-ok" data-next>Let's go</button>
-    <span class="kbd-hint">press <kbd>Enter</kbd></span>
-  </div>
-</section>
-
-<!-- ============ STEP 1 · BUSINESS SEARCH ============ -->
-<section class="q" data-step="1">
-  <div class="q-head"><span class="q-num">01 → Your business <span class="required">*</span></span></div>
+  <div class="q-head"><span class="q-num">01</span> Your business <span class="q-required">*</span></div>
   <h2 class="q-text">What's your business called, <span class="q-name" data-bind="first_name">there</span>?</h2>
-  <p class="q-sub">Start typing — we'll pull the details from Google.</p>
+  <p class="q-sub">Start typing - we'll pull the details from Google.</p>
   <div class="input-row">
-    <input id="bizSearch" class="text-input" type="text" placeholder="e.g. Bright Smile Dental Bondi" autocomplete="off" autofocus />
+    <input id="bizSearch" class="text-input" type="text" placeholder="e.g. Bright Smile Dental Bondi" autocomplete="off" />
     <div id="bizSuggest" class="suggest" style="display:none"></div>
   </div>
   <div class="cta-row">
@@ -342,29 +161,27 @@ textarea.text-input{
   </div>
 </section>
 
-<!-- ============ STEP 2 · CONFIRM ============ -->
-<section class="q" data-step="2">
-  <div class="q-head"><span class="q-num">02 → Confirm</span></div>
-  <h2 class="q-text">Is this <span class="red">you</span>?</h2>
-  <p class="q-sub">Double-check the details below.</p>
+<section class="q" data-step="1">
+  <div class="q-head"><span class="q-num">02</span> Confirm</div>
+  <h2 class="q-text">Is this <span class="accent">you</span>?</h2>
+  <p class="q-sub">Double-check the details.</p>
   <div class="biz-card">
-    <h3 id="bizName">—</h3>
-    <div class="biz-row"><b>Address</b> <span id="bizAddr">—</span></div>
-    <div class="biz-row"><b>Phone</b> <span id="bizPhone">—</span></div>
-    <div class="biz-row"><b>Website</b> <span id="bizWeb">—</span></div>
-    <div class="biz-stars">★ <b id="bizStars">—</b> · <span id="bizReviews">— reviews</span></div>
+    <h3 id="bizName">-</h3>
+    <div class="biz-row"><b>Address</b><span id="bizAddr">-</span></div>
+    <div class="biz-row"><b>Phone</b><span id="bizPhone">-</span></div>
+    <div class="biz-row"><b>Website</b><span id="bizWeb">-</span></div>
+    <div class="biz-stars">★ <b id="bizStars">-</b> · <span id="bizReviews">- reviews</span></div>
   </div>
   <div class="cta-row">
     <button class="cta-ok" data-next>Yes, that's us</button>
-    <button class="cta-secondary" data-back>No, search again</button>
+    <button class="cta-secondary" data-back>Search again</button>
   </div>
 </section>
 
-<!-- ============ STEP 3 · REVENUE ============ -->
-<section class="q" data-step="3">
-  <div class="q-head"><span class="q-num">03 → Revenue <span class="required">*</span></span></div>
-  <h2 class="q-text">How much did your business do <span class="ital">last year</span>, <span class="q-name" data-bind="first_name">there</span>?</h2>
-  <p class="q-sub">Australian dollars. Be honest — we never share this.</p>
+<section class="q" data-step="2">
+  <div class="q-head"><span class="q-num">03</span> Revenue <span class="q-required">*</span></div>
+  <h2 class="q-text">How much did your business do <span class="accent">last year</span>?</h2>
+  <p class="q-sub">In Australian dollars.</p>
   <div class="options" id="revenueOpts">
     <button class="opt" data-revenue="Under $250K"><span class="opt-letter">A</span><span class="opt-text">Under $250,000</span></button>
     <button class="opt" data-revenue="$250K-$500K"><span class="opt-letter">B</span><span class="opt-text">$250,000 – $500,000</span></button>
@@ -376,15 +193,14 @@ textarea.text-input{
   </div>
   <div class="cta-row">
     <button class="cta-ok" data-next disabled id="revNext">OK</button>
-    <span class="kbd-hint">tap a letter <kbd>A-G</kbd></span>
+    <span class="kbd-hint">tap <kbd>A-G</kbd></span>
   </div>
 </section>
 
-<!-- ============ STEP 4 · BENEFITS ============ -->
-<section class="q" data-step="4">
-  <div class="q-head"><span class="q-num">04 → What it should fix <span class="required">*</span></span></div>
-  <h2 class="q-text">What do you want your receptionist to <span class="ital">fix</span>?</h2>
-  <p class="q-sub">Pick all that matter. <b>We prioritise these in your build.</b></p>
+<section class="q" data-step="3">
+  <div class="q-head"><span class="q-num">04</span> What it should fix <span class="q-required">*</span></div>
+  <h2 class="q-text">What do you want your receptionist to <span class="accent">fix</span>?</h2>
+  <p class="q-sub">Pick all that matter.</p>
   <div class="options" id="benefitOpts"></div>
   <div class="cta-row">
     <button class="cta-ok" data-next disabled id="benNext">OK</button>
@@ -392,13 +208,12 @@ textarea.text-input{
   </div>
 </section>
 
-<!-- ============ STEP 5 · NOTES ============ -->
-<section class="q" data-step="5">
-  <div class="q-head"><span class="q-num">05 → Anything else</span></div>
-  <h2 class="q-text">Anything <span class="ul">specific</span> we should know?</h2>
-  <p class="q-sub">Optional. Software you use, edge cases, tone of voice — anything that helps us nail the build first time.</p>
+<section class="q" data-step="4">
+  <div class="q-head"><span class="q-num">05</span> Anything else</div>
+  <h2 class="q-text">Anything specific we should know?</h2>
+  <p class="q-sub">Optional. Software you use, edge cases, tone of voice.</p>
   <div class="input-row">
-    <textarea id="notesInput" class="text-input" maxlength="500" placeholder="e.g. We use Cliniko not D4W. Want her to upsell whitening to every new patient."></textarea>
+    <textarea id="notesInput" class="text-input" maxlength="500" placeholder="e.g. We use Cliniko. Want her to upsell whitening to every new patient."></textarea>
   </div>
   <div class="cta-row">
     <button class="cta-ok" data-next>OK</button>
@@ -406,17 +221,16 @@ textarea.text-input{
   </div>
 </section>
 
-<!-- ============ STEP 6 · URGENCY ============ -->
-<section class="q" data-step="6">
-  <div class="q-head"><span class="q-num">06 → Timing <span class="required">*</span></span></div>
-  <h2 class="q-text">When do you want this <span class="ital">installed</span>?</h2>
+<section class="q" data-step="5">
+  <div class="q-head"><span class="q-num">06</span> Timing <span class="q-required">*</span></div>
+  <h2 class="q-text">When do you want this <span class="accent">installed</span>?</h2>
   <p class="q-sub">Be honest. We prioritise the urgent ones.</p>
   <div class="options" id="urgencyOpts">
-    <button class="opt" data-urgency="yesterday"><span class="opt-letter">A</span><span class="opt-text">🔥 Yesterday — I needed this last week</span></button>
-    <button class="opt" data-urgency="today"><span class="opt-letter">B</span><span class="opt-text">🔥 Today — let's go ASAP</span></button>
+    <button class="opt" data-urgency="yesterday"><span class="opt-letter">A</span><span class="opt-text">Yesterday - I needed this last week</span></button>
+    <button class="opt" data-urgency="today"><span class="opt-letter">B</span><span class="opt-text">Today - let's go ASAP</span></button>
     <button class="opt" data-urgency="2weeks"><span class="opt-letter">C</span><span class="opt-text">In the next 2 weeks</span></button>
     <button class="opt" data-urgency="1month"><span class="opt-letter">D</span><span class="opt-text">In the next month</span></button>
-    <button class="opt" data-urgency="exploring"><span class="opt-letter">E</span><span class="opt-text">Just exploring for now</span></button>
+    <button class="opt" data-urgency="exploring"><span class="opt-letter">E</span><span class="opt-text">Just exploring</span></button>
   </div>
   <div class="cta-row">
     <button class="cta-ok" data-next disabled id="urgNext">OK</button>
@@ -424,12 +238,11 @@ textarea.text-input{
   </div>
 </section>
 
-<!-- ============ STEP 7 · SHOW-UP COMMITMENT ============ -->
-<section class="q" data-step="7">
-  <div class="q-head"><span class="q-num">07 → One last thing</span></div>
-  <h2 class="q-text"><span class="q-name" data-bind="first_name">There</span>, <span class="ul">one last thing</span>.</h2>
+<section class="q" data-step="6">
+  <div class="q-head"><span class="q-num">07</span> One last thing</div>
+  <h2 class="q-text"><span class="q-name" data-bind="first_name">There</span>, one last thing.</h2>
   <div class="commit-card">
-    <p>Our senior dev spends <b>2-3 hours building your receptionist</b> before the call. We do it free because trust starts before money changes hands — and the build is the demo.</p>
+    <p>Our senior dev spends <b>2-3 hours building your receptionist</b> before the call. We do it free because trust starts before money changes hands - and the build is the demo.</p>
     <p>Only ask in return: <b>turn up on time</b>. If something genuinely comes up, give us 4+ hours so we can reuse the slot.</p>
   </div>
   <div class="cta-row">
@@ -438,32 +251,26 @@ textarea.text-input{
   </div>
 </section>
 
-<!-- ============ STEP 8 · CONFIRMATION ============ -->
-<section class="q" data-step="8">
+<section class="q" data-step="7">
   <div class="confirm">
-    <div class="confirm-icon">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 16 L14 22 L24 10" stroke="white" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </div>
-    <h2 class="q-text">You're <span class="ital">locked in</span>, <span class="q-name" data-bind="first_name">there</span>.</h2>
-    <p class="q-sub">We'll text you 24 hours before your call with the Zoom link. Add it to your calendar so you don't miss it.</p>
+    <div class="confirm-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 16 L14 22 L24 10" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <h2 class="q-text">You're <span class="accent">locked in</span>, <span class="q-name" data-bind="first_name">there</span>.</h2>
+    <p class="q-sub">We'll text you 24 hours before your call with the Zoom link.</p>
     <div class="cal-row">
-      <a class="cal-btn" id="calGoogle" href="#" target="_blank" rel="noopener">📅 Google Calendar</a>
+      <a class="cal-btn" id="calGoogle" href="#" target="_blank" rel="noopener">📅 Google</a>
       <a class="cal-btn" id="calOutlook" href="#" target="_blank" rel="noopener">📅 Outlook</a>
-      <a class="cal-btn" id="calIcs" href="#" download="answerra-call.ics">📅 Apple .ics</a>
+      <a class="cal-btn" id="calIcs" href="#" download="answerra-call.ics">📅 Apple</a>
     </div>
     <ul class="next-steps">
       <li><b>01</b><span>Our dev starts building your receptionist within the hour.</span></li>
-      <li><b>02</b><span>We'll text you 24 hours before the call with the Zoom link.</span></li>
-      <li><b>03</b><span>On the call: hear it live and walk through your exact scenarios.</span></li>
+      <li><b>02</b><span>We'll text you 24 h before the call with the Zoom link.</span></li>
+      <li><b>03</b><span>On the call: hear it live and walk through your scenarios.</span></li>
     </ul>
   </div>
 </section>
 
-</div>
-</main>
-
+</div></main>
 <div class="foot">© Answerra · EJX Ventures LLC · <a href="/terms">Terms</a> · <a href="/privacy">Privacy</a></div>
-<div class="progress"><div class="progress-bar" id="progressBar"></div></div>
 
 <script>
 const params = new URLSearchParams(location.search);
@@ -477,36 +284,12 @@ const state = {
   business: null, revenue: null, benefits: [], notes: '',
   urgency: null, showup_commitment: null,
 };
-const TOTAL = 9;
+const TOTAL = 8;
 const BENEFITS = {
-  dental: [
-    "Never miss an inbound call",
-    "Answer 24/7, after-hours and weekends",
-    "Capture every after-hours emergency",
-    "Reactivate dormant patients automatically",
-    "Send SMS confirmations & forms automatically",
-    "Free up front desk for in-chair patients",
-    "Cut $4-5K/month in receptionist costs",
-  ],
-  medspa: [
-    "Never miss an inbound call or DM",
-    "Respond in seconds, 24/7",
-    "Send AHPRA-compliant consent forms",
-    "Reactivate dormant clients automatically",
-    "Pre-qualify enquiries by treatment + budget",
-    "Cut $4-5K/month in receptionist costs",
-  ],
-  plumbing: [
-    "Pick up every call while you're on the tools",
-    "Beat competitors to lead-response time",
-    "Send tech ETA + photo + rego before arrival",
-    "Capture every after-hours emergency",
-    "Sync straight to your job-management software",
-    "Cut $4-5K/month in receptionist costs",
-  ],
+  dental: ["Never miss an inbound call","Answer 24/7, after-hours and weekends","Capture every after-hours emergency","Reactivate dormant patients automatically","Send SMS confirmations & forms automatically","Free up front desk for in-chair patients","Cut $4-5K/month in receptionist costs"],
+  medspa: ["Never miss an inbound call or DM","Respond in seconds, 24/7","Send AHPRA-compliant consent forms","Reactivate dormant clients automatically","Pre-qualify enquiries by treatment + budget","Cut $4-5K/month in receptionist costs"],
+  plumbing: ["Pick up every call while you're on the tools","Beat competitors to lead-response time","Send tech ETA + photo + rego before arrival","Capture every after-hours emergency","Sync straight to your job-management software","Cut $4-5K/month in receptionist costs"],
 };
-
-// MOCK Google Places — replaced with real Places API once GOOGLE_PLACES_API_KEY is wired
 const MOCK_BIZ = [
   {name:"Bright Smile Dental",address:"14 Beach Rd, Bondi NSW 2026",phone:"+61 2 9365 1234",website:"brightsmiledental.com.au",place_id:"mock_bright",rating:4.8,reviews:132},
   {name:"Reliable Plumbing Sydney",address:"22 King St, Newtown NSW 2042",phone:"+61 2 9550 0011",website:"reliableplumbing.com.au",place_id:"mock_reliable",rating:4.9,reviews:217},
@@ -515,7 +298,6 @@ const MOCK_BIZ = [
   {name:"Westside Plumbing Co",address:"99 Beach Rd, Manly NSW 2095",phone:"+61 2 9977 5566",website:"westsideplumbing.com.au",place_id:"mock_west",rating:4.8,reviews:178},
 ];
 
-// ============ STEP NAVIGATION ============
 function showStep(n){
   state.step = n;
   document.querySelectorAll('.q').forEach(q => q.classList.remove('active'));
@@ -524,78 +306,62 @@ function showStep(n){
   document.getElementById('stepNum').textContent = n + 1;
   document.getElementById('progressBar').style.width = (((n + 1) / TOTAL) * 100) + '%';
   document.querySelectorAll('[data-bind="first_name"]').forEach(el => el.textContent = state.first_name);
-
-  if (n === 2 && state.business) hydrateBizCard();
-  if (n === 4) renderBenefits();
-
-  // Autofocus inputs
+  if (n === 1 && state.business) hydrateBiz();
+  if (n === 3) renderBenefits();
   setTimeout(() => {
-    if (n === 1) document.getElementById('bizSearch').focus();
-    if (n === 5) document.getElementById('notesInput').focus();
+    if (n === 0) document.getElementById('bizSearch').focus();
+    if (n === 4) document.getElementById('notesInput').focus();
   }, 100);
-  window.scrollTo({top:0, behavior:'smooth'});
+  window.scrollTo({top:0,behavior:'smooth'});
 }
-function hydrateBizCard(){
+function hydrateBiz(){
   document.getElementById('bizName').textContent = state.business.name;
   document.getElementById('bizAddr').textContent = state.business.address;
-  document.getElementById('bizPhone').textContent = state.business.phone || '—';
-  document.getElementById('bizWeb').textContent = state.business.website || '—';
-  document.getElementById('bizStars').textContent = state.business.rating || '—';
+  document.getElementById('bizPhone').textContent = state.business.phone || '-';
+  document.getElementById('bizWeb').textContent = state.business.website || '-';
+  document.getElementById('bizStars').textContent = state.business.rating || '-';
   document.getElementById('bizReviews').textContent = (state.business.reviews || 0) + ' reviews';
 }
-function nextStep(){
-  if (state.step === 7) return submitForm();
-  showStep(state.step + 1);
-}
+function nextStep(){ if (state.step === 6) return submitForm(); showStep(state.step + 1); }
 function backStep(){ if (state.step > 0) showStep(state.step - 1); }
-
 document.querySelectorAll('[data-next]').forEach(b => b.addEventListener('click', nextStep));
 document.querySelectorAll('[data-back]').forEach(b => b.addEventListener('click', backStep));
 
-// ============ STEP 1: BUSINESS SEARCH (mock autocomplete) ============
 const bizSearch = document.getElementById('bizSearch');
 const bizSug = document.getElementById('bizSuggest');
 const bizNext = document.getElementById('bizNext');
 let suggestActive = -1;
-
 function renderSuggestions(matches){
   bizSug.innerHTML = matches.map((m,i) =>
     '<div class="suggest-item" data-idx="' + i + '"><b>' + m.name + '</b><span>' + m.address + '</span></div>'
   ).join('');
   bizSug.style.display = matches.length ? 'block' : 'none';
-  bizSug.querySelectorAll('.suggest-item').forEach(el => el.addEventListener('click', () => selectBusiness(matches[parseInt(el.dataset.idx)])));
+  bizSug.querySelectorAll('.suggest-item').forEach(el => el.addEventListener('click', () => selectBiz(matches[parseInt(el.dataset.idx)])));
 }
-function selectBusiness(m){
-  state.business = m;
-  bizSearch.value = m.name;
-  bizSug.style.display = 'none';
-  bizNext.disabled = false;
-  suggestActive = -1;
+function selectBiz(m){
+  state.business = m; bizSearch.value = m.name;
+  bizSug.style.display = 'none'; bizNext.disabled = false; suggestActive = -1;
 }
 bizSearch.addEventListener('input', () => {
   const q = bizSearch.value.toLowerCase().trim();
   if (q.length < 2) { bizSug.style.display = 'none'; bizNext.disabled = true; return; }
-  const matches = MOCK_BIZ.filter(s => s.name.toLowerCase().includes(q) || s.address.toLowerCase().includes(q));
-  renderSuggestions(matches);
+  renderSuggestions(MOCK_BIZ.filter(s => s.name.toLowerCase().includes(q) || s.address.toLowerCase().includes(q)));
 });
 
-// ============ STEP 3: REVENUE ============
 document.querySelectorAll('#revenueOpts .opt').forEach(p => p.addEventListener('click', () => {
   document.querySelectorAll('#revenueOpts .opt').forEach(x => x.classList.remove('active'));
   p.classList.add('active');
   state.revenue = p.getAttribute('data-revenue');
   document.getElementById('revNext').disabled = false;
 }));
-
-// ============ STEP 4: BENEFITS ============
 function renderBenefits(){
   const list = BENEFITS[state.niche] || BENEFITS.dental;
   const el = document.getElementById('benefitOpts');
   el.innerHTML = list.map((b,i) =>
     '<button class="opt" data-multi data-benefit="' + b.replace(/"/g,'&quot;') + '">' +
-      '<span class="opt-letter">' + String.fromCharCode(65 + i) + '</span>' +
+      '<span class="opt-letter">' + String.fromCharCode(65+i) + '</span>' +
       '<span class="opt-text">' + b + '</span>' +
-      '<span class="opt-check"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.5 3.5L13 5" stroke="#D90429" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>' +
+      '<span class="opt-check"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.5 3.5L13 5" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>' +
     '</button>'
   ).join('');
   el.querySelectorAll('.opt').forEach(b => b.addEventListener('click', () => {
@@ -606,108 +372,72 @@ function renderBenefits(){
     document.getElementById('benNext').disabled = state.benefits.length === 0;
   }));
 }
-
-// ============ STEP 5: NOTES ============
 document.getElementById('notesInput').addEventListener('input', e => { state.notes = e.target.value; });
-
-// ============ STEP 6: URGENCY ============
 document.querySelectorAll('#urgencyOpts .opt').forEach(p => p.addEventListener('click', () => {
   document.querySelectorAll('#urgencyOpts .opt').forEach(x => x.classList.remove('active'));
   p.classList.add('active');
   state.urgency = p.getAttribute('data-urgency');
   document.getElementById('urgNext').disabled = false;
 }));
-
-// ============ STEP 7: COMMIT ============
 document.querySelectorAll('[data-commit]').forEach(b => b.addEventListener('click', () => {
   state.showup_commitment = b.getAttribute('data-commit');
   submitForm();
 }));
 
-// ============ KEYBOARD NAVIGATION ============
 document.addEventListener('keydown', e => {
   const step = state.step;
-  // Enter advances on most steps
   if (e.key === 'Enter' && !e.shiftKey) {
-    if (step === 5 && document.activeElement === document.getElementById('notesInput')) return;
+    if (step === 4 && document.activeElement === document.getElementById('notesInput')) return;
     e.preventDefault();
-    const okBtn = document.querySelector('.q[data-step="' + step + '"] .cta-ok');
-    if (okBtn && !okBtn.disabled) okBtn.click();
+    const okBtn = document.querySelector('.q[data-step="' + step + '"] .cta-ok:not(:disabled)');
+    if (okBtn) okBtn.click();
     return;
   }
-  // Letter shortcuts for option pills
   if (/^[A-Ga-g]$/.test(e.key)) {
-    const targetOpts = step === 3 ? '#revenueOpts .opt' :
-                        step === 4 ? '#benefitOpts .opt' :
-                        step === 6 ? '#urgencyOpts .opt' : null;
-    if (targetOpts) {
+    const target = step === 2 ? '#revenueOpts .opt' : step === 3 ? '#benefitOpts .opt' : step === 5 ? '#urgencyOpts .opt' : null;
+    if (target) {
       const idx = e.key.toUpperCase().charCodeAt(0) - 65;
-      const opts = document.querySelectorAll(targetOpts);
+      const opts = document.querySelectorAll(target);
       if (opts[idx]) { e.preventDefault(); opts[idx].click(); }
     }
   }
-  // Down arrow in business search picks next suggestion
-  if (step === 1 && e.key === 'ArrowDown') {
-    const items = bizSug.querySelectorAll('.suggest-item');
-    if (items.length){ e.preventDefault(); suggestActive = Math.min(items.length-1, suggestActive+1);
-      items.forEach((it,i) => it.classList.toggle('kbdactive', i === suggestActive)); }
-  }
-  if (step === 1 && e.key === 'ArrowUp') {
-    const items = bizSug.querySelectorAll('.suggest-item');
-    if (items.length){ e.preventDefault(); suggestActive = Math.max(0, suggestActive-1);
-      items.forEach((it,i) => it.classList.toggle('kbdactive', i === suggestActive)); }
-  }
-  if (step === 1 && e.key === 'Enter' && suggestActive >= 0) {
-    const items = bizSug.querySelectorAll('.suggest-item');
-    if (items[suggestActive]) items[suggestActive].click();
-  }
 });
 
-// ============ SUBMIT ============
 async function submitForm(){
-  const okBtn = document.querySelector('.q[data-step="7"] .cta-ok');
+  const okBtn = document.querySelector('.q[data-step="6"] .cta-ok');
   if (okBtn) { okBtn.disabled = true; okBtn.textContent = 'Submitting...'; }
   try {
-    const r = await fetch('/api/quiz-submit', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify(state),
-    });
+    const r = await fetch('/api/quiz-submit', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(state)});
     const data = await r.json().catch(() => ({}));
     if (data.pixel_fired && window.fbq) {
-      fbq('track','Purchase', {value:30, currency:'AUD', content_name:'Answerra Quiz Qualified Lead'}, {eventID: data.event_id});
+      fbq('track','Purchase', {value:30,currency:'AUD',content_name:'Answerra Quiz Qualified Lead'}, {eventID: data.event_id});
     }
-  } catch (e) {
-    console.error('Quiz submit failed', e);
-  } finally {
-    showStep(8);
-    buildCalendarLinks();
+  } catch (e) { console.error(e); } finally {
+    showStep(8); buildCalendarLinks();
   }
 }
-
-// ============ STEP 8: CALENDAR LINKS ============
 function buildCalendarLinks(){
-  // Default to tomorrow 10am AEST if we don't have a real booking time
-  const start = new Date(Date.now() + 24*60*60*1000);
-  start.setHours(10,0,0,0);
+  const start = new Date(Date.now() + 24*60*60*1000); start.setHours(10,0,0,0);
   const end = new Date(start.getTime() + 30*60*1000);
   const fmt = d => d.toISOString().replace(/[-:]|\.\d{3}/g,'');
   const title = encodeURIComponent('Answerra · AI Receptionist Demo Call');
-  const details = encodeURIComponent('Live demo of your custom AI receptionist build. Zoom link will be SMS-ed 24h before.');
+  const details = encodeURIComponent('Live demo of your custom AI receptionist build.');
   const loc = encodeURIComponent('Zoom (link sent 24h before)');
   document.getElementById('calGoogle').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + title + '&dates=' + fmt(start) + '/' + fmt(end) + '&details=' + details + '&location=' + loc;
   document.getElementById('calOutlook').href = 'https://outlook.live.com/calendar/0/deeplink/compose?subject=' + title + '&startdt=' + start.toISOString() + '&enddt=' + end.toISOString() + '&body=' + details + '&location=' + loc;
-  const ics = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Answerra//EN','BEGIN:VEVENT',
-    'UID:' + (state.booking_id || Date.now()) + '@answerra.ai',
-    'DTSTAMP:' + fmt(new Date()),
-    'DTSTART:' + fmt(start),
-    'DTEND:' + fmt(end),
-    'SUMMARY:Answerra · AI Receptionist Demo Call',
-    'DESCRIPTION:Live demo of your custom AI receptionist build.',
-    'LOCATION:Zoom (link sent 24h before)','END:VEVENT','END:VCALENDAR'
-  ].join('\r\n');
+  const ics = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Answerra//EN','BEGIN:VEVENT','UID:'+(state.booking_id||Date.now())+'@answerra.ai','DTSTAMP:'+fmt(new Date()),'DTSTART:'+fmt(start),'DTEND:'+fmt(end),'SUMMARY:Answerra Demo Call','DESCRIPTION:Live demo.','LOCATION:Zoom (link sent 24h before)','END:VEVENT','END:VCALENDAR'].join('\r\n');
   document.getElementById('calIcs').href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics);
 }
+
+// Auto-advance after single-click selection (small delay so user sees the selection)
+function autoAdvanceAfter(ms){ ms = ms || 280; setTimeout(() => nextStep(), ms); }
+// Revenue → auto-advance
+document.querySelectorAll('#revenueOpts .opt').forEach(p => p.addEventListener('click', () => autoAdvanceAfter()));
+// Urgency → auto-advance
+document.querySelectorAll('#urgencyOpts .opt').forEach(p => p.addEventListener('click', () => autoAdvanceAfter()));
+// Business suggestion click → auto-advance to confirm
+const _origSelectBiz = selectBiz;
+selectBiz = function(m){ _origSelectBiz(m); autoAdvanceAfter(180); };
 
 showStep(0);
 </script>
