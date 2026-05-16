@@ -159,6 +159,56 @@
     if (nu) a.href = nu;
   }, true);
 
+  // iClosed's widget.js creates iframes asynchronously. Use a MutationObserver
+  // to catch iframes the moment they're added to the DOM and rewrite their src.
+  function rewriteIclosedNode(node) {
+    if (node.nodeType !== 1) return; // element only
+    if (node.tagName === 'IFRAME' && /iclosed\.io/.test(node.src) && node.src.indexOf('visitor_id=') === -1) {
+      var nu = appendVidToUrl(node.src, visitorId);
+      if (nu) node.src = nu;
+    } else if (node.tagName === 'A' && /iclosed\.io/.test(node.href) && node.href.indexOf('visitor_id=') === -1) {
+      var nu = appendVidToUrl(node.href, visitorId);
+      if (nu) node.href = nu;
+    }
+    // Recurse into children too
+    if (node.querySelectorAll) {
+      node.querySelectorAll('iframe[src*="iclosed.io"]:not([src*="visitor_id="])').forEach(function(f){
+        var nu = appendVidToUrl(f.src, visitorId);
+        if (nu) f.src = nu;
+      });
+      node.querySelectorAll('a[href*="iclosed.io"]:not([href*="visitor_id="])').forEach(function(a){
+        var nu = appendVidToUrl(a.href, visitorId);
+        if (nu) a.href = nu;
+      });
+    }
+  }
+
+  var iclosedObserver = new MutationObserver(function(mutations){
+    mutations.forEach(function(m){
+      m.addedNodes.forEach(rewriteIclosedNode);
+      // Also catch src/href attribute changes on existing nodes
+      if (m.type === 'attributes' && (m.attributeName === 'src' || m.attributeName === 'href')) {
+        rewriteIclosedNode(m.target);
+      }
+    });
+  });
+  iclosedObserver.observe(document.documentElement, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+    attributeFilter: ['src', 'href']
+  });
+
+  // Also do a polling pass for the first 5s as belt-and-braces for slow widgets
+  var attempts = 0;
+  var pollInterval = setInterval(function(){
+    document.querySelectorAll('iframe[src*="iclosed.io"]:not([src*="visitor_id="])').forEach(function(f){
+      var nu = appendVidToUrl(f.src, visitorId);
+      if (nu) f.src = nu;
+    });
+    if (++attempts > 25) clearInterval(pollInterval); // 25 * 200ms = 5s
+  }, 200);
+
   // Expose for debugging
   window.AnswerraVisitorId = visitorId;
 })();
