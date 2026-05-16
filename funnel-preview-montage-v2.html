@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Preview · 10 Longer Press Montages (v2)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Open+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800;900&family=PT+Serif:wght@700&family=Source+Serif+Pro:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#f4f4f4;color:#0a0a0a;font-family:'Open Sans',Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.45;overflow-x:hidden}
+
+  .preview-banner{background:#0a0a0a;color:#FFE100;padding:14px 18px;text-align:center;font-family:'Inter',sans-serif;font-size:13px;letter-spacing:.04em;position:sticky;top:0;z-index:100}
+  .preview-banner b{color:#fff}
+
+  .var-label{background:#D90429;color:#fff;text-align:center;padding:22px 14px;font-family:'Oswald',sans-serif;font-size:20px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-top:8px solid #FFE100}
+  .var-label .num{background:#fff;color:#D90429;display:inline-block;width:36px;height:36px;line-height:36px;border-radius:50%;margin-right:12px;font-weight:800;vertical-align:middle;font-size:18px}
+  .var-label .note{display:block;color:#fff;opacity:.7;font-family:'Inter',sans-serif;font-size:12px;font-weight:500;text-transform:none;letter-spacing:.02em;margin-top:8px;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.4}
+
+  /* ===== UNIVERSAL PUBLICATION PILL (real SVG + brand-styled wordmark fallbacks) ===== */
+  .pill{display:inline-flex;align-items:center;background:#fff;border-radius:999px;padding:6px 14px;box-shadow:0 4px 14px rgba(0,0,0,0.22);gap:0;white-space:nowrap;height:30px}
+  .pill img{height:18px;width:auto;max-width:90px;object-fit:contain}
+  .pill .wm{font-size:13px;line-height:1;font-weight:800;color:#0a0a0a;letter-spacing:-.005em}
+
+  /* Brand-styled CSS wordmarks for pubs we don't have SVGs for */
+  .wm-openai{font-family:'Inter',sans-serif;font-weight:700;letter-spacing:-.02em;color:#000}
+  .wm-mckinsey{font-family:'Source Serif Pro','Playfair Display',serif;font-weight:900;letter-spacing:-.01em;color:#051C2C}
+  .wm-smartcompany{font-family:'Inter',sans-serif;font-weight:800;letter-spacing:-.01em;color:#0E93C0}
+  .wm-smartcompany .sc{color:#0E93C0}
+  .wm-afr{font-family:'Playfair Display',serif;font-weight:900;font-style:italic;letter-spacing:-.01em;color:#000;font-size:14px}
+
+  .pill-lg{padding:8px 18px;height:38px}
+  .pill-lg img{height:22px}
+  .pill-lg .wm{font-size:15px}
+
+  /* ============ V1 — POLAROID STACK XL (LONG, 10 articles, 2 rows) ============ */
+  .v1{background:#000;padding:60px 22px 80px;position:relative}
+  .v1-h{color:#fff;font-family:'Oswald',sans-serif;font-size:28px;text-transform:uppercase;text-align:center;margin-bottom:36px;letter-spacing:.02em;line-height:1.1}
+  @media (min-width:900px){.v1-h{font-size:38px}}
+  .v1-row{position:relative;max-width:900px;margin:0 auto 30px;height:340px}
+  @media (max-width:700px){.v1-row{height:240px;max-width:380px}}
+  .v1-card{position:absolute;background:#fff;border-radius:8px;box-shadow:0 14px 36px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.3);overflow:hidden;border:6px solid #fff;border-bottom-width:32px}
+  .v1-card .pill{position:absolute;top:8px;left:50%;transform:translateX(-50%);z-index:2}
+  .v1-card img{width:100%;height:100%;display:block;object-fit:cover;border-radius:2px}
+  /* Row 1 (5 cards, varied tilts) */
+  .v1-a1{width:230px;height:240px;top:60px;left:5%;transform:rotate(-6deg);z-index:2}
+  .v1-a2{width:240px;height:250px;top:30px;left:20%;transform:rotate(3deg);z-index:4}
+  .v1-a3{width:230px;height:240px;top:55px;left:38%;transform:rotate(-3deg);z-index:3}
+  .v1-a4{width:240px;height:250px;top:35px;right:18%;transform:rotate(4deg);z-index:5}
+  .v1-a5{width:220px;height:230px;top:65px;right:3%;transform:rotate(-5deg);z-index:2}
+  /* Row 2 */
+  .v1-b1{width:240px;height:250px;top:50px;left:8%;transform:rotate(4deg);z-index:3}
+  .v1-b2{width:230px;height:240px;top:30px;left:23%;transform:rotate(-3deg);z-index:5}
+  .v1-b3{width:240px;height:250px;top:55px;left:40%;transform:rotate(2deg);z-index:4}
+  .v1-b4{width:220px;height:230px;top:40px;right:20%;transform:rotate(-4deg);z-index:3}
+  .v1-b5{width:240px;height:250px;top:50px;right:3%;transform:rotate(5deg);z-index:5}
+  @media (max-width:700px){
+    .v1-a1,.v1-a2,.v1-a3,.v1-a4,.v1-a5,.v1-b1,.v1-b2,.v1-b3,.v1-b4,.v1-b5{width:140px;height:155px}
+    .v1-a1{top:40px;left:0}
+    .v1-a2{top:20px;left:60px}
+    .v1-a3{top:50px;left:120px}
+    .v1-a4{top:25px;right:60px}
+    .v1-a5{top:45px;right:0}
+    .v1-b1{top:30px;left:10px}
+    .v1-b2{top:50px;left:70px}
+    .v1-b3{top:25px;left:130px}
+    .v1-b4{top:50px;right:70px}
+    .v1-b5{top:30px;right:0}
+  }
+
+  /* ============ V2 — TWO-ROW CASCADE (global top, AU bottom) ============ */
+  .v2{background:#000;padding:60px 22px 80px}
+  .v2-h{color:#fff;font-family:'Oswald',sans-serif;font-size:28px;text-transform:uppercase;text-align:center;margin-bottom:8px;letter-spacing:.02em;line-height:1.1}
+  @media (min-width:900px){.v2-h{font-size:38px}}
+  .v2-eyebrow{color:#FFE100;text-align:center;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:36px}
+  .v2-rowlabel{color:#888;font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;margin:18px 0 10px 12px}
+  .v2-row{display:flex;gap:14px;overflow-x:auto;padding:8px 4px 14px;scroll-snap-type:x mandatory}
+  .v2-card{flex:0 0 200px;height:240px;background:#fff;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,0.4);overflow:hidden;position:relative;scroll-snap-align:start}
+  .v2-card img{width:100%;height:100%;object-fit:cover;display:block}
+  .v2-card .pill{position:absolute;top:8px;left:8px}
+
+  /* ============ V3 — AU-FIRST PINBOARD ============ */
+  .v3{background:#0a0a0a;background-image:radial-gradient(circle at 20% 30%, rgba(217,4,41,0.08), transparent 40%);padding:60px 22px 80px;position:relative}
+  .v3-h{color:#fff;font-family:'Oswald',sans-serif;font-size:28px;text-transform:uppercase;text-align:center;margin-bottom:8px;letter-spacing:.02em;line-height:1.1}
+  @media (min-width:900px){.v3-h{font-size:38px}}
+  .v3-sub{color:#bbb;text-align:center;font-size:14px;margin-bottom:40px;max-width:560px;margin-left:auto;margin-right:auto}
+  .v3-grid{display:grid;grid-template-columns:1fr;gap:18px;max-width:1000px;margin:0 auto}
+  @media (min-width:700px){.v3-grid{grid-template-columns:2fr 1fr 1fr;grid-template-rows:auto auto;gap:14px}}
+  .v3-card{background:#fff;border-radius:10px;box-shadow:0 12px 36px rgba(0,0,0,0.5);overflow:hidden;position:relative}
+  .v3-card img{width:100%;display:block;object-fit:cover;aspect-ratio:4/3}
+  .v3-card .pill{position:absolute;top:10px;left:10px}
+  .v3-feat{grid-column:1;grid-row:span 2;transform:rotate(-1.5deg)}
+  .v3-feat img{aspect-ratio:1}
+  .v3-glob{transform:rotate(1deg)}
+  .v3-glob:nth-child(3){transform:rotate(-1deg)}
+  .v3-glob:nth-child(4){transform:rotate(2deg)}
+  .v3-glob:nth-child(5){transform:rotate(-1.5deg)}
+
+  /* ============ V4 — KLARNA STORY PINBOARD ============ */
+  .v4{background:#000;padding:60px 22px 80px}
+  .v4-h{color:#fff;font-family:'Oswald',sans-serif;font-size:28px;text-transform:uppercase;text-align:center;margin-bottom:8px;letter-spacing:.02em;line-height:1.1}
+  @media (min-width:900px){.v4-h{font-size:42px}}
+  .v4-sub{color:#FFE100;text-align:center;font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:40px}
+  .v4-stage{position:relative;max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:14px}
+  @media (min-width:900px){.v4-stage{grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:repeat(3,auto)}}
+  .v4-card{background:#fff;border-radius:10px;box-shadow:0 14px 36px rgba(0,0,0,0.5);overflow:hidden;position:relative}
+  .v4-card img{width:100%;display:block;object-fit:cover;aspect-ratio:1}
+  .v4-card .pill{position:absolute;top:10px;left:10px}
+  .v4-anchor{grid-column:1;grid-row:span 3;transform:rotate(-2deg)}
+  @media (min-width:900px){.v4-anchor img{aspect-ratio:4/5}}
+  .v4-sup:nth-child(2){transform:rotate(2deg)}
+  .v4-sup:nth-child(3){transform:rotate(-1deg)}
+  .v4-sup:nth-child(4){transform:rotate(1.5deg)}
+  .v4-sup:nth-child(5){transform:rotate(-1.5deg)}
+  .v4-sup:nth-child(6){transform:rotate(1deg)}
+  .v4-sup:nth-child(7){transform:rotate(-2deg)}
+
+  /* ============ V5 — TIMELINE 2023→2026 ============ */
+  .v5{background:#000;padding:60px 22px 80px;position:relative}
+  .v5-h{color:#fff;font-family:'Oswald',sans-serif;font-size:28px;text-transform:uppercase;text-align:center;margin-bottom:8px;letter-spacing:.02em;line-height:1.1}
+  @media (min-width:900px){.v5-h{font-size:38px}}
+  .v5-sub{color:#bbb;text-align:center;font-size:14px;margin-bottom:50px;max-width:560px;margin-left:auto;margin-right:auto}
+  .v5-timeline{position:relative;max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:30px}
+  @media (min-width:900px){.v5-timeline{flex-direction:row;align-items:flex-start;overflow-x:auto;padding:20px 0 40px}}
+  .v5-step{flex:0 0 220px;background:#fff;border-radius:10px;box-shadow:0 10px 28px rgba(0,0,0,0.4);overflow:hidden;position:relative;transform:rotate(-1deg)}
+  .v5-step:nth-child(even){transform:rotate(2deg);margin-top:30px}
+  .v5-step:nth-child(3n){transform:rotate(-2deg);margin-top:15px}
+  .v5-step img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+  .v5-step .pill{position:absolute;top:10px;left:10px}
+  .v5-step .year{position:absolute;bottom:8px;right:8px;background:#FFE100;color:#000;font-family:'Oswald',sans-serif;font-weight:700;font-size:13px;padding:4px 10px;border-radius:4px;letter-spacing:.04em}
+
+  /* ============ V6 — STATS + POLAROIDS COMBO ============ */
+  .v6{background:#000;padding:60px 0 80px}
+  .v6-h{color:#fff;font-family:'Oswald',sans-serif;font-size:28px;text-transform:uppercase;text-align:center;margin-bottom:8px;letter-spacing:.02em;line-height:1.1;padding:0 22px}
+  @media (min-width:900px){.v6-h{font-size:38px}}
+  .v6-sub{color:#bbb;text-align:center;font-size:14px;margin-bottom:36px;max-width:560px;margin-left:auto;margin-right:auto;padding:0 22px}
+  .v6-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.1);max-width:1000px;margin:0 auto 50px;border:1px solid rgba(255,255,255,0.1)}
+  @media (min-width:700px){.v6-stats{grid-template-columns:repeat(4,1fr)}}
+  .v6-stat{background:#0a0a0a;padding:24px 16px;text-align:center}
+  .v6-stat .num{font-family:'Oswald',sans-serif;font-size:48px;font-weight:700;color:#FFE100;line-height:1;margin-bottom:10px}
+  @media (min-width:900px){.v6-stat .num{font-size:64px}}
+  .v6-stat .lbl{color:#fff;font-size:13px;font-weight:600;line-height:1.4;margin-bottom:6px}
+  .v6-stat .src{color:#888;font-size:10px;letter-spacing:.04em}
+  .v6-row{position:relative;max-width:1000px;margin:0 auto;height:300px;padding:0 22px}
+  @media (max-width:700px){.v6-row{height:220px}}
+  .v6-card{position:absolute;background:#fff;border-radius:8px;box-shadow:0 12px 32px rgba(0,0,0,0.5);overflow:hidden}
+  .v6-card img{width:100%;height:100%;object-fit:cover;display:block}
+  .v6-card .pill{position:absolute;top:6px;left:6px;transform:scale(0.8);transform-origin:top left}
+  .v6-c1{width:18%;aspect-ratio:1;top:20px;left:5%;transform:rotate(-5deg)}
+  .v6-c2{width:18%;aspect-ratio:1;top:50px;left:24%;transform:rotate(3deg)}
+  .v6-c3{width:18%;aspect-ratio:1;top:15px;left:43%;transform:rotate(-3deg)}
+  .v6-c4{width:18%;aspect-ratio:1;top:55px;left:62%;transform:rotate(4deg)}
+  .v6-c5{width:18%;aspect-ratio:1;top:30px;right:5%;transform:rotate(-2deg)}
+
+  /* ============ V7 — TRENDING PANEL ============ */
+  .v7{background:#000;padding:60px 22px 80px}
+  .v7-h{color:#fff;font-family:'Oswald',sans-serif;font-size:28px;text-transform:uppercase;text-align:center;margin-bottom:8px;letter-spacing:.02em;line-height:1.1}
+  @media (min-width:900px){.v7-h{font-size:38px}}
+  .v7-sub{color:#bbb;text-align:center;font-size:14px;margin-bottom:30px;max-width:560px;margin-left:auto;margin-right:auto}
+  .v7-panel{background:#111;border:1px solid rgba(255,255,255,0.1);border-radius:14px;max-width:680px;margin:0 auto;overflow:hidden}
+  .v7-head{background:rgba(255,255,255,0.04);padding:14px 22px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.08)}
+  .v7-head .ttl{color:#fff;font-family:'Inter',sans-serif;font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase}
+  .v7-head .ttl::before{content:"";display:inline-block;width:8px;height:8px;background:#D90429;border-radius:50%;margin-right:10px;vertical-align:middle;animation:p7 1.4s infinite}
+  @keyframes p7{0%,100%{opacity:1}50%{opacity:.4}}
+  .v7-head .live{color:#FFE100;font-family:'Inter',sans-serif;font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+  .v7-list{list-style:none}
+  .v7-item{display:flex;gap:14px;align-items:center;padding:14px 22px;border-bottom:1px solid rgba(255,255,255,0.06);transition:background .15s}
+  .v7-item:last-child{border-bottom:none}
+  .v7-item:hover{background:rgba(255,255,255,0.02)}
+  .v7-rank{color:#FFE100;font-family:'Oswald',sans-serif;font-weight:700;font-size:22px;width:30px;flex-shrink:0;text-align:center}
+  .v7-thumb{width:54px;height:54px;border-radius:8px;overflow:hidden;flex-shrink:0;background:#222}
+  .v7-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .v7-body{flex:1;min-width:0}
+  .v7-pub{color:#888;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px}
+  .v7-ttl{color:#fff;font-size:13px;font-weight:600;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+  /* ============ V8 — LOGO WALL + COUNTER-NARRATIVE ============ */
+  .v8{background:#000;padding:60px 22px 80px}
+  .v8-h{color:#fff;font-family:'Oswald',sans-serif;font-size:28px;text-transform:uppercase;text-align:center;margin-bottom:30px;letter-spacing:.02em;line-height:1.1}
+  @media (min-width:900px){.v8-h{font-size:38px}}
+  .v8-wall{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:24px 40px;max-width:900px;margin:0 auto 50px;padding:28px;background:rgba(255,255,255,0.04);border-radius:14px;border:1px solid rgba(255,255,255,0.08)}
+  .v8-wall img{height:36px;width:auto;max-width:120px;object-fit:contain;filter:brightness(0) invert(1) opacity(0.92);transition:transform .2s}
+  .v8-wall img:hover{transform:scale(1.08)}
+  .v8-wall .pill{background:transparent;box-shadow:none;height:36px;padding:0}
+  .v8-wall .pill .wm{color:#fff;font-size:18px}
+  .v8-counter{max-width:680px;margin:0 auto;background:rgba(255,225,0,0.06);border-left:4px solid #FFE100;padding:22px 26px;border-radius:0 10px 10px 0}
+  .v8-counter .quote{color:#fff;font-size:17px;line-height:1.5;font-style:italic;margin-bottom:14px}
+  @media (min-width:700px){.v8-counter .quote{font-size:19px}}
+  .v8-counter .attr{color:#FFE100;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+
+  /* ============ V9 — MAGAZINE SPREAD ============ */
+  .v9{background:#1a1612;padding:60px 22px 80px}
+  .v9-h{color:#fff;font-family:'Playfair Display',serif;font-size:30px;font-weight:900;text-align:center;margin-bottom:8px;letter-spacing:-.01em;line-height:1.05}
+  @media (min-width:900px){.v9-h{font-size:46px}}
+  .v9-sub{color:#aaa;text-align:center;font-family:'PT Serif',serif;font-size:14px;font-style:italic;margin-bottom:40px}
+  .v9-spread{max-width:1000px;margin:0 auto;background:#f5f1e8;padding:30px 24px;border-radius:6px;box-shadow:0 20px 60px rgba(0,0,0,0.7);display:grid;grid-template-columns:1fr;gap:24px}
+  @media (min-width:900px){.v9-spread{grid-template-columns:2fr 1fr;padding:48px 40px}}
+  .v9-feature{position:relative}
+  .v9-feature .pub{color:#D90429;font-family:'Inter',sans-serif;font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px}
+  .v9-feature h3{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;color:#0a0a0a;line-height:1.1;margin-bottom:14px}
+  @media (min-width:900px){.v9-feature h3{font-size:36px}}
+  .v9-feature img{width:100%;display:block;margin-bottom:14px;border-radius:2px}
+  .v9-feature .body{font-family:'PT Serif',serif;font-size:14px;line-height:1.7;color:#333;column-count:1}
+  @media (min-width:900px){.v9-feature .body{column-count:2;column-gap:24px}}
+  .v9-side{border-left:1px solid #d0c8b0;padding-left:0}
+  @media (min-width:900px){.v9-side{padding-left:24px}}
+  .v9-side-h{font-family:'Inter',sans-serif;font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#666;border-bottom:2px solid #0a0a0a;padding-bottom:10px;margin-bottom:18px}
+  .v9-tease{padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid #d0c8b0}
+  .v9-tease:last-child{border-bottom:none}
+  .v9-tease .pub{color:#D90429;font-family:'Inter',sans-serif;font-size:9px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin-bottom:5px}
+  .v9-tease h4{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:#0a0a0a;line-height:1.2}
+
+  /* ============ V10 — INVESTIGATIVE CORKBOARD ============ */
+  .v10{background:#000;background-image:radial-gradient(circle at 30% 40%, rgba(217,4,41,0.10), transparent 50%);padding:60px 22px 80px;position:relative;overflow:hidden}
+  .v10-h{color:#fff;font-family:'Oswald',sans-serif;font-size:28px;text-transform:uppercase;text-align:center;margin-bottom:8px;letter-spacing:.02em;line-height:1.1}
+  @media (min-width:900px){.v10-h{font-size:42px}}
+  .v10-sub{color:#FFE100;text-align:center;font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:50px}
+  .v10-board{position:relative;max-width:1100px;margin:0 auto;min-height:600px}
+  @media (max-width:700px){.v10-board{min-height:auto;display:flex;flex-direction:column;gap:16px}}
+  .v10-pin{position:absolute;background:#fff;border-radius:6px;box-shadow:0 14px 40px rgba(0,0,0,0.6), 0 3px 10px rgba(0,0,0,0.3);overflow:hidden;border:5px solid #fff;border-bottom-width:24px}
+  .v10-pin::before{content:"";position:absolute;top:-3px;left:50%;width:14px;height:14px;background:#D90429;border-radius:50%;transform:translateX(-50%);box-shadow:0 2px 4px rgba(0,0,0,0.4);z-index:3}
+  .v10-pin img{width:100%;height:100%;object-fit:cover;display:block}
+  .v10-pin .pill{position:absolute;top:6px;left:6px;transform:scale(0.85);transform-origin:top left;z-index:2}
+  @media (min-width:900px){
+    .v10-p1{width:240px;height:240px;top:10px;left:8%;transform:rotate(-5deg)}
+    .v10-p2{width:200px;height:200px;top:60px;left:28%;transform:rotate(3deg)}
+    .v10-p3{width:220px;height:220px;top:20px;left:48%;transform:rotate(-2deg)}
+    .v10-p4{width:200px;height:200px;top:80px;right:25%;transform:rotate(4deg)}
+    .v10-p5{width:240px;height:240px;top:40px;right:3%;transform:rotate(-3deg)}
+    .v10-p6{width:200px;height:200px;top:300px;left:5%;transform:rotate(2deg)}
+    .v10-p7{width:240px;height:240px;top:280px;left:25%;transform:rotate(-4deg)}
+    .v10-p8{width:220px;height:220px;top:320px;left:48%;transform:rotate(3deg)}
+    .v10-p9{width:200px;height:200px;top:300px;right:25%;transform:rotate(-2deg)}
+    .v10-p10{width:240px;height:240px;top:340px;right:3%;transform:rotate(5deg)}
+  }
+  @media (max-width:899px){
+    .v10-pin{position:relative;width:80%;height:auto;aspect-ratio:1;margin:0 auto;top:auto;left:auto;right:auto}
+    .v10-p1{transform:rotate(-3deg)}
+    .v10-p2{transform:rotate(2deg)}
+    .v10-p3{transform:rotate(-2deg)}
+    .v10-p4{transform:rotate(3deg)}
+    .v10-p5{transform:rotate(-3deg)}
+    .v10-p6{transform:rotate(2deg)}
+    .v10-p7{transform:rotate(-3deg)}
+    .v10-p8{transform:rotate(2deg)}
+    .v10-p9{transform:rotate(-2deg)}
+    .v10-p10{transform:rotate(3deg)}
+  }
+
+</style>
+</head>
+<body>
+
+<div class="preview-banner"><b>10 LONGER MONTAGE VARIATIONS · V2</b> · Each shows all 10 articles. Real SVG logos where available.</div>
+
+<!-- ============ V1: POLAROID STACK XL ============ -->
+<div class="var-label"><span class="num">1</span>POLAROID STACK XL<span class="note">Your V1 favourite, stretched to 10 articles in 2 tilted rows. Most authentic moodboard energy.</span></div>
+<section class="v1">
+  <div class="v1-h">As Covered By The Press</div>
+  <div class="v1-row">
+    <div class="v1-card v1-a1"><span class="pill"><img src="/logos/cnbc.svg" alt=""></span><img src="/moodboard/M01.jpg" alt=""></div>
+    <div class="v1-card v1-a2"><span class="pill"><span class="wm wm-openai">OpenAI</span></span><img src="/moodboard/M02.jpg" alt=""></div>
+    <div class="v1-card v1-a3"><span class="pill"><span class="wm wm-mckinsey">McKinsey &amp; Company</span></span><img src="/moodboard/M03.jpg" alt=""></div>
+    <div class="v1-card v1-a4"><span class="pill"><img src="/logos/cbs.svg" alt=""></span><img src="/moodboard/M04.jpg" alt=""></div>
+    <div class="v1-card v1-a5"><span class="pill"><img src="/logos/forbes.svg" alt=""></span><img src="/moodboard/M05.jpg" alt=""></div>
+  </div>
+  <div class="v1-row">
+    <div class="v1-card v1-b1"><span class="pill"><span class="wm wm-afr">Financial Review</span></span><img src="/moodboard/M06.jpg" alt=""></div>
+    <div class="v1-card v1-b2"><span class="pill"><span class="wm wm-smartcompany">SmartCompany</span></span><img src="/moodboard/M07.jpg" alt=""></div>
+    <div class="v1-card v1-b3"><span class="pill"><img src="/logos/bloomberg.svg" alt=""></span><img src="/moodboard/M08.jpg" alt=""></div>
+    <div class="v1-card v1-b4"><span class="pill"><img src="/logos/cnn.svg" alt=""></span><img src="/moodboard/M09.jpg" alt=""></div>
+    <div class="v1-card v1-b5"><span class="pill"><img src="/logos/techcrunch.svg" alt=""></span><img src="/moodboard/M10.jpg" alt=""></div>
+  </div>
+</section>
+
+<!-- ============ V2: TWO-ROW CASCADE ============ -->
+<div class="var-label"><span class="num">2</span>TWO-ROW CASCADE<span class="note">Top: global authority. Bottom: AU local. Mass + relevance in one frame.</span></div>
+<section class="v2">
+  <div class="v2-eyebrow">Recent Press Coverage</div>
+  <div class="v2-h">10 Publications. One Story.</div>
+  <div class="v2-rowlabel">Global Authority</div>
+  <div class="v2-row">
+    <div class="v2-card"><span class="pill"><span class="wm wm-openai">OpenAI</span></span><img src="/moodboard/M02.jpg" alt=""></div>
+    <div class="v2-card"><span class="pill"><img src="/logos/cnbc.svg" alt=""></span><img src="/moodboard/M01.jpg" alt=""></div>
+    <div class="v2-card"><span class="pill"><span class="wm wm-mckinsey">McKinsey</span></span><img src="/moodboard/M03.jpg" alt=""></div>
+    <div class="v2-card"><span class="pill"><img src="/logos/cbs.svg" alt=""></span><img src="/moodboard/M04.jpg" alt=""></div>
+    <div class="v2-card"><span class="pill"><img src="/logos/bloomberg.svg" alt=""></span><img src="/moodboard/M08.jpg" alt=""></div>
+    <div class="v2-card"><span class="pill"><img src="/logos/cnn.svg" alt=""></span><img src="/moodboard/M09.jpg" alt=""></div>
+  </div>
+  <div class="v2-rowlabel">Australian Coverage</div>
+  <div class="v2-row">
+    <div class="v2-card"><span class="pill"><span class="wm wm-afr">Financial Review</span></span><img src="/moodboard/M05.jpg" alt=""></div>
+    <div class="v2-card"><span class="pill"><span class="wm wm-smartcompany">SmartCompany</span></span><img src="/moodboard/M07.jpg" alt=""></div>
+    <div class="v2-card"><span class="pill"><img src="/logos/forbes.svg" alt=""></span><img src="/moodboard/M06.jpg" alt=""></div>
+    <div class="v2-card"><span class="pill"><img src="/logos/techcrunch.svg" alt=""></span><img src="/moodboard/M10.jpg" alt=""></div>
+  </div>
+</section>
+
+<!-- ============ V3: AU-FIRST PINBOARD ============ -->
+<div class="var-label"><span class="num">3</span>AU-FIRST PINBOARD<span class="note">AU pubs featured big (AFR + SmartCompany hero). Global as supporting proof. Best for AU buyers.</span></div>
+<section class="v3">
+  <div class="v3-h">Australian Coverage Of The AI Receptionist Shift</div>
+  <p class="v3-sub">AFR and SmartCompany feature; CNBC, McKinsey, Bloomberg and Forbes round out the global frame.</p>
+  <div class="v3-grid">
+    <div class="v3-card v3-feat"><span class="pill pill-lg"><span class="wm wm-afr">Financial Review</span></span><img src="/moodboard/M05.jpg" alt=""></div>
+    <div class="v3-card v3-glob"><span class="pill"><span class="wm wm-smartcompany">SmartCompany</span></span><img src="/moodboard/M07.jpg" alt=""></div>
+    <div class="v3-card v3-glob"><span class="pill"><img src="/logos/cnbc.svg" alt=""></span><img src="/moodboard/M01.jpg" alt=""></div>
+    <div class="v3-card v3-glob"><span class="pill"><span class="wm wm-mckinsey">McKinsey</span></span><img src="/moodboard/M03.jpg" alt=""></div>
+    <div class="v3-card v3-glob"><span class="pill"><img src="/logos/forbes.svg" alt=""></span><img src="/moodboard/M06.jpg" alt=""></div>
+  </div>
+</section>
+
+<!-- ============ V4: KLARNA STORY PINBOARD ============ -->
+<div class="var-label"><span class="num">4</span>KLARNA STORY PINBOARD<span class="note">One huge OpenAI Klarna case + 9 supporting articles around it. Anchors on the famous "700 agents" stat.</span></div>
+<section class="v4">
+  <div class="v4-h">The Klarna AI Story</div>
+  <p class="v4-sub">700 Customer Service Agents Replaced. The Story Every Outlet Is Covering.</p>
+  <div class="v4-stage">
+    <div class="v4-card v4-anchor"><span class="pill pill-lg"><span class="wm wm-openai">OpenAI Case Study</span></span><img src="/moodboard/M02.jpg" alt=""></div>
+    <div class="v4-card v4-sup"><span class="pill"><img src="/logos/cnbc.svg" alt=""></span><img src="/moodboard/M01.jpg" alt=""></div>
+    <div class="v4-card v4-sup"><span class="pill"><img src="/logos/cbs.svg" alt=""></span><img src="/moodboard/M04.jpg" alt=""></div>
+    <div class="v4-card v4-sup"><span class="pill"><span class="wm wm-mckinsey">McKinsey</span></span><img src="/moodboard/M03.jpg" alt=""></div>
+    <div class="v4-card v4-sup"><span class="pill"><img src="/logos/forbes.svg" alt=""></span><img src="/moodboard/M06.jpg" alt=""></div>
+    <div class="v4-card v4-sup"><span class="pill"><img src="/logos/cnn.svg" alt=""></span><img src="/moodboard/M09.jpg" alt=""></div>
+    <div class="v4-card v4-sup"><span class="pill"><img src="/logos/techcrunch.svg" alt=""></span><img src="/moodboard/M10.jpg" alt=""></div>
+  </div>
+</section>
+
+<!-- ============ V5: TIMELINE ============ -->
+<div class="var-label"><span class="num">5</span>TIMELINE 2023→2026<span class="note">Articles arranged chronologically. Tells the "AI adoption is accelerating" story visually. Scrolls horizontally on desktop.</span></div>
+<section class="v5">
+  <div class="v5-h">A Three-Year Acceleration</div>
+  <p class="v5-sub">From Goldman Sachs's first warning to Sydney AI receptionist startups: how the press covered the shift, in order.</p>
+  <div class="v5-timeline">
+    <div class="v5-step"><span class="pill"><img src="/logos/cnbc.svg" alt=""></span><img src="/moodboard/M01.jpg" alt=""><span class="year">Mar 2023</span></div>
+    <div class="v5-step"><span class="pill"><img src="/logos/cnn.svg" alt=""></span><img src="/moodboard/M09.jpg" alt=""><span class="year">Mar 2023</span></div>
+    <div class="v5-step"><span class="pill"><span class="wm wm-openai">OpenAI</span></span><img src="/moodboard/M02.jpg" alt=""><span class="year">Feb 2024</span></div>
+    <div class="v5-step"><span class="pill"><img src="/logos/cbs.svg" alt=""></span><img src="/moodboard/M04.jpg" alt=""><span class="year">2024</span></div>
+    <div class="v5-step"><span class="pill"><span class="wm wm-mckinsey">McKinsey</span></span><img src="/moodboard/M03.jpg" alt=""><span class="year">Apr 2025</span></div>
+    <div class="v5-step"><span class="pill"><img src="/logos/forbes.svg" alt=""></span><img src="/moodboard/M06.jpg" alt=""><span class="year">2025</span></div>
+    <div class="v5-step"><span class="pill"><span class="wm wm-afr">AFR</span></span><img src="/moodboard/M05.jpg" alt=""><span class="year">Aug 2025</span></div>
+    <div class="v5-step"><span class="pill"><img src="/logos/techcrunch.svg" alt=""></span><img src="/moodboard/M10.jpg" alt=""><span class="year">2025</span></div>
+    <div class="v5-step"><span class="pill"><span class="wm wm-smartcompany">SmartCompany</span></span><img src="/moodboard/M07.jpg" alt=""><span class="year">2026</span></div>
+    <div class="v5-step"><span class="pill"><img src="/logos/bloomberg.svg" alt=""></span><img src="/moodboard/M08.jpg" alt=""><span class="year">2026</span></div>
+  </div>
+</section>
+
+<!-- ============ V6: STATS + POLAROIDS ============ -->
+<div class="var-label"><span class="num">6</span>STATS + POLAROIDS COMBO<span class="note">Big numbers above, polaroid stack below. Best for skeptics who want the math first.</span></div>
+<section class="v6">
+  <div class="v6-h">The Numbers, And Who's Reporting Them</div>
+  <p class="v6-sub">Four anchor stats. Ten publications covering them.</p>
+  <div class="v6-stats">
+    <div class="v6-stat"><div class="num">700</div><div class="lbl">Customer service agents replaced by AI at Klarna</div><div class="src">OpenAI Case Study, 2024</div></div>
+    <div class="v6-stat"><div class="num">300M</div><div class="lbl">Jobs impacted by generative AI worldwide</div><div class="src">Goldman Sachs, 2023</div></div>
+    <div class="v6-stat"><div class="num">80%</div><div class="lbl">Of businesses adopting voice AI by end of 2026</div><div class="src">McKinsey, 2025</div></div>
+    <div class="v6-stat"><div class="num">$40M</div><div class="lbl">Klarna's annual saving from AI customer service</div><div class="src">Klarna PR, 2024</div></div>
+  </div>
+  <div class="v6-row">
+    <div class="v6-card v6-c1"><span class="pill"><img src="/logos/cnbc.svg" alt=""></span><img src="/moodboard/M01.jpg" alt=""></div>
+    <div class="v6-card v6-c2"><span class="pill"><span class="wm wm-openai">OpenAI</span></span><img src="/moodboard/M02.jpg" alt=""></div>
+    <div class="v6-card v6-c3"><span class="pill"><span class="wm wm-mckinsey">McKinsey</span></span><img src="/moodboard/M03.jpg" alt=""></div>
+    <div class="v6-card v6-c4"><span class="pill"><span class="wm wm-smartcompany">SmartCompany</span></span><img src="/moodboard/M07.jpg" alt=""></div>
+    <div class="v6-card v6-c5"><span class="pill"><img src="/logos/bloomberg.svg" alt=""></span><img src="/moodboard/M08.jpg" alt=""></div>
+  </div>
+</section>
+
+<!-- ============ V7: TRENDING PANEL ============ -->
+<div class="var-label"><span class="num">7</span>TRENDING PANEL<span class="note">Mimics a news aggregator's "most read" widget. Familiar UI = instant trust.</span></div>
+<section class="v7">
+  <div class="v7-h">Most Covered Stories Right Now</div>
+  <p class="v7-sub">Across global business press and Australian industry publications.</p>
+  <div class="v7-panel">
+    <div class="v7-head">
+      <span class="ttl">Trending: AI Customer Service</span>
+      <span class="live">Live · Top 10</span>
+    </div>
+    <ul class="v7-list">
+      <li class="v7-item"><span class="v7-rank">01</span><div class="v7-thumb"><img src="/moodboard/M02.jpg" alt=""></div><div class="v7-body"><div class="v7-pub">OpenAI Case Study · 2024</div><div class="v7-ttl">Klarna's AI assistant does the work of 700 full-time agents</div></div></li>
+      <li class="v7-item"><span class="v7-rank">02</span><div class="v7-thumb"><img src="/moodboard/M01.jpg" alt=""></div><div class="v7-body"><div class="v7-pub">CNBC · Mar 2023</div><div class="v7-ttl">Goldman Sachs: 300M jobs at risk from generative AI</div></div></li>
+      <li class="v7-item"><span class="v7-rank">03</span><div class="v7-thumb"><img src="/moodboard/M03.jpg" alt=""></div><div class="v7-body"><div class="v7-pub">McKinsey · 2025</div><div class="v7-ttl">80% of businesses will use voice AI by end of 2026</div></div></li>
+      <li class="v7-item"><span class="v7-rank">04</span><div class="v7-thumb"><img src="/moodboard/M04.jpg" alt=""></div><div class="v7-body"><div class="v7-pub">CBS News · 2024</div><div class="v7-ttl">Fintech CEO: AI can do the job of 700 workers</div></div></li>
+      <li class="v7-item"><span class="v7-rank">05</span><div class="v7-thumb"><img src="/moodboard/M07.jpg" alt=""></div><div class="v7-body"><div class="v7-pub">SmartCompany · 2026</div><div class="v7-ttl">Sydney AI receptionist startup raises $900K for tradies</div></div></li>
+      <li class="v7-item"><span class="v7-rank">06</span><div class="v7-thumb"><img src="/moodboard/M05.jpg" alt=""></div><div class="v7-body"><div class="v7-pub">AFR · Aug 2025</div><div class="v7-ttl">Australian bank replaces 90 support staff with AI</div></div></li>
+      <li class="v7-item"><span class="v7-rank">07</span><div class="v7-thumb"><img src="/moodboard/M06.jpg" alt=""></div><div class="v7-body"><div class="v7-pub">Forbes · 2025</div><div class="v7-ttl">When AI redundancies backfire: employers scrambling to rehire</div></div></li>
+      <li class="v7-item"><span class="v7-rank">08</span><div class="v7-thumb"><img src="/moodboard/M10.jpg" alt=""></div><div class="v7-body"><div class="v7-pub">TechCrunch · 2025</div><div class="v7-ttl">Klarna walks back AI overhaul, rehires customer service</div></div></li>
+      <li class="v7-item"><span class="v7-rank">09</span><div class="v7-thumb"><img src="/moodboard/M09.jpg" alt=""></div><div class="v7-body"><div class="v7-pub">CNN · Mar 2023</div><div class="v7-ttl">Generative AI could affect 300M jobs worldwide</div></div></li>
+      <li class="v7-item"><span class="v7-rank">10</span><div class="v7-thumb"><img src="/moodboard/M08.jpg" alt=""></div><div class="v7-body"><div class="v7-pub">Bloomberg · 2026</div><div class="v7-ttl">AI customer service is the new outsourcing</div></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ V8: LOGO WALL + COUNTER ============ -->
+<div class="var-label"><span class="num">8</span>LOGO WALL + COUNTER-NARRATIVE<span class="note">Big logo bar + one honest counter-quote ("yes, Klarna walked back, but..."). Highest trust score.</span></div>
+<section class="v8">
+  <div class="v8-h">As Covered By</div>
+  <div class="v8-wall">
+    <img src="/logos/cnbc.svg" alt="CNBC">
+    <span class="pill"><span class="wm wm-openai">OpenAI</span></span>
+    <span class="pill"><span class="wm wm-mckinsey">McKinsey</span></span>
+    <img src="/logos/cbs.svg" alt="CBS News">
+    <img src="/logos/forbes.svg" alt="Forbes">
+    <img src="/logos/bloomberg.svg" alt="Bloomberg">
+    <img src="/logos/cnn.svg" alt="CNN">
+    <span class="pill"><span class="wm wm-afr">Financial Review</span></span>
+    <span class="pill"><span class="wm wm-smartcompany">SmartCompany</span></span>
+    <img src="/logos/techcrunch.svg" alt="TechCrunch">
+    <img src="/logos/wsj.svg" alt="Wall Street Journal">
+    <img src="/logos/ft.svg" alt="Financial Times">
+  </div>
+  <div class="v8-counter">
+    <p class="quote">"Yes, Klarna walked back parts of its AI overhaul in 2025. But its AI assistant still handles two-thirds of all customer service chats and saves the company over $40M a year. That's the part that didn't reverse."</p>
+    <p class="attr">The Press &middot; Honest read on AI customer service in 2026</p>
+  </div>
+</section>
+
+<!-- ============ V9: MAGAZINE SPREAD ============ -->
+<div class="var-label"><span class="num">9</span>MAGAZINE SPREAD<span class="note">Editorial mock with one feature article + side column of teasers. Looks like real journalism.</span></div>
+<section class="v9">
+  <div class="v9-h">The Receptionist Times</div>
+  <p class="v9-sub">A digest of press coverage on the AI customer service shift</p>
+  <div class="v9-spread">
+    <div class="v9-feature">
+      <div class="pub">Feature Story · OpenAI Case Study · 2024</div>
+      <h3>Klarna's AI Assistant Does The Work Of 700 Customer Service Agents</h3>
+      <img src="/moodboard/M02.jpg" alt="">
+      <div class="body"><p>2.3 million conversations in month one. Two-thirds of all customer service chats now handled autonomously. Resolution time cut from 11 minutes to under 2. Annual savings: $40M.</p><p>The Klarna case study has become the anchor moment in the AI customer service narrative. Industries from banking to dental practices are watching closely.</p></div>
+    </div>
+    <aside class="v9-side">
+      <div class="v9-side-h">Also In This Issue</div>
+      <div class="v9-tease"><div class="pub">CNBC · Mar 2023</div><h4>Goldman Sachs: 300M jobs at risk</h4></div>
+      <div class="v9-tease"><div class="pub">McKinsey · 2025</div><h4>80% of businesses adopting voice AI by 2026</h4></div>
+      <div class="v9-tease"><div class="pub">SmartCompany · 2026</div><h4>Sydney AI startup raises $900K for tradies</h4></div>
+      <div class="v9-tease"><div class="pub">AFR · 2025</div><h4>AU bank replaces 90 staff with AI</h4></div>
+      <div class="v9-tease"><div class="pub">TechCrunch · 2025</div><h4>Klarna walks back AI overhaul, rehires</h4></div>
+      <div class="v9-tease"><div class="pub">Forbes · 2025</div><h4>When AI redundancies backfire</h4></div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ V10: INVESTIGATIVE CORKBOARD ============ -->
+<div class="var-label"><span class="num">10</span>INVESTIGATIVE CORKBOARD<span class="note">Pinboard-style with red pin pushpins on every article. "This is a real movement" energy.</span></div>
+<section class="v10">
+  <div class="v10-h">The Story Is Building</div>
+  <p class="v10-sub">10 outlets · 3 years · One inevitable shift</p>
+  <div class="v10-board">
+    <div class="v10-pin v10-p1"><span class="pill"><img src="/logos/cnbc.svg" alt=""></span><img src="/moodboard/M01.jpg" alt=""></div>
+    <div class="v10-pin v10-p2"><span class="pill"><span class="wm wm-openai">OpenAI</span></span><img src="/moodboard/M02.jpg" alt=""></div>
+    <div class="v10-pin v10-p3"><span class="pill"><span class="wm wm-mckinsey">McKinsey</span></span><img src="/moodboard/M03.jpg" alt=""></div>
+    <div class="v10-pin v10-p4"><span class="pill"><img src="/logos/cbs.svg" alt=""></span><img src="/moodboard/M04.jpg" alt=""></div>
+    <div class="v10-pin v10-p5"><span class="pill"><span class="wm wm-afr">Financial Review</span></span><img src="/moodboard/M05.jpg" alt=""></div>
+    <div class="v10-pin v10-p6"><span class="pill"><img src="/logos/forbes.svg" alt=""></span><img src="/moodboard/M06.jpg" alt=""></div>
+    <div class="v10-pin v10-p7"><span class="pill"><span class="wm wm-smartcompany">SmartCompany</span></span><img src="/moodboard/M07.jpg" alt=""></div>
+    <div class="v10-pin v10-p8"><span class="pill"><img src="/logos/bloomberg.svg" alt=""></span><img src="/moodboard/M08.jpg" alt=""></div>
+    <div class="v10-pin v10-p9"><span class="pill"><img src="/logos/cnn.svg" alt=""></span><img src="/moodboard/M09.jpg" alt=""></div>
+    <div class="v10-pin v10-p10"><span class="pill"><img src="/logos/techcrunch.svg" alt=""></span><img src="/moodboard/M10.jpg" alt=""></div>
+  </div>
+</section>
+
+<div class="var-label" style="background:#0a0a0a;color:#FFE100;border-top:none">PICK YOUR FAVOURITE · I'LL ROLL IT INTO ALL 9 FUNNELS</div>
+
+</body>
+</html>
