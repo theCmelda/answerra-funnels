@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Preview · 10 Compact Press Montage Variations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Open+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&family=PT+Serif:wght@700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#f4f4f4;color:#0a0a0a;font-family:'Open Sans',Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.45;overflow-x:hidden}
+  .preview-banner{background:#0a0a0a;color:#FFE100;padding:14px 18px;text-align:center;font-family:'Inter',sans-serif;font-size:13px;letter-spacing:.04em}
+  .preview-banner b{color:#fff}
+
+  .var-label{background:#D90429;color:#fff;text-align:center;padding:18px 14px;font-family:'Oswald',sans-serif;font-size:18px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-top:8px solid #FFE100}
+  .var-label .num{background:#fff;color:#D90429;display:inline-block;width:32px;height:32px;line-height:32px;border-radius:50%;margin-right:10px;font-weight:800;vertical-align:middle}
+  .var-label .note{display:block;color:#fff;opacity:.7;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;text-transform:none;letter-spacing:.02em;margin-top:6px}
+
+  /* ============ COMMON PUBLICATION PILLS ============ */
+  .pill{display:inline-flex;align-items:center;background:#fff;border-radius:999px;padding:5px 12px 5px 6px;box-shadow:0 4px 14px rgba(0,0,0,0.18);gap:6px;white-space:nowrap}
+  .pill img{width:18px;height:18px;border-radius:4px;object-fit:contain}
+  .pill .name{font-family:'Inter',sans-serif;font-weight:700;font-size:11px;color:#0a0a0a;letter-spacing:.02em}
+  .pill-lg{padding:8px 18px 8px 9px}
+  .pill-lg img{width:24px;height:24px}
+  .pill-lg .name{font-size:14px}
+
+  /* ============ V1 — POLAROID STACK (most compact) ============ */
+  .v1{background:#000;padding:50px 22px 60px;text-align:center;position:relative}
+  .v1-stage{position:relative;max-width:560px;margin:0 auto;height:380px}
+  .v1-card{position:absolute;background:#fff;border-radius:10px;box-shadow:0 14px 40px rgba(0,0,0,0.5);overflow:hidden;border:8px solid #fff;border-bottom-width:42px}
+  .v1-card img{width:100%;height:100%;display:block;object-fit:cover}
+  .v1-c1{width:230px;height:230px;top:80px;left:10px;transform:rotate(-6deg);z-index:1}
+  .v1-c2{width:230px;height:230px;top:60px;left:165px;transform:rotate(3deg);z-index:2}
+  .v1-c3{width:230px;height:230px;top:90px;left:320px;transform:rotate(-3deg);z-index:1}
+  .v1-c4{width:200px;height:200px;top:30px;left:80px;transform:rotate(5deg);z-index:3}
+  .v1-c5{width:200px;height:200px;top:50px;right:30px;transform:rotate(-5deg);z-index:3}
+  @media (max-width:600px){.v1-stage{height:280px;max-width:320px}.v1-c1,.v1-c2,.v1-c3,.v1-c4,.v1-c5{width:130px;height:130px}.v1-c1{top:50px;left:0}.v1-c2{top:40px;left:90px;}.v1-c3{top:60px;left:180px}.v1-c4{top:20px;left:50px}.v1-c5{top:30px;right:0}}
+  .v1-h{color:#fff;font-family:'Oswald',sans-serif;font-size:22px;text-transform:uppercase;margin-bottom:24px;letter-spacing:.02em}
+
+  /* ============ V2 — HORIZONTAL FILM STRIP ============ */
+  .v2{background:#000;padding:50px 0 60px;overflow:hidden}
+  .v2-h{color:#fff;font-family:'Oswald',sans-serif;font-size:22px;text-transform:uppercase;text-align:center;margin-bottom:24px;letter-spacing:.02em}
+  .v2-strip{display:flex;gap:14px;padding:0 22px;overflow-x:auto;scroll-snap-type:x mandatory}
+  .v2-card{flex:0 0 220px;background:#fff;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,0.35);scroll-snap-align:start;overflow:hidden;position:relative}
+  .v2-card img{width:100%;height:170px;object-fit:cover;display:block}
+  .v2-card .pill{position:absolute;top:8px;left:8px}
+
+  /* ============ V3 — TIGHT 5x2 GRID ============ */
+  .v3{background:#000;padding:50px 22px 60px}
+  .v3-h{color:#fff;font-family:'Oswald',sans-serif;font-size:22px;text-transform:uppercase;text-align:center;margin-bottom:24px;letter-spacing:.02em}
+  .v3-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-width:760px;margin:0 auto}
+  @media (min-width:900px){.v3-grid{grid-template-columns:repeat(5,1fr)}}
+  .v3-card{background:#fff;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.3);overflow:hidden;position:relative}
+  .v3-card img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+  .v3-card .pill{position:absolute;top:6px;left:6px}
+
+  /* ============ V4 — PRESS WALL (logos in row, headlines below) ============ */
+  .v4{background:#000;padding:50px 22px 60px}
+  .v4-h{color:#fff;font-family:'Oswald',sans-serif;font-size:22px;text-transform:uppercase;text-align:center;margin-bottom:14px;letter-spacing:.02em}
+  .v4-eyebrow{color:#FFE100;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.16em;text-align:center;margin-bottom:24px}
+  .v4-logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:16px 28px;max-width:900px;margin:0 auto 32px;padding:24px;background:rgba(255,255,255,0.04);border-radius:14px}
+  .v4-logos img{height:30px;width:auto;max-width:120px;object-fit:contain;filter:brightness(0) invert(1) opacity(0.85)}
+  .v4-quotes{max-width:760px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:14px}
+  @media (min-width:700px){.v4-quotes{grid-template-columns:1fr 1fr}}
+  .v4-quote{background:rgba(255,255,255,0.04);border-left:3px solid #FFE100;padding:14px 18px;color:#ddd;font-size:13px;line-height:1.55;font-style:italic;border-radius:0 8px 8px 0}
+  .v4-quote .src{display:block;font-style:normal;color:#FFE100;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-top:8px;font-family:'Inter',sans-serif}
+
+  /* ============ V5 — MOSAIC (varying sizes, tight) ============ */
+  .v5{background:#000;padding:50px 22px 60px}
+  .v5-h{color:#fff;font-family:'Oswald',sans-serif;font-size:22px;text-transform:uppercase;text-align:center;margin-bottom:24px;letter-spacing:.02em}
+  .v5-grid{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:80px;gap:8px;max-width:900px;margin:0 auto}
+  @media (max-width:700px){.v5-grid{grid-template-columns:repeat(4,1fr);grid-auto-rows:60px}}
+  .v5-card{background:#fff;border-radius:6px;box-shadow:0 6px 18px rgba(0,0,0,0.35);overflow:hidden;position:relative}
+  .v5-card img{width:100%;height:100%;object-fit:cover;display:block}
+  .v5-card .pill{position:absolute;top:6px;left:6px}
+  .v5-c1{grid-column:span 3;grid-row:span 3}
+  .v5-c2{grid-column:span 3;grid-row:span 2}
+  .v5-c3{grid-column:span 2;grid-row:span 2}
+  .v5-c4{grid-column:span 2;grid-row:span 2}
+  .v5-c5{grid-column:span 2;grid-row:span 3}
+  .v5-c6{grid-column:span 2;grid-row:span 2}
+  .v5-c7{grid-column:span 2;grid-row:span 2}
+  .v5-c8{grid-column:span 2;grid-row:span 2}
+  .v5-c9{grid-column:span 3;grid-row:span 2}
+  .v5-c10{grid-column:span 3;grid-row:span 2}
+  @media (max-width:700px){
+    .v5-c1{grid-column:span 4;grid-row:span 3}
+    .v5-c2,.v5-c3,.v5-c4,.v5-c5,.v5-c6,.v5-c7,.v5-c8,.v5-c9,.v5-c10{grid-column:span 2;grid-row:span 2}
+  }
+
+  /* ============ V6 — SCATTERED COMPACT (3D depth) ============ */
+  .v6{background:#000;padding:50px 22px 60px;position:relative}
+  .v6-h{color:#fff;font-family:'Oswald',sans-serif;font-size:22px;text-transform:uppercase;text-align:center;margin-bottom:24px;letter-spacing:.02em}
+  .v6-stage{position:relative;max-width:900px;margin:0 auto;height:480px}
+  @media (max-width:700px){.v6-stage{height:380px}}
+  .v6-card{position:absolute;background:#fff;border-radius:10px;box-shadow:0 12px 36px rgba(0,0,0,0.5);overflow:hidden}
+  .v6-card img{width:100%;height:100%;object-fit:cover;display:block}
+  .v6-card .pill{position:absolute;top:8px;left:8px}
+  .v6-c1{width:38%;aspect-ratio:1;top:5%;left:5%;transform:rotate(-4deg);z-index:3}
+  .v6-c2{width:30%;aspect-ratio:1;top:0;left:38%;transform:rotate(2deg);z-index:5}
+  .v6-c3{width:32%;aspect-ratio:1;top:8%;right:3%;transform:rotate(-3deg);z-index:3}
+  .v6-c4{width:28%;aspect-ratio:1;top:38%;left:8%;transform:rotate(4deg);z-index:4}
+  .v6-c5{width:32%;aspect-ratio:1;top:35%;left:35%;transform:rotate(-2deg);z-index:6}
+  .v6-c6{width:28%;aspect-ratio:1;top:42%;right:8%;transform:rotate(5deg);z-index:4}
+  .v6-c7{width:26%;aspect-ratio:1;top:68%;left:12%;transform:rotate(-3deg);z-index:5}
+  .v6-c8{width:30%;aspect-ratio:1;top:65%;left:38%;transform:rotate(3deg);z-index:3}
+  .v6-c9{width:26%;aspect-ratio:1;top:70%;right:12%;transform:rotate(-2deg);z-index:5}
+  .v6-c10{width:24%;aspect-ratio:1;top:32%;left:0;transform:rotate(-7deg);z-index:7}
+
+  /* ============ V7 — NEWSPAPER FRONT PAGE ============ */
+  .v7{background:#000;padding:50px 22px 60px}
+  .v7-h{color:#fff;font-family:'Oswald',sans-serif;font-size:22px;text-transform:uppercase;text-align:center;margin-bottom:24px;letter-spacing:.02em}
+  .v7-paper{background:#f5f1e8;max-width:820px;margin:0 auto;padding:24px;box-shadow:0 14px 40px rgba(0,0,0,0.6);transform:rotate(-1deg)}
+  .v7-masthead{text-align:center;border-bottom:3px double #0a0a0a;padding-bottom:12px;margin-bottom:16px}
+  .v7-masthead .name{font-family:'Playfair Display',serif;font-weight:900;font-size:36px;color:#0a0a0a;letter-spacing:-.02em}
+  .v7-masthead .tag{font-family:'PT Serif',serif;font-size:10px;color:#666;letter-spacing:.2em;text-transform:uppercase;margin-top:4px}
+  .v7-grid{display:grid;grid-template-columns:1fr;gap:14px}
+  @media (min-width:700px){.v7-grid{grid-template-columns:2fr 1fr 1fr}}
+  .v7-item{padding:10px 0;border-bottom:1px solid #d0c8b0}
+  .v7-item img{width:100%;height:auto;display:block;margin-bottom:6px}
+  .v7-item .pub{font-family:'Inter',sans-serif;font-size:9px;font-weight:700;color:#D90429;text-transform:uppercase;letter-spacing:.12em;margin-bottom:4px}
+  .v7-item .ttl{font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:#0a0a0a;line-height:1.2}
+  .v7-feat .ttl{font-size:20px}
+  .v7-feat .pub{font-size:10px}
+
+  /* ============ V8 — INFINITE MARQUEE ============ */
+  .v8{background:#000;padding:50px 0 60px;overflow:hidden}
+  .v8-h{color:#fff;font-family:'Oswald',sans-serif;font-size:22px;text-transform:uppercase;text-align:center;margin-bottom:24px;letter-spacing:.02em;padding:0 22px}
+  .v8-mq{position:relative;overflow:hidden;mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent)}
+  .v8-row{display:flex;gap:14px;width:max-content;animation:scrollx 50s linear infinite}
+  @keyframes scrollx{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  .v8-card{flex:0 0 180px;height:240px;background:#fff;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.35);overflow:hidden;position:relative}
+  .v8-card img{width:100%;height:100%;object-fit:cover;display:block}
+  .v8-card .pill{position:absolute;top:8px;left:8px}
+
+  /* ============ V9 — HERO + THUMBNAILS ============ */
+  .v9{background:#000;padding:50px 22px 60px}
+  .v9-h{color:#fff;font-family:'Oswald',sans-serif;font-size:22px;text-transform:uppercase;text-align:center;margin-bottom:24px;letter-spacing:.02em}
+  .v9-stage{display:grid;grid-template-columns:1fr;gap:14px;max-width:900px;margin:0 auto}
+  @media (min-width:700px){.v9-stage{grid-template-columns:2fr 1fr}}
+  .v9-hero{background:#fff;border-radius:10px;box-shadow:0 12px 30px rgba(0,0,0,0.4);overflow:hidden;position:relative}
+  .v9-hero img{width:100%;display:block;object-fit:cover;max-height:420px}
+  .v9-hero .pill{position:absolute;top:12px;left:12px}
+  .v9-thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  @media (min-width:700px){.v9-thumbs{grid-template-columns:repeat(2,1fr)}}
+  .v9-th{background:#fff;border-radius:6px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.3);position:relative;aspect-ratio:1}
+  .v9-th img{width:100%;height:100%;object-fit:cover;display:block}
+  .v9-th .pill{position:absolute;top:4px;left:4px;transform:scale(0.78);transform-origin:top left}
+
+  /* ============ V10 — LOGO BAR + STAT BLOCKS ============ */
+  .v10{background:#000;padding:50px 22px 60px}
+  .v10-h{color:#fff;font-family:'Oswald',sans-serif;font-size:22px;text-transform:uppercase;text-align:center;margin-bottom:14px;letter-spacing:.02em}
+  .v10-sub{color:#bbb;text-align:center;font-size:14px;margin-bottom:28px;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.5}
+  .v10-bar{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:18px 32px;max-width:900px;margin:0 auto 36px;padding:22px 18px;background:rgba(255,255,255,0.05);border-radius:12px;border:1px solid rgba(255,255,255,0.1)}
+  .v10-bar img{height:28px;width:auto;max-width:110px;object-fit:contain;filter:brightness(0) invert(1) opacity(0.8);transition:all .2s}
+  .v10-bar img:hover{filter:brightness(0) invert(1) opacity(1);transform:translateY(-2px)}
+  .v10-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:900px;margin:0 auto}
+  @media (min-width:700px){.v10-stats{grid-template-columns:repeat(4,1fr)}}
+  .v10-stat{background:rgba(255,255,255,0.04);border-top:3px solid #FFE100;padding:18px 14px;text-align:center;border-radius:0 0 8px 8px}
+  .v10-stat .num{font-family:'Oswald',sans-serif;font-size:36px;font-weight:700;color:#FFE100;line-height:1;margin-bottom:8px}
+  .v10-stat .lbl{color:#fff;font-size:12px;font-weight:600;line-height:1.35;margin-bottom:6px}
+  .v10-stat .src{color:#888;font-size:10px;letter-spacing:.04em}
+
+</style>
+</head>
+<body>
+
+<div class="preview-banner">
+  <b>10 COMPACT MONTAGE VARIATIONS</b> · Pick a favourite. Real publication favicons in pills.
+</div>
+
+<!-- ============ V1: POLAROID STACK ============ -->
+<div class="var-label"><span class="num">1</span>POLAROID STACK<span class="note">5 article tiles overlapping, deepest compression. ~380px tall.</span></div>
+<section class="v1">
+  <div class="v1-h">As Covered By The Press</div>
+  <div class="v1-stage">
+    <div class="v1-card v1-c1"><img src="/moodboard/M01.jpg" alt=""></div>
+    <div class="v1-card v1-c2"><img src="/moodboard/M02.jpg" alt=""></div>
+    <div class="v1-card v1-c3"><img src="/moodboard/M03.jpg" alt=""></div>
+    <div class="v1-card v1-c4"><img src="/moodboard/M07.jpg" alt=""></div>
+    <div class="v1-card v1-c5"><img src="/moodboard/M10.jpg" alt=""></div>
+  </div>
+</section>
+
+<!-- ============ V2: HORIZONTAL FILM STRIP ============ -->
+<div class="var-label"><span class="num">2</span>HORIZONTAL FILM STRIP<span class="note">Swipeable on mobile. All 10 visible by scrolling sideways. ~280px tall.</span></div>
+<section class="v2">
+  <div class="v2-h">Recent Press Coverage</div>
+  <div class="v2-strip">
+    <div class="v2-card"><span class="pill"><img src="/logos/cnbc.png" alt=""><span class="name">CNBC</span></span><img src="/moodboard/M01.jpg" alt=""></div>
+    <div class="v2-card"><span class="pill"><img src="/logos/openai.png" alt=""><span class="name">OpenAI</span></span><img src="/moodboard/M02.jpg" alt=""></div>
+    <div class="v2-card"><span class="pill"><img src="/logos/mckinsey.png" alt=""><span class="name">McKinsey</span></span><img src="/moodboard/M03.jpg" alt=""></div>
+    <div class="v2-card"><span class="pill"><img src="/logos/cbsnews.png" alt=""><span class="name">CBS News</span></span><img src="/moodboard/M04.jpg" alt=""></div>
+    <div class="v2-card"><span class="pill"><img src="/logos/afr.png" alt=""><span class="name">AFR</span></span><img src="/moodboard/M05.jpg" alt=""></div>
+    <div class="v2-card"><span class="pill"><img src="/logos/forbes.png" alt=""><span class="name">Forbes</span></span><img src="/moodboard/M06.jpg" alt=""></div>
+    <div class="v2-card"><span class="pill"><img src="/logos/smartcompany.png" alt=""><span class="name">SmartCompany</span></span><img src="/moodboard/M07.jpg" alt=""></div>
+    <div class="v2-card"><span class="pill"><img src="/logos/cnn.png" alt=""><span class="name">CNN</span></span><img src="/moodboard/M09.jpg" alt=""></div>
+    <div class="v2-card"><span class="pill"><img src="/logos/techcrunch.png" alt=""><span class="name">TechCrunch</span></span><img src="/moodboard/M10.jpg" alt=""></div>
+    <div class="v2-card"><span class="pill"><img src="/logos/wsj.png" alt=""><span class="name">WSJ</span></span><img src="/moodboard/M08.jpg" alt=""></div>
+  </div>
+</section>
+
+<!-- ============ V3: TIGHT 5x2 GRID ============ -->
+<div class="var-label"><span class="num">3</span>TIGHT GRID (5x2 on desktop, 2x5 on mobile)<span class="note">All 10 visible at once. Compact symmetric. ~400px tall on desktop.</span></div>
+<section class="v3">
+  <div class="v3-h">10 Publications Are Covering The AI Receptionist Shift</div>
+  <div class="v3-grid">
+    <div class="v3-card"><span class="pill"><img src="/logos/cnbc.png" alt=""><span class="name">CNBC</span></span><img src="/moodboard/M01.jpg" alt=""></div>
+    <div class="v3-card"><span class="pill"><img src="/logos/openai.png" alt=""><span class="name">OpenAI</span></span><img src="/moodboard/M02.jpg" alt=""></div>
+    <div class="v3-card"><span class="pill"><img src="/logos/mckinsey.png" alt=""><span class="name">McKinsey</span></span><img src="/moodboard/M03.jpg" alt=""></div>
+    <div class="v3-card"><span class="pill"><img src="/logos/cbsnews.png" alt=""><span class="name">CBS</span></span><img src="/moodboard/M04.jpg" alt=""></div>
+    <div class="v3-card"><span class="pill"><img src="/logos/afr.png" alt=""><span class="name">AFR</span></span><img src="/moodboard/M05.jpg" alt=""></div>
+    <div class="v3-card"><span class="pill"><img src="/logos/forbes.png" alt=""><span class="name">Forbes</span></span><img src="/moodboard/M06.jpg" alt=""></div>
+    <div class="v3-card"><span class="pill"><img src="/logos/smartcompany.png" alt=""><span class="name">SmartCompany</span></span><img src="/moodboard/M07.jpg" alt=""></div>
+    <div class="v3-card"><span class="pill"><img src="/logos/cnn.png" alt=""><span class="name">CNN</span></span><img src="/moodboard/M09.jpg" alt=""></div>
+    <div class="v3-card"><span class="pill"><img src="/logos/techcrunch.png" alt=""><span class="name">TechCrunch</span></span><img src="/moodboard/M10.jpg" alt=""></div>
+    <div class="v3-card"><span class="pill"><img src="/logos/wsj.png" alt=""><span class="name">WSJ</span></span><img src="/moodboard/M08.jpg" alt=""></div>
+  </div>
+</section>
+
+<!-- ============ V4: PRESS WALL + QUOTES ============ -->
+<div class="var-label"><span class="num">4</span>PRESS WALL + PULL QUOTES<span class="note">Logos in row + 4 short headline quotes. ~380px tall. Most authoritative.</span></div>
+<section class="v4">
+  <div class="v4-eyebrow">As Covered By</div>
+  <div class="v4-h">The AI Receptionist Shift</div>
+  <div class="v4-logos">
+    <img src="/logos/cnbc.png" alt="CNBC">
+    <img src="/logos/openai.png" alt="OpenAI">
+    <img src="/logos/mckinsey.png" alt="McKinsey">
+    <img src="/logos/cbsnews.png" alt="CBS News">
+    <img src="/logos/forbes.png" alt="Forbes">
+    <img src="/logos/afr.png" alt="AFR">
+    <img src="/logos/smartcompany.png" alt="SmartCompany">
+    <img src="/logos/cnn.png" alt="CNN">
+    <img src="/logos/techcrunch.png" alt="TechCrunch">
+    <img src="/logos/wsj.png" alt="WSJ">
+  </div>
+  <div class="v4-quotes">
+    <div class="v4-quote">"Klarna's AI assistant does the work of 700 full-time customer service agents."<span class="src">OpenAI Case Study &middot; 2024</span></div>
+    <div class="v4-quote">"Goldman Sachs says generative AI could impact 300 million jobs."<span class="src">CNBC &middot; 2023</span></div>
+    <div class="v4-quote">"80% of businesses will integrate voice AI by end of 2026."<span class="src">McKinsey &amp; Company &middot; 2025</span></div>
+    <div class="v4-quote">"Sydney AI receptionist startup raises $900K to help Aussie tradies."<span class="src">SmartCompany &middot; 2026</span></div>
+  </div>
+</section>
+
+<!-- ============ V5: MOSAIC ============ -->
+<div class="var-label"><span class="num">5</span>MOSAIC (varying sizes)<span class="note">Bigger feature card + smaller surround cards. ~500px tall.</span></div>
+<section class="v5">
+  <div class="v5-h">10 Publications. One Story.</div>
+  <div class="v5-grid">
+    <div class="v5-card v5-c1"><span class="pill pill-lg"><img src="/logos/openai.png" alt=""><span class="name">OpenAI</span></span><img src="/moodboard/M02.jpg" alt=""></div>
+    <div class="v5-card v5-c2"><span class="pill"><img src="/logos/cnbc.png" alt=""><span class="name">CNBC</span></span><img src="/moodboard/M01.jpg" alt=""></div>
+    <div class="v5-card v5-c3"><span class="pill"><img src="/logos/mckinsey.png" alt=""><span class="name">McKinsey</span></span><img src="/moodboard/M03.jpg" alt=""></div>
+    <div class="v5-card v5-c4"><span class="pill"><img src="/logos/cbsnews.png" alt=""><span class="name">CBS</span></span><img src="/moodboard/M04.jpg" alt=""></div>
+    <div class="v5-card v5-c5"><span class="pill"><img src="/logos/smartcompany.png" alt=""><span class="name">SmartCompany</span></span><img src="/moodboard/M07.jpg" alt=""></div>
+    <div class="v5-card v5-c6"><span class="pill"><img src="/logos/afr.png" alt=""><span class="name">AFR</span></span><img src="/moodboard/M05.jpg" alt=""></div>
+    <div class="v5-card v5-c7"><span class="pill"><img src="/logos/forbes.png" alt=""><span class="name">Forbes</span></span><img src="/moodboard/M06.jpg" alt=""></div>
+    <div class="v5-card v5-c8"><span class="pill"><img src="/logos/techcrunch.png" alt=""><span class="name">TC</span></span><img src="/moodboard/M10.jpg" alt=""></div>
+    <div class="v5-card v5-c9"><span class="pill"><img src="/logos/cnn.png" alt=""><span class="name">CNN</span></span><img src="/moodboard/M09.jpg" alt=""></div>
+    <div class="v5-card v5-c10"><span class="pill"><img src="/logos/wsj.png" alt=""><span class="name">WSJ</span></span><img src="/moodboard/M08.jpg" alt=""></div>
+  </div>
+</section>
+
+<!-- ============ V6: 3D SCATTERED ============ -->
+<div class="var-label"><span class="num">6</span>3D SCATTERED (Pravda-style)<span class="note">Cards at different depths, tilted angles. Matches your reference image closest. ~500px.</span></div>
+<section class="v6">
+  <div class="v6-h">The Press Is Talking</div>
+  <div class="v6-stage">
+    <div class="v6-card v6-c1"><span class="pill"><img src="/logos/cnbc.png" alt=""><span class="name">CNBC</span></span><img src="/moodboard/M01.jpg" alt=""></div>
+    <div class="v6-card v6-c2"><span class="pill"><img src="/logos/openai.png" alt=""><span class="name">OpenAI</span></span><img src="/moodboard/M02.jpg" alt=""></div>
+    <div class="v6-card v6-c3"><span class="pill"><img src="/logos/mckinsey.png" alt=""><span class="name">McKinsey</span></span><img src="/moodboard/M03.jpg" alt=""></div>
+    <div class="v6-card v6-c4"><span class="pill"><img src="/logos/cbsnews.png" alt=""><span class="name">CBS</span></span><img src="/moodboard/M04.jpg" alt=""></div>
+    <div class="v6-card v6-c5"><span class="pill"><img src="/logos/afr.png" alt=""><span class="name">AFR</span></span><img src="/moodboard/M05.jpg" alt=""></div>
+    <div class="v6-card v6-c6"><span class="pill"><img src="/logos/forbes.png" alt=""><span class="name">Forbes</span></span><img src="/moodboard/M06.jpg" alt=""></div>
+    <div class="v6-card v6-c7"><span class="pill"><img src="/logos/smartcompany.png" alt=""><span class="name">SC</span></span><img src="/moodboard/M07.jpg" alt=""></div>
+    <div class="v6-card v6-c8"><span class="pill"><img src="/logos/cnn.png" alt=""><span class="name">CNN</span></span><img src="/moodboard/M09.jpg" alt=""></div>
+    <div class="v6-card v6-c9"><span class="pill"><img src="/logos/techcrunch.png" alt=""><span class="name">TC</span></span><img src="/moodboard/M10.jpg" alt=""></div>
+    <div class="v6-card v6-c10"><span class="pill"><img src="/logos/wsj.png" alt=""><span class="name">WSJ</span></span><img src="/moodboard/M08.jpg" alt=""></div>
+  </div>
+</section>
+
+<!-- ============ V7: NEWSPAPER FRONT ============ -->
+<div class="var-label"><span class="num">7</span>NEWSPAPER FRONT PAGE<span class="note">Single styled newspaper layout. Lots of credibility. ~600px tall.</span></div>
+<section class="v7">
+  <div class="v7-h">A Tilted Press Front Page</div>
+  <div class="v7-paper">
+    <div class="v7-masthead">
+      <div class="name">The Receptionist Times</div>
+      <div class="tag">A Digest Of Press Coverage On The AI Receptionist Shift &middot; 2026</div>
+    </div>
+    <div class="v7-grid">
+      <div class="v7-item v7-feat">
+        <div class="pub">OpenAI Case Study &middot; 2024</div>
+        <img src="/moodboard/M02.jpg" alt="">
+        <div class="ttl">"Klarna's AI assistant does the work of 700 full-time customer service agents."</div>
+      </div>
+      <div class="v7-item">
+        <div class="pub">CNBC &middot; 2023</div>
+        <img src="/moodboard/M01.jpg" alt="">
+        <div class="ttl">Goldman Sachs: 300 million jobs at risk from generative AI</div>
+      </div>
+      <div class="v7-item">
+        <div class="pub">McKinsey &middot; 2025</div>
+        <img src="/moodboard/M03.jpg" alt="">
+        <div class="ttl">80% of businesses will use voice AI by end of 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ V8: INFINITE MARQUEE ============ -->
+<div class="var-label"><span class="num">8</span>INFINITE MARQUEE<span class="note">Auto-scrolling left. Eye-catching. Only ~280px tall.</span></div>
+<section class="v8">
+  <div class="v8-h">Press Coverage, In Motion</div>
+  <div class="v8-mq">
+    <div class="v8-row">
+      <div class="v8-card"><span class="pill"><img src="/logos/cnbc.png" alt=""><span class="name">CNBC</span></span><img src="/moodboard/M01.jpg" alt=""></div>
+      <div class="v8-card"><span class="pill"><img src="/logos/openai.png" alt=""><span class="name">OpenAI</span></span><img src="/moodboard/M02.jpg" alt=""></div>
+      <div class="v8-card"><span class="pill"><img src="/logos/mckinsey.png" alt=""><span class="name">McKinsey</span></span><img src="/moodboard/M03.jpg" alt=""></div>
+      <div class="v8-card"><span class="pill"><img src="/logos/cbsnews.png" alt=""><span class="name">CBS</span></span><img src="/moodboard/M04.jpg" alt=""></div>
+      <div class="v8-card"><span class="pill"><img src="/logos/afr.png" alt=""><span class="name">AFR</span></span><img src="/moodboard/M05.jpg" alt=""></div>
+      <div class="v8-card"><span class="pill"><img src="/logos/forbes.png" alt=""><span class="name">Forbes</span></span><img src="/moodboard/M06.jpg" alt=""></div>
+      <div class="v8-card"><span class="pill"><img src="/logos/smartcompany.png" alt=""><span class="name">SC</span></span><img src="/moodboard/M07.jpg" alt=""></div>
+      <div class="v8-card"><span class="pill"><img src="/logos/cnn.png" alt=""><span class="name">CNN</span></span><img src="/moodboard/M09.jpg" alt=""></div>
+      <div class="v8-card"><span class="pill"><img src="/logos/techcrunch.png" alt=""><span class="name">TC</span></span><img src="/moodboard/M10.jpg" alt=""></div>
+      <div class="v8-card"><span class="pill"><img src="/logos/wsj.png" alt=""><span class="name">WSJ</span></span><img src="/moodboard/M08.jpg" alt=""></div>
+      <!-- duplicate for infinite loop -->
+      <div class="v8-card"><span class="pill"><img src="/logos/cnbc.png" alt=""><span class="name">CNBC</span></span><img src="/moodboard/M01.jpg" alt=""></div>
+      <div class="v8-card"><span class="pill"><img src="/logos/openai.png" alt=""><span class="name">OpenAI</span></span><img src="/moodboard/M02.jpg" alt=""></div>
+      <div class="v8-card"><span class="pill"><img src="/logos/mckinsey.png" alt=""><span class="name">McKinsey</span></span><img src="/moodboard/M03.jpg" alt=""></div>
+      <div class="v8-card"><span class="pill"><img src="/logos/cbsnews.png" alt=""><span class="name">CBS</span></span><img src="/moodboard/M04.jpg" alt=""></div>
+      <div class="v8-card"><span class="pill"><img src="/logos/afr.png" alt=""><span class="name">AFR</span></span><img src="/moodboard/M05.jpg" alt=""></div>
+      <div class="v8-card"><span class="pill"><img src="/logos/forbes.png" alt=""><span class="name">Forbes</span></span><img src="/moodboard/M06.jpg" alt=""></div>
+      <div class="v8-card"><span class="pill"><img src="/logos/smartcompany.png" alt=""><span class="name">SC</span></span><img src="/moodboard/M07.jpg" alt=""></div>
+      <div class="v8-card"><span class="pill"><img src="/logos/cnn.png" alt=""><span class="name">CNN</span></span><img src="/moodboard/M09.jpg" alt=""></div>
+      <div class="v8-card"><span class="pill"><img src="/logos/techcrunch.png" alt=""><span class="name">TC</span></span><img src="/moodboard/M10.jpg" alt=""></div>
+      <div class="v8-card"><span class="pill"><img src="/logos/wsj.png" alt=""><span class="name">WSJ</span></span><img src="/moodboard/M08.jpg" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ V9: HERO + THUMBNAILS ============ -->
+<div class="var-label"><span class="num">9</span>HERO + THUMBNAIL GRID<span class="note">One featured big article + 6 thumbs. Magazine layout. ~440px tall.</span></div>
+<section class="v9">
+  <div class="v9-h">The Klarna Story Everyone Else Is Covering</div>
+  <div class="v9-stage">
+    <div class="v9-hero">
+      <span class="pill pill-lg"><img src="/logos/openai.png" alt=""><span class="name">OpenAI Case Study</span></span>
+      <img src="/moodboard/M02.jpg" alt="">
+    </div>
+    <div class="v9-thumbs">
+      <div class="v9-th"><span class="pill"><img src="/logos/cnbc.png" alt=""><span class="name">CNBC</span></span><img src="/moodboard/M01.jpg" alt=""></div>
+      <div class="v9-th"><span class="pill"><img src="/logos/mckinsey.png" alt=""><span class="name">McK</span></span><img src="/moodboard/M03.jpg" alt=""></div>
+      <div class="v9-th"><span class="pill"><img src="/logos/cbsnews.png" alt=""><span class="name">CBS</span></span><img src="/moodboard/M04.jpg" alt=""></div>
+      <div class="v9-th"><span class="pill"><img src="/logos/smartcompany.png" alt=""><span class="name">SC</span></span><img src="/moodboard/M07.jpg" alt=""></div>
+      <div class="v9-th"><span class="pill"><img src="/logos/forbes.png" alt=""><span class="name">Forbes</span></span><img src="/moodboard/M06.jpg" alt=""></div>
+      <div class="v9-th"><span class="pill"><img src="/logos/cnn.png" alt=""><span class="name">CNN</span></span><img src="/moodboard/M09.jpg" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ V10: LOGO BAR + STAT BLOCKS ============ -->
+<div class="var-label"><span class="num">10</span>LOGO BAR + STAT BLOCKS<span class="note">Cleanest of all. No article images, just real logos + big stats. ~360px tall.</span></div>
+<section class="v10">
+  <div class="v10-h">As Covered By</div>
+  <div class="v10-bar">
+    <img src="/logos/openai.png" alt="OpenAI">
+    <img src="/logos/cnbc.png" alt="CNBC">
+    <img src="/logos/mckinsey.png" alt="McKinsey">
+    <img src="/logos/cbsnews.png" alt="CBS News">
+    <img src="/logos/forbes.png" alt="Forbes">
+    <img src="/logos/afr.png" alt="AFR">
+    <img src="/logos/smartcompany.png" alt="SmartCompany">
+    <img src="/logos/cnn.png" alt="CNN">
+    <img src="/logos/techcrunch.png" alt="TechCrunch">
+    <img src="/logos/wsj.png" alt="WSJ">
+  </div>
+  <div class="v10-stats">
+    <div class="v10-stat">
+      <div class="num">700</div>
+      <div class="lbl">Agents replaced by AI at Klarna</div>
+      <div class="src">OpenAI &middot; 2024</div>
+    </div>
+    <div class="v10-stat">
+      <div class="num">300M</div>
+      <div class="lbl">Jobs impacted by generative AI</div>
+      <div class="src">Goldman Sachs &middot; 2023</div>
+    </div>
+    <div class="v10-stat">
+      <div class="num">80%</div>
+      <div class="lbl">Of businesses adopting voice AI by 2026</div>
+      <div class="src">McKinsey &middot; 2025</div>
+    </div>
+    <div class="v10-stat">
+      <div class="num">270K</div>
+      <div class="lbl">Calls AU tradies miss every day</div>
+      <div class="src">SmartCompany &middot; 2026</div>
+    </div>
+  </div>
+</section>
+
+<div class="var-label" style="background:#0a0a0a;color:#FFE100;border-top:none">PICK YOUR FAVOURITE · I'LL ROLL IT INTO ALL 9 FUNNELS</div>
+
+</body>
+</html>
