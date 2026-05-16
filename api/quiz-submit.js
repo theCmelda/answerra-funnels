@@ -47,7 +47,8 @@ async function supabaseInsert(row) {
   });
   const body = await r.json().catch(() => ({}));
   if (!r.ok) {
-    console.error("[supabase] insert failed", { status: r.status, body, hasUrl: !!url, urlPrefix: (url||"").slice(0,40), keyPrefix: (key||"").slice(0,12) });
+    const diag = JSON.stringify({ status: r.status, body, hasUrl: !!url, urlPrefix: (url||"").slice(0,40), keyPrefix: (key||"").slice(0,12) });
+    console.error("[supabase] insert failed " + diag);
   }
   return { ok: r.ok, status: r.status, body };
 }
@@ -218,7 +219,7 @@ export default async function handler(req, res) {
     pixel_fired,
     event_id,
     redirect: `/thanks?id=${encodeURIComponent(event_id)}`,
-    supabase: supResult.skipped ? "skipped (no env)" : (supResult.ok ? "stored" : "error"),
+    supabase: supResult.skipped ? "skipped (no env)" : (supResult.ok ? "stored" : ("error: " + (supResult.body?.message || supResult.body?.hint || JSON.stringify(supResult.body || {}).slice(0,200) || "unknown"))),
     slack: slackResult.skipped ? "skipped (no env)" : (slackResult.ok ? "posted" : "error"),
     capi: capiResult.skipped ? `skipped (${capiResult.reason})` : (capiResult.ok ? "fired" : "error"),
   });
