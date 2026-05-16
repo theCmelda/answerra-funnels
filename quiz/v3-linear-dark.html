@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
+<title>Answerra · 03 · Linear Dark</title>
+<meta name="robots" content="noindex,nofollow">
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1566272154506353');fbq('track','PageView',{page:'quiz',design:'v3-linear-dark'});
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1566272154506353&ev=PageView&noscript=1" alt=""/></noscript>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#18181b;color:#fafafa;font-family:'Inter',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh;min-height:100dvh}
+body{display:flex;flex-direction:column;min-height:100vh;min-height:100dvh}
+button{cursor:pointer;font-family:inherit;border:0;background:none;color:inherit}
+input,textarea{font-family:inherit;color:inherit}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:rgba(255,255,255,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(250,250,250,.10)}
+.brand{font-family:'Inter',system-ui,-apple-system,sans-serif;font-weight:700;font-size:18px;letter-spacing:-.02em}
+.brand .dot{color:#6366f1}
+.step-count{font-size:13px;font-weight:500;color:rgba(250,250,250,.55)}
+.step-count b{color:#fafafa;font-weight:600}
+.progress{position:fixed;left:0;right:0;top:0;z-index:51;height:2px;background:rgba(250,250,250,.10)}
+.progress-bar{height:100%;background:#6366f1;width:0%;transition:width .4s cubic-bezier(.2,.8,.2,1)}
+
+.stage{flex:1;display:flex;align-items:center;justify-content:center;padding:88px 24px 64px}
+.wrap{width:100%;max-width:680px}
+
+.q{display:none;animation:slideIn .4s cubic-bezier(.2,.8,.2,1)}
+.q.active{display:block}
+@keyframes slideIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+.q-head{display:flex;align-items:center;gap:8px;margin-bottom:20px;font-size:14px;font-weight:500;color:rgba(250,250,250,.55)}
+.q-num{color:#6366f1;font-weight:600}
+.q-required{color:#6366f1;font-size:12px}
+
+h2.q-text{font-family:'Inter',system-ui,-apple-system,sans-serif;font-weight:600;font-size:32px;line-height:1.15;letter-spacing:-.02em;color:#fafafa;margin-bottom:14px;text-wrap:balance}
+h2.q-text .accent{color:#6366f1}
+.q-sub{font-size:16px;line-height:1.55;color:rgba(250,250,250,.55);margin-bottom:32px;font-weight:400}
+.q-name{color:#6366f1;font-weight:600}
+
+@media(min-width:760px){
+  h2.q-text{font-size:46px}
+  .q-sub{font-size:18px;margin-bottom:40px}
+}
+
+.input-row{margin-bottom:24px}
+.text-input{width:100%;background:transparent;border-style:none none solid none;border-width:0 0 1px 0;border-color:rgba(250,250,250,.10);padding:14px 0;font-size:20px;font-weight:500;color:#fafafa;outline:none;transition:all .2s ease}
+.text-input:focus{border-color:rgba(250,250,250,.40)}
+.text-input::placeholder{color:rgba(250,250,250,.35);font-weight:400}
+@media(min-width:760px){.text-input{font-size:24px;padding:16px 0}}
+textarea.text-input{min-height:120px;line-height:1.45;resize:none}
+
+.suggest{margin-top:8px;background:rgba(250,250,250,.04);border:1px solid rgba(250,250,250,.10);border-radius:10px;max-height:280px;overflow-y:auto}
+.suggest-item{padding:14px 18px;cursor:pointer;border-bottom:1px solid rgba(250,250,250,.10);display:flex;flex-direction:column;gap:3px;transition:background .12s ease}
+.suggest-item:last-child{border-bottom:0}
+.suggest-item:hover,.suggest-item.kbdactive{background:rgba(99,102,241,.12)}
+.suggest-item b{font-size:15px;font-weight:600;color:#fafafa}
+.suggest-item span{font-size:13px;color:rgba(250,250,250,.55)}
+
+.biz-card{background:rgba(250,250,250,.04);border:1px solid rgba(250,250,250,.10);border-radius:10px;padding:22px;margin-bottom:24px}
+.biz-card h3{font-family:'Inter',system-ui,-apple-system,sans-serif;font-weight:600;font-size:20px;line-height:1.2;margin-bottom:12px}
+.biz-row{display:flex;gap:10px;font-size:14px;color:rgba(250,250,250,.55);line-height:1.5;margin-top:8px}
+.biz-row b{color:#fafafa;font-weight:500;min-width:70px}
+.biz-stars{margin-top:14px;padding-top:14px;border-top:1px solid rgba(250,250,250,.10);font-size:13px;color:rgba(250,250,250,.55)}
+.biz-stars b{color:#6366f1;font-weight:600;font-size:15px}
+
+.options{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.opt{display:flex;align-items:center;gap:14px;background:rgba(250,250,250,.04);border:1px solid rgba(250,250,250,.10);border-radius:10px;padding:15px 18px;text-align:left;font-family:inherit;font-size:16px;font-weight:500;color:#fafafa;transition:all .15s ease;cursor:pointer;width:100%}
+.opt:hover{border-color:rgba(250,250,250,.40)}
+.opt.active{background:#6366f1;color:#ffffff;border-color:#6366f1}
+.opt.active .opt-letter{background:rgba(255,255,255,.2);color:#fff;border-color:transparent}
+.opt-letter{flex-shrink:0;width:24px;height:24px;border:1px solid rgba(250,250,250,.10);border-radius:5px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:rgba(250,250,250,.55);background:#18181b;transition:all .15s ease}
+.opt-text{flex:1;line-height:1.35}
+.opt-check{flex-shrink:0;width:20px;height:20px;border-radius:50%;border:1.5px solid rgba(250,250,250,.10);display:none;align-items:center;justify-content:center;background:#18181b}
+.opt-check svg{width:12px;height:12px}
+.opt[data-multi] .opt-check{display:flex}
+.opt[data-multi].active .opt-check{background:#fff;border-color:#fff}
+
+.commit-card{background:rgba(99,102,241,.12);border:1px solid rgba(250,250,250,.10);border-radius:10px;padding:22px;margin-bottom:24px}
+.commit-card p{font-size:15px;line-height:1.6;color:#fafafa;margin-bottom:12px;font-weight:400}
+.commit-card p:last-child{margin-bottom:0}
+.commit-card b{font-weight:600}
+
+.cta-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:8px}
+.cta-ok{display:inline-flex;align-items:center;gap:8px;background:#6366f1;color:#ffffff;font-family:inherit;font-weight:600;font-size:15px;padding:14px 24px;border-radius:8px;border:0;transition:all .15s ease;letter-spacing:.005em}
+.cta-ok:hover:not(:disabled){filter:brightness(.92);transform:translateY(-1px)}
+.cta-ok:disabled{opacity:.35;cursor:not-allowed;transform:none}
+.cta-ok::after{content:"→";font-size:16px}
+.kbd-hint{font-size:12px;color:rgba(250,250,250,.35);display:none;align-items:center;gap:6px;font-weight:500}
+.kbd-hint kbd{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;background:#18181b;border:1px solid rgba(250,250,250,.10);padding:2px 6px;border-radius:4px;color:rgba(250,250,250,.55)}
+@media(min-width:760px){.kbd-hint{display:inline-flex}}
+.cta-secondary{background:transparent;color:rgba(250,250,250,.55);font-size:14px;font-weight:500;text-decoration:underline;text-underline-offset:3px;padding:8px 4px;border:0}
+.cta-secondary:hover{color:#fafafa}
+
+.confirm{text-align:center;padding:8px 0 32px}
+.confirm-icon{width:64px;height:64px;background:#6366f1;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px}
+.confirm-icon svg{width:32px;height:32px}
+.cal-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:20px 0 24px}
+.cal-btn{display:inline-flex;align-items:center;gap:6px;padding:11px 18px;background:rgba(250,250,250,.04);border:1px solid rgba(250,250,250,.10);border-radius:8px;font-size:13px;font-weight:600;color:#fafafa;text-decoration:none;transition:all .15s ease}
+.cal-btn:hover{border-color:rgba(250,250,250,.40)}
+.next-steps{list-style:none;text-align:left;background:rgba(250,250,250,.04);border:1px solid rgba(250,250,250,.10);border-radius:10px;padding:20px 22px;margin:0 auto;max-width:520px}
+.next-steps li{display:flex;gap:14px;font-size:14px;line-height:1.55;color:rgba(250,250,250,.55);margin-bottom:12px}
+.next-steps li:last-child{margin-bottom:0}
+.next-steps li b{flex-shrink:0;color:#6366f1;font-weight:600;font-size:14px;min-width:18px}
+
+.foot{text-align:center;padding:16px 22px;font-size:11px;color:rgba(250,250,250,.35)}
+.foot a{color:rgba(250,250,250,.55);text-decoration:none}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001s !important;transition-duration:.05s !important}
+}
+
+
+        .nav{background:rgba(24,24,27,.85)}
+        .opt{background:rgba(250,250,250,.04);border:1px solid rgba(250,250,250,.10);border-radius:8px}
+        .opt:hover{background:rgba(99,102,241,.08);border-color:rgba(99,102,241,.30)}
+        .opt-letter{background:rgba(250,250,250,.06);border-color:rgba(250,250,250,.10);color:rgba(250,250,250,.65)}
+        .text-input{background:transparent;color:#fafafa}
+        .text-input::placeholder{color:rgba(250,250,250,.35)}
+        textarea.text-input{background:rgba(250,250,250,.04);border:1px solid rgba(250,250,250,.10);border-radius:8px}
+        .biz-card{background:rgba(250,250,250,.04);border:1px solid rgba(250,250,250,.10);border-radius:10px}
+        .commit-card{background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.30);border-radius:10px}
+</style>
+</head>
+<body>
+<div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+<header class="nav">
+  <span class="brand">answerra<span class="dot">.</span></span>
+  <span class="step-count"><b id="stepNum">1</b> / 8</span>
+</header>
+
+<main class="stage"><div class="wrap">
+
+<section class="q active" data-step="0">
+  <div class="q-head">Welcome</div>
+  <h2 class="q-text">G'day <span class="q-name" data-bind="first_name">there</span>. Your build slot is locked in.</h2>
+  <p class="q-sub">Four quick questions before our senior dev starts building your AI receptionist. <b>90 seconds.</b></p>
+  <div class="cta-row">
+    <button class="cta-ok" data-next>Let's go</button>
+    <span class="kbd-hint">press <kbd>Enter</kbd></span>
+  </div>
+</section>
+
+<section class="q" data-step="1">
+  <div class="q-head"><span class="q-num">01</span> Your business <span class="q-required">*</span></div>
+  <h2 class="q-text">What's your business called, <span class="q-name" data-bind="first_name">there</span>?</h2>
+  <p class="q-sub">Start typing — we'll pull the details from Google.</p>
+  <div class="input-row">
+    <input id="bizSearch" class="text-input" type="text" placeholder="e.g. Bright Smile Dental Bondi" autocomplete="off" />
+    <div id="bizSuggest" class="suggest" style="display:none"></div>
+  </div>
+  <div class="cta-row">
+    <button class="cta-ok" data-next disabled id="bizNext">OK</button>
+    <span class="kbd-hint">press <kbd>Enter</kbd></span>
+  </div>
+</section>
+
+<section class="q" data-step="2">
+  <div class="q-head"><span class="q-num">02</span> Confirm</div>
+  <h2 class="q-text">Is this <span class="accent">you</span>?</h2>
+  <p class="q-sub">Double-check the details.</p>
+  <div class="biz-card">
+    <h3 id="bizName">—</h3>
+    <div class="biz-row"><b>Address</b><span id="bizAddr">—</span></div>
+    <div class="biz-row"><b>Phone</b><span id="bizPhone">—</span></div>
+    <div class="biz-row"><b>Website</b><span id="bizWeb">—</span></div>
+    <div class="biz-stars">★ <b id="bizStars">—</b> · <span id="bizReviews">— reviews</span></div>
+  </div>
+  <div class="cta-row">
+    <button class="cta-ok" data-next>Yes, that's us</button>
+    <button class="cta-secondary" data-back>Search again</button>
+  </div>
+</section>
+
+<section class="q" data-step="3">
+  <div class="q-head"><span class="q-num">03</span> Revenue <span class="q-required">*</span></div>
+  <h2 class="q-text">How much did your business do <span class="accent">last year</span>?</h2>
+  <p class="q-sub">In Australian dollars.</p>
+  <div class="options" id="revenueOpts">
+    <button class="opt" data-revenue="Under $250K"><span class="opt-letter">A</span><span class="opt-text">Under $250,000</span></button>
+    <button class="opt" data-revenue="$250K-$500K"><span class="opt-letter">B</span><span class="opt-text">$250,000 – $500,000</span></button>
+    <button class="opt" data-revenue="$500K-$1M"><span class="opt-letter">C</span><span class="opt-text">$500,000 – $1 million</span></button>
+    <button class="opt" data-revenue="$1M-$2.5M"><span class="opt-letter">D</span><span class="opt-text">$1 million – $2.5 million</span></button>
+    <button class="opt" data-revenue="$2.5M-$5M"><span class="opt-letter">E</span><span class="opt-text">$2.5 million – $5 million</span></button>
+    <button class="opt" data-revenue="$5M-$10M"><span class="opt-letter">F</span><span class="opt-text">$5 million – $10 million</span></button>
+    <button class="opt" data-revenue="$10M+"><span class="opt-letter">G</span><span class="opt-text">$10 million+</span></button>
+  </div>
+  <div class="cta-row">
+    <button class="cta-ok" data-next disabled id="revNext">OK</button>
+    <span class="kbd-hint">tap <kbd>A-G</kbd></span>
+  </div>
+</section>
+
+<section class="q" data-step="4">
+  <div class="q-head"><span class="q-num">04</span> What it should fix <span class="q-required">*</span></div>
+  <h2 class="q-text">What do you want your receptionist to <span class="accent">fix</span>?</h2>
+  <p class="q-sub">Pick all that matter.</p>
+  <div class="options" id="benefitOpts"></div>
+  <div class="cta-row">
+    <button class="cta-ok" data-next disabled id="benNext">OK</button>
+    <span class="kbd-hint">select 1+ then <kbd>Enter</kbd></span>
+  </div>
+</section>
+
+<section class="q" data-step="5">
+  <div class="q-head"><span class="q-num">05</span> Anything else</div>
+  <h2 class="q-text">Anything specific we should know?</h2>
+  <p class="q-sub">Optional. Software you use, edge cases, tone of voice.</p>
+  <div class="input-row">
+    <textarea id="notesInput" class="text-input" maxlength="500" placeholder="e.g. We use Cliniko. Want her to upsell whitening to every new patient."></textarea>
+  </div>
+  <div class="cta-row">
+    <button class="cta-ok" data-next>OK</button>
+    <button class="cta-secondary" data-next>Skip</button>
+  </div>
+</section>
+
+<section class="q" data-step="6">
+  <div class="q-head"><span class="q-num">06</span> Timing <span class="q-required">*</span></div>
+  <h2 class="q-text">When do you want this <span class="accent">installed</span>?</h2>
+  <p class="q-sub">Be honest. We prioritise the urgent ones.</p>
+  <div class="options" id="urgencyOpts">
+    <button class="opt" data-urgency="yesterday"><span class="opt-letter">A</span><span class="opt-text">Yesterday — I needed this last week</span></button>
+    <button class="opt" data-urgency="today"><span class="opt-letter">B</span><span class="opt-text">Today — let's go ASAP</span></button>
+    <button class="opt" data-urgency="2weeks"><span class="opt-letter">C</span><span class="opt-text">In the next 2 weeks</span></button>
+    <button class="opt" data-urgency="1month"><span class="opt-letter">D</span><span class="opt-text">In the next month</span></button>
+    <button class="opt" data-urgency="exploring"><span class="opt-letter">E</span><span class="opt-text">Just exploring</span></button>
+  </div>
+  <div class="cta-row">
+    <button class="cta-ok" data-next disabled id="urgNext">OK</button>
+    <span class="kbd-hint">tap <kbd>A-E</kbd></span>
+  </div>
+</section>
+
+<section class="q" data-step="7">
+  <div class="q-head"><span class="q-num">07</span> One last thing</div>
+  <h2 class="q-text"><span class="q-name" data-bind="first_name">There</span>, one last thing.</h2>
+  <div class="commit-card">
+    <p>Our senior dev spends <b>2-3 hours building your receptionist</b> before the call. We do it free because trust starts before money changes hands — and the build is the demo.</p>
+    <p>Only ask in return: <b>turn up on time</b>. If something genuinely comes up, give us 4+ hours so we can reuse the slot.</p>
+  </div>
+  <div class="cta-row">
+    <button class="cta-ok" data-commit="confirmed">I'll be there</button>
+    <button class="cta-secondary" data-commit="reschedule">I need to reschedule</button>
+  </div>
+</section>
+
+<section class="q" data-step="8">
+  <div class="confirm">
+    <div class="confirm-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 16 L14 22 L24 10" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <h2 class="q-text">You're <span class="accent">locked in</span>, <span class="q-name" data-bind="first_name">there</span>.</h2>
+    <p class="q-sub">We'll text you 24 hours before your call with the Zoom link.</p>
+    <div class="cal-row">
+      <a class="cal-btn" id="calGoogle" href="#" target="_blank" rel="noopener">📅 Google</a>
+      <a class="cal-btn" id="calOutlook" href="#" target="_blank" rel="noopener">📅 Outlook</a>
+      <a class="cal-btn" id="calIcs" href="#" download="answerra-call.ics">📅 Apple</a>
+    </div>
+    <ul class="next-steps">
+      <li><b>01</b><span>Our dev starts building your receptionist within the hour.</span></li>
+      <li><b>02</b><span>We'll text you 24 h before the call with the Zoom link.</span></li>
+      <li><b>03</b><span>On the call: hear it live and walk through your scenarios.</span></li>
+    </ul>
+  </div>
+</section>
+
+</div></main>
+<div class="foot">© Answerra · EJX Ventures LLC · <a href="/terms">Terms</a> · <a href="/privacy">Privacy</a></div>
+
+<script>
+const params = new URLSearchParams(location.search);
+const state = {
+  step: 0,
+  first_name: params.get('first_name') || params.get('name') || 'there',
+  email: params.get('email') || '',
+  phone: params.get('phone') || '',
+  niche: (params.get('niche') || 'dental').toLowerCase(),
+  booking_id: params.get('booking_id') || params.get('id') || null,
+  business: null, revenue: null, benefits: [], notes: '',
+  urgency: null, showup_commitment: null,
+};
+const TOTAL = 9;
+const BENEFITS = {
+  dental: ["Never miss an inbound call","Answer 24/7, after-hours and weekends","Capture every after-hours emergency","Reactivate dormant patients automatically","Send SMS confirmations & forms automatically","Free up front desk for in-chair patients","Cut $4-5K/month in receptionist costs"],
+  medspa: ["Never miss an inbound call or DM","Respond in seconds, 24/7","Send AHPRA-compliant consent forms","Reactivate dormant clients automatically","Pre-qualify enquiries by treatment + budget","Cut $4-5K/month in receptionist costs"],
+  plumbing: ["Pick up every call while you're on the tools","Beat competitors to lead-response time","Send tech ETA + photo + rego before arrival","Capture every after-hours emergency","Sync straight to your job-management software","Cut $4-5K/month in receptionist costs"],
+};
+const MOCK_BIZ = [
+  {name:"Bright Smile Dental",address:"14 Beach Rd, Bondi NSW 2026",phone:"+61 2 9365 1234",website:"brightsmiledental.com.au",place_id:"mock_bright",rating:4.8,reviews:132},
+  {name:"Reliable Plumbing Sydney",address:"22 King St, Newtown NSW 2042",phone:"+61 2 9550 0011",website:"reliableplumbing.com.au",place_id:"mock_reliable",rating:4.9,reviews:217},
+  {name:"Refined Skin + Injectables",address:"5 Oxford St, Paddington NSW 2021",phone:"+61 2 9332 8800",website:"refinedskin.com.au",place_id:"mock_refined",rating:4.7,reviews:89},
+  {name:"Smile Studio Melbourne",address:"187 Chapel St, Prahran VIC 3181",phone:"+61 3 9510 0202",website:"smilestudiomelb.com.au",place_id:"mock_smile",rating:4.6,reviews:54},
+  {name:"Westside Plumbing Co",address:"99 Beach Rd, Manly NSW 2095",phone:"+61 2 9977 5566",website:"westsideplumbing.com.au",place_id:"mock_west",rating:4.8,reviews:178},
+];
+
+function showStep(n){
+  state.step = n;
+  document.querySelectorAll('.q').forEach(q => q.classList.remove('active'));
+  const next = document.querySelector('.q[data-step="' + n + '"]');
+  if (next) next.classList.add('active');
+  document.getElementById('stepNum').textContent = n + 1;
+  document.getElementById('progressBar').style.width = (((n + 1) / TOTAL) * 100) + '%';
+  document.querySelectorAll('[data-bind="first_name"]').forEach(el => el.textContent = state.first_name);
+  if (n === 2 && state.business) hydrateBiz();
+  if (n === 4) renderBenefits();
+  setTimeout(() => {
+    if (n === 1) document.getElementById('bizSearch').focus();
+    if (n === 5) document.getElementById('notesInput').focus();
+  }, 100);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function hydrateBiz(){
+  document.getElementById('bizName').textContent = state.business.name;
+  document.getElementById('bizAddr').textContent = state.business.address;
+  document.getElementById('bizPhone').textContent = state.business.phone || '—';
+  document.getElementById('bizWeb').textContent = state.business.website || '—';
+  document.getElementById('bizStars').textContent = state.business.rating || '—';
+  document.getElementById('bizReviews').textContent = (state.business.reviews || 0) + ' reviews';
+}
+function nextStep(){ if (state.step === 7) return submitForm(); showStep(state.step + 1); }
+function backStep(){ if (state.step > 0) showStep(state.step - 1); }
+document.querySelectorAll('[data-next]').forEach(b => b.addEventListener('click', nextStep));
+document.querySelectorAll('[data-back]').forEach(b => b.addEventListener('click', backStep));
+
+const bizSearch = document.getElementById('bizSearch');
+const bizSug = document.getElementById('bizSuggest');
+const bizNext = document.getElementById('bizNext');
+let suggestActive = -1;
+function renderSuggestions(matches){
+  bizSug.innerHTML = matches.map((m,i) =>
+    '<div class="suggest-item" data-idx="' + i + '"><b>' + m.name + '</b><span>' + m.address + '</span></div>'
+  ).join('');
+  bizSug.style.display = matches.length ? 'block' : 'none';
+  bizSug.querySelectorAll('.suggest-item').forEach(el => el.addEventListener('click', () => selectBiz(matches[parseInt(el.dataset.idx)])));
+}
+function selectBiz(m){
+  state.business = m; bizSearch.value = m.name;
+  bizSug.style.display = 'none'; bizNext.disabled = false; suggestActive = -1;
+}
+bizSearch.addEventListener('input', () => {
+  const q = bizSearch.value.toLowerCase().trim();
+  if (q.length < 2) { bizSug.style.display = 'none'; bizNext.disabled = true; return; }
+  renderSuggestions(MOCK_BIZ.filter(s => s.name.toLowerCase().includes(q) || s.address.toLowerCase().includes(q)));
+});
+
+document.querySelectorAll('#revenueOpts .opt').forEach(p => p.addEventListener('click', () => {
+  document.querySelectorAll('#revenueOpts .opt').forEach(x => x.classList.remove('active'));
+  p.classList.add('active');
+  state.revenue = p.getAttribute('data-revenue');
+  document.getElementById('revNext').disabled = false;
+}));
+function renderBenefits(){
+  const list = BENEFITS[state.niche] || BENEFITS.dental;
+  const el = document.getElementById('benefitOpts');
+  el.innerHTML = list.map((b,i) =>
+    '<button class="opt" data-multi data-benefit="' + b.replace(/"/g,'&quot;') + '">' +
+      '<span class="opt-letter">' + String.fromCharCode(65+i) + '</span>' +
+      '<span class="opt-text">' + b + '</span>' +
+      '<span class="opt-check"><svg viewBox="0 0 16 16"><path d="M3 8.5l3.5 3.5L13 5" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>' +
+    '</button>'
+  ).join('');
+  el.querySelectorAll('.opt').forEach(b => b.addEventListener('click', () => {
+    b.classList.toggle('active');
+    const v = b.getAttribute('data-benefit');
+    if (b.classList.contains('active')) state.benefits.push(v);
+    else state.benefits = state.benefits.filter(x => x !== v);
+    document.getElementById('benNext').disabled = state.benefits.length === 0;
+  }));
+}
+document.getElementById('notesInput').addEventListener('input', e => { state.notes = e.target.value; });
+document.querySelectorAll('#urgencyOpts .opt').forEach(p => p.addEventListener('click', () => {
+  document.querySelectorAll('#urgencyOpts .opt').forEach(x => x.classList.remove('active'));
+  p.classList.add('active');
+  state.urgency = p.getAttribute('data-urgency');
+  document.getElementById('urgNext').disabled = false;
+}));
+document.querySelectorAll('[data-commit]').forEach(b => b.addEventListener('click', () => {
+  state.showup_commitment = b.getAttribute('data-commit');
+  submitForm();
+}));
+
+document.addEventListener('keydown', e => {
+  const step = state.step;
+  if (e.key === 'Enter' && !e.shiftKey) {
+    if (step === 5 && document.activeElement === document.getElementById('notesInput')) return;
+    e.preventDefault();
+    const okBtn = document.querySelector('.q[data-step="' + step + '"] .cta-ok:not(:disabled)');
+    if (okBtn) okBtn.click();
+    return;
+  }
+  if (/^[A-Ga-g]$/.test(e.key)) {
+    const target = step === 3 ? '#revenueOpts .opt' : step === 4 ? '#benefitOpts .opt' : step === 6 ? '#urgencyOpts .opt' : null;
+    if (target) {
+      const idx = e.key.toUpperCase().charCodeAt(0) - 65;
+      const opts = document.querySelectorAll(target);
+      if (opts[idx]) { e.preventDefault(); opts[idx].click(); }
+    }
+  }
+});
+
+async function submitForm(){
+  const okBtn = document.querySelector('.q[data-step="7"] .cta-ok');
+  if (okBtn) { okBtn.disabled = true; okBtn.textContent = 'Submitting...'; }
+  try {
+    const r = await fetch('/api/quiz-submit', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(state)});
+    const data = await r.json().catch(() => ({}));
+    if (data.pixel_fired && window.fbq) {
+      fbq('track','Purchase', {value:30,currency:'AUD',content_name:'Answerra Quiz Qualified Lead'}, {eventID: data.event_id});
+    }
+  } catch (e) { console.error(e); } finally {
+    showStep(8); buildCalendarLinks();
+  }
+}
+function buildCalendarLinks(){
+  const start = new Date(Date.now() + 24*60*60*1000); start.setHours(10,0,0,0);
+  const end = new Date(start.getTime() + 30*60*1000);
+  const fmt = d => d.toISOString().replace(/[-:]|\.\d{3}/g,'');
+  const title = encodeURIComponent('Answerra · AI Receptionist Demo Call');
+  const details = encodeURIComponent('Live demo of your custom AI receptionist build.');
+  const loc = encodeURIComponent('Zoom (link sent 24h before)');
+  document.getElementById('calGoogle').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + title + '&dates=' + fmt(start) + '/' + fmt(end) + '&details=' + details + '&location=' + loc;
+  document.getElementById('calOutlook').href = 'https://outlook.live.com/calendar/0/deeplink/compose?subject=' + title + '&startdt=' + start.toISOString() + '&enddt=' + end.toISOString() + '&body=' + details + '&location=' + loc;
+  const ics = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Answerra//EN','BEGIN:VEVENT','UID:'+(state.booking_id||Date.now())+'@answerra.ai','DTSTAMP:'+fmt(new Date()),'DTSTART:'+fmt(start),'DTEND:'+fmt(end),'SUMMARY:Answerra Demo Call','DESCRIPTION:Live demo.','LOCATION:Zoom (link sent 24h before)','END:VEVENT','END:VCALENDAR'].join('\r\n');
+  document.getElementById('calIcs').href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics);
+}
+showStep(0);
+</script>
+</body>
+</html>
