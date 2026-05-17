@@ -2,7 +2,7 @@
 """
 Generate 9 direct-to-calendar funnel pages (v8 — minimal).
 
-v8 = Daniel's "plain and simple" call:
+v8 = the client's "plain and simple" call:
   - Outcome-led headline (Haynes framework)
   - iClosed calendar embed
   - That's it.
